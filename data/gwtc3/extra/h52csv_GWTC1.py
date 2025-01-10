@@ -86,7 +86,8 @@ for path in args.paths:
                 print('    %s/%s -> %s'%(args.approximant, old, new))
             data[new] = obj[args.approximant][old][:]
 
-    luminosity_distance = data.pop('luminosity_distance') * MPC_CGS ### cosmo works in CGS, not Mpc
+    # luminosity_distance = data.pop('luminosity_distance') * MPC_CGS ### cosmo works in CGS, not Mpc
+    luminosity_distance = data['luminosity_distance'] * MPC_CGS #TODO: Document change
     mass1_detector = data.pop('mass1_detector')
     mass2_detector = data.pop('mass2_detector')
 
@@ -119,6 +120,8 @@ for path in args.paths:
     data['lnprob_right_ascension'] = -np.log(2*np.pi)*np.ones_like(data['right_ascension'])
 
     #---
+    data['geocenter_time'] = np.zeros_like(data['mass1_source']) # TODO: Document change
+    data['lnprob_geocenter_time'] = np.zeros_like(data['geocenter_time']) # TODO: Document change
 
     ### write updated samples to disk
 
