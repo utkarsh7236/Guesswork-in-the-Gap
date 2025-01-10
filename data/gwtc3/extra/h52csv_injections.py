@@ -23,16 +23,16 @@ names = {
     'mass1_source' : 'mass1_source',
     'mass2_source' : 'mass2_source',
     'redshift' : 'redshift',
-    # 'distance' : 'luminosity_distance', #TODO: Document changes
+    # 'distance' : 'luminosity_distance',
     'spin1x' : 'spin1x',
     'spin1y' : 'spin1y',
     'spin1z' : 'spin1z',
     'spin2x' : 'spin2x',
     'spin2y' : 'spin2y',
     'spin2z' : 'spin2z',
-    # 'declination' : 'declination', #TODO: Document changes
-    # 'right_ascension' : 'right_ascension', #TODO: Document changes
-    # 'gps_time' : 'geocenter_time', #TODO: Document changes
+    # 'declination' : 'declination',
+    # 'right_ascension' : 'right_ascension',
+    # 'gps_time' : 'geocenter_time',
 }
 
 fars = {
@@ -44,8 +44,8 @@ fars = {
 }
 
 log = {
-    # 'declination_sampling_pdf' : 'lnprob_declination', #TODO: Document changes
-    # 'right_ascension_sampling_pdf' : 'lnprob_right_ascension', #TODO: Document changes
+    # 'declination_sampling_pdf' : 'lnprob_declination',
+    # 'right_ascension_sampling_pdf' : 'lnprob_right_ascension',
     'sampling_pdf' : 'lnprob_mass1_source_mass2_source_redshift_spin1x_spin1y_spin1z_spin2x_spin2y_spin2z',
 }
 
@@ -135,7 +135,7 @@ mass1_source = data.pop('mass1_source')
 mass2_source = data.pop('mass2_source')
 
 redshift = data.pop('redshift')
-luminosity_distance = cosmo.z2DL(redshift) #TODO: Document changes
+luminosity_distance = cosmo.z2DL(redshift)
 #luminosity_distance = data.pop('luminosity_distance') * MPC_CGS ### my cosmology works in CGS units, not Mpc
 # luminosity_distance = data['luminosity_distance'] * MPC_CGS ### my cosmology works in CGS units, not Mpc
 
@@ -190,7 +190,7 @@ data['lnprob_mass1_source_mass2_source_redshift_spin1x_spin1y_spin1z_spin2x_spin
 ### add remaining draw probability
 if args.verbose:
     print('    computing the remaining draw probabilities')
-data["geocenter_time"] = np.zeros_like(data["mass1_source"]) # TODO: Document change
+data["geocenter_time"] = np.zeros_like(data["mass1_source"])
 data['lnprob_geocenter_time'] = np.ones_like(data['geocenter_time'])
 
 #---
