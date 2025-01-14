@@ -87,7 +87,7 @@ for path in args.paths:
             data[new] = obj[args.approximant][old][:]
 
     # luminosity_distance = data.pop('luminosity_distance') * MPC_CGS ### cosmo works in CGS, not Mpc
-    luminosity_distance = data['luminosity_distance'] * MPC_CGS #TODO: Document change
+    luminosity_distance = data['luminosity_distance'] * MPC_CGS
     mass1_detector = data.pop('mass1_detector')
     mass2_detector = data.pop('mass2_detector')
 
