@@ -124,9 +124,9 @@ for path in args.paths:
     data['lnprob_right_ascension'] = -np.log(2*np.pi)*np.ones_like(data['right_ascension'])
 
     a1_max = np.max(data['a_1'])
-    data['lnprob_spin1'] = np.log((np.sin(np.arccos(data['costilt1'])))/(4*np.pi*a1_max))
+    data["lnprob_spin1spherical"] = -np.log(4*np.pi*a1_max * np.ones(len(data['a_1'])))
     a2_max = np.max(data['a_2'])
-    data['lnprob_spin2'] = np.log((np.sin(np.arccos(data['costilt2'])))/(4*np.pi*a2_max))
+    data["lnprob_spin2spherical"] = -np.log(4*np.pi*a2_max * np.ones(len(data['a_2'])))
 
     #---
     data['geocenter_time'] = np.zeros_like(data['mass1_source'])
