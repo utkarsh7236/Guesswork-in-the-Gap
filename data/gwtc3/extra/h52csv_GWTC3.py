@@ -126,15 +126,20 @@ for path in args.paths:
     data['lnprob_redshift'] = 2*np.log(luminosity_distance) \
         + np.log(cosmo.z2Dc(data['redshift']) + (1+data['redshift'])*cosmo.dDcdz(data['redshift']))
 
+
     spin_sqrd = data['spin1x']**2 + data['spin1y']**2 + data['spin1z']**2
-    a1_max = np.max(spin_sqrd)
+    data["a_1"] = np.sqrt(spin_sqrd)
+    data["costilt1"] = data["spin1z"] / data["a_1"]
+    a1_max = np.max(data["a_1"])
     data['lnprob_spin1x_spin1y_spin1z'] = -np.log(4*np.pi*spin_sqrd)
-    data["lnprob_spin1mag"] = -np.log(4*np.pi*a1_max * np.ones(len(spin_sqrd)))
+    data["lnprob_spin1spherical"] = -np.log(4*np.pi*a1_max * np.ones(len(spin_sqrd)))
 
     spin_sqrd = data['spin2x']**2 + data['spin2y']**2 + data['spin2z']**2
-    a2_max = np.max(spin_sqrd)
+    data["a_2"] = np.sqrt(spin_sqrd)
+    data["costilt2"] = data["spin2z"] / data["a_2"]
+    a2_max = np.max(data["a_2"])
     data['lnprob_spin2x_spin2y_spin2z'] = -np.log(4*np.pi*spin_sqrd)
-    data["lnprob_spin2mag"] = -np.log(4*np.pi*a2_max * np.ones(len(spin_sqrd)))
+    data["lnprob_spin2spherical"] = -np.log(4*np.pi*a2_max * np.ones(len(spin_sqrd)))
 
     data['lnprob_declination'] = np.log(0.5*np.cos(data['declination']))
     data['lnprob_right_ascension'] = -np.log(2*np.pi)*np.ones_like(data['right_ascension'])

@@ -25,6 +25,10 @@ names = {
     'luminosity_distance_Mpc' : 'luminosity_distance',
     'declination' : 'declination',
     'right_ascension' : 'right_ascension',
+    'spin1': 'a_1',
+    'spin2': 'a_2',
+    'costilt1': 'costilt1',
+    'costilt2': 'costilt2',
 }
 
 #-------------------------------------------------
@@ -110,8 +114,8 @@ for path in args.paths:
     if args.verbose:
         print('    computing the (default) parameter estimation prior')
 
-    data['lnprob_mass1_source'] = 1 + data['redshift']
-    data['lnprob_mass2_source'] = 1 + data['redshift']
+    data['lnprob_mass1_source'] = np.log(1 + data['redshift'])
+    data['lnprob_mass2_source'] = np.log(1 + data['redshift'])
 
     data['lnprob_redshift'] = 2*np.log(luminosity_distance) \
         + np.log(cosmo.z2Dc(data['redshift']) + (1+data['redshift'])*cosmo.dDcdz(data['redshift']))
@@ -119,9 +123,14 @@ for path in args.paths:
     data['lnprob_declination'] = np.log(0.5*np.cos(data['declination']))
     data['lnprob_right_ascension'] = -np.log(2*np.pi)*np.ones_like(data['right_ascension'])
 
+    a1_max = np.max(data['a_1'])
+    data['lnprob_spin1'] = np.log((np.sin(np.arccos(data['costilt1'])))/(4*np.pi*a1_max))
+    a2_max = np.max(data['a_2'])
+    data['lnprob_spin2'] = np.log((np.sin(np.arccos(data['costilt2'])))/(4*np.pi*a2_max))
+
     #---
-    data['geocenter_time'] = np.zeros_like(data['mass1_source']) # TODO: Document change
-    data['lnprob_geocenter_time'] = np.zeros_like(data['geocenter_time']) # TODO: Document change
+    data['geocenter_time'] = np.zeros_like(data['mass1_source'])
+    data['lnprob_geocenter_time'] = np.zeros_like(data['geocenter_time'])
 
     ### write updated samples to disk
 
