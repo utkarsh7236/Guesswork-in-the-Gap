@@ -120,17 +120,21 @@ for path in args.paths:
     if args.verbose:
         print('    computing the (default) parameter estimation prior')
 
-    data['lnprob_mass1_source'] = 1 + data['redshift']
-    data['lnprob_mass2_source'] = 1 + data['redshift']
+    data['lnprob_mass1_source'] = np.log(1 + data['redshift'])
+    data['lnprob_mass2_source'] = np.log(1 + data['redshift'])
 
     data['lnprob_redshift'] = 2*np.log(luminosity_distance) \
         + np.log(cosmo.z2Dc(data['redshift']) + (1+data['redshift'])*cosmo.dDcdz(data['redshift']))
 
     spin_sqrd = data['spin1x']**2 + data['spin1y']**2 + data['spin1z']**2
+    a1_max = np.max(spin_sqrd)
     data['lnprob_spin1x_spin1y_spin1z'] = -np.log(4*np.pi*spin_sqrd)
+    data["lnprob_spin1mag"] = -np.log(4*np.pi*a1_max * np.ones(len(spin_sqrd)))
 
     spin_sqrd = data['spin2x']**2 + data['spin2y']**2 + data['spin2z']**2
+    a2_max = np.max(spin_sqrd)
     data['lnprob_spin2x_spin2y_spin2z'] = -np.log(4*np.pi*spin_sqrd)
+    data["lnprob_spin2mag"] = -np.log(4*np.pi*a2_max * np.ones(len(spin_sqrd)))
 
     data['lnprob_declination'] = np.log(0.5*np.cos(data['declination']))
     data['lnprob_right_ascension'] = -np.log(2*np.pi)*np.ones_like(data['right_ascension'])
