@@ -181,9 +181,16 @@ dDLdz_new = cosmo.z2Dc(data['redshift']) + (1.+data['redshift'])*cosmo.dDcdz(dat
 # combine these to get old redshift to new redshift
 lnjac_redshift = np.log(dDLdz_new) - np.log(dDLdz_old)
 
+# conversions for spin
+data["a_1"] = np.sqrt(data["spin1x"]**2 + data["spin1y"]**2 + data["spin1z"]**2)
+data["a_2"] = np.sqrt(data["spin2x"]**2 + data["spin2y"]**2 + data["spin2z"]**2)
+data["costilt1"] = data["spin1z"]/data["a_1"]
+data["costilt2"] = data["spin2z"]/data["a_2"]
+ln_jac_spin1 = 2 * np.log(data["a_1"])
+ln_jac_spin2 = 2 * np.log(data["a_2"])
+
 # now put it all together within the draw probability
-data['lnprob_mass1_source_mass2_source_redshift_spin1x_spin1y_spin1z_spin2x_spin2y_spin2z'] = lnprob \
-    + lnjac_mass1_source + lnjac_mass2_source + lnjac_redshift
+data['lnprob_mass1_source_mass2_source_redshift_spin1x_spin1y_spin1z_spin2x_spin2y_spin2z'] = lnprob + lnjac_mass1_source + lnjac_mass2_source + lnjac_redshift + ln_jac_spin1 + ln_jac_spin2
 
 #---
 
