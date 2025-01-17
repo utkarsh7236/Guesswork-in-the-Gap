@@ -190,7 +190,8 @@ ln_jac_spin1 = 2 * np.log(data["a_1"])
 ln_jac_spin2 = 2 * np.log(data["a_2"])
 
 # now put it all together within the draw probability
-data['lnprob_mass1_source_mass2_source_redshift_spin1x_spin1y_spin1z_spin2x_spin2y_spin2z'] = lnprob + lnjac_mass1_source + lnjac_mass2_source + lnjac_redshift + ln_jac_spin1 + ln_jac_spin2
+data['lnprob_mass1_source_mass2_source_redshift_spin1mag_spin2mag'] = lnprob + lnjac_mass1_source + lnjac_mass2_source + lnjac_redshift + ln_jac_spin1 + ln_jac_spin2
+del data['lnprob_mass1_source_mass2_source_redshift_spin1x_spin1y_spin1z_spin2x_spin2y_spin2z']
 
 #---
 
