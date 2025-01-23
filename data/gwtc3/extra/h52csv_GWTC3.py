@@ -123,7 +123,7 @@ for path in args.paths:
     data['lnprob_mass1_source'] = np.log(1 + data['redshift'])
     data['lnprob_mass2_source'] = np.log(1 + data['redshift'])
 
-    data['lnprob_redshift'] = np.log(cosmo.dVcdz(data['redshift']))
+    data['lnprob_redshift'] = np.log(cosmo.dVcdz(data['redshift'])) - np.log(1+data['redshift'])
 
 
     spin_sqrd = data['spin1x']**2 + data['spin1y']**2 + data['spin1z']**2
