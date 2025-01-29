@@ -1,6 +1,6 @@
 variable,prior,inits,label
-H0,"Uniform(10, 200)",70,"H0"
-Om0,"Uniform(0.2, 0.4)",0.3,"Om0"
+H0,67.32,nan,"H0"
+Om0,0.3158,nan,"Om0"
 w,-1,nan,"w"
 z_min,0.0001,nan,"z_min"
 z_max,2.0,nan,"z_max"
