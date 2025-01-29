@@ -2,11 +2,10 @@ from cosmology import *
 
 def sfr_approx(z, H0, Om0, w, kappa):
     args = (H0, Om0, w)
-    # dVc_dz = dVc_dz_analytic(z, args)
-    # ddl_dz = dDl_dz_analytic(z, args)
+    dVc_dz = dVc_dz_analytic(z, args)
+    ddl_dz = ddl_dz_analytic(z, args)
     num = (1 + z) ** kappa
     dem = 1 + ((1 + z) / 2.9) ** 5.6
     phi = 0.015 * num / dem
-    # ret = (dVc_dz/(1 + z)) * (phi/xp.abs(ddl_dz))
-    # return ret
-    return 1 # Obviously wrong, but just for testing
+    ret = (dVc_dz/(1 + z)) * (phi/xp.abs(ddl_dz))
+    return ret
