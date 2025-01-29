@@ -1,0 +1,7 @@
+variable,prior,inits,label
+alpha_1,"Uniform(-5, 5)",-3.28,alpha_1
+alpha_2,"Uniform(-5, 5)",-1.15,alpha_2
+m_break,"Uniform(2, 10)",5,m_break
+mu_peak,"Uniform(1, 100)",35,mu_peak
+sigma_peak,"Uniform(2, 30)",40,sigma_peak
+mixture,"Uniform(0, 1)",0.1,mixture

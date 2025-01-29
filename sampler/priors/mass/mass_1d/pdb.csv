@@ -1,0 +1,13 @@
+variable,prior,inits,label
+m_break,"Uniform(2, 10)", 5, "m_break"
+alpha_1,"Uniform(-5, 5)", -3.28, "alpha_1"
+alpha_2,"Uniform(-5, 5)", -1.15, "alpha_2"
+gamma_low,"Uniform(2, 4)", 2.4, "gamma_low"
+eta_low,"Uniform(0, 50)", 10, "eta_low"
+gamma_high,"Uniform(4, 8)", 5.5, "gamma_high"
+eta_high,"Uniform(0, 50)", 10, "eta_high"
+A,"Uniform(0, 1)", 0.9, "A"
+m_min,"Uniform(0.5, 1.2)", 0.8, "m_min"
+eta_min,"Uniform(10, 50)", 20, "eta_min"
+m_max,"Uniform(35, 100)", 70, "m_max"
+eta_max,"Uniform(0, 10)", 3, "eta_max"
