@@ -27,7 +27,7 @@ def redshift_func_jax(d_l, zmin, zmax, args):
     ret = xp.interp(d_l, d_l_arr, _z_arr)
     return ret
 
-def d_l_func_jax(z_vals, args):
+def d_l_func_jax(z_vals, args, zmin = 0.001, zmax = 2):
     _n = 100000
     _z_arr = xp.linspace(zmin, zmax, _n)
     d_l_arr = luminosity_distance_manual(_z_arr, args)
@@ -56,6 +56,15 @@ def dDl_dz_analytic(d_l, z, args):
 def dz_dDl_analytic(d_l, z, args):
     ret = 1/dDl_dz_analytic(d_l, z, args)
     return ret
+
+def dVc_dz_analytic_no_dl(z, args):
+    H0, Om0, w = args
+    c = 299792458 / 1000  # km/s
+    d_l = d_l_func_jax(z, args)
+    E_z = get_E_z(z, args)
+    ret = (4 * xp.pi * (d_l**2) * c)/(H0 * E_z * (1+z)**2)
+    return  ret
+
 
 def dVc_dz_analytic(d_l, z, args):
     H0, Om0, w = args
