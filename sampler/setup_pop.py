@@ -39,6 +39,8 @@ with open(f"{RUN_dir}/data/wrangled.pkl", "wb") as f:
 
 shutil.copy("config.ini", f"{RUN_dir}/config/config.ini")
 shutil.copy("cosmology.py", f"{RUN_dir}/cosmology.py")
+shutil.copy("cosmology.py", f"../cosmology.py")
+shutil.copy("cosmology.py", f"{RUN_dir}/config/cosmology.py")
 shutil.copy(config["POPULATION"]["mass1d_func"], f"{RUN_dir}/config/mass1d_func.py")
 shutil.copy(config["POPULATION"]["pairing_func"], f"{RUN_dir}/config/pairing_func.py")
 shutil.copy(config["POPULATION"]["distance_func"], f"{RUN_dir}/config/distance_func.py")

@@ -1,4 +1,5 @@
 from cosmology import *
+import jax.numpy as xp
 
 def powerlaw_distance(z, H0, Om0, w, kappa):
     args = (H0, Om0, w)

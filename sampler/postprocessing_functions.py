@@ -1,3 +1,5 @@
+from cosmology import *
+
 def plot_sample_traces():
     pass
 
