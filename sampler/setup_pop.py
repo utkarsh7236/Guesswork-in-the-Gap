@@ -108,10 +108,11 @@ from config.spin_func import *
 def ln_prob_m_det(theta, lamda):
     {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
+    redshift = z
     pairing_func = lambda m1, m2: {pairing_dict[0]}(m1, m2, {_unravel(pairing_lamda)})
     mass_prob_func = lambda m: {mass1d_dict[0]}(m,{_unravel(mass1d_lamda)})
-    mass1_source = m_source(mass1_det, z)
-    mass2_source = m_source(mass2_det, z)
+    mass1_source = m_source(mass1_det, redshift)
+    mass2_source = m_source(mass2_det, redshift)
     prob_mass1_source = mass_prob_func(mass1_source)
     prob_mass2_source = mass_prob_func(mass2_source)
     ln_prob_joint_mass_source = xp.log(prob_mass1_source) + xp.log(prob_mass2_source) + xp.log(pairing_func(mass1_source, mass2_source))
@@ -123,7 +124,7 @@ def ln_prob_m_det(theta, lamda):
 def ln_prob_distance(theta, lamda):
     {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
-    distance_func = {distance_dict[0]}(d_l, {_unravel(distance_lamda)})
+    distance_func = {distance_dict[0]}(z, {_unravel(distance_lamda)})
     ret = xp.log(distance_func)
     return ret
 
