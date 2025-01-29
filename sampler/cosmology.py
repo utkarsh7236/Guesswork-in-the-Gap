@@ -56,6 +56,7 @@ def dDl_dz_analytic(d_l, z, args):
 def dz_dDl_analytic(d_l, z, args):
     ret = 1/dDl_dz_analytic(d_l, z, args)
     return ret
+
 def dVc_dz_analytic(d_l, z, args):
     H0, Om0, w = args
     c = 299792458 / 1000  # km/s

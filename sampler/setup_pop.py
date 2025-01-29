@@ -80,12 +80,15 @@ mass1d_lamda = [x for x in mass1d_dict[1] if x not in mass1d_pop_vars]
 pairing_pop_vars = ["m1", "m2"]
 pairing_lamda = [x for x in pairing_dict[1] if x not in pairing_pop_vars]
 
-distance_pop_vars = ["d_l"]
+mass_theta_vars = ["mass1_det", "mass2_det"]
+
+distance_pop_vars = ["z"]
 distance_lamda = [x for x in distance_dict[1] if x not in distance_pop_vars]
 
-spin_pop_vars = ["s1x", "s1y", "s1z", "s2x", "s2y", "s2z"]
+spin_pop_vars = ["a1", "costilt1", "a2", "costilt2"]
 spin_lamda = [x for x in spin_dict[1] if x not in spin_pop_vars]
 
+theta_vars = mass_theta_vars + distance_pop_vars + spin_pop_vars
 lambda_vars = mass1d_lamda + pairing_lamda + distance_lamda + spin_lamda
 
 # print(mass1d_dict, pairing_dict, distance_dict, spin_dict, sep="\n"); print(lambda_vars); print(f"{','.join(str(i) for i in pairing_lamda)}") # THIS ONE PRINTS WITHOUT TUPLE; print(f"{*pairing_lamda,}") # THIS ONE PRINTS WITH TUPLE AND QUOTES AROUND EACH ELEMENT
@@ -103,14 +106,12 @@ from config.distance_func import *
 from config.spin_func import *
 
 def ln_prob_m_det(theta, lamda):
-    mass1_det, mass2_det, d_l, spin1x, spin1y, spin1z, spin2x, spin2y, spin2z = theta
+    {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
-    redshift = redshift_func_jax(d_l, z_min, z_max, (H0, Om0, w))
-
     pairing_func = lambda m1, m2: {pairing_dict[0]}(m1, m2, {_unravel(pairing_lamda)})
     mass_prob_func = lambda m: {mass1d_dict[0]}(m,{_unravel(mass1d_lamda)})
-    mass1_source = m_source(mass1_det, redshift)
-    mass2_source = m_source(mass2_det, redshift)
+    mass1_source = m_source(mass1_det, z)
+    mass2_source = m_source(mass2_det, z)
     prob_mass1_source = mass_prob_func(mass1_source)
     prob_mass2_source = mass_prob_func(mass2_source)
     ln_prob_joint_mass_source = xp.log(prob_mass1_source) + xp.log(prob_mass2_source) + xp.log(pairing_func(mass1_source, mass2_source))
@@ -120,15 +121,15 @@ def ln_prob_m_det(theta, lamda):
     return ret
 
 def ln_prob_distance(theta, lamda):
-    mass1_det, mass2_det, d_l, spin1x, spin1y, spin1z, spin2x, spin2y, spin2z = theta
+    {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
     distance_func = {distance_dict[0]}(d_l, {_unravel(distance_lamda)})
     ret = xp.log(distance_func)
     return ret
 
-def ln_prob_spin(theta, lamda):  # The spin function is completely uninformative of lamda prameters.
-    mass1_det, mass2_det, d_l, spin1x, spin1y, spin1z, spin2x, spin2y, spin2z = theta
-    spin_prob_func = {spin_dict[0]}(spin1x, spin1y, spin1z, spin2x, spin2y, spin2z, {_unravel(spin_lamda)})
+def ln_prob_spin(theta, lamda):
+    {_unravel(theta_vars)} = theta
+    spin_prob_func = {spin_dict[0]}(a1, costilt1, a2, costilt2, {_unravel(spin_lamda)})
     ret = xp.log(spin_prob_func)
     return ret
 
