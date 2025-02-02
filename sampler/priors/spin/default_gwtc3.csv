@@ -1,5 +1,5 @@
 variable,prior,inits,label
-alpha_chi,"Uniform(1, 5)", 2, alpha_chi
-beta_chi,"Uniform(1, 5)", 2, beta_chi
-mixtilt,"Uniform(0, 1)", 0.5, mixtilt
-sigtilt,"Uniform(0.1, 4)", 1, sigtilt
+alpha_chi,"Uniform(1, 5)", 2, "alpha_chi"
+beta_chi,"Uniform(1, 5)", 2, "beta_chi"
+mixtilt,"Uniform(0, 1)", 0.5, "mixtilt"
+sigtilt,"Uniform(0.1, 4)", 1, "sigtilt"
