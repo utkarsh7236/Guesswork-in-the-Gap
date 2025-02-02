@@ -1,6 +1,5 @@
 from cosmology import *
 
-
 def uniform_isotropic(mass1_source, mass2_source, a1, costilt1, a2, costilt2):
     a_max = 1
     a_min = 0
