@@ -87,7 +87,7 @@ mass_theta_vars = ["mass1_det", "mass2_det"]
 distance_pop_vars = ["z"]
 distance_lamda = [x for x in distance_dict[1] if x not in distance_pop_vars]
 
-spin_pop_vars = ["a1", "costilt1", "a2", "costilt2"]
+spin_pop_vars = ["mass1_source", "mass2_source", "a1", "costilt1", "a2", "costilt2"]
 spin_lamda = [x for x in spin_dict[1] if x not in spin_pop_vars]
 
 theta_vars = mass_theta_vars + distance_pop_vars + spin_pop_vars
@@ -132,7 +132,9 @@ def ln_prob_distance(theta, lamda):
 
 def ln_prob_spin(theta, lamda):
     {_unravel(theta_vars)} = theta
-    spin_prob_func = {spin_dict[0]}(theta, {_unravel(spin_lamda)})
+    mass1_source = m_source(mass1_det, z)
+    mass2_source = m_source(mass2_det, z)
+    spin_prob_func = {spin_dict[0]}(mass1_source, mass2_source, a1, costilt1, a2, costilt2, {_unravel(spin_lamda)})
     ret = xp.log(spin_prob_func)
     return ret
 
