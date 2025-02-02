@@ -313,8 +313,11 @@ if __name__ == "__main__":
     os.remove("data/wrangled.pkl")
     
     # Simple postprocessing
-    save_summary(mcmc, outfile = "results/print_summary.txt")
-    save_corner(mcmc, posterior_samples, outfile="results/corner.png")
+    try: 
+        save_summary(mcmc, outfile = "results/print_summary.txt")
+        save_corner(mcmc, posterior_samples, outfile="results/corner.png")
+    except:
+        print("Postprocessing failed")
 
 
 """)
