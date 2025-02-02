@@ -25,12 +25,12 @@ def uniform_pdf(x, a, b):
     """Compute the uniform PDF using JAX."""
     return 1 / (b - a)
 
-def default_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, alpha, beta, mixtilt, sigtilt):
+def default_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, alpha_chi, beta_chi, mixtilt, sigtilt):
     costilt_max = 1
     costilt_min = -1
 
-    p_chi1 = beta_pdf(a1, alpha, beta)
-    p_chi2 = beta_pdf(a2, alpha, beta)
+    p_chi1 = beta_pdf(a1, alpha_chi, beta_chi)
+    p_chi2 = beta_pdf(a2, alpha_chi, beta_chi)
 
     mix_temp1 = truncnorm_pdf(costilt1, mu = 0, sigma=sigtilt, a=costilt_min, b=costilt_max)
     mix_temp2 = uniform_pdf(costilt1, costilt_min, costilt_max)
