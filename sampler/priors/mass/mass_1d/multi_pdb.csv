@@ -1,5 +1,5 @@
 variable,prior,inits,label
-m_break,"Uniform(2, 10)", 5, "m_break"
+m_break, 5, nan, "m_break"
 alpha_1,"Uniform(-5, 5)", -3.28, "alpha_1"
 alpha_2,"Uniform(-5, 5)", -1.15, "alpha_2"
 gamma_low,"Uniform(2, 4)", 2.4, "gamma_low"
