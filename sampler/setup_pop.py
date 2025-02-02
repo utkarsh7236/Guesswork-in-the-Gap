@@ -87,9 +87,12 @@ mass_theta_vars = ["mass1_det", "mass2_det"]
 distance_pop_vars = ["z"]
 distance_lamda = [x for x in distance_dict[1] if x not in distance_pop_vars]
 
-spin_pop_vars = ["mass1_source", "mass2_source", "a1", "costilt1", "a2", "costilt2"]
+spin_pop_vars = ["a1", "costilt1", "a2", "costilt2"]
+extra_spin_pop = ["mass1_source", "mass2_source"] # These are not "theta" params but show up in the spin function call for spin pops and need to be deleted
 spin_lamda = [x for x in spin_dict[1] if x not in spin_pop_vars]
+spin_lamda = [x for x in spin_lamda if x not in extra_spin_pop]
 
+# Sensitive to the order of the variables, must match preprocessing.py
 theta_vars = mass_theta_vars + distance_pop_vars + spin_pop_vars
 lambda_vars = mass1d_lamda + pairing_lamda + distance_lamda + spin_lamda
 
