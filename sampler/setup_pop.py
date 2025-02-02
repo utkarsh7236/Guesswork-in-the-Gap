@@ -132,7 +132,7 @@ def ln_prob_distance(theta, lamda):
 
 def ln_prob_spin(theta, lamda):
     {_unravel(theta_vars)} = theta
-    spin_prob_func = {spin_dict[0]}(a1, costilt1, a2, costilt2, {_unravel(spin_lamda)})
+    spin_prob_func = {spin_dict[0]}(theta, {_unravel(spin_lamda)})
     ret = xp.log(spin_prob_func)
     return ret
 
