@@ -35,12 +35,12 @@ def prob_costilt(costilt, mixtilt, sigtilt, costilt_max = 1, costilt_min = -1):
     p_costilt = mixtilt * mix_temp1 + (1-mixtilt) * mix_temp2
     return p_costilt
 
-def prob_spin_component(a, costilt, alpha_chi, beta_chi, mixtilt, sigtilt):
+def prob_spin_component(mass1_source, mass2_source, a, costilt, alpha_chi, beta_chi, mixtilt, sigtilt):
     p_chi = prob_chi(a, alpha_chi, beta_chi)
     p_costilt = prob_costilt(costilt, mixtilt, sigtilt)
     return p_chi * p_costilt
 
 def default_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, alpha_chi, beta_chi, mixtilt, sigtilt):
-    p_s1 = prob_spin_component(a1, costilt1, alpha_chi, beta_chi, mixtilt, sigtilt)
-    p_s2 = prob_spin_component(a2, costilt2, alpha_chi, beta_chi, mixtilt, sigtilt)
+    p_s1 = prob_spin_component(mass1_source, mass2_source, a1, costilt1, alpha_chi, beta_chi, mixtilt, sigtilt)
+    p_s2 = prob_spin_component(mass1_source, mass2_source, a2, costilt2, alpha_chi, beta_chi, mixtilt, sigtilt)
     return p_s1 * p_s2
