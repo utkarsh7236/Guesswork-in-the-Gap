@@ -135,6 +135,7 @@ def ln_prob_distance(theta, lamda):
 
 def ln_prob_spin(theta, lamda):
     {_unravel(theta_vars)} = theta
+    ({_unravel(lambda_vars)}) = lamda
     mass1_source = m_source(mass1_det, z)
     mass2_source = m_source(mass2_det, z)
     spin_prob_func = {spin_dict[0]}(mass1_source, mass2_source, a1, costilt1, a2, costilt2, {_unravel(spin_lamda)})
