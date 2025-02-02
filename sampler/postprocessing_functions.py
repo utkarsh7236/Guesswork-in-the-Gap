@@ -1,5 +1,9 @@
 from cosmology import *
-
+import corner
+import numpy as np
+import matplotlib.pyplot as plt
+import io
+import sys
 def plot_sample_traces():
     pass
 
@@ -11,9 +15,28 @@ def get_lambda():
 def get_correlations():
     pass
 
+def plot_corner_all():
+    pass
 
 def plot_corner(variable1, variable2):
     pass
+
+def save_summary(mcmc, outfile = "results/print_summary.txt"):
+    summary_io = io.StringIO()
+    sys.stdout = summary_io
+    mcmc.print_summary()
+    sys.stdout = sys.__stdout__  # Reset stdout
+
+    # Write to file
+    with open(outfile, "w") as f:
+        f.write(summary_io.getvalue())
+
+def save_corner(mcmc, posterior_samples, outfile = "results/corner.png"):
+    params = get_non_deterministic_params(mcmc)
+    params_samples = np.array([posterior_samples.get(key) for key in params]).T
+    corner.corner(params_samples, labels=params, color="dodgerblue")
+    plt.savefig(outfile)
+    plt.close()
 
 def get_non_deterministic_params(mcmc):
     from operator import attrgetter

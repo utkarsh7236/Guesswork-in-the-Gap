@@ -310,6 +310,11 @@ if __name__ == "__main__":
     write_samples(mcmc, path = "results/posterior")
     
     os.remove("data/wrangled.pkl")
+    
+    # Simple postprocessing
+    with pickle_read("results/posterior") as mcmc:
+        save_summary(mcmc, outfile = "results/print_summary.txt")
+        save_corner(mcmc, posterior_samples, outfile="results/corner.png")
 
 
 """)
