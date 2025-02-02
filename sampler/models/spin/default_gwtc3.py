@@ -25,21 +25,22 @@ def uniform_pdf(x, a, b):
     """Compute the uniform PDF using JAX."""
     return 1 / (b - a)
 
+def prob_chi(a, alpha_chi, beta_chi):
+    p_chi = beta_pdf(a, alpha_chi, beta_chi)
+    return p_chi
+
+def prob_costilt(costilt, mixtilt, sigtilt, costilt_max = 1, costilt_min = -1):
+    mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sigtilt, a=costilt_min, b=costilt_max)
+    mix_temp2 = uniform_pdf(costilt, costilt_min, costilt_max)
+    p_costilt = mixtilt * mix_temp1 + (1-mixtilt) * mix_temp2
+    return p_costilt
+
+def prob_spin_component(a, costilt, alpha_chi, beta_chi, mixtilt, sigtilt):
+    p_chi = prob_chi(a, alpha_chi, beta_chi)
+    p_costilt = prob_costilt(costilt, mixtilt, sigtilt)
+    return p_chi * p_costilt
+
 def default_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, alpha_chi, beta_chi, mixtilt, sigtilt):
-    costilt_max = 1
-    costilt_min = -1
-
-    p_chi1 = beta_pdf(a1, alpha_chi, beta_chi)
-    p_chi2 = beta_pdf(a2, alpha_chi, beta_chi)
-
-    mix_temp1 = truncnorm_pdf(costilt1, mu = 0, sigma=sigtilt, a=costilt_min, b=costilt_max)
-    mix_temp2 = uniform_pdf(costilt1, costilt_min, costilt_max)
-    p_costilt1 = mixtilt * mix_temp1 + (1-mixtilt) * mix_temp2
-
-    mix_temp1 = truncnorm_pdf(costilt2, mu = 0, sigma=sigtilt, a=costilt_min, b=costilt_max)
-    mix_temp2 = uniform_pdf(costilt2, costilt_min, costilt_max)
-    p_costilt2 = mixtilt * mix_temp1 + (1-mixtilt) * mix_temp2
-
-    p_s1 = p_chi1 * p_costilt1
-    p_s2 = p_chi2 * p_costilt2
+    p_s1 = prob_spin_component(a1, costilt1, alpha_chi, beta_chi, mixtilt, sigtilt)
+    p_s2 = prob_spin_component(a2, costilt2, alpha_chi, beta_chi, mixtilt, sigtilt)
     return p_s1 * p_s2
