@@ -29,13 +29,13 @@ def prob_chi(a, alpha_chi, beta_chi):
     p_chi = beta_pdf(a, alpha_chi, beta_chi)
     return p_chi
 
-def prob_costilt(costilt, mixtilt, sigtilt, costilt_max = 1, costilt_min = -1):
-    mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sigtilt, a=costilt_min, b=costilt_max)
+def prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max = 1, costilt_min = -1):
+    mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sig_tilt, a=costilt_min, b=costilt_max)
     mix_temp2 = uniform_pdf(costilt, costilt_min, costilt_max)
-    p_costilt = mixtilt * mix_temp1 + (1-mixtilt) * mix_temp2
+    p_costilt = mix_tilt * mix_temp1 + (1-mix_tilt) * mix_temp2
     return p_costilt
 
-def prob_spin_component(m, a, costilt, alpha_chi1, beta_chi1, mixtilt1, sigtilt1, alpha_chi2, beta_chi2, mixtilt2, sigtilt2, m_spin_break):
+def prob_spin_component(m, a, costilt, alpha_chi1, beta_chi1, mix_tilt1, sig_tilt1, alpha_chi2, beta_chi2, mix_tilt2, sig_tilt2, m_spin_break):
 
     # Chi distribution
     p_chi_below = prob_chi(a, alpha_chi1, beta_chi1)
@@ -44,8 +44,8 @@ def prob_spin_component(m, a, costilt, alpha_chi1, beta_chi1, mixtilt1, sigtilt1
     p_chi = xp.where(m >= m_spin_break, p_chi_above, p_chi)
 
     # Costilt distribution
-    p_costilt_below = prob_costilt(costilt, mixtilt1, sigtilt1)
-    p_costilt_above = prob_costilt(costilt, mixtilt2, sigtilt2)
+    p_costilt_below = prob_costilt(costilt, mix_tilt1, sig_tilt1)
+    p_costilt_above = prob_costilt(costilt, mix_tilt2, sig_tilt2)
     p_costilt = xp.where(m < m_spin_break, p_costilt_below, 0)
     p_costilt = xp.where(m >= m_spin_break, p_costilt_above, p_costilt)
 
@@ -53,9 +53,9 @@ def prob_spin_component(m, a, costilt, alpha_chi1, beta_chi1, mixtilt1, sigtilt1
     return p_chi * p_costilt
 
 def default_break(mass1_source, mass2_source, a1, costilt1, a2, costilt2,
-                  alpha_chi1, beta_chi1, mixtilt1, sigtilt1,
-                  alpha_chi2, beta_chi2, mixtilt2, sigtilt2,
+                  alpha_chi1, beta_chi1, mix_tilt1, sig_tilt1,
+                  alpha_chi2, beta_chi2, mix_tilt2, sig_tilt2,
                   m_spin_break):
-    p_s1 = prob_spin_component(mass1_source, a1, costilt1, alpha_chi1, beta_chi1, mixtilt1, sigtilt1, alpha_chi2, beta_chi2, mixtilt2, sigtilt2, m_spin_break)
-    p_s2 = prob_spin_component(mass2_source, a2, costilt2, alpha_chi1, beta_chi1, mixtilt1, sigtilt1, alpha_chi2, beta_chi2, mixtilt2, sigtilt2, m_spin_break)
+    p_s1 = prob_spin_component(mass1_source, a1, costilt1, alpha_chi1, beta_chi1, mix_tilt1, sig_tilt1, alpha_chi2, beta_chi2, mix_tilt2, sig_tilt2, m_spin_break)
+    p_s2 = prob_spin_component(mass2_source, a2, costilt2, alpha_chi1, beta_chi1, mix_tilt1, sig_tilt1, alpha_chi2, beta_chi2, mix_tilt2, sig_tilt2, m_spin_break)
     return p_s1 * p_s2
