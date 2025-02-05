@@ -32,6 +32,7 @@ def prior():
     beta_1 = n.sample('beta_1', numpyro_dist.Uniform(-5, 5))
     beta_2 = n.sample('beta_2', numpyro_dist.Uniform(-5, 5))
     beta_gap = n.sample('beta_gap', numpyro_dist.Uniform(-5, 5))
+    sep = 5
     H0 = 67.32
     Om0 = 0.3158
     w = -1.0
@@ -48,7 +49,7 @@ def prior():
     z_min = 0.0001
     z_max = 2.0
     
-    lamda = [m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, mu_peak_NS, sig_peak_NS, peak_constant_NS, model_min, model_max, beta_1, beta_2, beta_gap, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break]
+    lamda = [m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, mu_peak_NS, sig_peak_NS, peak_constant_NS, model_min, model_max, beta_1, beta_2, beta_gap, sep, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break]
     return lamda
     
     
