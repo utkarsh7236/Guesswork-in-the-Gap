@@ -1,0 +1,6 @@
+variable,prior,inits,label
+beta_1,"Uniform(-5, 5)",0.41,"beta_1"
+beta_2,"Uniform(-5, 5)",4.83,"beta_2"
+beta_gap,"Uniform(-5, 5)",0.2,"beta_gap"
+delta_beta,"Uniform(0.001, 10)",0.2,"delta_beta"
+sep,5,nan,"sep"
