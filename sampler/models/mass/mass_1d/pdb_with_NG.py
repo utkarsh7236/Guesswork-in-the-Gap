@@ -24,7 +24,7 @@ def pdb(m, m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, 
     ret = _h * _n * _l * bpl
 
     # Apply model limits
-    ret = xp.where((m <= model_max) & (m >= model_min), ret, 0.0) # Hopefully this is small enough
+    ret = xp.where((m <= model_max) & (m >= model_min), ret, 0.0)
     return ret
 
 # Matches Colm Talbot from gwpopulation
