@@ -37,14 +37,12 @@ def prob_spin_component(m, a, costilt,
     # Chi distribution
     p_chi_below = prob_chi(a, mu_chi1, sig_chi1)
     p_chi_above = prob_chi(a, mu_chi2, sig_chi2)
-    p_chi = xp.where(m < m_spin_break, p_chi_below, 0)
-    p_chi = xp.where(m >= m_spin_break, p_chi_above, p_chi)
+    p_chi = xp.where(m < m_spin_break, p_chi_below, p_chi_above)
 
     # Costilt distribution
     p_costilt_below = prob_costilt(costilt, mix_tilt1, sig_tilt1)
     p_costilt_above = prob_costilt(costilt, mix_tilt2, sig_tilt2)
-    p_costilt = xp.where(m < m_spin_break, p_costilt_below, 0)
-    p_costilt = xp.where(m >= m_spin_break, p_costilt_above, p_costilt)
+    p_costilt = xp.where(m < m_spin_break, p_costilt_below, p_costilt_above)
 
     # # Combine the two
     return p_chi * p_costilt
