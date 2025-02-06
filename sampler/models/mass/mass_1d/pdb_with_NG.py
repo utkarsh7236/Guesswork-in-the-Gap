@@ -51,8 +51,5 @@ def pdb_with_NG(m, m_break, alpha_1, alpha_2,
     m1 = pdb(m, m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, model_min, model_max)
     g_1 = peak_constant1 * truncnorm(m, [mu_peak1, sig_peak1, model_min, model_max])
     g_2 = peak_constant2 * truncnorm(m, [mu_peak2, sig_peak2, model_min, model_max])
-
-    NS_min = model_min
-    NS_max = gamma_low
-    g_3 = peak_constant_NS * truncnorm(m, [mu_peak_NS, sig_peak_NS, NS_min, NS_max])
+    g_3 = peak_constant_NS * truncnorm(m, [mu_peak_NS, sig_peak_NS, model_min, model_max])
     return m1 * (1 + g_1 + g_2 + g_3)
