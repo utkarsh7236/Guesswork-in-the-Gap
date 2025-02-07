@@ -137,18 +137,35 @@ def plot_p_chi(posterior_samples, function  = None):
     params = get_params_of_function(func_type = "spin_func", function_name="prob_chi")
     params_samples = {param: posterior_samples[param] for param in params if param in posterior_samples.keys()}
     a = np.linspace(0, 1, 1000)
-    p_a = function(a, **params_samples)
-    p50 = np.median(p_a, axis=0)
-    p95 = np.percentile(p_a, 95, axis=0)
-    p05 = np.percentile(p_a, 5, axis=0)
-    # plt.plot(a, p_a.T, alpha = 1/255, color="grey")
-    plt.fill_between(a, p05, p95, color="dodgerblue", alpha = 0.2, label = "90\% CI")
-    plt.plot(a, p50, color="dodgerblue")
+    try:
+        p_a = function(a, **params_samples)
+        p50 = np.median(p_a, axis=0)
+        p95 = np.percentile(p_a, 95, axis=0)
+        p05 = np.percentile(p_a, 5, axis=0)
+        # plt.plot(a, p_a.T, alpha = 1/255, color="grey")
+        plt.fill_between(a, p05, p95, color="dodgerblue", alpha=0.2, label="90\% CI")
+        plt.plot(a, p50, color="dodgerblue")
+    except:
+        m_below = 1
+        m_above = 10
+        msb = 5
+        p_a_below = function(a, m = m_below, **params_samples, m_spin_break=msb)
+        p_a_above = function(a, m = m_above, **params_samples, m_spin_break=msb)
+        p50_below = np.median(p_a_below, axis=0)
+        p95_below = np.percentile(p_a_below, 95, axis=0)
+        p05_below = np.percentile(p_a_below, 5, axis=0)
+        p50_above = np.median(p_a_above, axis=0)
+        p95_above = np.percentile(p_a_above, 95, axis=0)
+        p05_above = np.percentile(p_a_above, 5, axis=0)
+        plt.fill_between(a, p05_below, p95_below, color="dodgerblue", alpha=0.2, label="90\% CI")
+        plt.plot(a, p50_below, color="dodgerblue", label = f"Below {msb} M$_\odot$")
+        plt.fill_between(a, p05_above, p95_above, color="darkblue", alpha=0.2)
+        plt.plot(a, p50_above, color="darkblue", label = f"Above {msb} M$_\odot$")
     plt.utkarshWrapper()
     plt.xlabel(r"$a$")
     plt.ylabel(r"$p(a)$")
     plt.savefig("results/p_a.png")
-    return p_a
+    return None
 
 def plot_p_costilt(posterior_samples, function  = None):
     plt.figure()
