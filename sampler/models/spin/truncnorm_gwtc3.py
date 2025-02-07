@@ -29,10 +29,10 @@ def prob_chi(a, mu_chi, sig_chi, a_max = 1, a_min = 0):
     p_chi = truncnorm_pdf(a, mu_chi, sig_chi, a_min, a_max)
     return p_chi
 
-def prob_costilt(costilt, mixtilt, sigtilt, costilt_max = 1, costilt_min = -1):
-    mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sigtilt, a=costilt_min, b=costilt_max)
+def prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max = 1, costilt_min = -1):
+    mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sig_tilt, a=costilt_min, b=costilt_max)
     mix_temp2 = uniform_pdf(costilt, costilt_min, costilt_max)
-    p_costilt = mixtilt * mix_temp1 + (1-mixtilt) * mix_temp2
+    p_costilt = mix_tilt * mix_temp1 + (1-mix_tilt) * mix_temp2
     return p_costilt
 
 def prob_spin_component(a, costilt, mu_chi, sig_chi, mix_tilt, sig_tilt):
