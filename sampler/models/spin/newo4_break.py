@@ -30,8 +30,8 @@ def prob_costilt_single(costilt, mix_tilt, sig_tilt, costilt_max = 1, costilt_mi
     return p_costilt
 
 def prob_chi(a, m, mu_chi1, sig_chi1, mu_chi2, sig_chi2, m_spin_break, a_min = 0, a_max = 1):
-    p_chi_below = prob_costilt_single(a, mu_chi1, sig_chi1)
-    p_chi_above = prob_costilt_single(a, mu_chi2, sig_chi2)
+    p_chi_below = prob_chi_single(a, mu_chi1, sig_chi1)
+    p_chi_above = prob_chi_single(a, mu_chi2, sig_chi2)
     p_chi = xp.where(m < m_spin_break, p_chi_below, p_chi_above)
     return p_chi
 
