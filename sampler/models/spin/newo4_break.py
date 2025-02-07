@@ -19,15 +19,28 @@ def uniform_pdf(x, a, b):
     """Compute the uniform PDF using JAX."""
     return 1 / (b - a)
 
-def prob_chi(a, mu_chi, sig_chi, a_min = 0, a_max = 1):
+def prob_chi_single(a, mu_chi, sig_chi, a_min = 0, a_max = 1):
     p_chi = truncnorm_pdf(a, mu_chi, sig_chi, a_min, a_max)
     return p_chi
 
-def prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max = 1, costilt_min = -1):
+def prob_costilt_single(costilt, mix_tilt, sig_tilt, costilt_max = 1, costilt_min = -1):
     mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sig_tilt, a=costilt_min, b=costilt_max)
     mix_temp2 = uniform_pdf(costilt, costilt_min, costilt_max)
     p_costilt = mix_tilt * mix_temp1 + (1-mix_tilt) * mix_temp2
     return p_costilt
+
+def prob_chi(a, m, mu_chi1, sig_chi1, mu_chi2, sig_chi2, m_spin_break, a_min = 0, a_max = 1):
+    p_chi_below = prob_costilt_single(a, mu_chi1, sig_chi1)
+    p_chi_above = prob_costilt_single(a, mu_chi2, sig_chi2)
+    p_chi = xp.where(m < m_spin_break, p_chi_below, p_chi_above)
+    return p_chi
+
+def prob_costilt(costilt, m, mix_tilt1, sig_tilt1, mix_tilt2, sig_tilt2, m_spin_break):
+    p_costilt_below = prob_costilt(costilt, mix_tilt1, sig_tilt1)
+    p_costilt_above = prob_costilt(costilt, mix_tilt2, sig_tilt2)
+    p_costilt = xp.where(m < m_spin_break, p_costilt_below, p_costilt_above)
+    return p_costilt
+
 
 def prob_spin_component(m, a, costilt,
                         mu_chi1, sig_chi1, mix_tilt1, sig_tilt1,
@@ -35,14 +48,10 @@ def prob_spin_component(m, a, costilt,
                         m_spin_break):
 
     # Chi distribution
-    p_chi_below = prob_chi(a, mu_chi1, sig_chi1)
-    p_chi_above = prob_chi(a, mu_chi2, sig_chi2)
-    p_chi = xp.where(m < m_spin_break, p_chi_below, p_chi_above)
+    p_chi = prob_chi(a, m, mu_chi1, sig_chi1, mu_chi2, sig_chi2, m_spin_break)
 
     # Costilt distribution
-    p_costilt_below = prob_costilt(costilt, mix_tilt1, sig_tilt1)
-    p_costilt_above = prob_costilt(costilt, mix_tilt2, sig_tilt2)
-    p_costilt = xp.where(m < m_spin_break, p_costilt_below, p_costilt_above)
+    p_costilt = prob_costilt(costilt, m, mix_tilt1, sig_tilt1, mix_tilt2, sig_tilt2, m_spin_break)
 
     # # Combine the two
     return p_chi * p_costilt
