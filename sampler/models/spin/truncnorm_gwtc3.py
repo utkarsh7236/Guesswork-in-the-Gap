@@ -19,7 +19,7 @@ def truncnorm_pdf(x, mu, sigma, a, b):
     pdf_unnormalized = xp.exp(-0.5 * ((x - mu) / sigma) ** 2)
     # Normalize
     pdf = pdf_unnormalized / Z
-    return xp.where((x >= a) & (x <= b), pdf, 0.0)
+    return xp.where((x >= a) & (x <= b), pdf, 1e-100)
 
 def uniform_pdf(x, a, b):
     """Compute the uniform PDF using JAX."""
