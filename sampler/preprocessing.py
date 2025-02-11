@@ -10,7 +10,7 @@ def compute_CG_frac(CG_args, pe): # Course grain by mass 1 source. Inside CG
     frac = len(idx_inside_CG)/len(pe.mass1_source)
     return frac
 
-def load_data(CG_args, DIR_args, NUM_PE_SAMPLES = 4000):
+def load_data(CG_args, DIR_args, NUM_PE_SAMPLES = 4000, max_far = 0.25):
     event_file_name, event_folder_name, vt_file_name, vt_folder_name, data_dir = DIR_args
     events = numpy.loadtxt(event_folder_name+event_file_name, dtype=str)
 
@@ -24,7 +24,7 @@ def load_data(CG_args, DIR_args, NUM_PE_SAMPLES = 4000):
 
     # Injections
     inj_deep = pd.DataFrame(numpy.genfromtxt(vt_folder_name + vt_file_name, delimiter=",", names=True))
-    inj_deep = inj_deep[inj_deep["far"] < 0.25]
+    inj_deep = inj_deep[inj_deep["far"] < max_far]
     inj_deep = inj_deep.sample(frac=1, random_state=1)  # Do a random scramble to the dataset
     len_NCG = 0
     len_CG = 0

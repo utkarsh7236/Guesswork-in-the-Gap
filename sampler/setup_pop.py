@@ -14,6 +14,7 @@ config.read('config.ini')
 # print(config.sections())
 
 RUN_dir = config['DIRECTORIES']["run_dir"]
+max_far = float(config["INJECTIONS"]["max_far"])
 
 if not os.path.exists(RUN_dir):
     os.makedirs(RUN_dir)
@@ -32,7 +33,7 @@ DIR_args = (config["DIRECTORIES"]["event_file_name"], config["DIRECTORIES"]["eve
 
 with open(f"{RUN_dir}/data/wrangled.pkl", "wb") as f:
     path = "/Users/utkarsh/GitHub/SpectralBNS"
-    data = preprocessing.load_data(CG_args, DIR_args)
+    data = preprocessing.load_data(CG_args, DIR_args, max_far=max_far)
     data_arg = preprocessing.wrangle(data)
     pickle.dump(data_arg, f)
     print("Data wrangling complete")
