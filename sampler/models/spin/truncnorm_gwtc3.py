@@ -25,22 +25,23 @@ def uniform_pdf(x, a, b):
     """Compute the uniform PDF using JAX."""
     return 1 / (b - a)
 
-def prob_chi(a, mu_chi, sig_chi, a_max = 1, a_min = 0):
+def prob_chi(a, mu_chi, sig_chi, a_max, a_min):
     p_chi = truncnorm_pdf(a, mu_chi, sig_chi, a_min, a_max)
     return p_chi
 
-def prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max = 1, costilt_min = -1):
+def prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max, costilt_min):
     mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sig_tilt, a=costilt_min, b=costilt_max)
     mix_temp2 = uniform_pdf(costilt, costilt_min, costilt_max)
     p_costilt = mix_tilt * mix_temp1 + (1-mix_tilt) * mix_temp2
     return p_costilt
 
-def prob_spin_component(a, costilt, mu_chi, sig_chi, mix_tilt, sig_tilt):
-    p_chi = prob_chi(a, mu_chi, sig_chi)
-    p_costilt = prob_costilt(costilt, mix_tilt, sig_tilt)
+def prob_spin_component(a, costilt, mu_chi, sig_chi, mix_tilt, sig_tilt, a_max, a_min, costilt_max, costilt_min):
+    p_chi = prob_chi(a, mu_chi, sig_chi, a_max, a_min)
+    p_costilt = prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max, costilt_min)
     return p_chi * p_costilt
 
-def truncnorm_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, mu_chi, sig_chi, mix_tilt, sig_tilt):
-    p_s1 = prob_spin_component(a1, costilt1, mu_chi, sig_chi, mix_tilt, sig_tilt)
-    p_s2 = prob_spin_component(a2, costilt2, mu_chi, sig_chi, mix_tilt, sig_tilt)
+def truncnorm_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, mu_chi, sig_chi, mix_tilt, sig_tilt,
+                    a_max, a_min, costilt_max, costilt_min):
+    p_s1 = prob_spin_component(a1, costilt1, mu_chi, sig_chi, mix_tilt, sig_tilt, a_max, a_min, costilt_max, costilt_min)
+    p_s2 = prob_spin_component(a2, costilt2, mu_chi, sig_chi, mix_tilt, sig_tilt, a_max, a_min, costilt_max, costilt_min)
     return p_s1 * p_s2
