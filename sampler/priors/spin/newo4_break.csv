@@ -1,5 +1,5 @@
 variable,prior,inits,label
-mu_chi1,"Uniform(0, 1)",0.1,"mu_chi1"
+mu_chi1,"Uniform(0, 0.4)",0.1,"mu_chi1"
 sig_chi1,"Uniform(0.05, 2)",2,"sig_chi1"
 mix_tilt1,"Uniform(0, 1)",0.5,"mix_tilt1"
 sig_tilt1,"Uniform(0.1, 4)",1,"sig_tilt1"
