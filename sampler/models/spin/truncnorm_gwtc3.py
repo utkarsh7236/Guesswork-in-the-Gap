@@ -30,7 +30,7 @@ def prob_chi(a, mu_chi, sig_chi, a_max, a_min):
     return p_chi
 
 def prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max, costilt_min):
-    mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sig_tilt, a=costilt_min, b=costilt_max)
+    mix_temp1 = truncnorm_pdf(costilt, mu = 1, sigma=sig_tilt, a=costilt_min, b=costilt_max)
     mix_temp2 = uniform_pdf(costilt, costilt_min, costilt_max)
     p_costilt = mix_tilt * mix_temp1 + (1-mix_tilt) * mix_temp2
     return p_costilt
