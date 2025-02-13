@@ -137,8 +137,9 @@ def plot_p_chi(posterior_samples, function  = None):
     params = get_params_of_function(func_type = "spin_func", function_name="prob_chi")
     params_samples = {param: posterior_samples[param] for param in params if param in posterior_samples.keys()}
     a = np.linspace(0, 1, 1000)
+
     try:
-        p_a = function(a, **params_samples)
+        p_a = function(a, **params_samples, a_min=0, a_max=0.4)
         p50 = np.median(p_a, axis=0)
         p95 = np.percentile(p_a, 95, axis=0)
         p05 = np.percentile(p_a, 5, axis=0)
@@ -148,9 +149,9 @@ def plot_p_chi(posterior_samples, function  = None):
     except:
         m_below = 1
         m_above = 10
-        msb = 5
-        p_a_below = function(a, m = m_below, **params_samples, m_spin_break=msb)
-        p_a_above = function(a, m = m_above, **params_samples, m_spin_break=msb)
+        msb = 3
+        p_a_below = function(a, m = m_below, **params_samples, m_spin_break = msb, a_min=0, a_max=1, a_max_NS=0.4)
+        p_a_above = function(a, m = m_above, **params_samples, m_spin_break = msb, a_min=0, a_max=1, a_max_NS=0.4)
         p50_below = np.median(p_a_below, axis=0)
         p95_below = np.percentile(p_a_below, 95, axis=0)
         p05_below = np.percentile(p_a_below, 5, axis=0)
@@ -172,18 +173,35 @@ def plot_p_costilt(posterior_samples, function  = None):
     params = get_params_of_function(func_type = "spin_func", function_name="prob_costilt")
     params_samples = {param: posterior_samples[param] for param in params if param in posterior_samples.keys()}
     costilt = np.linspace(-1, 1, 1000)
-    p_costilt = function(costilt, **params_samples)
-    p50 = np.median(p_costilt, axis=0)
-    p95 = np.percentile(p_costilt, 95, axis=0)
-    p05 = np.percentile(p_costilt, 5, axis=0)
-    # plt.plot(a, p_a.T, alpha = 1/255, color="grey")
-    plt.fill_between(costilt, p05, p95, color="crimson", alpha = 0.2, label = "90\% CI")
-    plt.plot(costilt, p50, color="crimson")
+    try:
+        p_costilt = function(costilt, **params_samples, costilt_max=1, costilt_min=-1)
+        p50 = np.median(p_costilt, axis=0)
+        p95 = np.percentile(p_costilt, 95, axis=0)
+        p05 = np.percentile(p_costilt, 5, axis=0)
+        # plt.plot(a, p_a.T, alpha = 1/255, color="grey")
+        plt.fill_between(costilt, p05, p95, color="crimson", alpha = 0.2, label = "90\% CI")
+        plt.plot(costilt, p50, color="crimson")
+    except:
+        m_below = 1
+        m_above = 10
+        msb = 3
+        p_costilt_below = function(costilt, m = m_below, **params_samples, m_spin_break = msb, costilt_max=1, costilt_min=-1)
+        p_costilt_above = function(costilt, m = m_above, **params_samples, m_spin_break = msb, costilt_max=1, costilt_min=-1)
+        p50_below = np.median(p_costilt_below, axis=0)
+        p95_below = np.percentile(p_costilt_below, 95, axis=0)
+        p05_below = np.percentile(p_costilt_below, 5, axis=0)
+        p50_above = np.median(p_costilt_above, axis=0)
+        p95_above = np.percentile(p_costilt_above, 95, axis=0)
+        p05_above = np.percentile(p_costilt_above, 5, axis=0)
+        plt.fill_between(costilt, p05_below, p95_below, color="crimson", alpha=0.2, label="90\% CI")
+        plt.plot(costilt, p50_below, color="crimson", label = f"Below {msb} M$_\odot$")
+        plt.fill_between(costilt, p05_above, p95_above, color="darkred", alpha=0.2)
+        plt.plot(costilt, p50_above, color="darkred", label = f"Above {msb} M$_\odot$")
     plt.utkarshWrapper()
     plt.xlabel(r"$\cos\theta$")
     plt.ylabel(r"$p(\cos\theta)$")
     plt.savefig("results/p_costilt.png")
-    return p_costilt
+    return None
 
 def plot_p_z(posterior_samples, function = None, H0 = 67.32, Om0 = 0.3158, w = -1.0):
     params = get_params_of_function(func_type = "distance_func")
