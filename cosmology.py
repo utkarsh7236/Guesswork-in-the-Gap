@@ -62,7 +62,7 @@ def dVc_dz_analytic_no_dl(z, args):
     c = 299792458 / 1000  # km/s
     d_l = d_l_func_jax(z, args)
     E_z = get_E_z(z, args)
-    ret = (4 * xp.pi * (d_l**2) * c)/(H0 * E_z * (1+z)**2)
+    ret = (4 * xp.pi * (d_l**2) * c)/(H0 * E_z * (1+z)**2) # dl^2/(1+z)^2 is just comoving distance
     return  ret
 
 
