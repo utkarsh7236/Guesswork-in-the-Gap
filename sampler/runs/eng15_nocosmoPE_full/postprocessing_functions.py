@@ -118,7 +118,7 @@ def plot_p_m(posterior_samples, function = None):
     plt.xscale("log") ; plt.yscale("log")
     plt.xlabel("m [M$_\odot$]") ; plt.ylabel("p(m)")
     plt.utkarshWrapper()
-    plt.savefig("results/p_m.png")
+    plt.savefig("results/p_m.png", bbox_inches='tight')
     return p_m
 
 def plot_p_pairing(posterior_samples):
@@ -129,7 +129,7 @@ def plot_p_pairing(posterior_samples):
         ax[i].hist(params_samples[list(params_samples.keys())[i]], bins=50, color=colour_sample()[0], alpha=0.5)
         ax[i].set_xlabel(f"{list(params_samples.keys())[i]}")
         utkarshGridAX(ax[i])
-    plt.savefig("results/pairing.png")
+    plt.savefig("results/pairing.png", bbox_inches='tight')
     return None
 
 def plot_p_chi(posterior_samples, function  = None):
@@ -165,7 +165,7 @@ def plot_p_chi(posterior_samples, function  = None):
     plt.utkarshWrapper()
     plt.xlabel(r"$a$")
     plt.ylabel(r"$p(a)$")
-    plt.savefig("results/p_a.png")
+    plt.savefig("results/p_a.png", bbox_inches='tight')
     return None
 
 def plot_p_costilt(posterior_samples, function  = None):
@@ -200,7 +200,7 @@ def plot_p_costilt(posterior_samples, function  = None):
     plt.utkarshWrapper()
     plt.xlabel(r"$\cos\theta$")
     plt.ylabel(r"$p(\cos\theta)$")
-    plt.savefig("results/p_costilt.png")
+    plt.savefig("results/p_costilt.png", bbox_inches='tight')
     return None
 
 def plot_p_z(posterior_samples, function = None, H0 = 67.32, Om0 = 0.3158, w = -1.0):
@@ -216,7 +216,8 @@ def plot_p_z(posterior_samples, function = None, H0 = 67.32, Om0 = 0.3158, w = -
     plt.fill_between(z, p05, p95, color="yellowgreen", alpha = 0.2, label = "90\% CI")
     plt.plot(z, p50, color="yellowgreen")
     plt.utkarshWrapper()
+    plt.tight_layout()
     plt.xlabel(r"z")
     plt.ylabel(r"$p(z)$")
-    plt.savefig("results/p_z.png")
+    plt.savefig("results/p_z.png", bbox_inches='tight')
     return p_z
