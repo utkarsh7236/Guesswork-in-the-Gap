@@ -117,9 +117,8 @@ for path in args.paths:
     data['lnprob_mass1_source'] = np.log(1 + data['redshift'])
     data['lnprob_mass2_source'] = np.log(1 + data['redshift'])
 
-    #TODO: Check this
     data['lnprob_redshift'] = 2*np.log(luminosity_distance) \
-        + np.log(cosmo.z2Dc(data['redshift']) + (1+data['redshift'])*cosmo.dDcdz(data['redshift'])) - np.log(1+data['redshift'])
+        + np.log(cosmo.z2Dc(data['redshift']) + (1+data['redshift'])*cosmo.dDcdz(data['redshift']))
 
     data['lnprob_declination'] = np.log(0.5*np.cos(data['declination']))
     data['lnprob_right_ascension'] = -np.log(2*np.pi)*np.ones_like(data['right_ascension'])
