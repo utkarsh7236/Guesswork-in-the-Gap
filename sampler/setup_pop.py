@@ -86,7 +86,9 @@ pairing_lamda = [x for x in pairing_dict[1] if x not in pairing_pop_vars]
 mass_theta_vars = ["mass1_det", "mass2_det"]
 
 distance_pop_vars = ["z"]
+extra_distance_pop = ["mass1_source", "mass2_source"] # These are not "theta" params but show up in the spin function call for spin pops and need to be deleted
 distance_lamda = [x for x in distance_dict[1] if x not in distance_pop_vars]
+distance_lamda = [x for x in distance_lamda if x not in extra_distance_pop]
 
 spin_pop_vars = ["a1", "costilt1", "a2", "costilt2"]
 extra_spin_pop = ["mass1_source", "mass2_source"] # These are not "theta" params but show up in the spin function call for spin pops and need to be deleted
@@ -131,7 +133,9 @@ def ln_prob_m_det(theta, lamda):
 def ln_prob_distance(theta, lamda):
     {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
-    distance_func = {distance_dict[0]}(z, {_unravel(distance_lamda)})
+    mass1_source = m_source(mass1_det, z)
+    mass2_source = m_source(mass2_det, z)
+    distance_func = {distance_dict[0]}(z, mass1_source, mass2_source, {_unravel(distance_lamda)})
     ret = xp.log(distance_func)
     return ret
 
