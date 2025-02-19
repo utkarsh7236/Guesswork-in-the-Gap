@@ -179,7 +179,7 @@ dDLdz_old = np.interp(redshift, redshift_list, np.gradient(luminosity_distance_l
 dDLdz_new = cosmo.z2Dc(data['redshift']) + (1.+data['redshift'])*cosmo.dDcdz(data['redshift'])
 
 # combine these to get old redshift to new redshift
-lnjac_redshift = np.log(dDLdz_new) - np.log(dDLdz_old) - np.log(1+data['redshift'])
+lnjac_redshift = np.log(dDLdz_new) - np.log(dDLdz_old)
 
 # conversions for spin
 data["a_1"] = np.sqrt(data["spin1x"]**2 + data["spin1y"]**2 + data["spin1z"]**2)
