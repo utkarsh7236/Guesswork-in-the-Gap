@@ -82,9 +82,9 @@ def wrangle(data):
     a2, costilt2 = _pe("a_2"), _pe("costilt2")
     theta_pe = [mass1_det, mass2_det, z, a1, costilt1, a2, costilt2]
 
-    importance_pe_lnprob_mass_source = _pe("lnprob_mass1_source") + _pe("lnprob_mass2_source") - 2 * numpy.log((1 + _pe("redshift")))
+    importance_pe_lnprob_mass_det = _pe("lnprob_mass1_source") + _pe("lnprob_mass2_source") - 2 * numpy.log((1 + _pe("redshift")))
     importance_pe_lnprob_spin1_spin2 = _pe("lnprob_spin1spherical") + _pe("lnprob_spin2spherical")
-    importance_pe = importance_pe_lnprob_mass_source + _pe("lnprob_redshift") + importance_pe_lnprob_spin1_spin2
+    importance_pe = importance_pe_lnprob_mass_det + _pe("lnprob_redshift") + importance_pe_lnprob_spin1_spin2
 
     len_NCG = len(_pe("redshift"))
 
