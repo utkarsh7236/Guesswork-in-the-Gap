@@ -80,11 +80,11 @@ def wrangle(data):
     z = _pe("redshift")
     a1, costilt1 = _pe("a_1"), _pe("costilt1")
     a2, costilt2 = _pe("a_2"), _pe("costilt2")
-    theta_pe = [mass1_det, mass2_det, z, a1, costilt1, a2, costilt2]
+    theta_pe = [_pe("mass1_source"), _pe("mass2_source"), z, a1, costilt1, a2, costilt2]
 
-    importance_pe_lnprob_mass_det = _pe("lnprob_mass1_source") + _pe("lnprob_mass2_source") - 2 * numpy.log((1 + _pe("redshift")))
+    importance_pe_lnprob_mass_src = _pe("lnprob_mass1_source") + _pe("lnprob_mass2_source") #- 2 * numpy.log((1 + _pe("redshift")))
     importance_pe_lnprob_spin1_spin2 = _pe("lnprob_spin1spherical") + _pe("lnprob_spin2spherical")
-    importance_pe = importance_pe_lnprob_mass_det + _pe("lnprob_redshift") + importance_pe_lnprob_spin1_spin2
+    importance_pe = importance_pe_lnprob_mass_src + _pe("lnprob_redshift") + importance_pe_lnprob_spin1_spin2
 
     len_NCG = len(_pe("redshift"))
 
@@ -96,8 +96,9 @@ def wrangle(data):
     z = _inj("redshift")
     a1, costilt1 = _inj("a_1"), _inj("costilt1")
     a2, costilt2 = _inj("a_2"), _inj("costilt2")
-    theta_inj = [mass1_det, mass2_det, z, a1, costilt1, a2, costilt2]
-    importance_inj = _inj("lnprob_mass1_source_mass2_source_redshift_spin1spherical_spin2spherical") + 2 * numpy.log(1 / (1 + _inj("redshift")))
+    # theta_inj = [mass1_det, mass2_det, z, a1, costilt1, a2, costilt2]
+    theta_inj = [_inj("mass1_source"), _inj("mass2_source"), z, a1, costilt1, a2, costilt2]
+    importance_inj = _inj("lnprob_mass1_source_mass2_source_redshift_spin1spherical_spin2spherical") #+ 2 * numpy.log(1 / (1 + _inj("redshift")))
     len_inj = len(_inj("redshift"))
 
     # logZ - Course grained
@@ -108,9 +109,9 @@ def wrangle(data):
     z = _CG("redshift")
     a1, costilt1 = _CG("a_1"), _CG("costilt1")
     a2, costilt2 = _CG("a_2"), _CG("costilt2")
-    theta_CG = [mass1_det, mass2_det, z, a1, costilt1, a2, costilt2]
-
-    importance_CG = _CG("lnprob_mass1_source_mass2_source_redshift_spin1spherical_spin2spherical") + 2 * numpy.log(1 / (1 + _CG("redshift")))
+    # theta_CG = [mass1_det, mass2_det, z, a1, costilt1, a2, costilt2]
+    theta_CG = [_CG("mass1_source"), _CG("mass2_source"), z, a1, costilt1, a2, costilt2]
+    importance_CG = _CG("lnprob_mass1_source_mass2_source_redshift_spin1spherical_spin2spherical") #+ 2 * numpy.log(1 / (1 + _CG("redshift")))
     len_CG = len(_CG("redshift"))
 
     data_arg = [theta_pe, importance_pe, theta_CG, importance_CG, theta_inj, importance_inj, len_NCG, len_CG, len_inj,

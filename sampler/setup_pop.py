@@ -83,7 +83,8 @@ mass1d_lamda = [x for x in mass1d_dict[1] if x not in mass1d_pop_vars]
 pairing_pop_vars = ["m1", "m2"]
 pairing_lamda = [x for x in pairing_dict[1] if x not in pairing_pop_vars]
 
-mass_theta_vars = ["mass1_det", "mass2_det"]
+# mass_theta_vars = ["mass1_det", "mass2_det"]
+mass_theta_vars = ["mass1_source", "mass2_source"]
 
 distance_pop_vars = ["z"]
 extra_distance_pop = ["mass1_source", "mass2_source"] # These are not "theta" params but show up in the spin function call for spin pops and need to be deleted
@@ -117,24 +118,18 @@ from config.spin_func import *
 def ln_prob_m_det(theta, lamda):
     {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
-    redshift = z
     pairing_func = lambda m1, m2: {pairing_dict[0]}(m1, m2, {_unravel(pairing_lamda)})
     mass_prob_func = lambda m: {mass1d_dict[0]}(m,{_unravel(mass1d_lamda)})
-    mass1_source = m_source(mass1_det, redshift)
-    mass2_source = m_source(mass2_det, redshift)
     prob_mass1_source = mass_prob_func(mass1_source)
     prob_mass2_source = mass_prob_func(mass2_source)
     ln_prob_joint_mass_source = xp.log(prob_mass1_source) + xp.log(prob_mass2_source) + xp.log(pairing_func(mass1_source, mass2_source))
-    jacobian = 2 * xp.log(1 / (1 + redshift))
-    ret = ln_prob_joint_mass_source + jacobian
-    ret = xp.where(mass1_det < mass2_det, -xp.inf, ret)
+    ret = ln_prob_joint_mass_source 
+    ret = xp.where(mass1_source < mass2_source, -xp.inf, ret)
     return ret
 
 def ln_prob_distance(theta, lamda):
     {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
-    mass1_source = m_source(mass1_det, z)
-    mass2_source = m_source(mass2_det, z)
     distance_func = {distance_dict[0]}(z, mass1_source, mass2_source, {_unravel(distance_lamda)})
     ret = xp.log(distance_func)
     return ret
@@ -142,8 +137,6 @@ def ln_prob_distance(theta, lamda):
 def ln_prob_spin(theta, lamda):
     {_unravel(theta_vars)} = theta
     ({_unravel(lambda_vars)}) = lamda
-    mass1_source = m_source(mass1_det, z)
-    mass2_source = m_source(mass2_det, z)
     spin_prob_func = {spin_dict[0]}(mass1_source, mass2_source, a1, costilt1, a2, costilt2, {_unravel(spin_lamda)})
     ret = xp.log(spin_prob_func)
     return ret
