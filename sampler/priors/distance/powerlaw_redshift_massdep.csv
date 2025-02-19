@@ -1,0 +1,4 @@
+variable,prior,inits,label
+kappa1,"Uniform(-2, 8)",2.7,"kappa1"
+kappa2,"Uniform(-2, 8)",2.7,"kappa2"
+m_break_kappa,3,nan,"m_spin_break"
