@@ -1,2 +1,2 @@
 variable,prior,inits,label
-kappa,"Uniform(-2, 8)",2.7,"kappa"
+kappa,"Uniform(-4, 8)",2.7,"kappa"
