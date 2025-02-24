@@ -21,6 +21,7 @@ from conversion_cosmology import \
 
 #-------------------------------------------------
 
+# Names conversion dictionary
 names = {
     'mass_1' : 'mass1_detector',
     'mass_2' : 'mass2_detector',
@@ -39,6 +40,7 @@ names = {
 
 #-------------------------------------------------
 
+# Parsing all the arguments
 parser = ArgumentParser(description=__doc__)
 
 parser.add_argument('approximant', type=str)
@@ -74,6 +76,7 @@ if args.seed is not None:
 
 #-------------------------------------------------
 
+# Setting up the cosmology
 if args.verbose:
     print('''instantiating cosmology:
     Ho=%.6e
@@ -120,14 +123,16 @@ for path in args.paths:
     if args.verbose:
         print('    computing the (default) parameter estimation prior')
 
+    # jacobian for mass1_source and mass2_source from mass1_detector and mass2_detector
     data['lnprob_mass1_source'] = np.log(1 + data['redshift'])
     data['lnprob_mass2_source'] = np.log(1 + data['redshift'])
 
+    # jacobian for redshift from luminosity_distance
     data['lnprob_redshift'] = 2*np.log(luminosity_distance) \
         + np.log(cosmo.z2Dc(data['redshift']) + (1+data['redshift'])*cosmo.dDcdz(data['redshift']))
 
 
-
+    # compute the prior for the spin 1
     spin_sqrd = data['spin1x']**2 + data['spin1y']**2 + data['spin1z']**2
     data["a_1"] = np.sqrt(spin_sqrd)
     data["costilt1"] = data["spin1z"] / data["a_1"]
@@ -135,6 +140,7 @@ for path in args.paths:
     data['lnprob_spin1x_spin1y_spin1z'] = -np.log(4*np.pi*spin_sqrd)
     data["lnprob_spin1spherical"] = -np.log(4*np.pi*a1_max * np.ones(len(spin_sqrd)))
 
+    # compute the prior for the spin 2
     spin_sqrd = data['spin2x']**2 + data['spin2y']**2 + data['spin2z']**2
     data["a_2"] = np.sqrt(spin_sqrd)
     data["costilt2"] = data["spin2z"] / data["a_2"]
@@ -142,6 +148,7 @@ for path in args.paths:
     data['lnprob_spin2x_spin2y_spin2z'] = -np.log(4*np.pi*spin_sqrd)
     data["lnprob_spin2spherical"] = -np.log(4*np.pi*a2_max * np.ones(len(spin_sqrd)))
 
+    # probabilities for declination and right_ascension
     data['lnprob_declination'] = np.log(0.5*np.cos(data['declination']))
     data['lnprob_right_ascension'] = -np.log(2*np.pi)*np.ones_like(data['right_ascension'])
 

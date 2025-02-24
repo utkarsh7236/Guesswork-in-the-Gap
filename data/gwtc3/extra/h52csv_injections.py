@@ -19,6 +19,7 @@ from conversion_cosmology import \
 
 #-------------------------------------------------
 
+# Names conversion dictionary
 names = {
     'mass1_source' : 'mass1_source',
     'mass2_source' : 'mass2_source',
@@ -35,6 +36,7 @@ names = {
     # 'gps_time' : 'geocenter_time',
 }
 
+# fars conversion dictionary
 fars = {
     'far_cwb' : 'far_cwb',
     'far_gstlal' : 'far_gstlal',
@@ -43,6 +45,7 @@ fars = {
     'far_pycbc_hyperbank' : 'far_pycbc_hyperbank',
 }
 
+# log conversion dictionary
 log = {
     # 'declination_sampling_pdf' : 'lnprob_declination',
     # 'right_ascension_sampling_pdf' : 'lnprob_right_ascension',
@@ -51,6 +54,7 @@ log = {
 
 #-------------------------------------------------
 
+# Parsing all the arguments
 parser = ArgumentParser(description=__doc__)
 
 parser.add_argument('source', type=str)
@@ -76,6 +80,7 @@ args = parser.parse_args()
 
 #-------------------------------------------------
 
+# Setting up the cosmology
 if args.verbose:
     print('''instantiating cosmology:
     Ho=%.6e
