@@ -1,5 +1,8 @@
 import configparser
 import os
+
+import numpy as np
+
 import preprocessing
 import time
 import shutil
@@ -8,6 +11,7 @@ import importlib.util
 import sys
 import inspect
 import pandas as pd
+import cosmology as cosmo
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -156,6 +160,15 @@ mass1d_prior = pd.read_csv(config["PRIORS"]["mass1d_prior"])
 distance_prior = pd.read_csv(config["PRIORS"]["distance_prior"])
 spin_prior = pd.read_csv(config["PRIORS"]["spin_prior"])
 cosmology_prior = pd.read_csv(config["PRIORS"]["cosmology_prior"])
+
+def setup_dVc_dz_dense(cosmology_prior, zmin = 0.00001, zmax = 2):
+    _var = lambda var: cosmology_prior.loc[cosmology_prior['variable'] == var, 'prior'].values[0]
+    args = [_var("H0"), _var("Om0"), _var("w")]
+    z = np.linspace(zmin, zmax, 10000)
+    dVc_dz = cosmo.dVc_dz_analytic_no_dl_old(z, args)
+    np.savetxt(f"{RUN_dir}/dVc_dz_dense.txt", np.array([z, dVc_dz]).T)
+
+# setup_dVc_dz_dense(cosmology_prior)
 
 # Sort priors according to population params
 df_lst = [pairing_prior, mass1d_prior, distance_prior, spin_prior, cosmology_prior]
