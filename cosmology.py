@@ -58,7 +58,7 @@ def dz_dDl_analytic(d_l, z, args):
     ret = 1/dDl_dz_analytic(d_l, z, args)
     return ret
 
-def dVc_dz_analytic_no_dl_old(z, args):
+def dVc_dz_analytic_no_dl(z, args):
     H0, Om0, w = args
     c = 299792458 / 1000  # km/s
     d_l = d_l_func_jax(z, args)
@@ -66,15 +66,15 @@ def dVc_dz_analytic_no_dl_old(z, args):
     ret = (4 * xp.pi * (d_l**2) * c)/(H0 * E_z * (1+z)**2) # dl^2/(1+z)^2 is just comoving distance
     return  ret
 
-def dVc_dz_analytic_no_dl_APPROX(z, args):
-    # ONLY WORKS FOR FIXED COSMOLOGY, args set in setup_pop.py
-    z_arr, dVc_dz = np.loadtxt("dVc_dz_dense.txt").T #called in setup_pop.py
-    ret = xp.interp(z, z_arr, dVc_dz) # interpolate
-    return ret
-
-def dVc_dz_analytic_no_dl(z, args):
-    ret = dVc_dz_analytic_no_dl_APPROX(z, args) # using speedup, should be identical to other
-    return ret
+# def dVc_dz_analytic_no_dl_APPROX(z, args):
+#     # ONLY WORKS FOR FIXED COSMOLOGY, args set in setup_pop.py
+#     z_arr, dVc_dz = np.loadtxt("dVc_dz_dense.txt").T #called in setup_pop.py
+#     ret = xp.interp(z, z_arr, dVc_dz) # interpolate
+#     return ret
+#
+# def dVc_dz_analytic_no_dl(z, args):
+#     ret = dVc_dz_analytic_no_dl_APPROX(z, args) # using speedup, should be identical to other
+#     return ret
 
 
 
