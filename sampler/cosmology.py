@@ -1,5 +1,6 @@
 import jax
 import jax.numpy as xp
+import numpy as np
 
 jax.config.update("jax_enable_x64", True)
 
@@ -64,6 +65,17 @@ def dVc_dz_analytic_no_dl(z, args):
     E_z = get_E_z(z, args)
     ret = (4 * xp.pi * (d_l**2) * c)/(H0 * E_z * (1+z)**2) # dl^2/(1+z)^2 is just comoving distance
     return  ret
+
+# def dVc_dz_analytic_no_dl_APPROX(z, args):
+#     # ONLY WORKS FOR FIXED COSMOLOGY, args set in setup_pop.py
+#     z_arr, dVc_dz = np.loadtxt("dVc_dz_dense.txt").T #called in setup_pop.py
+#     ret = xp.interp(z, z_arr, dVc_dz) # interpolate
+#     return ret
+#
+# def dVc_dz_analytic_no_dl(z, args):
+#     ret = dVc_dz_analytic_no_dl_APPROX(z, args) # using speedup, should be identical to other
+#     return ret
+
 
 
 def dVc_dz_analytic(d_l, z, args):
