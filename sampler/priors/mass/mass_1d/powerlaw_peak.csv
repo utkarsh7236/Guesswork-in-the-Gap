@@ -3,3 +3,4 @@ alpha_1,"Uniform(-5, 5)",-3.28,alpha_1
 mu_peak,"Uniform(20, 100)",35,mu_peak
 sigma_peak,"Uniform(2, 30)",10,sigma_peak
 mixture,"Uniform(0, 1)",0.1,mixture
+model_min,1,nan,"model_min"
