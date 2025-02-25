@@ -1,6 +1,6 @@
 from cosmology import *
 
-def sfr_approx(z, H0, Om0, w, kappa):
+def sfr_approx(z, mass1_source, mass2_source, H0, Om0, w, kappa):
     args = (H0, Om0, w)
     dVc_dz = dVc_dz_analytic_no_dl(z, args)
     ddl_dz = dDl_dz_analytic_no_dl(z, args)
