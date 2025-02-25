@@ -1,7 +1,12 @@
 import jax.numpy as xp
+# def broken_power(m, alpha_1, alpha_2, m_break, amp_break):
+#     ret = xp.where(m < m_break, amp_break * (m / m_break) ** (alpha_1), 0)
+#     ret = xp.where(m >= m_break, amp_break * (m / m_break) ** (alpha_2), ret)
+#     return ret
+
 def broken_power(m, alpha_1, alpha_2, m_break, amp_break):
     ret = xp.where(m < m_break, amp_break * (m / m_break) ** (alpha_1), 0)
-    ret = xp.where(m >= m_break, amp_break * (m / m_break) ** (alpha_2), ret)
+    ret = xp.where(m >= m_break, amp_break * (m / m_break) ** (alpha_1), ret)
     return ret
 
 def peak(m, lamda):
