@@ -44,6 +44,10 @@ def get_E_z(z, args):
     E_z = xp.sqrt(omega_M * (1 + z) ** 3 + omega_R * (1 + z) ** 4 + omega_k * (1 + z) ** 2 + omega_L * (1 + z) ** (3 * (1 + w)))
     return E_z
 
+def dDl_dz_analytic_no_dl(z, args):
+    d_l = d_l_func_jax(z, args)
+    return dDl_dz_analytic(d_l, z, args)
+
 def dDl_dz_analytic(d_l, z, args):
     H0, Om0, w = args
     c = 299792458 / 1000  # km/s
