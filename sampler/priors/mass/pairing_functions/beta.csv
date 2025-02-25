@@ -1,0 +1,2 @@
+variable,prior,inits,label
+beta_1,"Uniform(-5, 5)",0.41,"beta_1"
