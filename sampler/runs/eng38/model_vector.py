@@ -1,0 +1,41 @@
+import jax
+import jax.numpy as xp
+jax.config.update("jax_enable_x64", True)
+from cosmology import *
+from config.mass1d_func import *
+from config.pairing_func import *
+from config.distance_func import *
+from config.spin_func import *
+
+def ln_prob_m_det(theta, lamda):
+    mass1_source, mass2_source, z, a1, costilt1, a2, costilt2 = theta
+    (alpha_1, mu_peak, sigma_peak, mixture, model_min, beta_1, beta_2, sep, H0, Om0, w, kappa, alpha_chi, beta_chi, mix_tilt, sig_tilt) = lamda
+    pairing_func = lambda m1, m2: beta_split(m1, m2, beta_1, beta_2, sep)
+    mass_prob_func = lambda m: powerlaw_peak(m,alpha_1, mu_peak, sigma_peak, mixture, model_min)
+    prob_mass1_source = mass_prob_func(mass1_source)
+    prob_mass2_source = mass_prob_func(mass2_source)
+    ln_prob_joint_mass_source = xp.log(prob_mass1_source) + xp.log(prob_mass2_source) + xp.log(pairing_func(mass1_source, mass2_source))
+    ret = ln_prob_joint_mass_source 
+    ret = xp.where(mass1_source < mass2_source, -xp.inf, ret)
+    return ret
+
+def ln_prob_distance(theta, lamda):
+    mass1_source, mass2_source, z, a1, costilt1, a2, costilt2 = theta
+    (alpha_1, mu_peak, sigma_peak, mixture, model_min, beta_1, beta_2, sep, H0, Om0, w, kappa, alpha_chi, beta_chi, mix_tilt, sig_tilt) = lamda
+    distance_func = powerlaw_redshift(z, mass1_source, mass2_source, H0, Om0, w, kappa)
+    ret = xp.log(distance_func)
+    return ret
+
+def ln_prob_spin(theta, lamda):
+    mass1_source, mass2_source, z, a1, costilt1, a2, costilt2 = theta
+    (alpha_1, mu_peak, sigma_peak, mixture, model_min, beta_1, beta_2, sep, H0, Om0, w, kappa, alpha_chi, beta_chi, mix_tilt, sig_tilt) = lamda
+    spin_prob_func = default_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, alpha_chi, beta_chi, mix_tilt, sig_tilt)
+    ret = xp.log(spin_prob_func)
+    return ret
+
+def ln_prob(theta, lamda):
+    return ln_prob_m_det(theta, lamda) + ln_prob_distance(theta, lamda) + ln_prob_spin(theta, lamda)
+
+# Define the model
+def model_vector(theta, lamda):
+    return ln_prob(theta, lamda)
