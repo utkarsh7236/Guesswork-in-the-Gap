@@ -208,7 +208,8 @@ def plot_p_z(posterior_samples, function = None, H0 = 67.32, Om0 = 0.3158, w = -
     plt.figure()
     params_samples = {param: posterior_samples[param] for param in params if param in posterior_samples.keys()}
     z = np.linspace(0, 2, 1000)
-    p_z = function(z, **params_samples, H0=H0, Om0=Om0, w=w)
+    mass1_source, mass2_source = 0,0
+    p_z = function(z, mass1_source, mass2_source, **params_samples, H0=H0, Om0=Om0, w=w)
     p50 = np.median(p_z, axis=0)
     p95 = np.percentile(p_z, 95, axis=0)
     p05 = np.percentile(p_z, 5, axis=0)
