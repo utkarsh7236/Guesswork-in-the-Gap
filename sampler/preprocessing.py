@@ -1,7 +1,12 @@
+import configparser
 import numpy
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+max_far = float(config["INJECTIONS"]["max_far"])
 
 def compute_CG_frac(CG_args, pe): # Course grain by mass 1 source. Inside CG
     CG_LOWER, CG_UPPER = CG_args
@@ -10,7 +15,7 @@ def compute_CG_frac(CG_args, pe): # Course grain by mass 1 source. Inside CG
     frac = len(idx_inside_CG)/len(pe.mass1_source)
     return frac
 
-def load_data(CG_args, DIR_args, NUM_PE_SAMPLES = 4000, max_far = 0.25):
+def load_data(CG_args, DIR_args, NUM_PE_SAMPLES = 4000, max_far = max_far):
     event_file_name, event_folder_name, vt_file_name, vt_folder_name, data_dir = DIR_args
     events = numpy.loadtxt(event_folder_name+event_file_name, dtype=str)
 
