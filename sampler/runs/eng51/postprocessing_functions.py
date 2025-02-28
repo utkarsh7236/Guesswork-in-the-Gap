@@ -108,7 +108,7 @@ def plot_p_m(posterior_samples, function = None):
     params = get_params_of_function(func_type = "mass1d_func")
     params_samples = {param: posterior_samples[param] for param in params if param in posterior_samples.keys()}
     m = np.logspace(0, 2, 500)
-    p_m = function(m, **params_samples, model_min=1, model_max=100)
+    p_m = function(m, **params_samples)
     p50 = np.median(p_m, axis=0)
     p95 = np.percentile(p_m, 95, axis=0)
     p05 = np.percentile(p_m, 5, axis=0)
