@@ -1,10 +1,10 @@
 variable,prior,inits,label
 mu_chi1,"Uniform(0, 0.4)",0.1,"mu_chi1"
-sig_chi1,"Uniform(0.05, 2)",2,"sig_chi1"
+sig_chi1,"Uniform(0.05, 0.5)",0.25,"sig_chi1"
 mix_tilt1,"Uniform(0, 1)",0.5,"mix_tilt1"
 sig_tilt1,"Uniform(0.1, 4)",1,"sig_tilt1"
 mu_chi2,"Uniform(0, 1)",0.1,"mu_chi2"
-sig_chi2,"Uniform(0.05, 2)",2,"sig_chi2"
+sig_chi2,"Uniform(0.05, 2)",1,"sig_chi2"
 mix_tilt2,"Uniform(0, 1)",0.5,"mix_tilt2"
 sig_tilt2,"Uniform(0.1, 4)",1,"sig_tilt2"
 m_spin_break,3,nan,"m_spin_break"
