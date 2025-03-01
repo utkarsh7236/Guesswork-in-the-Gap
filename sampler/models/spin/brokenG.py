@@ -58,7 +58,7 @@ def prob_spin_component(m, a, costilt,
     # # Combine the two
     return p_chi * p_costilt
 
-def newo4_break(mass1_source, mass2_source, a1, costilt1, a2, costilt2,
+def brokenG(mass1_source, mass2_source, a1, costilt1, a2, costilt2,
                   mu_chi1, sig_chi1, mix_tilt1, sig_tilt1,
                   mu_chi2, sig_chi2, mix_tilt2, sig_tilt2,
                   m_spin_break,
