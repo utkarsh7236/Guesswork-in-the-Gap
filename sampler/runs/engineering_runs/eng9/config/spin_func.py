@@ -1,0 +1,47 @@
+from cosmology import *
+from jax.scipy.special import beta as beta_func
+from jax.scipy.special import erf
+
+def beta_pdf(x, a, b):
+    """Compute Beta distribution PDF using JAX."""
+    norm_const = 1 / beta_func(a, b)  # Normalization factor
+    return norm_const * (x ** (a - 1)) * ((1 - x) ** (b - 1))
+
+# Matches Colm Talbot from gwpopulation
+# https://github.com/ColmTalbot/gwpopulation/blob/main/gwpopulation/utils.py
+def truncnorm_pdf(x, mu, sigma, a, b):
+    """Compute the analytically normalized truncated normal PDF using JAX."""
+    # Compute normalization constant Z
+    alpha = (a - mu) / (xp.sqrt(2) * sigma)
+    beta = (b - mu) / (xp.sqrt(2) * sigma)
+    Z = 0.5 * sigma * xp.sqrt(2 * xp.pi) * (erf(beta) - erf(alpha))
+    # Compute the unnormalized Gaussian PDF
+    pdf_unnormalized = xp.exp(-0.5 * ((x - mu) / sigma) ** 2)
+    # Normalize
+    pdf = pdf_unnormalized / Z
+    return xp.where((x >= a) & (x <= b), pdf, 0.0)
+
+def uniform_pdf(x, a, b):
+    """Compute the uniform PDF using JAX."""
+    return 1 / (b - a)
+
+def prob_chi(a, mu_chi, sig_chi, a_max, a_min):
+    p_chi = truncnorm_pdf(a, mu_chi, sig_chi, a_min, a_max)
+    return p_chi
+
+def prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max, costilt_min):
+    mix_temp1 = truncnorm_pdf(costilt, mu = 0, sigma=sig_tilt, a=costilt_min, b=costilt_max)
+    mix_temp2 = uniform_pdf(costilt, costilt_min, costilt_max)
+    p_costilt = mix_tilt * mix_temp1 + (1-mix_tilt) * mix_temp2
+    return p_costilt
+
+def prob_spin_component(a, costilt, mu_chi, sig_chi, mix_tilt, sig_tilt, a_max, a_min, costilt_max, costilt_min):
+    p_chi = prob_chi(a, mu_chi, sig_chi, a_max, a_min)
+    p_costilt = prob_costilt(costilt, mix_tilt, sig_tilt, costilt_max, costilt_min)
+    return p_chi * p_costilt
+
+def truncnorm_gwtc3(mass1_source, mass2_source, a1, costilt1, a2, costilt2, mu_chi, sig_chi, mix_tilt, sig_tilt,
+                    a_max, a_min, costilt_max, costilt_min):
+    p_s1 = prob_spin_component(a1, costilt1, mu_chi, sig_chi, mix_tilt, sig_tilt, a_max, a_min, costilt_max, costilt_min)
+    p_s2 = prob_spin_component(a2, costilt2, mu_chi, sig_chi, mix_tilt, sig_tilt, a_max, a_min, costilt_max, costilt_min)
+    return p_s1 * p_s2
