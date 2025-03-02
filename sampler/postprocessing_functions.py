@@ -222,3 +222,47 @@ def plot_p_z(posterior_samples, function = None, H0 = 67.32, Om0 = 0.3158, w = -
     plt.ylabel(r"$p(z)$")
     plt.savefig("results/p_z.png", bbox_inches='tight')
     return p_z
+
+def single_event_likelihood_variance(lamda, posterior_samples):
+    pass
+
+def selection_variance(lamda, posterior_samples):
+    pass
+
+def selection_fixedpop(lamda, posterior_samples):
+    N_draw = None
+    N_found = None
+    model = None
+    lamda_item = None
+    importance_inj = None
+    pass
+
+def single_event_likelihood_fixedpop(lamda, posterior_samples):
+    N_pe = None
+    model = None
+    lamda_item = None
+    importance_PE = None
+
+    return 1/N_pe * np.sum(model(lamda_item)/importance_PE)
+
+
+# https://arxiv.org/pdf/2204.00461, Equation 53, A9
+# O4 Astrodist, Equation A3-A6
+# https://arxiv.org/pdf/1904.10879, Equation 9
+def loglike_variance(lamda, posterior_samples):
+    # compute for each sample of Lambda, thus an additional field is added to posterior sampels
+    # Parameters to get
+    N_obs = None
+    N_det = None
+
+    summand = 0
+    for i in range(N_obs):
+        sig2_like = single_event_likelihood_variance(lamda, posterior_samples)
+        mu_like = single_event_likelihood_fixedpop(lamda, posterior_samples)
+        sig2_selection = selection_variance(lamda, posterior_samples)
+        mu_selection = selection_fixedpop(lamda, posterior_samples)
+        term1 = sig2_like/(mu_like**2)
+        term2 = sig2_selection/(mu_selection**2)
+        ret = term1 + (N_det**2) * term2
+        summand += ret
+    pass
