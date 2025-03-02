@@ -195,8 +195,8 @@ def plot_p_costilt(posterior_samples, function  = None):
         p05_above = np.percentile(p_costilt_above, 5, axis=0)
         plt.fill_between(costilt, p05_below, p95_below, color="crimson", alpha=0.2, label="90\% CI")
         plt.plot(costilt, p50_below, color="crimson", label = f"Below {msb} M$_\odot$")
-        plt.fill_between(costilt, p05_above, p95_above, color="darkred", alpha=0.2)
-        plt.plot(costilt, p50_above, color="darkred", label = f"Above {msb} M$_\odot$")
+        plt.fill_between(costilt, p05_above, p95_above, color="goldenrod", alpha=0.2)
+        plt.plot(costilt, p50_above, color="goldenrod", label = f"Above {msb} M$_\odot$")
     plt.utkarshWrapper()
     plt.xlabel(r"$\cos\theta$")
     plt.ylabel(r"$p(\cos\theta)$")
@@ -223,27 +223,36 @@ def plot_p_z(posterior_samples, function = None, H0 = 67.32, Om0 = 0.3158, w = -
     plt.savefig("results/p_z.png", bbox_inches='tight')
     return p_z
 
-def single_event_likelihood_variance(lamda, posterior_samples):
-    pass
 
-def selection_variance(lamda, posterior_samples):
-    pass
+def single_event_likelihood_fixedpop(posterior_samples, model, importance_PE):
+    N_pe = len(importance_PE)
+    return 1/N_pe * np.sum(model(posterior_samples)/importance_PE) # Should have shape (len(posterior_samples),N_pe)
 
-def selection_fixedpop(lamda, posterior_samples):
+def selection_fixedpop(posterior_samples, model, importance_inj):
+    N_draw = len(importance_inj)
+    N_found = len(importance_inj)
+    assert len(importance_inj) == N_found
+    return 1/N_draw * np.sum(model(posterior_samples)/importance_inj) # Should have shape (len(posterior_samples)), just be a 1d array with the length of posterior samples.
+
+def single_event_likelihood_variance(posterior_samples, model, importance_PE):
+    N_pe = len(importance_PE) # Should be 66
+    var_term = (model(posterior_samples)/importance_PE)**2
+    mult1 = 1/(N_pe - 1)
+    term1 = 1/N_pe * np.sum(var_term)
+    term2 = single_event_likelihood_fixedpop(posterior_samples, model, importance_PE)**2
+    return mult1 * (term1 - term2) # Should have shape (len(posterior_samples),N_pe)
+
+def selection_variance(posterior_samples, model, importance_inj):
     N_draw = None
     N_found = None
-    model = None
-    lamda_item = None
-    importance_inj = None
-    pass
 
-def single_event_likelihood_fixedpop(lamda, posterior_samples):
-    N_pe = None
-    model = None
-    lamda_item = None
-    importance_PE = None
+    assert len(importance_inj) == N_found
 
-    return 1/N_pe * np.sum(model(lamda_item)/importance_PE)
+    var_term = (model(posterior_samples)/importance_inj)**2
+    mult1 = 1/(N_draw - 1)
+    term1 = 1/N_draw * np.sum(var_term)
+    term2 = selection_fixedpop(posterior_samples, model, importance_inj)**2
+    return mult1 * (term1 - term2) # Should have length of posterior samples draws
 
 
 # https://arxiv.org/pdf/2204.00461, Equation 53, A9
@@ -255,14 +264,14 @@ def loglike_variance(lamda, posterior_samples):
     N_obs = None
     N_det = None
 
-    summand = 0
-    for i in range(N_obs):
-        sig2_like = single_event_likelihood_variance(lamda, posterior_samples)
-        mu_like = single_event_likelihood_fixedpop(lamda, posterior_samples)
-        sig2_selection = selection_variance(lamda, posterior_samples)
-        mu_selection = selection_fixedpop(lamda, posterior_samples)
-        term1 = sig2_like/(mu_like**2)
-        term2 = sig2_selection/(mu_selection**2)
-        ret = term1 + (N_det**2) * term2
-        summand += ret
-    pass
+    sig2_like = single_event_likelihood_variance(lamda, posterior_samples)
+    mu_like = single_event_likelihood_fixedpop(lamda, posterior_samples)
+    sig2_selection = selection_variance(lamda, posterior_samples)
+    mu_selection = selection_fixedpop(lamda, posterior_samples)
+    term1 = np.sum(sig2_like/(mu_like**2))
+
+    assert N_obs == len(sig2_like)
+
+    term2 = sig2_selection/(mu_selection**2)
+    ret = term1 + (N_det**2) * term2
+    return ret # Should have length of posterior samples draws
