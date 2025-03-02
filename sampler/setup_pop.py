@@ -105,7 +105,7 @@ theta_vars = mass_theta_vars + distance_pop_vars + spin_pop_vars
 lambda_vars = mass1d_lamda + pairing_lamda + distance_lamda + spin_lamda
 lambda_vars = list(dict.fromkeys(lambda_vars))
 
-with open(f"{RUN_dir}/lambda_ordered.txt", "w") as output:
+with open(f"{RUN_dir}/lamda_ordered.txt", "w") as output:
     output.write(str(lambda_vars))
 
 # print(mass1d_dict, pairing_dict, distance_dict, spin_dict, sep="\n"); print(lambda_vars); print(f"{','.join(str(i) for i in pairing_lamda)}") # THIS ONE PRINTS WITHOUT TUPLE; print(f"{*pairing_lamda,}") # THIS ONE PRINTS WITH TUPLE AND QUOTES AROUND EACH ELEMENT
