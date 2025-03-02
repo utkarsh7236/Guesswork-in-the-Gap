@@ -3,10 +3,17 @@ import corner
 import numpy as np
 import io
 import importlib.util
-import inspect
-import configparser
 import sys
 import numpy
+from priors import *
+import configparser
+from preprocessing import load_data, wrangle
+import inspect
+import re
+from tqdm import tqdm
+import copy
+import jax.numpy as xp
+
 import matplotlib.pyplot as plt, pandas as pd, matplotlib as mpl, random
 def utkarshGrid(): plt.minorticks_on() ; plt.grid(color='grey',which='minor',linestyle=":",linewidth='0.1',) ; plt.grid(color='black',which='major',linestyle=":",linewidth='0.1',); return None
 def utkarshGridAX(ax): ax.minorticks_on() ; ax.grid(color='grey',which='minor',linestyle=":",linewidth='0.1',) ; ax.grid(color='black',which='major',linestyle=":",linewidth='0.1',); return None
@@ -223,55 +230,150 @@ def plot_p_z(posterior_samples, function = None, H0 = 67.32, Om0 = 0.3158, w = -
     plt.savefig("results/p_z.png", bbox_inches='tight')
     return p_z
 
+def curate_data():
+    # Curating the data
+    config = configparser.ConfigParser()
+    config.read('config/config.ini')
+    RUN_dir = config['DIRECTORIES']["run_dir"]
+    max_far = float(config["INJECTIONS"]["max_far"])
+    CG_args = (float(config["COURSE_GRAIN"]["mass_lower"]), float(config["COURSE_GRAIN"]["mass_upper"]))
+    translate_dir = "../../"
+    DIR_args = (config["DIRECTORIES"]["event_file_name"],
+                translate_dir+config["DIRECTORIES"]["event_folder_name"],
+                config["DIRECTORIES"]["vt_file_name"],
+                translate_dir+config["DIRECTORIES"]["vt_folder_name"],
+                translate_dir+config["DIRECTORIES"]["data_dir"])
+    data = load_data(CG_args, DIR_args, max_far=max_far)
+    data_arg = wrangle(data)
+    return data, data_arg
 
-def single_event_likelihood_fixedpop(posterior_samples, model, importance_PE):
-    N_pe = len(importance_PE)
-    return 1/N_pe * np.sum(model(posterior_samples)/importance_PE) # Should have shape (len(posterior_samples),N_pe)
+def posterior_samples_to_complete_numpy(posterior_samples):
+    # get all elements of the first item in the dictionary
+    len_hyperposterior = len(posterior_samples[list(posterior_samples.keys())[0]])
+    sorted_lamda = list(numpy.loadtxt("lamda_ordered.txt", dtype=str))
 
-def selection_fixedpop(posterior_samples, model, importance_inj):
-    N_draw = len(importance_inj)
-    N_found = len(importance_inj)
-    assert len(importance_inj) == N_found
-    return 1/N_draw * np.sum(model(posterior_samples)/importance_inj) # Should have shape (len(posterior_samples)), just be a 1d array with the length of posterior samples.
+    code_lines, line_no = inspect.getsourcelines(prior)
+    # Regular expression to match the static variable assignments (excluding function calls and lists)
+    pattern = r'^\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*([^#]+?)\s*(?:#.*)?$'
+    # Initialize the dictionary to store static variables
+    static_vars = {}
+    # Iterate over the lines
+    for line in code_lines:
+        # Exclude lines with 'n.sample' (function calls) or lines containing 'lamda' (list assignments)
+        if 'n.sample' not in line and 'lamda' not in line:
+            match = re.match(pattern, line.strip())
+            if match:
+                var_name = match.group(1)
+                var_value = match.group(2).strip()
+                static_vars[var_name] = var_value
 
-def single_event_likelihood_variance(posterior_samples, model, importance_PE):
-    N_pe = len(importance_PE) # Should be 66
-    var_term = (model(posterior_samples)/importance_PE)**2
+    # Convert the items in static_vars to NumPy arrays with size len(posterior_samples)
+    for var_name in static_vars:
+        static_vars[var_name] = numpy.full(len_hyperposterior, static_vars[var_name])
+    posterior_samples.update(static_vars)
+
+    # Reorder the dictionary based on sorted_lambda
+    assert sorted_lamda == list({key: posterior_samples[key] for key in sorted_lamda}.keys()) #make sure the ordering is correct
+    lambda_pop = numpy.array([posterior_samples[key].flatten() for key in sorted_lamda], dtype=float)
+    return lambda_pop
+
+def single_event_likelihood_fixedpop(theta_pe, importance_pe, single_lamda, model_vector):
+    # Parameter Estimation
+    theta_pe = xp.array(theta_pe) # (7 single event params, 4000 samples, 66 events)
+    N_pe = theta_pe.shape[1]
+    N_events = theta_pe.shape[2]
+    num = model_vector(theta_pe, single_lamda) # shape (4000, 66)
+    dem = importance_pe
+    term1 = xp.exp(num - dem) # xp.exp(num)/xp.exp(dem) = xp.exp(num - dem)
+    ret = 1/N_pe * xp.sum(term1, axis=0) # shape (N_events)
+    assert ret.shape[0] == N_events # Make sure the single event likelihood has the shape of the number of events
+    return ret # Should have shape (single_lamda,N_pe)
+
+def selection_fixedpop(theta_inj, importance_inj, single_lamda, model_vector):
+    # Injections
+    theta_inj = xp.array(theta_inj) # (7 single event params, 202835 samples)
+    N_draw = theta_inj.shape[1]
+    num = model_vector(theta_inj, single_lamda)
+    dem = importance_inj
+    term1 = xp.exp(num - dem) # xp.exp(num)/xp.exp(dem) = xp.exp(num - dem)
+    ret = 1/N_draw * xp.sum(term1, axis=0) # one number
+    assert len(importance_inj) == N_draw
+    return ret # Should have shape (single_lamda), just be a 1d array with the length of posterior samples.
+
+def single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, model_vector):
+    # Parameter Estimation
+    theta_pe = xp.array(theta_pe) # (7 single event params, 4000 samples, 66 events)
+    N_pe = theta_pe.shape[1]
+    N_events = theta_pe.shape[2]
+
+    num = 2 * model_vector(theta_pe, single_lamda) # shape (66)
+    dem = 2 * importance_pe
+
     mult1 = 1/(N_pe - 1)
-    term1 = 1/N_pe * np.sum(var_term)
-    term2 = single_event_likelihood_fixedpop(posterior_samples, model, importance_PE)**2
-    return mult1 * (term1 - term2) # Should have shape (len(posterior_samples),N_pe)
+    term1 = 1/N_pe * xp.sum(xp.exp(num - dem), axis = 0)
+    term2 = single_event_likelihood_fixedpop(theta_pe, importance_pe, single_lamda, model_vector) ** 2
+    ret = mult1 * (term1 - term2)
+    assert ret.shape[0] == N_events
+    return ret # Should have shape (single_lamda,N_pe)
 
-def selection_variance(posterior_samples, model, importance_inj):
-    N_draw = None
-    N_found = None
+def selection_variance(theta_inj, importance_inj, single_lamda, model_vector):
+    theta_inj = xp.array(theta_inj) # (7 single event params, 202835 samples)
+    N_draw = theta_inj.shape[1]
+    assert len(importance_inj) == N_draw
+    num = 2 * model_vector(theta_inj, single_lamda)
+    dem = 2 * importance_inj
 
-    assert len(importance_inj) == N_found
-
-    var_term = (model(posterior_samples)/importance_inj)**2
     mult1 = 1/(N_draw - 1)
-    term1 = 1/N_draw * np.sum(var_term)
-    term2 = selection_fixedpop(posterior_samples, model, importance_inj)**2
-    return mult1 * (term1 - term2) # Should have length of posterior samples draws
+    term1 = 1/N_draw * xp.sum(xp.exp(num - dem), axis = 0)
+    term2 = selection_fixedpop(theta_inj, importance_inj, single_lamda, model_vector) ** 2
+    ret = mult1 * (term1 - term2)
+    assert len(importance_inj) == N_draw
+    return ret # Should have length of single_lamda
 
 
 # https://arxiv.org/pdf/2204.00461, Equation 53, A9
 # O4 Astrodist, Equation A3-A6
 # https://arxiv.org/pdf/1904.10879, Equation 9
-def loglike_variance(lamda, posterior_samples):
+def loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector):
     # compute for each sample of Lambda, thus an additional field is added to posterior sampels
     # Parameters to get
-    N_obs = None
-    N_det = None
+    N_events = xp.array(theta_pe).shape[2]
+    N_draw = xp.array(theta_inj).shape[1]
+    N_det = N_draw
 
-    sig2_like = single_event_likelihood_variance(lamda, posterior_samples)
-    mu_like = single_event_likelihood_fixedpop(lamda, posterior_samples)
-    sig2_selection = selection_variance(lamda, posterior_samples)
-    mu_selection = selection_fixedpop(lamda, posterior_samples)
-    term1 = np.sum(sig2_like/(mu_like**2))
+    sig2_like = single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, model_vector)
+    mu_like = single_event_likelihood_fixedpop(theta_pe, importance_pe, single_lamda, model_vector)
+    sig2_selection = selection_variance(theta_inj, importance_inj, single_lamda, model_vector)
+    mu_selection = selection_fixedpop(theta_inj, importance_inj, single_lamda, model_vector)
+    term1 = xp.sum(sig2_like/(mu_like**2))
 
-    assert N_obs == len(sig2_like)
+    assert N_events == len(sig2_like)
 
     term2 = sig2_selection/(mu_selection**2)
     ret = term1 + (N_det**2) * term2
-    return ret # Should have length of posterior samples draws
+
+    loglike_var = ret
+    neff_selection = (mu_selection**2)/sig2_selection
+    return loglike_var, neff_selection # Should have length of posterior samples draws
+
+def add_postprocessing_effects(posterior_samples, model_vector):
+    data, data_arg = curate_data()
+    theta_pe, importance_pe, theta_CG, importance_CG, theta_inj, importance_inj, len_NCG, len_CG, len_inj, N_CG = data_arg
+    lambda_pop = posterior_samples_to_complete_numpy(posterior_samples)
+
+    n_eff_selection = []
+    loglike_var = []
+
+    posterior_samples_copy = copy.deepcopy(posterior_samples)
+
+    i = 0
+    for single_lamda in tqdm(lambda_pop.T):
+        # i += 1
+        # if i > 50: # only compute first 50 for now
+        #     continue
+        llv, nef = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
+        n_eff_selection.append(nef) ; loglike_var.append(llv)
+
+    posterior_samples_copy["loglike_var"] = loglike_var
+    posterior_samples_copy["n_eff_selection"] = n_eff_selection
+    return posterior_samples_copy
