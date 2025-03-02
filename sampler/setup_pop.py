@@ -106,7 +106,7 @@ lambda_vars = mass1d_lamda + pairing_lamda + distance_lamda + spin_lamda
 lambda_vars = list(dict.fromkeys(lambda_vars))
 
 # save lambda_vars to lambda_ordered.txt
-np.savetxt(f"{RUN_dir}/lambda_ordered.txt", lambda_vars, fmt="%s")
+np.savetxt(f"{RUN_dir}/lamda_ordered.txt", lambda_vars, fmt="%s")
 
 # print(mass1d_dict, pairing_dict, distance_dict, spin_dict, sep="\n"); print(lambda_vars); print(f"{','.join(str(i) for i in pairing_lamda)}") # THIS ONE PRINTS WITHOUT TUPLE; print(f"{*pairing_lamda,}") # THIS ONE PRINTS WITH TUPLE AND QUOTES AROUND EACH ELEMENT
 
