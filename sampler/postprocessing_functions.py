@@ -300,7 +300,7 @@ def selection_fixedpop(theta_inj, importance_inj, single_lamda, model_vector):
     assert len(importance_inj) == N_draw
     return ret # Should have shape (single_lamda), just be a 1d array with the length of posterior samples.
 
-def single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, model_vector):
+def single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, model_vector, mu_like):
     # Parameter Estimation
     theta_pe = xp.array(theta_pe) # (7 single event params, 4000 samples, 66 events)
     N_pe = theta_pe.shape[1]
@@ -311,12 +311,12 @@ def single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, mode
 
     mult1 = 1/(N_pe - 1)
     term1 = 1/N_pe * xp.sum(xp.exp(num - dem), axis = 0)
-    term2 = single_event_likelihood_fixedpop(theta_pe, importance_pe, single_lamda, model_vector) ** 2
+    term2 = mu_like ** 2
     ret = mult1 * (term1 - term2)
     assert ret.shape[0] == N_events
     return ret # Should have shape (single_lamda,N_pe)
 
-def selection_variance(theta_inj, importance_inj, single_lamda, model_vector):
+def selection_variance(theta_inj, importance_inj, single_lamda, model_vector, mu_selection):
     theta_inj = xp.array(theta_inj) # (7 single event params, 202835 samples)
     N_draw = theta_inj.shape[1]
     assert len(importance_inj) == N_draw
@@ -325,7 +325,7 @@ def selection_variance(theta_inj, importance_inj, single_lamda, model_vector):
 
     mult1 = 1/(N_draw - 1)
     term1 = 1/N_draw * xp.sum(xp.exp(num - dem), axis = 0)
-    term2 = selection_fixedpop(theta_inj, importance_inj, single_lamda, model_vector) ** 2
+    term2 = mu_selection ** 2
     ret = mult1 * (term1 - term2)
     assert len(importance_inj) == N_draw
     return ret # Should have length of single_lamda
@@ -341,10 +341,10 @@ def loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_
     N_draw = xp.array(theta_inj).shape[1]
     N_det = N_draw
 
-    sig2_like = single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, model_vector)
-    mu_like = single_event_likelihood_fixedpop(theta_pe, importance_pe, single_lamda, model_vector)
-    sig2_selection = selection_variance(theta_inj, importance_inj, single_lamda, model_vector)
     mu_selection = selection_fixedpop(theta_inj, importance_inj, single_lamda, model_vector)
+    mu_like = single_event_likelihood_fixedpop(theta_pe, importance_pe, single_lamda, model_vector)
+    sig2_selection = selection_variance(theta_inj, importance_inj, single_lamda, model_vector, mu_selection)
+    sig2_like = single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, model_vector, mu_like)
     term1 = xp.sum(sig2_like/(mu_like**2))
 
     assert N_events == len(sig2_like)
@@ -354,26 +354,29 @@ def loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_
 
     loglike_var = ret
     neff_selection = (mu_selection**2)/sig2_selection
-    return loglike_var, neff_selection # Should have length of posterior samples draws
+    neff_events = (mu_like**2)/sig2_like
+    return loglike_var, neff_selection, neff_events # Should have length of posterior samples draws
 
 def add_postprocessing_effects(posterior_samples, model_vector):
     data, data_arg = curate_data()
     theta_pe, importance_pe, theta_CG, importance_CG, theta_inj, importance_inj, len_NCG, len_CG, len_inj, N_CG = data_arg
     lambda_pop = posterior_samples_to_complete_numpy(posterior_samples)
 
-    n_eff_selection = []
+    neff_selection = []
+    neff_events = []
     loglike_var = []
 
     posterior_samples_copy = copy.deepcopy(posterior_samples)
 
     i = 0
     for single_lamda in tqdm(lambda_pop.T):
-        # i += 1
-        # if i > 50: # only compute first 50 for now
-        #     continue
-        llv, nef = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
-        n_eff_selection.append(nef) ; loglike_var.append(llv)
+        i += 1
+        if i > 100: # only compute first 50 for now
+            continue
+        llv, nef_s, nef_e = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
+        neff_selection.append(nef_s) ; loglike_var.append(llv) ; neff_events.append(nef_e)
 
     posterior_samples_copy["loglike_var"] = loglike_var
-    posterior_samples_copy["neff_selection"] = n_eff_selection
+    posterior_samples_copy["neff_selection"] = neff_selection
+    posterior_samples_copy["neff_events"] = np.array(neff_events)
     return posterior_samples_copy
