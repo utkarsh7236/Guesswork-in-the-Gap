@@ -36,7 +36,6 @@ DIR_args = (config["DIRECTORIES"]["event_file_name"], config["DIRECTORIES"]["eve
             config["DIRECTORIES"]["data_dir"])
 
 with open(f"{RUN_dir}/data/wrangled.pkl", "wb") as f:
-    path = "/Users/utkarsh/GitHub/SpectralBNS"
     data = preprocessing.load_data(CG_args, DIR_args, max_far=max_far)
     data_arg = preprocessing.wrangle(data)
     pickle.dump(data_arg, f)
