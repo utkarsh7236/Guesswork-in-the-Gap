@@ -370,9 +370,9 @@ def add_postprocessing_effects(posterior_samples, model_vector):
 
     i = 0
     for single_lamda in tqdm(lambda_pop.T):
-        i += 1
-        if i > 100: # only compute first 50 for now
-            continue
+        # i += 1
+        # if i > 100: # only compute first 50 for now
+        #     continue
         llv, nef_s, nef_e = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
         neff_selection.append(nef_s) ; loglike_var.append(llv) ; neff_events.append(nef_e)
 
