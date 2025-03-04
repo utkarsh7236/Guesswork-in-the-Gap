@@ -355,7 +355,8 @@ def loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_
     loglike_var = ret
     neff_selection = (mu_selection**2)/sig2_selection
     neff_events = (mu_like**2)/sig2_like
-    return loglike_var, neff_selection, neff_events # Should have length of posterior samples draws
+    loglike_mu = xp.sum(xp.log(mu_like)) - N_events*xp.log(mu_selection)
+    return loglike_mu, loglike_var, neff_selection, neff_events # Should have length of posterior samples draws
 
 def add_postprocessing_effects(posterior_samples, model_vector):
     data, data_arg = curate_data()
@@ -365,6 +366,7 @@ def add_postprocessing_effects(posterior_samples, model_vector):
     neff_selection = []
     neff_events = []
     loglike_var = []
+    neff_loglike = []
 
     posterior_samples_copy = copy.deepcopy(posterior_samples)
 
@@ -373,12 +375,16 @@ def add_postprocessing_effects(posterior_samples, model_vector):
         # i += 1
         # if i > 100: # only compute first 50 for now
         #     continue
-        llv, nef_s, nef_e = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
+        ll_mu, llv, nef_s, nef_e = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
         neff_selection.append(nef_s) ; loglike_var.append(llv) ; neff_events.append(nef_e)
+
+        nef_ll = (ll_mu ** 2)/llv
+        neff_loglike.append(nef_ll)
 
     posterior_samples_copy["loglike_var"] = loglike_var
     posterior_samples_copy["neff_selection"] = neff_selection
     posterior_samples_copy["neff_events"] = np.array(neff_events)
+    posterior_samples_copy["neff_loglike"] = neff_loglike
     return posterior_samples_copy
 
 def plot_neff(neff, filename):
