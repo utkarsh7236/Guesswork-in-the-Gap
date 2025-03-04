@@ -380,3 +380,15 @@ def add_postprocessing_effects(posterior_samples, model_vector):
     posterior_samples_copy["neff_selection"] = neff_selection
     posterior_samples_copy["neff_events"] = np.array(neff_events)
     return posterior_samples_copy
+
+def plot_neff(neff, filename):
+    import os
+    if not os.path.exists("results/monte_carlo_uncertainty"):
+        os.makedirs("results/monte_carlo_uncertainty")
+
+    fig, ax = plt.subplots(nrows=2, sharex=True)
+    ax[0].hist(neff, bins=50, density=True)
+    ax[1].ecdf(neff)
+    plt.xlabel(f"Effective number of samples: {filename}")
+    utkarshWrapperAX(ax[0]) ; utkarshWrapperAX(ax[1])
+    plt.savefig(f"results/monte_carlo_uncertainty/neff_{filename}.png")
