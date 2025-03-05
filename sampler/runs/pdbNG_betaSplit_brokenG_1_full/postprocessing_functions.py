@@ -306,13 +306,11 @@ def single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, mode
     N_pe = theta_pe.shape[1]
     N_events = theta_pe.shape[2]
 
-    num = 2 * model_vector(theta_pe, single_lamda) # shape (66)
-    dem = 2 * importance_pe
-
-    mult1 = 1/(N_pe - 1)
-    term1 = 1/N_pe * xp.sum(xp.exp(num - dem), axis = 0)
-    term2 = mu_like ** 2
-    ret = mult1 * (term1 - term2)
+    mult = 1/(N_pe - 1) * 1/N_pe
+    num = model_vector(theta_pe, single_lamda) # shape (66)
+    dem = importance_pe
+    frac = np.exp(num-dem)
+    ret = mult * xp.sum((frac - mu_like)**2, axis = 0)
     assert ret.shape[0] == N_events
     return ret # Should have shape (single_lamda,N_pe)
 
@@ -320,13 +318,12 @@ def selection_variance(theta_inj, importance_inj, single_lamda, model_vector, mu
     theta_inj = xp.array(theta_inj) # (7 single event params, 202835 samples)
     N_draw = theta_inj.shape[1]
     assert len(importance_inj) == N_draw
-    num = 2 * model_vector(theta_inj, single_lamda)
-    dem = 2 * importance_inj
 
-    mult1 = 1/(N_draw - 1)
-    term1 = 1/N_draw * xp.sum(xp.exp(num - dem), axis = 0)
-    term2 = mu_selection ** 2
-    ret = mult1 * (term1 - term2)
+    mult1 = 1/(N_draw - 1) * 1/N_draw
+    num = model_vector(theta_inj, single_lamda)
+    dem = importance_inj
+    frac = np.exp(num - dem)
+    ret = mult1 * xp.sum((frac - mu_selection)**2, axis = 0)
     assert len(importance_inj) == N_draw
     return ret # Should have length of single_lamda
 
