@@ -345,9 +345,10 @@ def loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_
 
     assert N_events == len(sig2_like)
 
-    term1 = xp.sum(sig2_like/(mu_like**2))
-    term2 = sig2_selection/(mu_selection**2)
-    ret = term1 + (N_det**2) * term2
+    ret = xp.sum(sig2_like/(mu_like**2)) + (N_events**2) * sig2_selection/(mu_selection**2)
+    # term1 = xp.sum(sig2_like/(mu_like**2))
+    # term2 = sig2_selection/(mu_selection**2)
+    # ret = term1 + (N_det**2) * term2
 
     loglike_var = ret
     neff_selection = (mu_selection**2)/sig2_selection
@@ -370,7 +371,7 @@ def add_postprocessing_effects(posterior_samples, model_vector):
     i = 0
     for single_lamda in tqdm(lambda_pop.T):
         # i += 1
-        # if i > 100: # only compute first 50 for now
+        # if i > 1000: # only compute first 50 for now
         #     continue
         ll_mu, llv, nef_s, nef_e = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
         neff_selection.append(nef_s) ; loglike_var.append(llv) ; neff_events.append(nef_e)
