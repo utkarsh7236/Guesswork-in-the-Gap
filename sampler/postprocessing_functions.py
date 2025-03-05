@@ -336,16 +336,16 @@ def loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_
     # Parameters to get
     N_events = xp.array(theta_pe).shape[2]
     N_draw = xp.array(theta_inj).shape[1]
-    N_det = N_draw
+    N_det = N_events
 
     mu_selection = selection_fixedpop(theta_inj, importance_inj, single_lamda, model_vector)
     mu_like = single_event_likelihood_fixedpop(theta_pe, importance_pe, single_lamda, model_vector)
     sig2_selection = selection_variance(theta_inj, importance_inj, single_lamda, model_vector, mu_selection)
     sig2_like = single_event_likelihood_variance(theta_pe, importance_pe, single_lamda, model_vector, mu_like)
-    term1 = xp.sum(sig2_like/(mu_like**2))
 
     assert N_events == len(sig2_like)
 
+    term1 = xp.sum(sig2_like/(mu_like**2))
     term2 = sig2_selection/(mu_selection**2)
     ret = term1 + (N_det**2) * term2
 
