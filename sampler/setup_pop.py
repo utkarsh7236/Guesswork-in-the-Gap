@@ -271,7 +271,7 @@ def posterior(data_arg):
     frac = num - dem  # xp.exp(num)/xp.exp(dem) = xp.exp(num - dem)
     summ3 = xp.sum(xp.exp(frac))
     Z_i_CG = summ3 / len_CG
-    n.factor("logZ_CG", N_CG * xp.log(Z_i_CG))
+    # n.factor("logZ_CG", N_CG * xp.log(Z_i_CG)) # No course graining for now
 
     N_NCG = len(Z_i_NCG)  # Should equal N_NCG from data wrangling
     N_det = N_NCG + N_CG  # N_CG comes from cut in data wrangling
