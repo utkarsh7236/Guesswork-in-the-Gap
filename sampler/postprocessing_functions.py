@@ -74,10 +74,10 @@ def plot_corner_all():
 
 def plot_corner(variable1, variable2, label1, label2):
     corner.hist2d(variable1, variable2, color="dodgerblue", levels=[0.50, 0.90])
-    plt.savefig(f"results/corner_{variable1}_{variable2}.png")
     plt.xlabel(label1)
     plt.ylabel(label2)
     plt.utkarshWrapper()
+    plt.savefig(f"results/corner_{label1}_{label2}.png")
     pass
 
 
