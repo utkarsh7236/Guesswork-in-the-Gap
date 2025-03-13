@@ -405,10 +405,6 @@ def loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_
     assert N_events == len(sig2_like)
 
     ret = xp.sum(sig2_like / (mu_like ** 2)) + (N_events ** 2) * sig2_selection / (mu_selection ** 2)
-    # term1 = xp.sum(sig2_like/(mu_like**2))
-    # term2 = sig2_selection/(mu_selection**2)
-    # ret = term1 + (N_det**2) * term2
-
     loglike_var = ret
     neff_selection = (mu_selection ** 2) / sig2_selection
     neff_events = (mu_like ** 2) / sig2_like
@@ -434,29 +430,25 @@ def add_postprocessing_effects(posterior_samples, model_vector):
 
     i = 0
     for single_lamda in tqdm(lambda_pop.T):
-        i += 1
+        # i += 1
         # if i > 20:  # only compute first 50 for now
         #     continue
-        ll_mu, llv, nef_s, nef_e = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda,
-                                                    model_vector)
+        ll_mu, llv, nef_s, nef_e = loglike_variance(theta_pe, importance_pe, theta_inj, importance_inj, single_lamda, model_vector)
 
         neff_selection.append(nef_s); loglike_var.append(llv); loglike_mu.append(ll_mu); neff_events.append(nef_e)
-
-        nef_l = (np.exp(ll_mu)**2)/np.exp(llv) # (np.exp(ll_mu) ** 2) / np.exp(llv)  = np.exp((ll_mu**2) /llv) = np.exp((2*ll_mu) - llv)
-        neff_like.append(nef_l)
 
 
     neff_selection = np.array(neff_selection); neff_events = np.array(neff_events); loglike_var = np.array(loglike_var)
     loglike_mu = np.array(loglike_mu); neff_like = np.array(neff_like)
 
     posterior_samples_copy["loglike_var"] = loglike_var; posterior_samples_copy["neff_selection"] = neff_selection
-    posterior_samples_copy["neff_events"] = np.array(neff_events); posterior_samples_copy["neff_events_total"] = np.sum(posterior_samples_copy["neff_events"], axis=1)
+    posterior_samples_copy["neff_events"] = np.array(neff_events); posterior_samples_copy["neff_events_total"] = 1/np.sum(1/posterior_samples_copy["neff_events"], axis=1)
 
     assert len(posterior_samples_copy["neff_events_total"]) == len(posterior_samples_copy["neff_selection"])
     neff_like_additive_inverse = 1/np.array(posterior_samples_copy["neff_events_total"]).squeeze() + (N_det ** 2)/np.array(posterior_samples_copy[
         "neff_selection"]).squeeze()
-    posterior_samples_copy["neff_like_additive"] = 1/neff_like_additive_inverse
-    posterior_samples_copy["neff_like"] = neff_like
+    posterior_samples_copy["neff_like_additive"] = 1/neff_like_additive_inverse # These are incorrect
+    posterior_samples_copy["loglike_var"] = loglike_var
     return posterior_samples_copy
 
 
