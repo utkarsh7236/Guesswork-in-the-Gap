@@ -23,11 +23,16 @@ max_far = float(config["INJECTIONS"]["max_far"])
 if not os.path.exists(RUN_dir):
     os.makedirs(RUN_dir)
     os.makedirs(RUN_dir+ "/data/")
-    os.makedirs(RUN_dir+ "/results/")
+    if config["SETUP"]["split_data"]:
+        os.makedirs(RUN_dir + "/results1/")
+        os.makedirs(RUN_dir + "/results2/")
+    else:
+        os.makedirs(RUN_dir + "/results/")
     os.makedirs(RUN_dir + "/logs/")
     os.makedirs(RUN_dir + "/config/")
 # else:
 #     raise FileExistsError(f"{config['DIRECTORIES']['run_dir']} already exists")
+
 
 
 CG_args = (float(config["COURSE_GRAIN"]["mass_lower"]), float(config["COURSE_GRAIN"]["mass_upper"]))
@@ -35,11 +40,21 @@ DIR_args = (config["DIRECTORIES"]["event_file_name"], config["DIRECTORIES"]["eve
             config["DIRECTORIES"]["vt_file_name"], config["DIRECTORIES"]["vt_folder_name"],
             config["DIRECTORIES"]["data_dir"])
 
-with open(f"{RUN_dir}/data/wrangled.pkl", "wb") as f:
-    data = preprocessing.load_data(CG_args, DIR_args, max_far)
-    data_arg = preprocessing.wrangle(data)
-    pickle.dump(data_arg, f)
+if config["SETUP"]["split_data"]:
+    print("[WARNING] NOT ALL SAMPLES BEING USED: Splitting data")
+    data = preprocessing.load_data(CG_args, DIR_args, max_far, NUM_PE_SAMPLES=config["SETUP"]["num_pe_samples"])
+    data_arg1, data_arg2 = preprocessing.wrangle(data, NUM_PE_SAMPLES=config["SETUP"]["num_pe_samples"], split_data_arg=config["SETUP"]["split_data"])
+    with open(f"{RUN_dir}/data/wrangled1.pkl", "wb") as f:
+        pickle.dump(data_arg1, f)
+    with open(f"{RUN_dir}/data/wrangled2.pkl", "wb") as f:
+            pickle.dump(data_arg2, f)
     print("Data wrangling complete")
+else:
+    with open(f"{RUN_dir}/data/wrangled.pkl", "wb") as f:
+        data = preprocessing.load_data(CG_args, DIR_args, max_far, NUM_PE_SAMPLES = config["SETUP"]["num_pe_samples"])
+        data_arg = preprocessing.wrangle(data, NUM_PE_SAMPLES = config["SETUP"]["num_pe_samples"])
+        pickle.dump(data_arg, f)
+        print("Data wrangling complete")
 
 shutil.copy("config.ini", f"{RUN_dir}/config/config.ini")
 shutil.copy("cosmology.py", f"{RUN_dir}/cosmology.py")
