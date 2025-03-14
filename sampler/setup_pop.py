@@ -26,6 +26,7 @@ if not os.path.exists(RUN_dir):
     if config["SETUP"]["split_data"]:
         os.makedirs(RUN_dir + "/results1/")
         os.makedirs(RUN_dir + "/results2/")
+        os.makedirs(RUN_dir + "/combined_results/")
     else:
         os.makedirs(RUN_dir + "/results/")
     os.makedirs(RUN_dir + "/logs/")
