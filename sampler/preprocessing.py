@@ -14,7 +14,7 @@ def compute_CG_frac(CG_args, pe): # Course grain by mass 1 source. Inside CG
 def load_data(CG_args, DIR_args, max_far, NUM_PE_SAMPLES = 4000):
     event_file_name, event_folder_name, vt_file_name, vt_folder_name, data_dir = DIR_args
     events = numpy.loadtxt(event_folder_name+event_file_name, dtype=str)
-
+    NUM_PE_SAMPLES = int(NUM_PE_SAMPLES)
     CG_LOWER, CG_UPPER = CG_args
 
     columns_to_keep = ["mass1_source", "mass2_source",
@@ -70,8 +70,9 @@ def load_data(CG_args, DIR_args, max_far, NUM_PE_SAMPLES = 4000):
     ret = [inj_deep.to_numpy(), pe_full, CG_full, inj_names, pe_names, CG_names, len_CG, len_NCG]
     return ret
 
-def wrangle(data):
+def wrangle(data, split_data_arg = False, NUM_PE_SAMPLES = 4000):
     inj_deep, pe_full, CG_full, inj_names, pe_names, CG_names, N_CG, N_NCG = data
+    NUM_PE_SAMPLES = int(NUM_PE_SAMPLES)
 
     # logZ - Not course grained
     cut = pe_full.shape[0]  # Total = 10,000
@@ -117,6 +118,72 @@ def wrangle(data):
 
     data_arg = [theta_pe, importance_pe, theta_CG, importance_CG, theta_inj, importance_inj, len_NCG, len_CG, len_inj,
                 N_CG]
+
+    if split_data_arg:
+        np.random.seed(0)
+        first_indices_pe = np.random.choice(NUM_PE_SAMPLES, size=int(NUM_PE_SAMPLES/2), replace=False)
+        second_indices_pe = np.setdiff1d(np.arange(NUM_PE_SAMPLES), first_indices_pe)
+        _c_pe = lambda pe_arr: (pe_arr[first_indices_pe, :], pe_arr[second_indices_pe, :])
+        _c = lambda arr: (arr[first_indices_pe], arr[second_indices_pe])
+
+        assert _c_pe(_pe("mass1_source"))[0].shape[0] == int(NUM_PE_SAMPLES/2)
+        mass1_source1, mass1_source2 = _c_pe(_pe("mass1_source"))
+        mass2_source1, mass2_source2 = _c_pe(_pe("mass2_source"))
+        z1, z2 = _c_pe(_pe("redshift"))
+        a1_1, a1_2 = _c_pe(_pe("a_1"))
+        costilt1_1, costilt1_2 = _c_pe(_pe("costilt1"))
+        a2_1, a2_2 = _c_pe(_pe("a_2"))
+        costilt2_1, costilt2_2 = _c_pe(_pe("costilt2"))
+
+        assert mass1_source1.shape[0] == int(NUM_PE_SAMPLES/2)
+
+        theta_pe1 = [mass1_source1, mass2_source1, z1, a1_1, costilt1_1, a2_1, costilt2_1]
+        theta_pe2 = [mass1_source2, mass2_source2, z2, a1_2, costilt1_2, a2_2, costilt2_2]
+
+        importance_pe1, importance_pe2 = _c(importance_pe)
+
+        NUM_INJECTIONS = len(_inj("redshift"))
+        first_indices_inj = np.random.choice(NUM_INJECTIONS, size=int(NUM_INJECTIONS / 2), replace=False)
+        second_indices_inj = np.setdiff1d(np.arange(NUM_INJECTIONS), first_indices_pe)
+        _c_inj = lambda inj_arr: (inj_arr[first_indices_inj], inj_arr[second_indices_inj])
+
+        mass1_source1, mass1_source2 = _c_inj(_inj("mass1_source"))
+        mass2_source1, mass2_source2 = _c_inj(_inj("mass2_source"))
+        z1, z2 = _c_inj(_inj("redshift"))
+        a1_1, a1_2 = _c_inj(_inj("a_1"))
+        costilt1_1, costilt1_2 = _c_inj(_inj("costilt1"))
+        a2_1, a2_2 = _c_inj(_inj("a_2"))
+        costilt2_1, costilt2_2 = _c_inj(_inj("costilt2"))
+
+        assert mass1_source1.shape[0] == int(NUM_INJECTIONS/2)
+
+        theta_inj1 = [mass1_source1, mass2_source1, z1, a1_1, costilt1_1, a2_1, costilt2_1]
+        theta_inj2 = [mass1_source2, mass2_source2, z2, a1_2, costilt1_2, a2_2, costilt2_2]
+
+        importance_inj1, importance_inj2 = _c_inj(importance_inj)
+
+
+        first_indices_CG = np.random.choice(N_CG, size=int(N_CG / 2), replace=False)
+        second_indices_CG = np.setdiff1d(np.arange(N_CG), first_indices_pe)
+        _c_cg = lambda cg_arr: (cg_arr[first_indices_CG], cg_arr[second_indices_CG])
+
+        mass1_source1, mass1_source2 = _c_cg(_CG("mass1_source"))
+        mass2_source1, mass2_source2 = _c_cg(_CG("mass2_source"))
+        z1, z2 = _c_cg(_CG("redshift"))
+        a1_1, a1_2 = _c_cg(_CG("a_1"))
+        costilt1_1, costilt1_2 = _c_cg(_CG("costilt1"))
+        a2_1, a2_2 = _c_cg(_CG("a_2"))
+        costilt2_1, costilt2_2 = _c_cg(_CG("costilt2"))
+
+        assert mass1_source1.shape[0] == int(N_CG/2)
+
+        theta_CG1 = [mass1_source1, mass2_source1, z1, a1_1, costilt1_1, a2_1, costilt2_1]
+        theta_CG2 = [mass1_source2, mass2_source2, z2, a1_2, costilt1_2, a2_2, costilt2_2]
+
+        importance_CG1, importance_CG2 = _c_cg(importance_CG)
+        data_arg1 = [theta_pe1, importance_pe1, theta_CG1, importance_CG1, theta_inj1, importance_inj1, len_NCG/2, len_CG/2, len_inj/2, N_CG/2]
+        data_arg2 = [theta_pe2, importance_pe2, theta_CG2, importance_CG2, theta_inj2, importance_inj2, len_NCG/2, len_CG/2, len_inj/2, N_CG/2]
+        return data_arg1, data_arg2
     return data_arg
 
 def get_pe(str_name, pe_full, pe_names):
