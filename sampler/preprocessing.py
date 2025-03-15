@@ -120,7 +120,7 @@ def wrangle(data, split_data_arg = False, NUM_PE_SAMPLES = 4000):
                 N_CG]
 
     if split_data_arg:
-        np.random.seed(1)
+        np.random.seed(3)
         first_indices_pe = np.random.choice(NUM_PE_SAMPLES, size=int(NUM_PE_SAMPLES/2), replace=False)
         second_indices_pe = np.setdiff1d(np.arange(NUM_PE_SAMPLES), first_indices_pe)
         _c_pe = lambda pe_arr: (pe_arr[first_indices_pe, :], pe_arr[second_indices_pe, :])
