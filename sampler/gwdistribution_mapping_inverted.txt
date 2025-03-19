@@ -1,0 +1,107 @@
+# Mass - MultiPDB
+m_break = break1_mass1_source
+alpha_1 = alpha0
+alpha_2 = alpha1
+gamma_low = butterworthnotch_lowpass_scale_0, butterworthnotch_lowpass_scale_1
+eta_low = butterworthnotch_lowpass_exponent_0, butterworthnotch_lowpass_exponent_1
+gamma_high = butterworthnotch_highpass_scale_0, butterworthnotch_highpass_scale_1
+eta_high = butterworthnotch_highpass_exponent_0, butterworthnotch_highpass_exponent_1
+A = butterworthnotch_amplitude_0, butterworthnotch_amplitude_1
+m_min = lowpass_mass_scale
+eta_min = lowpass_exponent
+m_max = highpass_mass_scale 
+eta_max = highpass_exponent
+mu_peak1 = gaussianpeak_mean_0, gaussianpeak_mean_1
+sig_peak1 = gaussianpeak_stdv_0, gaussianpeak_stdv_1
+peak_constant1 = gaussianpeak_prefactor_0, gaussianpeak_prefactor_1
+mu_peak2 = gaussianpeak_mean_0, gaussianpeak_mean_1
+sig_peak2 = gaussianpeak_stdv_0, gaussianpeak_stdv_1
+peak_constant2 = gaussianpeak_prefactor_0, gaussianpeak_prefactor_1
+model_min = min_mass1_source, min_mass2_source
+model_max = max_mass1_source, max_mass2_source
+
+
+# Mass - PDB with NG
+m_break = break1_mass1_source
+alpha_1 = alpha0
+alpha_2 = alpha1
+gamma_low = butterworthnotch_lowpass_scale_0, butterworthnotch_lowpass_scale_1
+eta_low = butterworthnotch_lowpass_exponent_0, butterworthnotch_lowpass_exponent_1
+gamma_high = butterworthnotch_highpass_scale_0, butterworthnotch_highpass_scale_1
+eta_high = butterworthnotch_highpass_exponent_0, butterworthnotch_highpass_exponent_1
+A = butterworthnotch_amplitude_0, butterworthnotch_amplitude_1
+m_min = lowpass_mass_scale
+eta_min = lowpass_exponent
+m_max = highpass_mass_scale
+eta_max = highpass_exponent
+mu_peak1 = gaussianpeak_mean_0, gaussianpeak_mean_1
+sig_peak1 = gaussianpeak_stdv_0, gaussianpeak_stdv_1
+peak_constant1 = gaussianpeak_prefactor_0, gaussianpeak_prefactor_1
+mu_peak2 = gaussianpeak_mean_0, gaussianpeak_mean_1
+sig_peak2 = gaussianpeak_stdv_0, gaussianpeak_stdv_1
+peak_constant2 = gaussianpeak_prefactor_0, gaussianpeak_prefactor_1
+mu_peak_NS = gaussianpeak_mean_0, gaussianpeak_mean_1
+sig_peak_NS = gaussianpeak_stdv_0, gaussianpeak_stdv_1
+peak_constant1 = gaussianpeak_prefactor_0, gaussianpeak_p
+peak_constant_NS = gaussianpeak_prefactor_0, gaussianpeak_prefactor_1
+model_min = min_mass1_source, min_mass2_source
+model_max = max_mass1_source, max_mass2_source
+
+
+# Pairing - Beta
+beta_1 = pairing_pow_q_low
+beta_2 = pairing_pow_q_high
+sep = pairing_mbreak
+
+# Pairing - Beta 3 - Currently not implemented? 
+beta_1 = 
+beta_2 = 
+beta_gap = 
+sep = 
+
+
+# Pairing - Smooth Beta - Currently not implemented? 
+beta_1 = 
+beta_2 = 
+sep = 
+delta_beta = 
+
+
+# Distance - PowerLaw Redshift
+H0 =  67.32 * 3.2407792894e-20 # Conversion from km/s/Mpc to Hz 
+Om0 = omegamatter
+kappa = pow_redshift
+
+
+# Spin - Single Gaussian
+mu_chi = mean_spin1_magnitude, mean_spin2_magnitude
+sig_chi = stdv_spin1_magnitude, stdv_spin2_magnitude
+# mu_tilt = 0 = mean_spin1_cos_polar_angle, mean_spin2_cos_polar_angle
+mix_tilt = 
+sig_tilt = stdv_spin1_cos_polar_angle, stdv_spin2_cos_polar_angle
+a_max = max_spin1_magnitude, max_spin2_magnitude
+a_min = min_spin1_magnitude, min_spin2_magnitude
+costilt_max = max_spin1_cos_polar_anglem max_spin2_cos_polar_angle
+costilt_min = min_spin1_cos_polar_angle, min_spin2_cos_polar_angle
+
+
+# Spin - Broken Gaussian (Mass dependent) 
+mu_chi1 = mean_spin1_magnitude
+sig_chi1 = stdv_spin1_magnitude
+mu_tilt1 = 0 = mean_spin2_cos_polar_angle
+mix_tilt1 = Mixture
+sig_tilt1 = stdv_spin1_cos_polar_angle
+mu_chi2 = mean_spin2_magnitude
+sig_chi2 = stdv_spin2_magnitude
+# mu_tilt2 = 0 = mean_spin1_cos_polar_angle, mean_spin2_cos_polar_angle
+mix_tilt2 = Mixture
+sig_tilt2 = stdv_spin2_cos_polar_angle
+m_spin_break = switch_mass1_source_0, switch_mass1_source_1, switch_mass2_source_0, switch_mass2_source_1
+a_min = min_spin1_magnitude, min_spin2_magnitude
+a_max = max_spin2_magnitude
+costilt_max = max_spin1_cos_polar_anglem max_spin2_cos_polar_angle
+costilt_min = min_spin1_cos_polar_angle, min_spin2_cos_polar_angle
+a_max_NS = max_spin1_magnitude
+
+
+
