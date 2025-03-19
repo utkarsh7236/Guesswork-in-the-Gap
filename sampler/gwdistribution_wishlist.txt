@@ -1,0 +1,4 @@
+features requested for gw-distributions. 
+- BetaSpin2MagnitudeGivenMass2 but for Truncated Gaussian (Mass dependent spin) 
+- BinnedPowerLawAsymmetricMassRatioPairing but with two breaks instead of one (3 breaks pairing function) 
+- Mass dependent pairing function with smooth parameters. 
