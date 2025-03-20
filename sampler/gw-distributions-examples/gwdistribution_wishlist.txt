@@ -1,0 +1,3 @@
+features requested for gw-distributions. 
+- SwitchPoints based on multiple parameters (mass_1 and mass_2 for pairing function "Beta3")
+- Mass dependent pairing function with smooth parameters. 

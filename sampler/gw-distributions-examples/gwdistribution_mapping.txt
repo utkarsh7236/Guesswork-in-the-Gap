@@ -81,14 +81,14 @@ pairing_pow_q_low = beta_1
 pairing_pow_q_high = beta_2
 pairing_mbreak = sep
 
-# Pairing - Beta 3 - Currently not implemented? 
-beta_1 = 
-beta_2 = 
-beta_gap = 
-sep = 
+# Pairing - Beta 3 - SwitchPoint
+pairing_pow_q_low  = beta_1
+pairing_pow_q_high = beta_2
+beta_gap = Yet to implement? 
+pairing_mbreak = sep
 
 
-# Pairing - Smooth Beta - Currently not implemented? 
+# Pairing - Smooth Beta - TBD
 beta_1 = 
 beta_2 = 
 sep = 
