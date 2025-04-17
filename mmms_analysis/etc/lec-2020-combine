@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+
+"""a quick script to perform a matching experiment and augment a file with additional weights
+"""
+__author__ = "Reed Essick (reed.essick@gmail.com)"
+
+#-------------------------------------------------
+
+import numpy as np
+
+#-------------------------------------------------
+
+# file containing Mtov and Rtov along with a single logweight corresponding to (PSR+GW+NICER)
+reference = 'LEC-mtov-rtov.csv'
+
+print('loading reference data from: '+reference)
+ref = np.genfromtxt(reference, names=True, delimiter=',')
+
+#-------------------------------------------------
+
+# a file containing Mtov and separate weights for PSR, GW, and NICER
+samples = 'LEC-2020-full.csv'
+
+print('loading full data from: '+samples)
+sam = np.genfromtxt(samples, names=True, delimiter=',')
+
+#-------------------------------------------------
+
+# perform matching experiment to grab the data we want from each file
+print('renaming columns')
+
+data = dict()
+
+# grab EoS number from the big set
+data['EoS'] = sam['EoS']
+
+# grab Mtov
+data['Mmax'] = sam['Mmax']
+
+# grab pulsar data
+data['logweight_j1614'] = sam['logweight_j1614mx']
+data['logweight_j0348'] = sam['logweight_j0348']
+data['logweight_j0740'] = sam['logweight_j0740']
+
+# grab GW data
+data['logweight_gw170817'] = sam['logweight_gw170817']
+data['logweight_gw190425'] = sam['logweight_gw190425']
+
+# grab NICER data
+data['logweight_j0030'] = sam['logweight_j0030three']
+
+#------------------------
+
+# store combinations of logweights
+data['logweight_PSR'] = data['logweight_j1614'] + data['logweight_j0348'] + data['logweight_j0740']
+data['logweight_GW'] = data['logweight_gw170817'] + data['logweight_gw190425']
+data['logweight_Xray'] = data['logweight_j0030']
+
+data['logweight_PSR_GW'] = data['logweight_PSR'] + data['logweight_GW']
+data['logweight_PSR_Xray'] = data['logweight_PSR'] + data['logweight_Xray']
+data['logweight_GW_Xray'] = data['logweight_GW'] + data['logweight_Xray']
+
+data['logweight_PSR_GW_Xray'] = data['logweight_PSR'] + data['logweight_GW'] + data['logweight_Xray']
+
+#------------------------
+
+# throw away samples we won't care about
+print('discarding samples with logweight_PSR = -np.infty')
+
+keep = data['logweight_PSR'] > -np.infty
+
+for key, val in data.items():
+    data[key] = val[keep]
+
+print('retained %d / %d samples' % (np.sum(keep), len(data['EoS'])))
+
+# remove duplicate entries
+print('removing duplicate entries')
+keep = np.zeros(len(data['EoS']), dtype=bool)
+found = []
+
+for ind, eos in enumerate(data['EoS']):
+    if eos not in found:
+        keep[ind] = True
+        found.append(eos)
+
+N = np.sum(keep)
+print('retained %d / %d samples' % (N, len(data['EoS'])))
+for key, val in data.items():
+    data[key] = val[keep]
+
+#------------------------
+
+# perform matching experiment to find Rmax
+print('performing matching experiment between %d logweights and %d reference Rtov samples' %(N, len(ref)))
+
+data['Rmax'] = np.empty(N, dtype=float)*np.nan
+
+inds = np.arange(len(ref))
+for ind, eos in enumerate(data['EoS']):
+    keep = ref['EoS'] == eos
+
+    if not np.any(keep):
+        print('warning! no match found for ind=%d (Mtov=%f)' % (ind, m))
+
+    elif np.sum(keep) == 1: # only one match!
+        data['Rmax'][ind] = ref['Rmax'][inds[keep][0]]
+
+    elif np.sum(keep) > 1:
+        print('warning! found %d matches for ind=%d (Mtov=%f)' % (np.sum(keep), ind, m))
+        for ind in inds[keep]:
+            print(ref[ind])
+
+    else:
+        raise RuntimeError
+
+# check that all data had a match
+if np.any(data['Rmax'] != data['Rmax']):
+    raise RuntimeError('failed to find a match for some entries!')
+
+#-------------------------------------------------
+
+# write the output
+path = 'LEC-2020.csv.gz'
+print('saving: '+path)
+
+keys = list(data.keys())
+np.savetxt(
+    path,
+    np.transpose([data[key] for key in keys]),
+    header=','.join(keys),
+    comments='',
+    delimiter=',',
+)
