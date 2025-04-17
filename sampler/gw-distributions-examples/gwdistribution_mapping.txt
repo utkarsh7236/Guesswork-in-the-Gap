@@ -3,77 +3,48 @@ break1_mass1_source = m_break
 alpha0  = alpha_1
 alpha1  = alpha_2
 butterworthnotch_lowpass_scale_0  = gamma_low
-butterworthnotch_lowpass_scale_1 = gamma_low
 butterworthnotch_lowpass_exponent_0 = eta_low
-butterworthnotch_lowpass_exponent_1 = eta_low
 butterworthnotch_highpass_scale_0 = gamma_high
-butterworthnotch_highpass_scale_1 = gamma_high
 butterworthnotch_highpass_exponent_0 = eta_high
-butterworthnotch_highpass_exponent_1 = eta_high
 butterworthnotch_amplitude_0 = A
-butterworthnotch_amplitude_1 = A
-lowpass_mass_scale = m_min
-lowpass_exponent = eta_min
-highpass_mass_scale = m_max
-highpass_exponent = eta_max
+butterworthlowpass_scale_0 = m_min
+butterworthlowpass_exponent_0 = eta_min
+butterworthhighpass_scale_0 = m_max
+butterworthhighpass_exponent_0 = eta_max
 gaussianpeak_mean_0 = mu_peak1 # 10 Solar mass
-gaussianpeak_mean_1 = mu_peak1 # 10 Solar mass
 gaussianpeak_stdv_0 = sig_peak1 # 10 Solar mass
-gaussianpeak_stdv_1 - sig_peak1 # 10 Solar mass
 gaussianpeak_prefactor_0 = peak_constant1 # 10 Solar mass
-gaussianpeak_prefactor_1 = peak_constant1 # 10 Solar mass
-aussianpeak_mean_0 = mu_peak2 # 30 Solar mass
-gaussianpeak_mean_1 = mu_peak2 # 30 Solar mass
-gaussianpeak_stdv_0 = sig_peak2 # 30 Solar mass
-gaussianpeak_stdv_1 - sig_peak2 # 30 Solar mass
-gaussianpeak_prefactor_0 = peak_constant2 # 30 Solar mass
+aussianpeak_mean_1 = mu_peak2 # 30 Solar mass
+gaussianpeak_stdv_1 = sig_peak2 # 30 Solar mass
 gaussianpeak_prefactor_1 = peak_constant2 # 30 Solar mass
 min_mass1_source = model_min
-min_mass2_source = model_min
 max_mass1_source = model_max
-max_mass2_source = model_max
 
 
 # Mass - PDB with NG
 break1_mass1_source = m_break
 alpha0 = alpha_1
 alpha1 = alpha_2
-butterworthnotch_lowpass_scale_0 = gamma_low
-butterworthnotch_lowpass_scale_1 = gamma_low
+butterworthnotch_lowpass_scale_0  = gamma_low
 butterworthnotch_lowpass_exponent_0 = eta_low
-butterworthnotch_lowpass_exponent_1 = eta_low
 butterworthnotch_highpass_scale_0 = gamma_high
-butterworthnotch_highpass_scale_1 = gamma_high
 butterworthnotch_highpass_exponent_0 = eta_high
-butterworthnotch_highpass_exponent_1 = eta_high
 butterworthnotch_amplitude_0 = A
-butterworthnotch_amplitude_1 = A
-lowpass_mass_scale = m_min
-lowpass_exponent = eta_min
-highpass_mass_scale = m_max
-highpass_exponent = eta_max
+butterworthlowpass_scale_0 = m_min
+butterworthlowpass_exponent_0 = eta_min
+butterworthhighpass_scale_0 = m_max
+butterworthhighpass_exponent_0 = eta_max
 gaussianpeak_mean_0 = mu_peak1 # 10 Solar mass
-gaussianpeak_mean_1 = mu_peak1 # 10 Solar mass
 gaussianpeak_stdv_0 = sig_peak1 # 10 Solar mass
-gaussianpeak_stdv_1 - sig_peak1 # 10 Solar mass
 gaussianpeak_prefactor_0 = peak_constant1 # 10 Solar mass
-gaussianpeak_prefactor_1 = peak_constant1 # 10 Solar mass
-aussianpeak_mean_0 = mu_peak2 # 30 Solar mass
-gaussianpeak_mean_1 = mu_peak2 # 30 Solar mass
-gaussianpeak_stdv_0 = sig_peak2 # 30 Solar mass
-gaussianpeak_stdv_1 - sig_peak2 # 30 Solar mass
-gaussianpeak_prefactor_0 = peak_constant2 # 30 Solar mass
+aussianpeak_mean_1 = mu_peak2 # 30 Solar mass
+gaussianpeak_stdv_1 = sig_peak2 # 30 Solar mass
 gaussianpeak_prefactor_1 = peak_constant2 # 30 Solar mass
-aussianpeak_mean_0 = mu_peak_NS # NS Peak
-gaussianpeak_mean_1 = mu_peak_NS # NS Peak
-gaussianpeak_stdv_0 = sig_peak_NS # NS Peak
-gaussianpeak_stdv_1 - sig_peak_NS # NS Peak
-gaussianpeak_prefactor_0 = peak_constant_NS # NS Peak
-gaussianpeak_prefactor_1 = peak_constant_NS # NS Peak
+gaussianpeak_mean_2 = mu_peak_NS # NS Peak
+gaussianpeak_stdv_2 = sig_peak_NS # NS Peak
+gaussianpeak_prefactor_2 = peak_constant_NS # NS Peak
 min_mass1_source = model_min
-min_mass2_source = model_min
 max_mass1_source = model_max
-max_mass2_source = model_max
 
 
 # Pairing - Beta
@@ -101,45 +72,30 @@ omegamatter = Om0
 pow_redshift  = kappa
 
 
-# Spin - Single Gaussian
-mean_spin1_magnitude = mu_chi
-mean_spin2_magnitude = mu_chi
-stdv_spin1_magnitude = sig_chi
-stdv_spin2_magnitude = sig_chi
-mean_spin1_cos_polar_angle = 0
-mean_spin2_cos_polar_angle = 0
-Mixture = mix_tilt
-stdv_spin1_cos_polar_angle = sig_tilt
-stdv_spin2_cos_polar_angle = sig_tilt
-max_spin1_magnitude = a_max
-max_spin2_magnitude = a_max
-min_spin1_magnitude = a_min
-min_spin2_magnitude = a_min
-max_spin1_cos_polar_angle = costilt_max
-max_spin2_cos_polar_angle = costilt_max
+# Spin Magnitude - Single Gaussian
+
+
+# Spin Magnitude - Broken Gaussian (Mass dependent)
+min_spin1_magnitude_mass1_source_0 = a_max_NS
+max_spin1_magnitude_mass1_source_0 = a_min
+mean_spin1_magnitude_mass1_source_0 = mu_chi1
+stdv_spin1_magnitude_mass1_source_0 = sig_chi1
+switch_mass1_source_0 = m_spin_break
+min_spin1_magnitude_mass1_source_1 = a_min
+max_spin1_magnitude_mass1_source_1 = a_max
+mean_spin1_magnitude_mass1_source_1 = mu_chi2
+stdv_spin1_magnitude_mass1_source_1 = sig_chi2
+
+
+
+# Spin Tilt - Single Mixture
 min_spin1_cos_polar_angle = costilt_min
-min_spin2_cos_polar_angle = costilt_min
+max_spin1_cos_polar_angle = costilt_max
+mean_spin1_cos_polar_angle = 0
+stdv_spin1_cos_polar_angle = sig_tilt
+mix_tilt1 = ??? 
 
-
-# Spin - Broken Gaussian (Mass dependent) - Only implemented for primary and secondary but not implemented for mass dependent spins? 
-mbreak_spin1_magnitude = m_spin_break
-mbreak_spin2_magnitude = m_spin_break
-min_spin1_magnitude_low = a_min
-min_spin2_magnitude_low = a_min
-max_spin1_magnitude_low = a_max_NS
-max_spin2_magnitude_low = a_max_NS
-mu_spin1_magnitude_low = mu_chi1
-mu_spin2_magnitude_low = mu_chi1
-sig_spin1_magnitude_low = sig_chi1
-sig_spin2_magnitude_low = sig_chi1
-mu_spin1_magnitude_high = mu_chi2
-mu_spin2_magnitude_high = mu_chi2
-sig_spin1_magnitude_high= sig_chi2
-sig_spin2_magnitude_high = sig_chi2
-min_spin1_magnitude_high = a_max
-max_spin1_magnitude_high = a_max
-min_spin2_magnitude_high = a_min
-max_spin2_magnitude_high = a_max
+# Spin Tilt - Mass dependent Mixture
 
 
 
