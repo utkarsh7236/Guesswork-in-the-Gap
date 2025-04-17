@@ -1,0 +1,2 @@
+min_mass1_source,max_mass1_source,pow_mass1_source,min_mass2_source,max_mass2_source,pow_mass2_source,min_redshift,max_redshift,pow_redshift,Ho,OmegaMatter,OmegaLambda,OmegaRadiation,min_spin1_magnitude,max_spin1_magnitude,pow_spin1_magnitude,min_spin2_magnitude,max_spin2_magnitude,pow_spin2_magnitude
+0.5,10.0,0.0,0.5,10.0,0.0,0.0,4.0,0.0,2.195303890669613e-18,0.3089,0.6911,0.0,0.0,1.0,0.0,0.0,1.0,0.0
