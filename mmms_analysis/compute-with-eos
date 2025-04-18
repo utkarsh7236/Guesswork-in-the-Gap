@@ -1,0 +1,118 @@
+#!/bin/bash
+
+# a script to perform the actual analysis
+# Reed Essick (reed.essick@gmail.com)
+
+#-------------------------------------------------
+
+. config.sh # set up the sample sets that we will process
+
+#-------------------------------------------------
+
+EVENT_ARGS=""
+
+#EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 50000" # should be all available samples
+EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 10000"
+#EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 1000"
+
+EVENT_ARGS="$EVENT_ARGS --prior-column logprior"
+EVENT_ARGS="$EVENT_ARGS --prior-is-log"
+EVENT_ARGS="$EVENT_ARGS --m1-column mass1_source"
+EVENT_ARGS="$EVENT_ARGS --m2-column mass2_source"
+EVENT_ARGS="$EVENT_ARGS --d-column luminosity_distance"
+EVENT_ARGS="$EVENT_ARGS --q-range 0.0 1.0"
+EVENT_ARGS="$EVENT_ARGS --m-range 0.0 10.0"
+EVENT_ARGS="$EVENT_ARGS --mc-range 0.0 10.0"
+EVENT_ARGS="$EVENT_ARGS --d-range 0.0 10000.0"
+
+#------------------------
+
+POP_ARGS=""
+
+#POP_ARGS="$POP_ARGS --pop-max-num-samples 10000" # should be a significant downselect, but still many samples
+POP_ARGS="$POP_ARGS --pop-max-num-samples 10000"
+#POP_ARGS="$POP_ARGS --pop-max-num-samples 500"
+
+POP_ARGS="$POP_ARGS --mtov-column Mmax"
+POP_ARGS="$POP_ARGS --rtov-column Rmax"
+POP_ARGS="$POP_ARGS --pop-weight-is-log"
+
+#------------------------
+
+SEED="--seed 123"
+
+#-------------------------------------------------
+
+mkdir -p results figures
+
+#-------------------------------------------------
+
+for EOS_WEIGHT in $EOS_WEIGHTS
+do
+
+    for POP_SAMPLES in $POP_SAMPLE_SETS
+    do
+
+        for EVENT_SAMPLES in $EVENT_SAMPLE_SETS
+        do
+
+            for COMPONENT in $COMPONENTS
+            do
+
+                LABEL="${EVENT_SAMPLES}+${POP_SAMPLES}+${EOS_SAMPLES}-${EOS_WEIGHT}+component${COMPONENT}"
+
+                EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source --spin-column spin${COMPONENT}_magnitude"
+                EXTRA_POP_ARGS="--pop-weight-column ${EOS_WEIGHT}"
+
+                echo "--------------------------------------------------"
+                echo "processing: $LABEL"
+
+                # compute posterior probabilities
+
+                echo "-------------------------"
+                echo ">>> computing posterior odds"
+                echo "-------------------------"
+
+                /usr/bin/time -p \
+                mmms \
+                    etc/${EVENT_SAMPLES}.csv.gz \
+                    ${POP_SAMPLES}.ini \
+                    etc/${POP_SAMPLES}+${EOS_SAMPLES}.csv.gz \
+                    $EVENT_ARGS \
+                    $EXTRA_EVENT_ARGS \
+                    $POP_ARGS \
+                    $EXTRA_POP_ARGS \
+                    $SEED \
+                    --Verbose \
+                1> results/${LABEL}.out \
+                2> results/${LABEL}.err \
+                || exit 1
+
+                tail -n 2 results/${LABEL}.out
+
+                # generate summary plots
+
+                echo "-------------------------"
+                echo ">>> plotting visualizations"
+                echo "-------------------------"
+
+                /usr/bin/time -p \
+                mmms-plot \
+                    etc/${EVENT_SAMPLES}.csv.gz \
+                    $EVENT_ARGS \
+                    $EXTRA_EVENT_ARGS \
+                    ${POP_SAMPLES}.ini \
+                    etc/${POP_SAMPLES}+${EOS_SAMPLES}.csv.gz \
+                    $POP_ARGS \
+                    $EXTRA_POP_ARGS \
+                    $SEED \
+                    --Verbose \
+                    --output-dir figures \
+                    --tag ${LABEL} \
+                    --figtype png --dpi 200 \
+                || exit 1
+
+            done
+        done
+    done
+done
