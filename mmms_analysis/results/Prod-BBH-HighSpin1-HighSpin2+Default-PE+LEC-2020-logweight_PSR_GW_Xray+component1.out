@@ -1,0 +1,51 @@
+setting numpy.random.seed=123
+reading config from: Default-PE.ini
+instantiating SamplingDistribution [PowerLawComponentMass]
+instantiating SamplingDistribution [IsotropicPowerLawPolarSpin1Spin2]
+instantiating SamplingDistribution [LocalMergerRatePowerLaw1plusRedshift]
+loading samples from : etc/Default-PE+LEC-2020.csv.gz
+current number of samples (1000) is less than or equal to the maximum requested (inf)
+pruning Mmax samples to fit within [0.100000, 5.000000]
+    retained 1000 / 1000 samples
+current number of samples (1000) is less than or equal to the maximum requested (10000)
+extracting nontrival weights from column=logweight_PSR_GW_Xray
+    exponentiating weights
+Mtov Samples
+    num=1000
+    mean=2.256652e+00
+    median=2.228442e+00
+    std=1.669291e-01
+    min=1.884662e+00
+    max=4.556139e+00
+loading samples from : etc/Prod-BBH-HighSpin1-HighSpin2.csv.gz
+current number of samples (23988) is less than or equal to the maximum requested (inf)
+pruning mass1_source samples to fit within [0.000000, 10.000000]
+pruning mass2_source samples to fit within [0.000000, 10.000000]
+pruning chirp mass samples to fit within [0.000000, 10.000000]
+pruning mass ratio samples to fit within [0.000000, 1.000000]
+pruning luminosity_distance samples to fit within [0.000000, 10000.000000]
+    retained 23988 / 23988 samples
+downsampling from 23988 -> 10000 samples
+extracting nontrival weights from column=logprior
+    exponentiating weights
+Mass Samples
+    num=10000
+    mean=3.580760e+00
+    median=3.640296e+00
+    std=5.901838e-01
+    min=2.162239e+00
+    max=6.176688e+00
+Spin Samples
+    num=10000
+    mean=4.470203e-01
+    median=4.441574e-01
+    std=2.357202e-01
+    min=1.481244e-04
+    max=9.895686e-01
+marginalizing to compute posterior and odds ratio
+    including spin effects
+computing moments over single-event uncertainty for each population sample separately
+computing sums over population uncertainty
+computing moments over population uncertainty
+    Probability: P(mass <= max_mass(spin, eos)AND spin <= max_spin(eos)) = 0.036593 +/- 0.002647931
+    Odds Ratio : O^{mass <= max_mass(spin, eos)AND spin <= max_spin(eos))_{else} = 0.037983 +/- 0.002852904
