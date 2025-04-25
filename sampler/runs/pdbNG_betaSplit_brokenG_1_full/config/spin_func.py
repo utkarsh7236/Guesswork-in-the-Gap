@@ -1,4 +1,3 @@
-from cosmology import *
 from jax.scipy.special import erf
 
 # Matches Colm Talbot from gwpopulation
