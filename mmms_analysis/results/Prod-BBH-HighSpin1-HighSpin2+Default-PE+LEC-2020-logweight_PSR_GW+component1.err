@@ -1,0 +1,7 @@
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/distributions/base/standard.py:141: RuntimeWarning: divide by zero encountered in log
+  -be.log(variate) - be.log(be.log(max_variate) - be.log(min_variate)),
+real 39.93
+user 39.76
+sys 0.10
