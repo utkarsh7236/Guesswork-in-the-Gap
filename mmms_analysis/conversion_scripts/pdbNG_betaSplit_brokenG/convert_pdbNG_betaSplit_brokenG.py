@@ -176,9 +176,15 @@ if __name__ == "__main__":
         f.write(f"priors_path: {priors_path}\n")
         f.write(f"mass_model_path: {mass_model_path}\n")
         f.write(f"spin_model_path: {spin_model_path}\n")
-        f.write(f"posterior_samples_fixed: {posterior_samples_fixed}\n")
-        f.write(f"conversion_dict: {conversion_dict}\n")
-        f.write(f"inv_conversion_dict: {inv}\n")
+
+
+    # save posterior_samples_fixed, conversion_dict and inv as dictionaries:
+    with open("conversion_dict.json", "w") as f:
+        json.dump(conversion_dict, f)
+    with open("conversion_dict_inv.json", "w") as f:
+        json.dump(inv, f)
+    with open("posterior_samples_fixed.json", "w") as f:
+        json.dump(posterior_samples_fixed, f)
 
     # save merged_posterior_samples as pkl file
     with open("merged_posterior_samples.pkl", "wb") as f:
@@ -187,6 +193,6 @@ if __name__ == "__main__":
     with open("converted_posterior_samples.pkl", "wb") as f:
         pickle.dump(samples, f)
 
-    # copy mass_func1d and spin_func to directory
-    shutil.copy(mass_model_path, "mass_func1d.py")
-    shutil.copy(spin_model_path, "spin_func.py")
+    # # copy mass_func1d and spin_func to directory
+    # shutil.copy(mass_model_path, "mass_func1d.py")
+    # shutil.copy(spin_model_path, "spin_func.py")
