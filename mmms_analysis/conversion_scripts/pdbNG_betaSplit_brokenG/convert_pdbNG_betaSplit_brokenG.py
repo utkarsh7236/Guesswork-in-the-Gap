@@ -187,6 +187,6 @@ if __name__ == "__main__":
     with open("converted_posterior_samples.pkl", "wb") as f:
         pickle.dump(samples, f)
 
-    # # copy mass_func1d and spin_func to directory
-    # shutil.copy(mass_model_path, "mass_func1d.py")
-    # shutil.copy(spin_model_path, "spin_func.py")
+    # copy mass_func1d and spin_func to directory
+    shutil.copy(mass_model_path, "mass_func1d.py")
+    shutil.copy(spin_model_path, "spin_func.py")
