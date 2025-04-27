@@ -1,0 +1,3 @@
+priors_path: ../../../sampler/runs/pdbNG_betaSplit_brokenG_1_full_sig_peak1_large/priors.py
+mass_model_path: ../../../sampler/runs/pdbNG_betaSplit_brokenG_1_full_sig_peak1_large/config/mass1d_func.py
+spin_model_path: ../../../sampler/runs/pdbNG_betaSplit_brokenG_1_full_sig_peak1_large/config/spin_func.py
