@@ -9,7 +9,8 @@ import h5py
 import jax.numpy as xp
 import pickle
 import shutil
-
+import csv
+import gzip
 
 def extract_equalities(file_path):
     equalities = {}
@@ -205,3 +206,10 @@ if __name__ == "__main__":
     # # copy mass_func1d and spin_func to directory
     # shutil.copy(mass_model_path, "mass_func1d.py")
     # shutil.copy(spin_model_path, "spin_func.py")
+
+    # Write to gzip CSV
+    with gzip.open("population.csv.gz", "wt", newline="", encoding="utf-8") as gzfile:
+        fieldnames = samples[0].keys()
+        writer = csv.DictWriter(gzfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(samples)
