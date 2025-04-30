@@ -22,9 +22,6 @@ def pdb(m, m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, 
     _l = l(m, m_max, eta_max)
     bpl = broken_power(m, alpha_1, alpha_2, m_break, 1)
     ret = _h * _n * _l * bpl
-
-    # Apply model limits
-    ret = xp.where((m <= model_max) & (m >= model_min), ret, 1e-200)
     return ret
 
 # Matches Colm Talbot from gwpopulation
@@ -46,4 +43,5 @@ def multi_pdb(m, m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_
     m1 = pdb(m, m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, model_min, model_max)
     m2 = peak_constant1 * truncnorm(m, [mu_peak1, sig_peak1, model_min, model_max])
     m3 = peak_constant2 * truncnorm(m, [mu_peak2, sig_peak2, model_min, model_max])
-    return m1 * (1 + m2 + m3)
+    ret = m1 * (1 + m2 + m3)
+    return xp.where((m <= model_max) & (m >= model_min), ret, 0.0)
