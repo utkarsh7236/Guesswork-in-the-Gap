@@ -29,7 +29,7 @@ def prior():
     beta_1 = n.sample('beta_1', numpyro_dist.Uniform(-5, 5))
     beta_2 = n.sample('beta_2', numpyro_dist.Uniform(-5, 5))
     sep = 5
-    delta_beta = n.sample('delta_beta', numpyro_dist.Uniform(0.001, 10))
+    delta_beta = n.sample('delta_beta', numpyro_dist.Uniform(1, 1000))
     H0 = 67.32
     Om0 = 0.3158
     w = -1.0
