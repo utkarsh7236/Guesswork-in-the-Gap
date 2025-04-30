@@ -1,10 +1,13 @@
 import jax.numpy as xp
 
 
+def logistic(x, sep, L1, L2, delta_beta, width = 20):
+    scale = (x - sep) / width
+    transition = 1 / (1 + xp.exp(-delta_beta * scale))
+    return L1 * (1-transition) + L2 * transition
+
 def beta_split_smooth(m1, m2, beta_1, beta_2, sep, delta_beta):
-    ratio = (m2 / m1)/sep
-    term1 = ratio ** -beta_1
-    term2 = 0.5 * (1 + ratio**(1/delta_beta))
-    power_term = (beta_1 - beta_2)/delta_beta
-    ret = term1 * (term2 ** power_term)
+    plaw1 = (m2/m1) ** beta_1
+    plaw2 = (m2/m1) ** beta_2
+    ret = logistic(m2, sep, plaw1, plaw2, delta_beta)
     return ret
