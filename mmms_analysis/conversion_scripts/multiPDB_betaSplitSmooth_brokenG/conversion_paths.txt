@@ -1,0 +1,3 @@
+priors_path: ../../../sampler/runs/multiPDB_betaSplitSmooth_brokenG_1_full/priors.py
+mass_model_path: ../../../sampler/runs/multiPDB_betaSplitSmooth_brokenG_1_full/config/mass1d_func.py
+spin_model_path: ../../../sampler/runs/multiPDB_betaSplitSmooth_brokenG_1_full/config/spin_func.py
