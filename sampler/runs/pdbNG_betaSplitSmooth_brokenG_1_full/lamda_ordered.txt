@@ -24,7 +24,7 @@ model_max
 beta_1
 beta_2
 sep
-delta_beta
+mwidth
 H0
 Om0
 w

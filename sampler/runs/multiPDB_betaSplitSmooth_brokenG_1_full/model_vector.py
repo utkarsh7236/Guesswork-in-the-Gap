@@ -9,8 +9,8 @@ from config.spin_func import *
 
 def ln_prob_m_det(theta, lamda):
     mass1_source, mass2_source, z, a1, costilt1, a2, costilt2 = theta
-    (m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, model_min, model_max, beta_1, beta_2, sep, delta_beta, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS) = lamda
-    pairing_func = lambda m1, m2: beta_split_smooth(m1, m2, beta_1, beta_2, sep, delta_beta)
+    (m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, model_min, model_max, beta_1, beta_2, sep, mwidth, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS) = lamda
+    pairing_func = lambda m1, m2: beta_split_smooth(m1, m2, beta_1, beta_2, sep, mwidth)
     mass_prob_func = lambda m: multi_pdb(m,m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, model_min, model_max)
     prob_mass1_source = mass_prob_func(mass1_source)
     prob_mass2_source = mass_prob_func(mass2_source)
@@ -21,14 +21,14 @@ def ln_prob_m_det(theta, lamda):
 
 def ln_prob_distance(theta, lamda):
     mass1_source, mass2_source, z, a1, costilt1, a2, costilt2 = theta
-    (m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, model_min, model_max, beta_1, beta_2, sep, delta_beta, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS) = lamda
+    (m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, model_min, model_max, beta_1, beta_2, sep, mwidth, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS) = lamda
     distance_func = powerlaw_redshift(z, mass1_source, mass2_source, H0, Om0, w, kappa)
     ret = xp.log(distance_func)
     return ret
 
 def ln_prob_spin(theta, lamda):
     mass1_source, mass2_source, z, a1, costilt1, a2, costilt2 = theta
-    (m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, model_min, model_max, beta_1, beta_2, sep, delta_beta, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS) = lamda
+    (m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, model_min, model_max, beta_1, beta_2, sep, mwidth, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS) = lamda
     spin_prob_func = brokenG(mass1_source, mass2_source, a1, costilt1, a2, costilt2, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS)
     ret = xp.log(spin_prob_func)
     return ret
