@@ -1,6 +1,6 @@
 DONE - multiPDB_betaSplit_brokenG_1_full
 DONE - multiPDB_betaSplit_singleG_1_full
-multiPDB_betaSplit3_brokenG_1_full
+DONE - multiPDB_betaSplit3_brokenG_1_full
     multiPDB_betaSplitSmooth_brokenG_1_full
 DONE - pdbNG_betaSplit_brokenG_1_full
 DONE - pdbNG_betaSplit_brokenG_1_full_same_mbrk
@@ -8,5 +8,5 @@ DONE - pdbNG_betaSplit_brokenG_1_full_sig_peak1_large
 DONE - pdbNG_betaSplit_brokenG_1_full_sig_peak1_test
 DONE - pdbNG_betaSplit_brokenG_1_full_tight_prior
 DONE - pdbNG_betaSplit_singleG_1_full
-    pdbNG_betaSplit3_brokenG_1_full
+pdbNG_betaSplit3_brokenG_1_full
     pdbNG_betaSplitSmooth_brokenG_1_full
