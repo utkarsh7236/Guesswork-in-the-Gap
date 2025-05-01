@@ -32,7 +32,7 @@ def prior():
     beta_1 = n.sample('beta_1', numpyro_dist.Uniform(-5, 5))
     beta_2 = n.sample('beta_2', numpyro_dist.Uniform(-5, 5))
     sep = 5
-    delta_beta = n.sample('delta_beta', numpyro_dist.Uniform(1, 1000))
+    mwidth = n.sample('mwidth', numpyro_dist.LogUniform(0.01, 10))
     H0 = 67.32
     Om0 = 0.3158
     w = -1.0
@@ -54,13 +54,13 @@ def prior():
     z_min = 0.0001
     z_max = 2.0
     
-    lamda = [m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, mu_peak_NS, sig_peak_NS, peak_constant_NS, model_min, model_max, beta_1, beta_2, sep, delta_beta, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS]
+    lamda = [m_break, alpha_1, alpha_2, gamma_low, eta_low, gamma_high, eta_high, A, m_min, eta_min, m_max, eta_max, mu_peak1, sig_peak1, peak_constant1, mu_peak2, sig_peak2, peak_constant2, mu_peak_NS, sig_peak_NS, peak_constant_NS, model_min, model_max, beta_1, beta_2, sep, mwidth, H0, Om0, w, kappa, mu_chi1, sig_chi1, mix_tilt1, sig_tilt1, mu_chi2, sig_chi2, mix_tilt2, sig_tilt2, m_spin_break, a_min, a_max, costilt_max, costilt_min, a_max_NS]
     return lamda
     
     
 def get_guess_args(num_chains):
     g = lambda guess: guess * xp.ones(num_chains)
-    guess_args = {'m_break': 5.0, 'alpha_1': -3.28, 'alpha_2': -1.15, 'gamma_low': 2.4, 'eta_low': 10.0, 'gamma_high': 5.5, 'eta_high': 10.0, 'A': 0.9, 'm_min': 1.1, 'eta_min': 20.0, 'm_max': 70.0, 'eta_max': 3.0, 'mu_peak1': 9.0, 'sig_peak1': 2.0, 'peak_constant1': 50.0, 'mu_peak2': 35.0, 'sig_peak2': 5.0, 'peak_constant2': 50.0, 'mu_peak_NS': 1.4, 'sig_peak_NS': 0.5, 'peak_constant_NS': 50.0, 'beta_1': 0.41, 'beta_2': 4.83, 'delta_beta': 0.2, 'kappa': 2.7, 'mu_chi1': 0.1, 'sig_chi1': 0.25, 'mix_tilt1': 0.5, 'sig_tilt1': 1.0, 'mu_chi2': 0.1, 'sig_chi2': 1.0, 'mix_tilt2': 0.5, 'sig_tilt2': 1.0}
+    guess_args = {'m_break': 5.0, 'alpha_1': -3.28, 'alpha_2': -1.15, 'gamma_low': 2.4, 'eta_low': 10.0, 'gamma_high': 5.5, 'eta_high': 10.0, 'A': 0.9, 'm_min': 1.1, 'eta_min': 20.0, 'm_max': 70.0, 'eta_max': 3.0, 'mu_peak1': 9.0, 'sig_peak1': 2.0, 'peak_constant1': 50.0, 'mu_peak2': 35.0, 'sig_peak2': 5.0, 'peak_constant2': 50.0, 'mu_peak_NS': 1.4, 'sig_peak_NS': 0.5, 'peak_constant_NS': 50.0, 'beta_1': 0.41, 'beta_2': 4.83, 'mwidth': 1.0, 'kappa': 2.7, 'mu_chi1': 0.1, 'sig_chi1': 0.25, 'mix_tilt1': 0.5, 'sig_tilt1': 1.0, 'mu_chi2': 0.1, 'sig_chi2': 1.0, 'mix_tilt2': 0.5, 'sig_tilt2': 1.0}
     for key in guess_args:
         guess_args[key] = g(guess_args[key])
     return guess_args

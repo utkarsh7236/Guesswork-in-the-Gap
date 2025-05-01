@@ -1,5 +1,5 @@
 variable,prior,inits,label
 beta_1,"Uniform(-5, 5)",0.41,"beta_1"
 beta_2,"Uniform(-5, 5)",4.83,"beta_2"
-delta_beta,"Uniform(1, 1000)",0.2,"delta_beta"
+mwidth,"LogUniform(0.01, 10)",1,mwidth
 sep,5,nan,"sep"
