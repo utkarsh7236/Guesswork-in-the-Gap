@@ -1,8 +1,8 @@
 #!/bin/bash
 
-EOS_WEIGHT="logweight_PSR_GW_Xray"
 EVENT_SAMPLES="Prod-BBH-HighSpin1-HighSpin2"
-POP_SAMPLES="Farah2022-g-PDB"
+POP_LABEL="pdb"
+POP_FOLDER="conversion_scripts/${POP_LABEL}"
 EOS_SAMPLES="LEC-2020"
 COMPONENT="1"
 SEED="--seed 7236"
@@ -25,15 +25,15 @@ POP_ARGS=""
 POP_ARGS="$POP_ARGS --pop-max-num-samples 100"
 POP_ARGS="$POP_ARGS --mtov-column notch_lowmass_scale"
 
-LABEL="${EVENT_SAMPLES}+${POP_SAMPLES}+component${COMPONENT}"
+LABEL="${EVENT_SAMPLES}+${POP_LABEL}+component${COMPONENT}"
 
 # Assertions
 [[ -f etc/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
-[[ -f etc/${POP_SAMPLES}+${EOS_SAMPLES}.csv.gz ]] || { echo "Missing pop samples file"; exit 1; }
+[[ -f ${POP_FOLDER}/population.csv.gz ]] || { echo "Missing pop samples file"; exit 1; }
 
 mmms etc/${EVENT_SAMPLES}.csv.gz \
-     ${POP_SAMPLES}.ini \
-     etc/${POP_SAMPLES}+${EOS_SAMPLES}.csv.gz \
+     ${POP_FOLDER}/dist.ini \
+     ${POP_FOLDER}/population.csv.gz \
      ${EVENT_ARGS} \
      ${EXTRA_EVENT_ARGS} \
      ${POP_ARGS} \
@@ -47,8 +47,8 @@ mmms-plot \
     etc/${EVENT_SAMPLES}.csv.gz \
     ${EVENT_ARGS} \
     ${EXTRA_EVENT_ARGS} \
-    ${POP_SAMPLES}.ini \
-    etc/${POP_SAMPLES}.csv.gz \
+    ${POP_FOLDER}/dist.ini \
+    ${POP_FOLDER}/population.csv.gz \
     ${POP_ARGS} \
     ${SEED} \
     --Verbose \
