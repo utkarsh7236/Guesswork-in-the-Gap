@@ -22,7 +22,7 @@ EVENT_ARGS="$EVENT_ARGS --d-range 0.0 10000.0"
 EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
 
 POP_ARGS=""
-POP_ARGS="$POP_ARGS --pop-max-num-samples 1000"
+POP_ARGS="$POP_ARGS --pop-max-num-samples 100"
 POP_ARGS="$POP_ARGS --mtov-column notch_lowmass_scale"
 
 LABEL="${EVENT_SAMPLES}+${POP_SAMPLES}+component${COMPONENT}"
@@ -41,3 +41,18 @@ mmms etc/${EVENT_SAMPLES}.csv.gz \
      --Verbose \
      1> testing_mmms/${LABEL}.out \
      2> testing_mmms/${LABEL}.err
+
+# Plot command
+mmms-plot \
+    etc/${EVENT_SAMPLES}.csv.gz \
+    ${EVENT_ARGS} \
+    ${EXTRA_EVENT_ARGS} \
+    ${POP_SAMPLES}.ini \
+    etc/${POP_SAMPLES}.csv.gz \
+    ${POP_ARGS} \
+    ${SEED} \
+    --Verbose \
+    --output-dir testing_mmms \
+    --tag ${LABEL} \
+    --figtype png --dpi 200
+
