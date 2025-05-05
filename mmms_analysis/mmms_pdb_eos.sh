@@ -20,7 +20,7 @@ EVENT_ARGS="$EVENT_ARGS --d-range 0.0 10000.0"
 
 POP_ARGS=""
 
-POP_ARGS="$POP_ARGS --pop-max-num-samples 100" # 10000 is full
+POP_ARGS="$POP_ARGS --pop-max-num-samples 10000" # 10000 is full
 POP_ARGS="$POP_ARGS --mtov-column Mmax"
 POP_ARGS="$POP_ARGS --rtov-column Rmax"
 POP_ARGS="$POP_ARGS --pop-weight-is-log"
