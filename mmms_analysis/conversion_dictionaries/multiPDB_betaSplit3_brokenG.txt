@@ -1,5 +1,12 @@
 {
+"Ncomp":"Ncomp",
+"Ho":"H0",
+"OmegaMatter":"Om0",
+"OmegaRadiation":"Or0",
+"OmegaLambda":"OL0",
 "pow_redshift":"kappa",
+"max_redshift":"max_redshift",
+"min_redshift":"min_redshift",
 "min_mass1_source":"model_min",
 "alpha0":"alpha_1",
 "break1_mass1_source":"m_break",
