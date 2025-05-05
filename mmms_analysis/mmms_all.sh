@@ -10,9 +10,11 @@ chmod +x ./*.sh
 ./mmms_pdbNG_betaSplit_brokenG_sig_peak1_large.sh &
 ./mmms_pdbNG_betaSplit_brokenG_sig_peak1_test.sh &
 ./mmms_pdbNG_betaSplit_brokenG_tight_prior.sh &
+./mmms_pdbNG_betaSplit3_brokenG.sh &
 ./mmms_mmms_pdbNG_betaSplit_singleG.sh &
 ./mmms_multiPDB_betaSplit_brokenG.sh &
 ./mmms_multiPDB_betaSplit_singleG.sh &
+./mmms_multiPDB_betaSplit3_brokenG.sh &
 
 # Wait for all to finish
 wait
