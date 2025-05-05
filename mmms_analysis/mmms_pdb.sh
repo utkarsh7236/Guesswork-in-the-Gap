@@ -1,8 +1,8 @@
 #!/bin/bash
 
 EVENT_SAMPLES="Prod-BBH-HighSpin1-HighSpin2"
-POP_LABEL="pdb"
-POP_FOLDER="conversion_scripts/${POP_LABEL}"
+POP_LABEL="Farah2022-g-PDB"
+POP_FOLDER="conversion_scripts/pdb"
 EOS_SAMPLES="LEC-2020"
 COMPONENT="1"
 SEED="--seed 7236"
@@ -32,7 +32,7 @@ LABEL="${EVENT_SAMPLES}+${POP_LABEL}+component${COMPONENT}"
 [[ -f ${POP_FOLDER}/population.csv.gz ]] || { echo "Missing pop samples file"; exit 1; }
 
 mmms etc/${EVENT_SAMPLES}.csv.gz \
-     ${POP_FOLDER}/dist.ini \
+     ${POP_LABEL}.ini \
      ${POP_FOLDER}/population.csv.gz \
      ${EVENT_ARGS} \
      ${EXTRA_EVENT_ARGS} \
@@ -47,7 +47,7 @@ mmms-plot \
     etc/${EVENT_SAMPLES}.csv.gz \
     ${EVENT_ARGS} \
     ${EXTRA_EVENT_ARGS} \
-    ${POP_FOLDER}/dist.ini \
+     ${POP_LABEL}.ini \
     ${POP_FOLDER}/population.csv.gz \
     ${POP_ARGS} \
     ${SEED} \
