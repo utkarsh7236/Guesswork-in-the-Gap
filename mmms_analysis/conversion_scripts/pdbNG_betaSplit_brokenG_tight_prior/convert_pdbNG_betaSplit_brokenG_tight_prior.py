@@ -82,6 +82,14 @@ if __name__ == "__main__":
     folder_path = "../../../sampler/runs/pdbNG_betaSplit_brokenG_1_full_tight_prior/"
     priors_path = folder_path + "priors.py"
     posterior_samples_fixed = extract_equalities(priors_path)
+    posterior_samples_fixed["Ncomp"] = str(2.0)
+    posterior_samples_fixed["Or0"] = str(0.0)
+    # Converting units to what gwdistributions can understand
+    posterior_samples_fixed["H0"] = str(float(posterior_samples_fixed["H0"]) * (1000/3.086e22))
+    posterior_samples_fixed["OL0"] = str(0.6911) # 0.6842 Doesnt work with any other cosmology
+    posterior_samples_fixed["Om0"] = str(0.3089) # 0.3158 Doesnt work with any other cosmology
+    posterior_samples_fixed["max_redshift"] = str(4.0) # Using gw230529 defaults
+    posterior_samples_fixed["min_redshift"] = str(0.0)
     config_path = folder_path + "config/"
     mass_model_path = config_path + "mass1d_func.py"
     spin_model_path = config_path + "spin_func.py"
