@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 EVENT_SAMPLES="gw230529_highSpin"
 POP_LABEL="multiPDB_betaSplit3_brokenG"
 POP_FOLDER="conversion_scripts/${POP_LABEL}"

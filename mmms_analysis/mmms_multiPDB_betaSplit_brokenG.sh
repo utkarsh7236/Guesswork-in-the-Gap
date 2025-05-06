@@ -1,6 +1,6 @@
 #!/bin/bash
 
-EVENT_SAMPLES="Prod-BBH-HighSpin1-HighSpin2"
+EVENT_SAMPLES="gw230529_highSpin"
 POP_LABEL="multiPDB_betaSplit_brokenG"
 POP_FOLDER="conversion_scripts/${POP_LABEL}"
 EOS_SAMPLES="LEC-2020"
