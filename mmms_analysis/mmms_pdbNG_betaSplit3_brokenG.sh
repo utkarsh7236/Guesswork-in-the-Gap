@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source mmms_shared_config.sh
+
 EVENT_SAMPLES="gw230529_highSpin"
 POP_LABEL="pdbNG_betaSplit3_brokenG"
 POP_FOLDER="conversion_scripts/${POP_LABEL}"
@@ -21,9 +23,7 @@ EVENT_ARGS="$EVENT_ARGS --d-range 0.0 10000.0"
 
 EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
 
-POP_ARGS=""
-POP_ARGS="$POP_ARGS --pop-max-num-samples 1000"
-POP_ARGS="$POP_ARGS --mtov-column notch_lowmass_scale"
+POP_ARGS="$POP_MAX_ARG --mtov-column notch_lowmass_scale"
 
 LABEL="${EVENT_SAMPLES}+${POP_LABEL}+component${COMPONENT}"
 
