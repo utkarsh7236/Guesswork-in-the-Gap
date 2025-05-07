@@ -2,7 +2,6 @@
 
 source mmms_shared_config.sh
 
-EVENT_SAMPLES="gw230529_highSpin"
 POP_LABEL="multiPDB_betaSplit_singleG"
 POP_FOLDER="conversion_scripts/${POP_LABEL}"
 EOS_SAMPLES="LEC-2020"
