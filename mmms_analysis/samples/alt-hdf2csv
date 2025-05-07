@@ -1,0 +1,123 @@
+#!/usr/bin/env python3
+
+"""a quick script to extract posterior samples and write them into a CSV
+"""
+__author__ = "Reed Essick (reed.essick@gmail.com)"
+
+#-------------------------------------------------
+
+import h5py
+import numpy as np
+
+from argparse import ArgumentParser
+
+### non-standard libraries
+from gwdistributions import distributions as dist
+
+#-------------------------------------------------
+
+parser = ArgumentParser()
+
+parser.add_argument('hdf', type=str, help='input file')
+parser.add_argument('csv', type=str, help='output file')
+
+parser.add_argument('--root', type=str, default=None)
+
+parser.add_argument('-v', '--verbose', default=False, action='store_true')
+parser.add_argument('-V', '--Verbose', default=False, action='store_true')
+
+args = parser.parse_args()
+
+args.verbose |= args.Verbose
+
+#-------------------------------------------------
+
+# load samples from HDF
+
+if args.verbose:
+    print('loading: '+args.hdf)
+
+with h5py.File(args.hdf, 'r') as obj:
+    if args.root is not None:
+        grp = obj[args.root]
+    else:
+        grp = obj
+    data = dict((key, grp['posterior_samples'][key][:]) for key in grp['posterior_samples'].dtype.names)
+
+if args.Verbose:
+    for key, val in data.items():
+        print('    %s\t(%d samples)' % (key, len(val)))
+
+#-----------------------
+
+# convert keys to gw-distributions naming conventions
+
+if args.verbose:
+    print('converting naming convention')
+
+renamed = dict()
+
+renamed['mass1_source'] = data['mass_1_source']
+renamed['mass2_source'] = data['mass_2_source']
+
+renamed['luminosity_distance'] = data['luminosity_distance']
+renamed['z'] = data['redshift']
+
+renamed['spin1_azimuthal_angle'] = data['phi_1']
+renamed['spin1_polar_angle'] = data['tilt_1']
+renamed['spin1_magnitude'] = data['a_1']
+
+renamed['spin2_azimuthal_angle'] = data['phi_2']
+renamed['spin2_polar_angle'] = data['tilt_2']
+renamed['spin2_magnitude'] = data['a_2']
+
+#------------------------
+
+# compute priors for population reweighing
+
+if args.verbose:
+    print('computing priors')
+
+# default PE priors are:
+#   uniform in detector-frame component masses
+#   uniform in spin magnitude, isotropic in spin direction
+#   uniform in comoving volume and source-frame time
+
+# instantiate the relevant objects
+
+spin = dist.IsotropicPowerLawPolarSpin1Spin2(
+    min_spin1_magnitude=0.0,
+    max_spin1_magnitude=1.0,
+    pow_spin1_magnitude=0.0,
+    min_spin2_magnitude=0.0,
+    max_spin2_magnitude=1.0,
+    pow_spin2_magnitude=0.0,
+)
+
+redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
+    min_redshift=0.0,
+    max_redshift=4.0,
+    pow_redshift=0.0,
+)
+
+# now compute the prior
+renamed['logprior'] = 2 * np.log(1+renamed['z']) \
+    + spin.logprob(renamed) \
+    + redshift.logprob(renamed)
+
+#------------------------
+
+# write to disk
+
+if args.verbose:
+    print('writing: '+args.csv)
+
+keys = sorted(renamed.keys())
+
+np.savetxt(
+    args.csv,
+    np.transpose([renamed[key] for key in keys]),
+    header=','.join(keys),
+    comments='',
+    delimiter=',',
+)
