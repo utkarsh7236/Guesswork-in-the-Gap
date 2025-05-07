@@ -28,6 +28,7 @@ for EVENT_SAMPLES in "${EVENT_SAMPLES_LIST[@]}"; do
     sed -i '' "s/^EOS_WEIGHT=.*/EOS_WEIGHT=\"$EOS_WEIGHT\"/" mmms_eos_shared_config.sh
     echo "    Running scripts for EOS_WEIGHT=$EOS_WEIGHT"
     ./mmms_eos_pdbNG_betaSplit_brokenG.sh &
+    ./mmms_pdbNG_betaSplit_brokenG_same_mbrk.sh &
   done
 done
 # Wait for all to finish
