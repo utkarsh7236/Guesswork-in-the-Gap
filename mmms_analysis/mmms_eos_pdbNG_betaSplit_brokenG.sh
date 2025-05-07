@@ -1,0 +1,67 @@
+#!/bin/bash
+
+sorce mmms_eos_shared_config.sh
+
+POP_LABEL="pdbNG_betaSplit_brokenG_tight_prior"
+POP_FOLDER="conversion_scripts/${POP_LABEL}"
+EOS_SAMPLES="LEC-2020"
+COMPONENT="1"
+SEED="--seed 7236"
+
+EVENT_ARGS=""
+
+#EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 50000" # should be all available samples
+EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 10000"
+#EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 1000"
+
+EVENT_ARGS="$EVENT_ARGS --prior-column logprior"
+EVENT_ARGS="$EVENT_ARGS --prior-is-log"
+EVENT_ARGS="$EVENT_ARGS --m1-column mass1_source"
+EVENT_ARGS="$EVENT_ARGS --m2-column mass2_source"
+EVENT_ARGS="$EVENT_ARGS --d-column luminosity_distance"
+EVENT_ARGS="$EVENT_ARGS --q-range 0.0 1.0"
+EVENT_ARGS="$EVENT_ARGS --m-range 0.0 10.0"
+EVENT_ARGS="$EVENT_ARGS --mc-range 0.0 10.0"
+EVENT_ARGS="$EVENT_ARGS --d-range 0.0 10000.0"
+
+SEED="--seed 123"
+
+
+LABEL="${EVENT_SAMPLES}+${POP_LABEL}_${EOS_SAMPLES}-${EOS_WEIGHT}+component${COMPONENT}"
+
+# Assertions
+[[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
+[[ -f samples/eos_population_mixtures/${POP_LABEL}_${EOS_SAMPLES}.csv.gz ]] || { echo "Missing combined eos pop samples file"; exit 1; }
+
+EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source --spin-column spin${COMPONENT}_magnitude"
+EXTRA_POP_ARGS="--pop-weight-column ${EOS_WEIGHT}"
+
+mmms \
+    samples/${EVENT_SAMPLES}.csv.gz \
+    ${POP_SAMPLES}.ini \
+    samples/eos_population_mixtures/${POP_SAMPLES}_${EOS_SAMPLES}.csv.gz \
+    ${EVENT_ARGS} \
+    ${EXTRA_EVENT_ARGS} \
+    ${POP_ARGS} \
+    ${EXTRA_POP_ARGS} \
+    ${SEED} \
+    --Verbose \
+    1> testing_mmms/${LABEL}.out \
+    2> testing_mmms/${LABEL}.err \
+    || exit 1
+
+mmms-plot \
+    samples/${EVENT_SAMPLES}.csv.gz \
+    $EVENT_ARGS \
+    $EXTRA_EVENT_ARGS \
+    ${POP_SAMPLES}.ini \
+    samples/eos_population_mixtures/${POP_SAMPLES}_${EOS_SAMPLES}.csv.gz \
+    $POP_ARGS \
+    $EXTRA_POP_ARGS \
+    $SEED \
+    --Verbose \
+    --output-dir figures \
+    --tag ${LABEL} \
+    --figtype png --dpi 200 \
+|| exit 1
+
