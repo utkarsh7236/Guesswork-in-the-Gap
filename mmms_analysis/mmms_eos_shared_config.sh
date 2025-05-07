@@ -6,6 +6,4 @@ POP_ARGS="$POP_ARGS --mtov-column Mmax"
 POP_ARGS="$POP_ARGS --rtov-column Rmax"
 POP_ARGS="$POP_ARGS --pop-weight-is-log"
 
-EOS_WEIGHT=""
-#EOS_WEIGHT="$EOS_WEIGHTS logweight_PSR_GW"
-#EOS_WEIGHT="$EOS_WEIGHTS logweight_PSR_GW_Xray"
+EOS_WEIGHT="logweight_PSR_GW_Xray"
