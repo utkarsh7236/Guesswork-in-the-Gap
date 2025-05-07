@@ -7,7 +7,7 @@ GW230529_waveform="Combined_PHM_highSpin"
 
 ./alt-hdf2csv \
     "${FOLDER}${GW230529}" \
-    "GW230529_${GW230529_waveform}.csv" \
+    "GW230529_${GW230529_waveform}.csv.gz" \
     --root ${GW230529_waveform} || {
   echo "Error converting $GW230529"
   exit 1
