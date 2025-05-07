@@ -27,10 +27,10 @@ POP_ARGS="$POP_MAX_ARG --mtov-column notch_lowmass_scale"
 LABEL="${EVENT_SAMPLES}+${POP_LABEL}+component${COMPONENT}"
 
 # Assertions
-[[ -f etc/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
+[[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
 [[ -f ${POP_FOLDER}/population.csv.gz ]] || { echo "Missing pop samples file"; exit 1; }
 
-mmms etc/${EVENT_SAMPLES}.csv.gz \
+mmms samples/${EVENT_SAMPLES}.csv.gz \
      ${POP_LABEL}.ini \
      ${POP_FOLDER}/population.csv.gz \
      ${EVENT_ARGS} \
@@ -43,7 +43,7 @@ mmms etc/${EVENT_SAMPLES}.csv.gz \
 
 # Plot command
 mmms-plot \
-    etc/${EVENT_SAMPLES}.csv.gz \
+    samples/${EVENT_SAMPLES}.csv.gz \
     ${EVENT_ARGS} \
     ${EXTRA_EVENT_ARGS} \
     ${POP_LABEL}.ini \
@@ -60,10 +60,10 @@ EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
 LABEL="${EVENT_SAMPLES}+${POP_LABEL}+component${COMPONENT}"
 
 # Assertions
-[[ -f etc/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
+[[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
 [[ -f ${POP_FOLDER}/population.csv.gz ]] || { echo "Missing pop samples file"; exit 1; }
 
-mmms etc/${EVENT_SAMPLES}.csv.gz \
+mmms samples/${EVENT_SAMPLES}.csv.gz \
      ${POP_LABEL}.ini \
      ${POP_FOLDER}/population.csv.gz \
      ${EVENT_ARGS} \
@@ -76,7 +76,7 @@ mmms etc/${EVENT_SAMPLES}.csv.gz \
 
 # Plot command
 mmms-plot \
-    etc/${EVENT_SAMPLES}.csv.gz \
+    samples/${EVENT_SAMPLES}.csv.gz \
     ${EVENT_ARGS} \
     ${EXTRA_EVENT_ARGS} \
     ${POP_LABEL}.ini \
