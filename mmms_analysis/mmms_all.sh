@@ -3,8 +3,8 @@
 chmod +x ./*.sh
 
 # Define list of event sample names
-#EVENT_SAMPLES_LIST=("GW230529_Combined_PHM_highSpin", "Combined_PHM_lowSecondarySpin")
-EVENT_SAMPLES_LIST=("Combined_PHM_lowSecondarySpin")
+#EVENT_SAMPLES_LIST=("GW230529_Combined_PHM_highSpin", "GW230529_Combined_PHM_lowSecondarySpin")
+EVENT_SAMPLES_LIST=("GW230529_Combined_PHM_lowSecondarySpin")
 
 for EVENT_SAMPLES in "${EVENT_SAMPLES_LIST[@]}"; do
   sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
