@@ -26,22 +26,26 @@ for EVENT_SAMPLES in "${EVENT_SAMPLES_LIST[@]}"; do
   ./mmms_multiPDB_betaSplit_singleG.sh &
   ./mmms_multiPDB_betaSplit3_brokenG.sh &
   ./mmms_multiPDB_betaSplitSmooth_brokenG.sh &
+  wait
 
   for EOS_WEIGHT in "${EOS_WEIGHTS_LST[@]}"; do
     sed -i '' "s/^EOS_WEIGHT=.*/EOS_WEIGHT=\"$EOS_WEIGHT\"/" mmms_eos_shared_config.sh
     echo "    Running scripts for EOS_WEIGHT=$EOS_WEIGHT"
     ./mmms_eos_pdbNG_betaSplit_brokenG.sh &
     ./mmms_eos_pdbNG_betaSplit_brokenG_same_mbrk.sh &
-    ./mmms_eos_pdbNG_betaSplit_brokenG_sig_peak1_large &
+    ./mmms_eos_pdbNG_betaSplit_brokenG_sig_peak1_large.sh &
     ./mmms_eos_pdbNG_betaSplit_brokenG_sig_peak1_test.sh &
+    wait
     ./mmms_eos_pdbNG_betaSplit_brokenG_tight_prior.sh &
     ./mmms_eos_pdbNG_betaSplit3_brokenG.sh &
     ./mmms_eos_pdbNG_betaSplitSmooth_brokenG.sh &
     ./mmms_eos_pdbNG_betaSplit_singleG.sh &
+    wait
     ./mmms_eos_multiPDB_betaSplit_brokenG.sh &
     ./mmms_eos_multiPDB_betaSplit_singleG.sh &
     ./mmms_eos_multiPDB_betaSplit3_brokenG.sh &
     ./mmms_eos_multiPDB_betaSplitSmooth_brokenG.sh &
+    wait
   done
 done
 # Wait for all to finish

@@ -1,0 +1,91 @@
+       Tasks - Compute population.csv.gz for:
+DONE - Task A: default pdbNG with fixed gamma_low, eta_low
+DONE - Task B: default pdbNG with fixed gamma_high, eta_high
+DONE - Task C: default pdbNG with sig_peak_NS < median
+DONE - Task D: default pdbNG with mu_peak_NS fixed to Galactic rate
+DONE - Task E: default pdbNG with mu_peak_NS fixed to Galactic rate and alpha_1 fixed
+DONE - Task F: default pdbNG with beta_1 = beta_2 = 0
+DONE - Task G: default multiPDB with beta_1 = beta_2 = 0
+DONE - Task H: default pdbNG with beta_1 = beta_2 = 4
+DONE - Task I: default multiPDB with beta_1 = beta_2 = 4
+DONE - Task J: default pdbNG with mu_chi1, mu_chi2 < 0.2 (Both NS and BH parts)
+DONE - Task K: default multiPDB with mu_chi1, mu_chi2 < 0.2  (Both NS and BH parts)
+DONE - Task L: default pdbNG with mu_chi1, mu_chi2 > 0.2  (Both NS and BH parts)
+DONE - Task M: default multiPDB with mu_chi1, mu_chi2 > 0.2  (Both NS and BH parts)
+DONE - Task N: default multiPDB but with m_spin_break = 1
+DONE - Task O: default pdnNG but with m_spin_break = 1
+DONE - Task P: default multiPDB but with m_spin_break = 100
+DONE - Task Q: default pdnNG but with m_spin_break = 100
+
+
+1. GW230529 (primary and secondary) with fixed gamma_low, eta_low population version
+    - Task A
+2. GW190814 (primary and secondary) with fixed gamma_low, eta_low
+    - Task A
+3. GW190425 (primary and secondary) with fixed gamma_low, eta_low
+    - Task A
+4. GW230529 (primary and secondary) with fixed gamma_high, eta_high
+    - Task B
+5. GW200115 (primary and secondary) with fixed gamma_high, eta_high
+    - Task B
+6. All events (primary and secondary) compare default multiPDB vs default pdbNG
+7. All events (primary and secondary) with default pdbNG but only sig_peak_NS < median
+    - Task C
+8. GW230529 (primary and secondary) with fixed mu_peak_NS to Galactic BNS rate
+    - Task D/E
+9. GW190814 (primary and secondary) with fixed mu_peak_NS to Galactic BNS rate
+    - Task D/E
+10. GW200115 (primary and secondary) with fixed mu_peak_NS to Galactic BNS rate
+    - Task D/E
+11. GW190814 (secondary) with fixed beta_1 = beta_2 = 0
+    - Task F
+    - Task G
+12. GW230529 (primary) with fixed beta_1 = beta_2 = 0
+    - Task F
+    - Task G
+13. GW190814 (secondary) with fixed beta_1 = beta_2 = 4
+    - Task H
+    - Task I
+14. GW230529 (primary) with fixed beta_1 = beta_2 = 4
+    - Task H
+    - Task I
+15. All events (primary and secondary) with smooth pairing function for multiPDB
+16. All events (primary and secondary) with smooth pairing function for pdbNG
+17. GW190814 (primary and secondary) with mu_chi1, mu_chi2 < 0.2
+    - Task J
+    - Task K
+18. GW230529 (primary and secondary) with mu_chi1, mu_chi2 < 0.2
+    - Task J
+    - Task K
+19. GW190814 (primary and secondary) with mu_chi1, mu_chi2 > 0.2
+    - Task L
+    - Task M
+20. GW230529 (primary and secondary) with mu_chi1, mu_chi2 > 0.2
+    - Task L
+    - Task M
+21. All events (primary and secondary) comparing default multiPDB with multiPDB singleG
+22. All events (primary and secondary) comparing default pdbNG with pdbNG singleG
+23. All events (primary and secondary) with default multiPDB but with m_spin_break = m_min
+    - Task N
+24. All events (primary and secondary) with default pdnNG but with m_spin_break = m_min
+    - Task O
+23. All events (primary and secondary) with default multiPDB but with m_spin_break = m_max
+    - Task P
+24. All events (primary and secondary) with default pdnNG but with m_spin_break = m_max
+    - Task Q
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
