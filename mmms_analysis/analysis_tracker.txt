@@ -32,11 +32,11 @@ DONE - Task Q: default pdnNG but with m_spin_break = 100
 7. All events (primary and secondary) with default pdbNG but only sig_peak_NS < median
     - Task C
 8. GW230529 (primary and secondary) with fixed mu_peak_NS to Galactic BNS rate
-    - Task D/E
+    - Task D and E
 9. GW190814 (primary and secondary) with fixed mu_peak_NS to Galactic BNS rate
-    - Task D/E
+    - Task D and E
 10. GW200115 (primary and secondary) with fixed mu_peak_NS to Galactic BNS rate
-    - Task D/E
+    - Task D and E
 11. GW190814 (secondary) with fixed beta_1 = beta_2 = 0
     - Task F
     - Task G

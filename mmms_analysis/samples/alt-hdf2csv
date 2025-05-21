@@ -81,7 +81,7 @@ if args.verbose:
 # default PE priors are:
 #   uniform in detector-frame component masses
 #   uniform in spin magnitude, isotropic in spin direction
-#   uniform in comoving volume and source-frame time
+#   uniform in luminosity distance squared
 
 # instantiate the relevant objects
 
@@ -94,16 +94,16 @@ spin = dist.IsotropicPowerLawPolarSpin1Spin2(
     pow_spin2_magnitude=0.0,
 )
 
-redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
-    min_redshift=0.0,
-    max_redshift=4.0,
-    pow_redshift=0.0,
-)
+# redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
+#     min_redshift=0.0,
+#     max_redshift=4.0,
+#     pow_redshift=0.0,
+# )
 
 # now compute the prior
 renamed['logprior'] = 2 * np.log(1+renamed['z']) \
-    + spin.logprob(renamed) \
-    + redshift.logprob(renamed)
+    + spin.logprob(renamed)
+    # + redshift.logprob(renamed)
 
 #------------------------
 
