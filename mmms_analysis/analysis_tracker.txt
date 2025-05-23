@@ -16,11 +16,8 @@ DONE - Task N: default multiPDB but with m_spin_break = 1
 DONE - Task O: default pdnNG but with m_spin_break = 1
 DONE - Task P: default multiPDB but with m_spin_break = 100
 DONE - Task Q: default pdnNG but with m_spin_break = 100
-    Task R: default pdbNG with beta_1 = beta_2 = 0, and all other params fixed to MAP
-    Task S: multiPDB with beta_1 = beta_2 = 0, and all other params fixed to MAP
-    Task T: default pdbNG with beta_1 = beta_2 = 4, and all other params fixed to MAP
-    Task U: default multiPDB with beta_1 = beta_2 = 4, and all other params fixed to MAP
-
+DONE - Task R: default pdbNG with varying beta_1, beta_2, and all other params fixed to MAP
+DONE - Task S: default multiPDB with varying beta_1, beta_2, and all other params fixed to MAP
 
 1. GW230529 (primary and secondary) with fixed gamma_low, eta_low population version
     - Task A
@@ -54,13 +51,9 @@ DONE - Task Q: default pdnNG but with m_spin_break = 100
 13. GW190814 (secondary) with fixed beta_1 = beta_2 = 4
     - Task H
     - Task I
-    - Task T
-    - Task U
 14. GW230529 (primary) with fixed beta_1 = beta_2 = 4
     - Task H
     - Task I
-    - Task T
-    - Task U
 15. All events (primary and secondary) with smooth pairing function for multiPDB
 16. All events (primary and secondary) with smooth pairing function for pdbNG
 17. GW190814 (primary and secondary) with mu_chi1, mu_chi2 < 0.2
