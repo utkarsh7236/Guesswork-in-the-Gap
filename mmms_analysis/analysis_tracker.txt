@@ -1,6 +1,7 @@
        Tasks - Compute population.csv.gz for:
-DONE - Task A: default pdbNG with fixed gamma_low, eta_low
+DONE = Task A: default pdbNG with varying gamma_low, eta_low, and all other params fixed to MAP
 DONE - Task B: default pdbNG with fixed gamma_high, eta_high
+DONE - Task T: default pdbNG with varying gamma_high, eta_high, and all other params fixed to MAP
 DONE - Task C: default pdbNG with sig_peak_NS < median
 DONE - Task D: default pdbNG with mu_peak_NS fixed to Galactic rate
 DONE - Task E: default pdbNG with mu_peak_NS fixed to Galactic rate and alpha_1 fixed
@@ -19,16 +20,18 @@ DONE - Task Q: default pdnNG but with m_spin_break = 100
 DONE - Task R: default pdbNG with varying beta_1, beta_2, and all other params fixed to MAP
 DONE - Task S: default multiPDB with varying beta_1, beta_2, and all other params fixed to MAP
 
-1. GW230529 (primary and secondary) with fixed gamma_low, eta_low population version
+1. GW230529 (primary and secondary) with varying gamma_low, eta_low, and all other params fixed to MAP
     - Task A
-2. GW190814 (primary and secondary) with fixed gamma_low, eta_low
+2. GW190814 (primary and secondary) with varying gamma_low, eta_low, and all other params fixed to MAP
     - Task A
-3. GW190425 (primary and secondary) with fixed gamma_low, eta_low
+3. GW190425 (primary and secondary) with varying gamma_low, eta_low, and all other params fixed to MAP
     - Task A
 4. GW230529 (primary and secondary) with fixed gamma_high, eta_high
     - Task B
+    - Task T
 5. GW200115 (primary and secondary) with fixed gamma_high, eta_high
     - Task B
+    - Task T
 6. All events (primary and secondary) compare default multiPDB vs default pdbNG
 7. All events (primary and secondary) with default pdbNG but only sig_peak_NS < median
     - Task C

@@ -29,6 +29,7 @@ POP_FOLDER_LIST=(
   "multiPDB_betaSplit_brokenG_M"
   "multiPDB_betaSplit_brokenG_N"
   "multiPDB_betaSplit_brokenG_P"
+  "multiPDB_betaSplit_brokenG_S"
   "pdbNG_betaSplit_brokenG_A"
   "pdbNG_betaSplit_brokenG_B"
   "pdbNG_betaSplit_brokenG_C"
@@ -40,6 +41,7 @@ POP_FOLDER_LIST=(
   "pdbNG_betaSplit_brokenG_L"
   "pdbNG_betaSplit_brokenG_O"
   "pdbNG_betaSplit_brokenG_Q"
+  "pdbNG_betaSplit_brokenG_R"
 )
 EOS="LEC-2020"
 SIZE=1000

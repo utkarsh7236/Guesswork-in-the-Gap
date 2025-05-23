@@ -180,7 +180,6 @@ if __name__ == "__main__":
 
     assert not any(value is None for value in converted_posterior_samples.values())
 
-    # print(converted_posterior_samples["notch_amplitude"])
     _MAP = lambda name: get_map_estimate_kde(name)
     replace = lambda name, val: val*np.ones(converted_posterior_samples[name].shape)
 
