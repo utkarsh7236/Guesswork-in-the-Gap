@@ -79,6 +79,19 @@ def merge_posterior_samples(posterior_samples, posterior_samples_fixed):
 
     return merged_dict
 
+def get_map_estimate_kde(name):
+    from scipy.stats import gaussian_kde
+    # If converted_posterior_samples[name].squeeze() is all the same number, return that number
+    if np.all(converted_posterior_samples[name].squeeze() == converted_posterior_samples[name].squeeze()[0]):
+        return converted_posterior_samples[name].squeeze()[0]
+    samples = converted_posterior_samples[name].squeeze().flatten()
+    kde = gaussian_kde(samples)
+    # Works best when samples is not varying by orders of magnitude
+    x_grid = np.linspace(np.min(samples), np.max(samples), 10000)
+    kde_values = kde(x_grid)
+    return x_grid[np.argmax(kde_values)]
+
+
 if __name__ == "__main__":
     folder_path = "../../../sampler/runs/pdbNG_betaSplit_brokenG_1_full/"
     priors_path = folder_path + "priors.py"
@@ -104,11 +117,6 @@ if __name__ == "__main__":
         posterior_samples = {key: np.array(f[key]) for key in f.keys()}
 
     merged_posterior_samples = merge_posterior_samples(posterior_samples, posterior_samples_fixed)
-
-    replace = lambda name, val: val*np.ones(merged_posterior_samples[name].shape)
-
-    merged_posterior_samples["gamma_low"] = replace("gamma_low", 2.2)
-    merged_posterior_samples["eta_low"] = replace("eta_low", 30)
 
 
     converted_posterior_samples = {}
@@ -173,6 +181,32 @@ if __name__ == "__main__":
             converted_posterior_samples[new_key] = None  # or some placeholder if missing
 
     assert not any(value is None for value in converted_posterior_samples.values())
+
+
+    _MAP = lambda name: get_map_estimate_kde(name)
+    replace = lambda name, val: val*np.ones(converted_posterior_samples[name].shape)
+
+    # Loop over converted_posterior_samples and apply _MAP to each value
+    for key, value in converted_posterior_samples.items():
+        converted_posterior_samples[key] = replace(key, _MAP(key))
+    # Check if all values are not None
+    assert not any(value is None for value in converted_posterior_samples.values()), "Some values are None"
+
+    # Assign beta_1 and beta_2 random values between it's min and max
+    gamma_low_min = float(np.min(merged_posterior_samples["gamma_low"]))
+    gamma_low_max = float(np.max(merged_posterior_samples["gamma_low"]))
+    eta_low_min = float(np.min(merged_posterior_samples["eta_low"]))
+    eta_low_max = float(np.max(merged_posterior_samples["eta_low"]))
+    np.random.seed(7236)
+    gamma_low = np.random.uniform(low = gamma_low_min, high = gamma_low_max, size=converted_posterior_samples["notch_lowmass_scale"].shape[0])
+    eta_low = np.random.uniform(low = eta_low_min, high = eta_low_max, size=converted_posterior_samples["notch_lowmass_scale"].shape[0])
+    converted_posterior_samples["notch_lowmass_scale"] = gamma_low
+    converted_posterior_samples["notch_lowmass_exponent"] = eta_low
+
+    for key, value in converted_posterior_samples.items():
+        if key not in ["notch_lowmass_scale", "notch_lowmass_exponent"]:
+            assert np.all(value == value[0]), f"Value for {key} is not constant"
+
 
     samples = []
     num_hyperparams = len(conversion_dict)

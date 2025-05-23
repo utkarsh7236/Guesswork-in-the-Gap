@@ -5,7 +5,7 @@ POP_MAX_NUM_SAMPLES=50
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Event samples to use
-EVENT_SAMPLES="GW200115_C01:IMRPhenomNSBH:HighSpin"
+EVENT_SAMPLES="GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin"
 
 EVENT_ARGS=""
 EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 10000"
