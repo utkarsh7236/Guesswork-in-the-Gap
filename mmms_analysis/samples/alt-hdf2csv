@@ -13,6 +13,7 @@ from argparse import ArgumentParser
 
 ### non-standard libraries
 from gwdistributions import distributions as dist
+from conversion_cosmology import Cosmology, PLANCK_2018_Ho, PLANCK_2018_OmegaMatter, PLANCK_2018_OmegaRadiation, PLANCK_2018_OmegaLambda
 
 #-------------------------------------------------
 
@@ -72,6 +73,9 @@ renamed['spin2_polar_angle'] = data['tilt_2']
 renamed['spin2_magnitude'] = data['a_2']
 
 #------------------------
+cosmo = Cosmology(PLANCK_2018_Ho, PLANCK_2018_OmegaMatter, PLANCK_2018_OmegaRadiation, PLANCK_2018_OmegaLambda)
+cosmo.extend(max_DL=np.max(data['luminosity_distance']))
+#------------------------
 
 # compute priors for population reweighing
 
@@ -94,15 +98,24 @@ spin = dist.IsotropicPowerLawPolarSpin1Spin2(
     pow_spin2_magnitude=0.0,
 )
 
-# redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
-#     min_redshift=0.0,
-#     max_redshift=4.0,
-#     pow_redshift=0.0,
-# )
+redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
+    min_redshift=0.0,
+    max_redshift=4.0,
+    pow_redshift=0.0,
+)
+
+shape1 = redshift.logprob(renamed).shape
+D_c = cosmo.z2Dc(renamed['redshift'])
+dD_c_dz = cosmo.dDcdz(data['redshift'])
+factor = D_c + (1+renamed['z']) * dD_c_dz
+redshift_prob = renamed['luminosity_distance'] ** 2 * factor
+redshift_logprob = np.log(redshift_prob)
+assert shape1 == redshift_logprob.shape, f"shape mismatch: {shape1} != {redshift_logprob.shape}"
 
 # now compute the prior
 renamed['logprior'] = 2 * np.log(1+renamed['z']) \
     + spin.logprob(renamed)
+
     # + redshift.logprob(renamed)
 
 #------------------------
