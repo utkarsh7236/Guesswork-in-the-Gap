@@ -1,11 +1,11 @@
 # shared_config.sh
 
 # Common population arguments
-POP_MAX_NUM_SAMPLES=50
+POP_MAX_NUM_SAMPLES=10000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Event samples to use
-EVENT_SAMPLES="GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin"
+EVENT_SAMPLES="GW230529_Combined_PHM_highSpin"
 
 EVENT_ARGS=""
 EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 10000"

@@ -98,19 +98,16 @@ spin = dist.IsotropicPowerLawPolarSpin1Spin2(
     pow_spin2_magnitude=0.0,
 )
 
-redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
-    min_redshift=0.0,
-    max_redshift=4.0,
-    pow_redshift=0.0,
-)
+# redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
+#     min_redshift=0.0,
+#     max_redshift=4.0,
+#     pow_redshift=0.0,
+# )
 
 
 # ======================== TO REVIEW ========================
-shape1 = redshift.logprob(renamed).shape
 factor = cosmo.z2Dc(renamed['z']) + (1+renamed['z']) * cosmo.dDcdz(renamed['z'])
-redshift_prob = renamed['luminosity_distance'] ** 2 * factor
-redshift_logprob = np.log(redshift_prob)
-assert shape1 == redshift_logprob.shape, f"shape mismatch: {shape1} != {redshift_logprob.shape}"
+redshift_logprob = 2*np.log(renamed['luminosity_distance']) + np.log(factor)
 
 # now compute the prior
 renamed['logprior'] = 2 * np.log(1+renamed['z']) \
