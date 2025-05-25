@@ -104,21 +104,19 @@ redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's 
     pow_redshift=0.0,
 )
 
-shape1 = redshift.logprob(renamed).shape
-D_c = cosmo.z2Dc(renamed['redshift'])
-dD_c_dz = cosmo.dDcdz(data['redshift'])
-factor = D_c + (1+renamed['z']) * dD_c_dz
-redshift_prob = renamed['luminosity_distance'] ** 2 * factor
-redshift_logprob = np.log(redshift_prob)
-assert shape1 == redshift_logprob.shape, f"shape mismatch: {shape1} != {redshift_logprob.shape}"
+
+# ======================== TO REVIEW ========================
+# shape1 = redshift.logprob(renamed).shape
+# factor = cosmo.z2Dc(renamed['z']) + (1+renamed['z']) * cosmo.dDcdz(renamed['z'])
+# redshift_prob = renamed['luminosity_distance'] ** 2 * factor
+# redshift_logprob = np.log(redshift_prob)
+# assert shape1 == redshift_logprob.shape, f"shape mismatch: {shape1} != {redshift_logprob.shape}"
 
 # now compute the prior
 renamed['logprior'] = 2 * np.log(1+renamed['z']) \
-    + spin.logprob(renamed)
-
-    # + redshift.logprob(renamed)
-
-#------------------------
+    + spin.logprob(renamed) \
+    # + redshift_logprob
+# =========================================================
 
 # write to disk
 
