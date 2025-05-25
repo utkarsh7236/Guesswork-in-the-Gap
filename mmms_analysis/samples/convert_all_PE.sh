@@ -2,7 +2,7 @@
 
 FOLDER="../../data/events_of_interest/"
 #
-#GW230529="IGWN-GWTC4-manual-download-GW230529_181500.h5"
+#GW230529="IGWN-GWTC4p0-v0-GW230529_181500_PEDataRelease_mixed_cosmo.h5"
 #GW230529_waveform="Combined_PHM_highSpin"
 #
 #./gw230529-hdf2csv \
@@ -13,7 +13,7 @@ FOLDER="../../data/events_of_interest/"
 #  exit 1
 #}
 #
-#GW230529="IGWN-GWTC4-manual-download-GW230529_181500.h5"
+#GW230529="IGWN-GWTC4p0-v0-GW230529_181500_PEDataRelease_mixed_cosmo.h5"
 #GW230529_waveform="Combined_PHM_lowSecondarySpin"
 #
 #./gw230529-hdf2csv \
@@ -69,13 +69,13 @@ GW190814_waveform="C01:IMRPhenomXPHM"
 #  echo "Error converting $GW190917"
 #  exit 1
 #}
-### TODO: GW170817
-##GW170817="GW170817_GWTC-1.hdf5"
-##GW170817_waveform="IMRPhenomPv2NRT_highSpin_posterior"
-##./gw170817-hdf2csv \
-##    "${FOLDER}${GW170817}" \
-##    "GW170817_${GW170817_waveform}.csv.gz" \
-##    --root ${GW170817_waveform} || {
-##  echo "Error converting $GW170817"
-##  exit 1
-##}
+##
+#GW170817="GW170817_GWTC-1.hdf5"
+#GW170817_waveform="IMRPhenomPv2NRT_highSpin_posterior"
+#./gw170817-hdf2csv \
+#    "${FOLDER}${GW170817}" \
+#    "GW170817_${GW170817_waveform}.csv.gz" \
+#    --root ${GW170817_waveform} || {
+#  echo "Error converting $GW170817"
+#  exit 1
+#}
