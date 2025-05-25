@@ -20,16 +20,17 @@ DONE - Task Q: default pdnNG but with m_spin_break = 100
 DONE - Task R: default pdbNG with varying beta_1, beta_2, and all other params fixed to MAP
 DONE - Task S: default multiPDB with varying beta_1, beta_2, and all other params fixed to MAP
 
+
 1. GW230529 (primary and secondary) with varying gamma_low, eta_low, and all other params fixed to MAP
     - Task A
 2. GW190814 (primary and secondary) with varying gamma_low, eta_low, and all other params fixed to MAP
     - Task A
 3. GW190425 (primary and secondary) with varying gamma_low, eta_low, and all other params fixed to MAP
     - Task A
-4. GW230529 (primary and secondary) with fixed gamma_high, eta_high
+4. GW230529 (primary and secondary) with fixed gamma_high, eta_high and all other params fixed to MAP
     - Task B
     - Task T
-5. GW200115 (primary and secondary) with fixed gamma_high, eta_high
+5. GW200115 (primary and secondary) with fixed gamma_high, eta_high and all other params fixed to MAP
     - Task B
     - Task T
 6. All events (primary and secondary) compare default multiPDB vs default pdbNG
@@ -77,10 +78,16 @@ DONE - Task S: default multiPDB with varying beta_1, beta_2, and all other param
     - Task N
 24. All events (primary and secondary) with default pdnNG but with m_spin_break = m_min
     - Task O
-23. All events (primary and secondary) with default multiPDB but with m_spin_break = m_max
+25. All events (primary and secondary) with default multiPDB but with m_spin_break = m_max
     - Task P
-24. All events (primary and secondary) with default pdnNG but with m_spin_break = m_max
+26. All events (primary and secondary) with default pdnNG but with m_spin_break = m_max
     - Task Q
+27. All events comparing default multiPDB with multiPDB betaSplit3
+28. All events comparing default pdbNG with pdbNG betaSplit3
+29. All events comparing default pdbNG with sig_peak1_large
+30. All events comparing default pdbNG with sig_peak1_test
+31. All events comparing default pdbNG with _tight_prior
+32. All events comparing default pdbNG with _same_mbrk
 
 
 
