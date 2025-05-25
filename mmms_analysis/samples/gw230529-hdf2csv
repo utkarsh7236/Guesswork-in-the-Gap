@@ -63,8 +63,6 @@ renamed['mass2_source'] = data['mass_2_source']
 renamed['luminosity_distance'] = data['luminosity_distance']
 renamed['z'] = data['redshift']
 
-print(data['phi_1'], data['phi_2'])
-
 renamed['spin1_azimuthal_angle'] = data['phi_1']
 renamed['spin1_polar_angle'] = data['tilt_1']
 renamed['spin1_magnitude'] = data['a_1']
