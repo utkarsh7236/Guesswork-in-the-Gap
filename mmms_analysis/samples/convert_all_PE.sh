@@ -69,13 +69,12 @@ GW190917_waveform="C01:IMRPhenomXPHM"
   echo "Error converting $GW190917"
   exit 1
 }
-### TODO: FIGURE THIS OUT
-###GW170817="GW170817_GWTC-1.hdf5"
-###GW170817_waveform="IMRPhenomPv2NRT_highSpin_posterior"
-###./gw170817-hdf2csv \
-###    "${FOLDER}${GW170817}" \
-###    "GW170817_${GW170817_waveform}.csv.gz" \
-###    --root ${GW170817_waveform} || {
-###  echo "Error converting $GW170817"
-###  exit 1
-###}
+GW170817="GW170817_GWTC-1.hdf5"
+GW170817_waveform="IMRPhenomPv2NRT_highSpin_posterior"
+./gw170817-hdf2csv \
+    "${FOLDER}${GW170817}" \
+    "GW170817_${GW170817_waveform}.csv.gz" \
+    --root ${GW170817_waveform} || {
+  echo "Error converting $GW170817"
+  exit 1
+}
