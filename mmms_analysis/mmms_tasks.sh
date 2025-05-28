@@ -2,7 +2,7 @@
 
 source mmms_shared_config.sh
 
-POP_LABEL="pdbNG_betaSplit_brokenG"
+POP_LABEL="pdbNG_betaSplit_brokenG_same_mbrk"
 POP_LABEL_SUFFIX=""
 
 POP_FOLDER="conversion_scripts/${POP_LABEL}${POP_LABEL_SUFFIX}"
