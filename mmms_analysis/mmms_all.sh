@@ -3,16 +3,16 @@
 chmod +x ./*.sh
 
 # Define list of event sample names
-EVENT_SAMPLES_LIST=(
-"GW230529_Combined_PHM_highSpin"
-"GW230529_Combined_PHM_lowSecondarySpin"
-"GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin"
-"GW190814_C01:IMRPhenomXPHM"
-"GW190917_C01:IMRPhenomXPHM"
-"GW200105_C01:IMRPhenomXPHM"
-"GW200115_C01:IMRPhenomNSBH:HighSpin"
-)
-#EVENT_SAMPLES_LIST=("GW230529_Combined_PHM_lowSecondarySpin")
+#EVENT_SAMPLES_LIST=(
+#"GW230529_Combined_PHM_highSpin"
+#"GW230529_Combined_PHM_lowSecondarySpin"
+#"GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin"
+#"GW190814_C01:IMRPhenomXPHM"
+#"GW190917_C01:IMRPhenomXPHM"
+#"GW200105_C01:IMRPhenomXPHM"
+#"GW200115_C01:IMRPhenomNSBH:HighSpin"
+#)
+EVENT_SAMPLES_LIST=("GW230529_Combined_PHM_lowSecondarySpin")
 
 #EOS_WEIGHTS_LST=("logweight_PSR_GW" "logweight_PSR_GW_Xray")
 EOS_WEIGHTS_LST=("logweight_PSR_GW_Xray")
