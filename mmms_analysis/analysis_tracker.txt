@@ -19,6 +19,8 @@ DONE - Task P: default multiPDB but with m_spin_break = 100
 DONE - Task Q: default pdnNG but with m_spin_break = 100
 DONE - Task R: default pdbNG with varying beta_1, beta_2, and all other params fixed to MAP
 DONE - Task S: default multiPDB with varying beta_1, beta_2, and all other params fixed to MAP
+DONE - Task U - default pdbNG with mu_cost_tilt set to 0
+DONE - Task V - default pdbNG with mu_cost_tilt set to -1
 
 
 1. GW230529 (primary and secondary) with varying gamma_low, eta_low, and all other params fixed to MAP
@@ -88,7 +90,9 @@ DONE - Task S: default multiPDB with varying beta_1, beta_2, and all other param
 30. All events comparing default pdbNG with sig_peak1_test
 31. All events comparing default pdbNG with _tight_prior
 32. All events comparing default pdbNG with _same_mbrk
-
+33. All events comparing default pdbNG (mu_costilt = 0) with pdbNG with mu_costilt = 0 and mu_costilt = -1
+    - Task U
+    - Task V
 
 
 
