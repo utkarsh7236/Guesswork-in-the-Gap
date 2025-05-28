@@ -89,14 +89,22 @@ if args.verbose:
 
 # instantiate the relevant objects
 
-spin = dist.IsotropicPowerLawPolarSpin1Spin2(
+spin1_polar = dist.IsotropicSpin1PolarAngle()
+spin1_mag = dist.PowerLawSpin1Magnitude(
     min_spin1_magnitude=0.0,
     max_spin1_magnitude=1.0,
     pow_spin1_magnitude=0.0,
+)
+
+spin2_polar = dist.IsotropicSpin2PolarAngle()
+spin2_mag = dist.PowerLawSpin2Magnitude(
     min_spin2_magnitude=0.0,
     max_spin2_magnitude=1.0,
     pow_spin2_magnitude=0.0,
 )
+
+spin1_logprob = spin1_polar.logprob(renamed) + spin1_mag.logprob(renamed)
+spin2_logprob = spin2_polar.logprob(renamed) + spin2_mag.logprob(renamed)
 
 # redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
 #     min_redshift=0.0,
@@ -105,13 +113,13 @@ spin = dist.IsotropicPowerLawPolarSpin1Spin2(
 # )
 
 
-# ======================== TO REVIEW ========================
+# ======================== Reviewed by Reed Essick ========================
 factor = cosmo.z2Dc(renamed['z']) + (1+renamed['z']) * cosmo.dDcdz(renamed['z'])
 redshift_logprob = 2*np.log(renamed['luminosity_distance']) + np.log(factor)
 
 # now compute the prior
 renamed['logprior'] = 2 * np.log(1+renamed['z']) \
-    + spin.logprob(renamed) \
+    + spin1_logprob + spin2_logprob \
     + redshift_logprob
 # =========================================================
 

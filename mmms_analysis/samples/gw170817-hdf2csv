@@ -59,8 +59,6 @@ if args.Verbose:
 if args.verbose:
     print('converting naming convention')
 
-print(data.keys())
-
 renamed = dict()
 
 data["luminosity_distance"] = data["luminosity_distance_Mpc"] * MPC_CGS
@@ -80,13 +78,13 @@ renamed['mass1_source'] = data['m1_detector_frame_Msun']/(1+data['redshift'])
 renamed['mass2_source'] = data['m2_detector_frame_Msun']/(1+data['redshift'])
 renamed['luminosity_distance'] = data["luminosity_distance"]
 
-renamed['spin1_azimuthal_angle'] = data['phi_1']
+# renamed['spin1_azimuthal_angle'] = data['phi_1']
 renamed['spin1_polar_angle'] = data['tilt_1']
 renamed['spin1_magnitude'] = data['spin1']
 
 renamed['z'] = data['redshift']
 
-renamed['spin2_azimuthal_angle'] = data['phi_2']
+# renamed['spin2_azimuthal_angle'] = data['phi_2']
 renamed['spin2_polar_angle'] = data['tilt_2']
 renamed['spin2_magnitude'] = data['spin2']
 
@@ -104,14 +102,22 @@ if args.verbose:
 
 # instantiate the relevant objects
 
-spin = dist.IsotropicPowerLawPolarSpin1Spin2(
+spin1_polar = dist.IsotropicSpin1PolarAngle()
+spin1_mag = dist.PowerLawSpin1Magnitude(
     min_spin1_magnitude=0.0,
     max_spin1_magnitude=1.0,
     pow_spin1_magnitude=0.0,
+)
+
+spin2_polar = dist.IsotropicSpin2PolarAngle()
+spin2_mag = dist.PowerLawSpin2Magnitude(
     min_spin2_magnitude=0.0,
     max_spin2_magnitude=1.0,
     pow_spin2_magnitude=0.0,
 )
+
+spin1_logprob = spin1_polar.logprob(renamed) + spin1_mag.logprob(renamed)
+spin2_logprob = spin2_polar.logprob(renamed) + spin2_mag.logprob(renamed)
 
 # redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
 #     min_redshift=0.0,
@@ -121,9 +127,8 @@ spin = dist.IsotropicPowerLawPolarSpin1Spin2(
 
 # now compute the prior
 renamed['logprior'] = 2 * np.log(1+renamed['z']) \
-    + spin.logprob(renamed)
+    + spin1_logprob + spin2_logprob \
     # + redshift.logprob(renamed)
-
 #------------------------
 
 # write to disk
