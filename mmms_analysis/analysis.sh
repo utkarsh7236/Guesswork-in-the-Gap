@@ -1,12 +1,12 @@
 #!/bin/bash
-# Currently 219 scripts to run
+# Currently 239 scripts to run
 
 # GW230529 (primary)
 # GW190425 (primary and secondary)
 # GW190814 (secondary)
 # GW190917 (primary and secondary)
 # GW200105 (primary and secondary)
-# GW200115 (primary)
+# GW200115 (secondary)
 ALL_EVENTS=(
   "GW230529_Combined_PHM_highSpin|1"
   "GW230529_Combined_PHM_lowSecondarySpin|1"
@@ -871,6 +871,39 @@ done
 #32. All events comparing default pdbNG with _same_mbrk
 POP_LABEL_SUFFIX=""
 POP_LABEL="pdbNG_betaSplit_brokenG_same_mbrk"
+for ENTRY in "${ALL_EVENTS[@]}"; do
+  # Split into key and value parts
+  EVENT_SAMPLES=${ENTRY%%|*}
+  VALUE=${ENTRY#*|}
+  for COMPONENT in $VALUE; do
+    sed -i '' "s|^EVENT_SAMPLES=.*|EVENT_SAMPLES=\"$EVENT_SAMPLES\"|" mmms_shared_config.sh
+    sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+    sed -i '' "s|^COMPONENT=.*|COMPONENT=\"$COMPONENT\"|"      mmms_tasks.sh
+    sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+    ./mmms_tasks.sh
+  done
+done
+
+#33. All events comparing default pdbNG (mu_costilt = 0) with pdbNG with mu_costilt = 0 and mu_costilt = -1
+#    - Task U
+#    - Task V
+POP_LABEL_SUFFIX="_U"
+POP_LABEL="pdbNG_betaSplit_brokenG"
+for ENTRY in "${ALL_EVENTS[@]}"; do
+  # Split into key and value parts
+  EVENT_SAMPLES=${ENTRY%%|*}
+  VALUE=${ENTRY#*|}
+  for COMPONENT in $VALUE; do
+    sed -i '' "s|^EVENT_SAMPLES=.*|EVENT_SAMPLES=\"$EVENT_SAMPLES\"|" mmms_shared_config.sh
+    sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+    sed -i '' "s|^COMPONENT=.*|COMPONENT=\"$COMPONENT\"|"      mmms_tasks.sh
+    sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+    ./mmms_tasks.sh
+  done
+done
+
+POP_LABEL_SUFFIX="_V"
+POP_LABEL="pdbNG_betaSplit_brokenG"
 for ENTRY in "${ALL_EVENTS[@]}"; do
   # Split into key and value parts
   EVENT_SAMPLES=${ENTRY%%|*}
