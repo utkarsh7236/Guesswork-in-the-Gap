@@ -14,7 +14,7 @@ ALL_EVENTS=(
   "GW190814_C01:IMRPhenomXPHM|2"
   "GW190917_C01:IMRPhenomXPHM|1 2"
   "GW200105_C01:IMRPhenomXPHM|1 2"
-  "GW200115_C01:IMRPhenomNSBH:HighSpin|1"
+  "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
 )
 
 #6. All events compare default multiPDB vs default pdbNG
@@ -163,7 +163,7 @@ wait
 EVENT_SAMPLES="GW200115_C01:IMRPhenomNSBH:HighSpin"
 POP_LABEL="pdbNG_betaSplit_brokenG"
 POP_LABEL_SUFFIX="_B"
-COMPONENT="1"
+COMPONENT="2"
 sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
 sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
 sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
@@ -174,7 +174,7 @@ wait
 EVENT_SAMPLES="GW200115_C01:IMRPhenomNSBH:HighSpin"
 POP_LABEL="pdbNG_betaSplit_brokenG"
 POP_LABEL_SUFFIX="_T"
-COMPONENT="1"
+COMPONENT="2"
 sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
 sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
 sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
@@ -277,7 +277,7 @@ wait
 EVENT_SAMPLES="GW200115_C01:IMRPhenomNSBH:HighSpin"
 POP_LABEL="pdbNG_betaSplit_brokenG"
 POP_LABEL_SUFFIX="_D"
-COMPONENT="1"
+COMPONENT="2"
 sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
 sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
 sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
@@ -288,7 +288,7 @@ wait
 EVENT_SAMPLES="GW200115_C01:IMRPhenomNSBH:HighSpin"
 POP_LABEL="pdbNG_betaSplit_brokenG"
 POP_LABEL_SUFFIX="_E"
-COMPONENT="1"
+COMPONENT="2"
 sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
 sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
 sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
