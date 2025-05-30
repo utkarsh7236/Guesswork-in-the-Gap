@@ -2,12 +2,12 @@
 
 source mmms_shared_config.sh
 
-POP_LABEL="pdbNG_betaSplit_brokenG"
-POP_LABEL_SUFFIX="_V"
+POP_LABEL="multiPDB_betaSplit_brokenG"
+POP_LABEL_SUFFIX="_M"
 
 POP_FOLDER="conversion_scripts/${POP_LABEL}${POP_LABEL_SUFFIX}"
 EOS_SAMPLES="LEC-2020"
-COMPONENT="2"
+COMPONENT="1"
 SEED="--seed 7236"
 
 EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
