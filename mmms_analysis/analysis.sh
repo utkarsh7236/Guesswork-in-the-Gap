@@ -571,49 +571,49 @@ wait
 #18. GW230529 (primary) with mu_chi1, mu_chi2 < 0.2
 #    - Task J
 #    - Task K
-EVENT_SAMPLES="GW230529_Combined_PHM_highSpin"
-POP_LABEL="pdbNG_betaSplit_brokenG"
-POP_LABEL_SUFFIX="_J"
-COMPONENT="1"
-sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
-sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
-sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
-sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
-./mmms_tasks.sh &
-wait
-
-EVENT_SAMPLES="GW230529_Combined_PHM_highSpin"
-POP_LABEL="multiPDB_betaSplit_brokenG"
-POP_LABEL_SUFFIX="_K"
-COMPONENT="1"
-sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
-sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
-sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
-sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
-./mmms_tasks.sh &
-wait
-
-EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
-POP_LABEL="pdbNG_betaSplit_brokenG"
-POP_LABEL_SUFFIX="_J"
-COMPONENT="1"
-sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
-sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
-sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
-sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
-./mmms_tasks.sh &
-wait
-
-EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
-POP_LABEL="multiPDB_betaSplit_brokenG"
-POP_LABEL_SUFFIX="_K"
-COMPONENT="1"
-sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
-sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
-sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
-sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
-./mmms_tasks.sh &
-wait
+#EVENT_SAMPLES="GW230529_Combined_PHM_highSpin"
+#POP_LABEL="pdbNG_betaSplit_brokenG"
+#POP_LABEL_SUFFIX="_J"
+#COMPONENT="1"
+#sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
+#sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+#sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
+#sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+#./mmms_tasks.sh &
+#wait
+#
+#EVENT_SAMPLES="GW230529_Combined_PHM_highSpin"
+#POP_LABEL="multiPDB_betaSplit_brokenG"
+#POP_LABEL_SUFFIX="_K"
+#COMPONENT="1"
+#sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
+#sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+#sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
+#sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+#./mmms_tasks.sh &
+#wait
+#
+#EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
+#POP_LABEL="pdbNG_betaSplit_brokenG"
+#POP_LABEL_SUFFIX="_J"
+#COMPONENT="1"
+#sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
+#sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+#sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
+#sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+#./mmms_tasks.sh &
+#wait
+#
+#EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
+#POP_LABEL="multiPDB_betaSplit_brokenG"
+#POP_LABEL_SUFFIX="_K"
+#COMPONENT="1"
+#sed -i '' "s/^EVENT_SAMPLES=.*/EVENT_SAMPLES=\"$EVENT_SAMPLES\"/" mmms_shared_config.sh
+#sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+#sed -i '' "s/^COMPONENT=.*/COMPONENT=\"$COMPONENT\"/" mmms_tasks.sh
+#sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+#./mmms_tasks.sh &
+#wait
 
 
 ##19. GW190814 (secondary) with mu_chi1, mu_chi2 > 0.2
