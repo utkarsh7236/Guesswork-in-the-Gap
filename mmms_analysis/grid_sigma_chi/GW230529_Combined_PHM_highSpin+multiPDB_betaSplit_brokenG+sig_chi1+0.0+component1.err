@@ -1,0 +1,32 @@
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/distributions/base/standard.py:199: RuntimeWarning: divide by zero encountered in divide
+  -0.5 * (param-mean_param)**2 / stdv_param**2 - 0.5*be.log(2*be.pi) - be.log(stdv_param) \
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/distributions/base/standard.py:199: RuntimeWarning: divide by zero encountered in log
+  -0.5 * (param-mean_param)**2 / stdv_param**2 - 0.5*be.log(2*be.pi) - be.log(stdv_param) \
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/distributions/base/standard.py:199: RuntimeWarning: invalid value encountered in subtract
+  -0.5 * (param-mean_param)**2 / stdv_param**2 - 0.5*be.log(2*be.pi) - be.log(stdv_param) \
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/distributions/base/standard.py:178: RuntimeWarning: divide by zero encountered in divide
+  logcdf_low = be.norm.logcdf((min_param - mean_param)/stdv_param)
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/distributions/base/standard.py:179: RuntimeWarning: divide by zero encountered in divide
+  logcdf_high = be.norm.logcdf((max_param - mean_param)/stdv_param)
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/mmms-gw230529/bin/mmms", line 265, in <module>
+    ans = engine.samples2prob_odds(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 447, in samples2prob_odds
+    (F, F_var), (G, G_var), FG_cov = _compute_pop_moments(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 241, in _compute_pop_moments
+    mass_moments = _compute_vec_mass_moments(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 156, in _compute_vec_mass_moments
+    mass_moments[ind] = _compute_mass_moments(
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 132, in _compute_mass_moments
+    ratio_var = _check_variance(ratio_var)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 19, in _check_variance
+    assert (variance > 0) or np.isclose(variance, 0), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: bad estimate for the variance (nan)

@@ -1,38 +1,38 @@
 ##!/bin/bash
 ## Currently 239 scripts to run
-#
-## GW230529 (primary)
-## GW190425 (primary and secondary)
-## GW190814 (secondary)
-## GW190917 (primary and secondary)
-## GW200105 (primary and secondary)
-## GW200115 (secondary)
-#ALL_EVENTS=(
-#  "GW230529_Combined_PHM_highSpin|1"
-#  "GW230529_Combined_PHM_lowSecondarySpin|1"
-#  "GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin|1 2"
-#  "GW190814_C01:IMRPhenomXPHM|2"
-#  "GW190917_C01:IMRPhenomXPHM|1 2"
-#  "GW200105_C01:IMRPhenomXPHM|1 2"
-#  "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
-#)
-#
-##6. All events compare default multiPDB vs default pdbNG
-#POP_LABEL_SUFFIX=""
-#POP_LABEL="pdbNG_betaSplit_brokenG"
-#for ENTRY in "${ALL_EVENTS[@]}"; do
-#  # Split into key and value parts
-#  EVENT_SAMPLES=${ENTRY%%|*}
-#  VALUE=${ENTRY#*|}
-#  for COMPONENT in $VALUE; do
-#    sed -i '' "s|^EVENT_SAMPLES=.*|EVENT_SAMPLES=\"$EVENT_SAMPLES\"|" mmms_shared_config.sh
-#    sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
-#    sed -i '' "s|^COMPONENT=.*|COMPONENT=\"$COMPONENT\"|"      mmms_tasks.sh
-#    sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
-#    ./mmms_tasks.sh
-#  done
-#done
-#
+
+# GW230529 (primary)
+# GW190425 (primary and secondary)
+# GW190814 (secondary)
+# GW190917 (primary and secondary)
+# GW200105 (primary and secondary)
+# GW200115 (secondary)
+ALL_EVENTS=(
+  "GW230529_Combined_PHM_highSpin|1"
+  "GW230529_Combined_PHM_lowSecondarySpin|1"
+  "GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin|1 2"
+  "GW190814_C01:IMRPhenomXPHM|2"
+  "GW190917_C01:IMRPhenomXPHM|1 2"
+  "GW200105_C01:IMRPhenomXPHM|1 2"
+  "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
+)
+
+#6. All events compare default multiPDB vs default pdbNG
+POP_LABEL_SUFFIX=""
+POP_LABEL="pdbNG_betaSplit_brokenG"
+for ENTRY in "${ALL_EVENTS[@]}"; do
+  # Split into key and value parts
+  EVENT_SAMPLES=${ENTRY%%|*}
+  VALUE=${ENTRY#*|}
+  for COMPONENT in $VALUE; do
+    sed -i '' "s|^EVENT_SAMPLES=.*|EVENT_SAMPLES=\"$EVENT_SAMPLES\"|" mmms_shared_config.sh
+    sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+    sed -i '' "s|^COMPONENT=.*|COMPONENT=\"$COMPONENT\"|"      mmms_tasks.sh
+    sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+    ./mmms_tasks.sh
+  done
+done
+
 #POP_LABEL_SUFFIX=""
 #POP_LABEL="multiPDB_betaSplit_brokenG"
 #for ENTRY in "${ALL_EVENTS[@]}"; do
@@ -511,22 +511,22 @@ sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
 ./mmms_tasks.sh &
 wait
 
-##15. All events with smooth pairing function for multiPDB
-#POP_LABEL_SUFFIX=""
-#POP_LABEL="pdbNG_betaSplitSmooth_brokenG"
-#for ENTRY in "${ALL_EVENTS[@]}"; do
-#  # Split into key and value parts
-#  EVENT_SAMPLES=${ENTRY%%|*}
-#  VALUE=${ENTRY#*|}
-#  for COMPONENT in $VALUE; do
-#    sed -i '' "s|^EVENT_SAMPLES=.*|EVENT_SAMPLES=\"$EVENT_SAMPLES\"|" mmms_shared_config.sh
-#    sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
-#    sed -i '' "s|^COMPONENT=.*|COMPONENT=\"$COMPONENT\"|"      mmms_tasks.sh
-#    sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
-#    ./mmms_tasks.sh
-#  done
-#done
-##
+#15. All events with smooth pairing function for multiPDB
+POP_LABEL_SUFFIX=""
+POP_LABEL="pdbNG_betaSplitSmooth_brokenG"
+for ENTRY in "${ALL_EVENTS[@]}"; do
+  # Split into key and value parts
+  EVENT_SAMPLES=${ENTRY%%|*}
+  VALUE=${ENTRY#*|}
+  for COMPONENT in $VALUE; do
+    sed -i '' "s|^EVENT_SAMPLES=.*|EVENT_SAMPLES=\"$EVENT_SAMPLES\"|" mmms_shared_config.sh
+    sed -i '' "s/^POP_LABEL_SUFFIX=.*/POP_LABEL_SUFFIX=\"$POP_LABEL_SUFFIX\"/" mmms_tasks.sh
+    sed -i '' "s|^COMPONENT=.*|COMPONENT=\"$COMPONENT\"|"      mmms_tasks.sh
+    sed -i '' "s/^POP_LABEL=.*/POP_LABEL=\"$POP_LABEL\"/" mmms_tasks.sh
+    ./mmms_tasks.sh
+  done
+done
+#
 ##16. All events with smooth pairing function for pdbNG
 #POP_LABEL_SUFFIX=""
 #POP_LABEL="multiPDB_betaSplitSmooth_brokenG"

@@ -1,0 +1,22 @@
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py:354: RuntimeWarning: divide by zero encountered in scalar divide
+  exp_O = exp_f / (exp_g - exp_f)
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py:356: RuntimeWarning: divide by zero encountered in scalar divide
+  var_O = var_f*exp_g**2/exp_d**4 + var_g*exp_f**2/exp_d**4 - 2*cov_fg*exp_f*exp_g/exp_d**4
+/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py:356: RuntimeWarning: invalid value encountered in scalar divide
+  var_O = var_f*exp_g**2/exp_d**4 + var_g*exp_f**2/exp_d**4 - 2*cov_fg*exp_f*exp_g/exp_d**4
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/mmms-gw230529/bin/mmms", line 265, in <module>
+    ans = engine.samples2prob_odds(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 463, in samples2prob_odds
+    odds, odds_stdv = _moments2odds(F, G, F_var, G_var, FG_cov)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 358, in _moments2odds
+    var_O = _check_variance(var_O) # sanity check
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/mmms-gw230529/lib/python3.11/site-packages/mmms/engine.py", line 19, in _check_variance
+    assert (variance > 0) or np.isclose(variance, 0), \
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: bad estimate for the variance (nan)
