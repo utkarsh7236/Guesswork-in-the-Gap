@@ -23,11 +23,10 @@ np.savetxt('GW190814_posterior_samples.csv', ans, delimiter=',', comments='',
            header=header + ',' + spin_header + ',mass1_source,mass2_source')
 
 ### prior
+wer = np.genfromtxt('GW190814_prior_samples.dat', names=True)
+mc, q, dist = wer['mc'], wer['q'], wer['dist']
+m1 = mc * (1 + q)**0.2 / q**0.6
+m2 = m1 * q
 
-# wer = np.genfromtxt('GW190814_prior_samples.dat', names=True)
-# mc, q, dist = wer['mc'], wer['q'], wer['dist']
-# m1 = mc * (1 + q)**0.2 / q**0.6
-# m2 = m1 * q
-#
-# np.savetxt('GW190814_prior_samples.csv', np.array(list(zip(m1, m2, dist))),
-#            delimiter=',', comments='', header=header)
+np.savetxt('GW190814_prior_samples.csv', np.array(list(zip(m1, m2, dist))),
+           delimiter=',', comments='', header=header)
