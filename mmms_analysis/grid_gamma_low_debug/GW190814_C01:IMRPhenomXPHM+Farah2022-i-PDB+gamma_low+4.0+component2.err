@@ -4,8 +4,6 @@
   return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
 /fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/mmms/engine.py:354: RuntimeWarning: divide by zero encountered in scalar divide
   exp_O = exp_f / (exp_g - exp_f)
-/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/mmms/engine.py:356: RuntimeWarning: divide by zero encountered in scalar divide
-  var_O = var_f*exp_g**2/exp_d**4 + var_g*exp_f**2/exp_d**4 - 2*cov_fg*exp_f*exp_g/exp_d**4
 /fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/mmms/engine.py:356: RuntimeWarning: invalid value encountered in scalar divide
   var_O = var_f*exp_g**2/exp_d**4 + var_g*exp_f**2/exp_d**4 - 2*cov_fg*exp_f*exp_g/exp_d**4
 Traceback (most recent call last):

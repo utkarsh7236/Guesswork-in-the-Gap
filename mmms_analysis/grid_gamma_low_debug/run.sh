@@ -9,7 +9,7 @@ echo "[STATUS] Old output files cleaned."
 source ../mmms_shared_config.sh
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=10000
+POP_MAX_NUM_SAMPLES=100
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
@@ -50,10 +50,11 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   # Run individual mmms
 
   # Define population labels
-  # POP_LABEL="Farah2022-i-PDB"
-  POP_LABEL="multiPDB_betaSplit_brokenG"
+  POP_LABEL="Farah2022-i-PDB"
+  # POP_LABEL="multiPDB_betaSplit_brokenG"
   SEED="--seed 7236"
 
+  # EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
   EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
   POP_ARGS="$POP_MAX_ARG --mtov-column notch_lowmass_scale"
 
