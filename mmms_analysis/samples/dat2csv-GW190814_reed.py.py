@@ -12,7 +12,7 @@ spin_header = ','.join(spin_cols)
 ans = np.genfromtxt('GW190814_posterior_samples.dat', names=True)
 ans = ans[cols+spin_cols]
 
-np.savetxt('GW190814_posterior_samples.csv', ans, delimiter=',', comments='', header=header+','+spin_header)
+np.savetxt('GW190814_posterior_samples.csv.gz', ans, delimiter=',', comments='', header=header+','+spin_header)
 
 ### prior
 
