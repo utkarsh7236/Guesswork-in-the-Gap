@@ -30,3 +30,6 @@ m2 = m1 * q
 
 np.savetxt('GW190814_prior_samples.csv', np.array(list(zip(m1, m2, dist))),
            delimiter=',', comments='', header=header)
+
+np.savetxt('GW190814_prior_samples.csv.gz', np.array(list(zip(m1, m2, dist))),
+           delimiter=',', comments='', header=header)
