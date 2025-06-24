@@ -2,7 +2,7 @@
 
 # Remove all files that end with .out, .err, or .csv.gz in the current directory
 echo "[STATUS] Cleaning up old output files..."
-rm -f *.out *.err *.csv.gz
+rm -f *.out *.err
 echo "[STATUS] Old output files cleaned."
 
 # Import shared config
@@ -23,8 +23,9 @@ ALL_EVENTS=(
 )
 
 POP_PARAM="gamma_low"
-POP_VALUES=(1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0)   # Must be a float
-# POP_VALUES=(2.2 2.25 2.3 2.35 2.4 2.45 2.5 2.55 2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 3.0 3.05 3.1 3.15 3.2 3.25 3.3 3.35 3.4 3.5 3.5 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
+# POP_VALUES=(1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0)   # Must be a float
+POP_VALUES=(2.2 2.25 2.3 2.35 2.4 2.45 2.5 2.55 2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 3.0 3.05 3.1 3.15 3.2 3.25 3.3 3.35 3.4 3.5 3.5 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
+POP_VALUE=2.2
 
 # # Running conversion script, you need to change the value of pop_param in the conversion script
 # for POP_VALUE in "${POP_VALUES[@]}"; do
@@ -49,6 +50,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   # Run individual mmms
 
   # Define population labels
+  # POP_LABEL="Farah2022-i-PDB"
   POP_LABEL="multiPDB_betaSplit_brokenG"
   SEED="--seed 7236"
 

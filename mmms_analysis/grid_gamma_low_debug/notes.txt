@@ -1,0 +1,2 @@
+The fact that amanda's model and my model produce approximately the same results shows that the population posteriors are behaving simularly. 
+The problem is then likely with either the parameter estimation or the mmms code. Likley the former. Further investigations will continue. 
