@@ -3,4 +3,7 @@ The problem is then likely with either the parameter estimation or the mmms code
 
 I've tested changing the Jacobian of the PE and that seems to have no effect. 
 
-Next steps, I will try to pull the samples again from a different folder (Reed's paper folder) and apply alt-hdf2csv conversion to that instead. 
+I will try to pull the samples again from a different folder (Reed's paper folder) and apply alt-hdf2csv conversion to that instead. 
+The problem with the above is that the samples are split into prior samples and posterior samples. 
+
+Next steps, take prior samples and make a log_prior column in the posterior samples which I can use to run mmms. 
