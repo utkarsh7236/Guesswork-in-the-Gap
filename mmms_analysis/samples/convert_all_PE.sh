@@ -42,7 +42,9 @@ GW190814_waveform="C01:IMRPhenomXPHM"
   echo "Error converting $GW190814"
   exit 1
 }
-#GW200115="IGWN-GWTC3p0-v2-GW200115_042309_PEDataRelease_mixed_nocosmo.h5"
+
+#
+# GW200115="IGWN-GWTC3p0-v2-GW200115_042309_PEDataRelease_mixed_nocosmo.h5"
 #GW200115_waveform="C01:IMRPhenomNSBH:HighSpin"
 #./alt-hdf2csv \
 #    "${FOLDER}${GW200115}" \
