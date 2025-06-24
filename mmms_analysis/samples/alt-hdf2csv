@@ -106,11 +106,11 @@ spin2_mag = dist.PowerLawSpin2Magnitude(
 spin1_logprob = spin1_polar.logprob(renamed) + spin1_mag.logprob(renamed)
 spin2_logprob = spin2_polar.logprob(renamed) + spin2_mag.logprob(renamed)
 
-redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
-    min_redshift=0.0,
-    max_redshift=4.0,
-    pow_redshift=0.0,
-)
+# redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
+#     min_redshift=0.0,
+#     max_redshift=4.0,
+#     pow_redshift=0.0,
+# )
 
 
 # ======================== Reviewed by Reed Essick ========================
@@ -120,8 +120,7 @@ redshift_logprob = 2*np.log(renamed['luminosity_distance']) + np.log(factor)
 # now compute the prior
 renamed['logprior'] = 2 * np.log(1+renamed['z']) \
     + spin1_logprob + spin2_logprob \
-    + redshift.logprob(renamed) \
-    # + redshift_logprob \
+    + redshift_logprob
 # =========================================================
 
 # write to disk
