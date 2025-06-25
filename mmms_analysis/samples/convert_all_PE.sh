@@ -33,24 +33,15 @@ FOLDER="../../data/events_of_interest/"
 #  echo "Error converting $GW190425"
 #  exit 1
 #}
-GW190814="IGWN-GWTC2p1-v2-GW190814_211039_PEDataRelease_mixed_nocosmo.h5"
-GW190814_waveform="C01:IMRPhenomXPHM"
-./alt-hdf2csv \
-    "${FOLDER}${GW190814}" \
-    "GW190814_${GW190814_waveform}.csv.gz" \
-    --root ${GW190814_waveform} || {
-  echo "Error converting $GW190814"
-  exit 1
-}
-GW190814="IGWN-GWTC2p1-v2-GW190814_211039_PEDataRelease_mixed_nocosmo.h5"
-GW190814_waveform="C01:Mixed"
-./alt-hdf2csv \
-    "${FOLDER}${GW190814}" \
-    "GW190814_${GW190814_waveform}.csv.gz" \
-    --root ${GW190814_waveform} || {
-  echo "Error converting $GW190814"
-  exit 1
-}
+#GW190814="IGWN-GWTC2p1-v2-GW190814_211039_PEDataRelease_mixed_nocosmo.h5"
+#GW190814_waveform="C01:IMRPhenomXPHM"
+#./alt-hdf2csv \
+#    "${FOLDER}${GW190814}" \
+#    "GW190814_${GW190814_waveform}.csv.gz" \
+#    --root ${GW190814_waveform} || {
+#  echo "Error converting $GW190814"
+#  exit 1
+#}
 #
 # GW200115="IGWN-GWTC3p0-v2-GW200115_042309_PEDataRelease_mixed_nocosmo.h5"
 #GW200115_waveform="C01:IMRPhenomNSBH:HighSpin"
