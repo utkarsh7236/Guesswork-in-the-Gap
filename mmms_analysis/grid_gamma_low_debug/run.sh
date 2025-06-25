@@ -9,14 +9,15 @@ echo "[STATUS] Old output files cleaned."
 source ../mmms_shared_config.sh
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=100
+POP_MAX_NUM_SAMPLES=200
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
 ALL_EVENTS=(
   # "GW230529_Combined_PHM_highSpin|1"
   # "GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin|1 2"
-  "GW190814_C01:IMRPhenomXPHM|2"
+  # "GW190814_C01:IMRPhenomXPHMTEST|2"
+  "GW190814_C01:MixedTEST|2"
   # "GW190917_C01:IMRPhenomXPHM|1 2"
   # "GW200105_C01:IMRPhenomXPHM|1 2"
   # "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
@@ -25,7 +26,6 @@ ALL_EVENTS=(
 POP_PARAM="gamma_low"
 # POP_VALUES=(1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2 4.3 4.4 4.5 4.6 4.7 4.8 4.9 5.0)   # Must be a float
 POP_VALUES=(2.2 2.25 2.3 2.35 2.4 2.45 2.5 2.55 2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 3.0 3.05 3.1 3.15 3.2 3.25 3.3 3.35 3.4 3.5 3.5 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
-POP_VALUE=2.2
 
 # # Running conversion script, you need to change the value of pop_param in the conversion script
 # for POP_VALUE in "${POP_VALUES[@]}"; do
@@ -60,11 +60,6 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
 
   LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
 
-  # Assertions
-  [[ -f ../samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
-  [[ -f population${POP_VALUE}.csv.gz ]] || { echo "Missing pop samples file"; exit 1; }
-  [[ -f ../${POP_LABEL}.ini ]] || { echo "Missing gw-distribution initialization file"; exit 1; }
-
   FOLDER_NAME="${PWD##*/}"
 
   cd .. || { echo "Failed to cd .."; exit 1; }
@@ -72,6 +67,8 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   # Run mmms for each POP_VALUE in parallel
   for POP_VALUE in "${POP_VALUES[@]}"; do
     LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
+
+    # echo "${FOLDER_NAME}/population${POP_VALUE}.csv.gz"
 
     # Assertions
     [[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
