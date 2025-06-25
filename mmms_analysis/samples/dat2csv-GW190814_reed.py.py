@@ -16,6 +16,8 @@ ans = rfn.append_fields(ans, ['mass1_source', 'mass2_source', "logprior"],
                         [ans['mass_1_source'], ans['mass_2_source'], np.log(1+1e-7*ans['luminosity_distance'])],
                         usemask=False)
 
+ans = rfn.drop_fields(ans, ['mass_1_source', 'mass_2_source'])
+
 np.savetxt('GW190814_posterior_samplesTEST.csv.gz', ans, delimiter=',', comments='',
            header=header + ',' + spin_header + ',mass1_source,mass2_source')
 
