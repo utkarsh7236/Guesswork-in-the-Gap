@@ -12,11 +12,11 @@ spin_header = ','.join(spin_cols)
 
 ans = np.genfromtxt('GW190814_posterior_samples.dat', names=True)
 ans = ans[cols + spin_cols]
-ans = rfn.append_fields(ans, ['mass1_source', 'mass2_source'],
-                        [ans['mass_1_source'], ans['mass_2_source']],
+ans = rfn.append_fields(ans, ['mass1_source', 'mass2_source', "logprior"],
+                        [ans['mass_1_source'], ans['mass_2_source'], np.log(1+1e-7*ans['luminosity_distance'])],
                         usemask=False)
 
-np.savetxt('GW190814_posterior_samples.csv.gz', ans, delimiter=',', comments='',
+np.savetxt('GW190814_posterior_samplesTEST.csv.gz', ans, delimiter=',', comments='',
            header=header + ',' + spin_header + ',mass1_source,mass2_source')
 
 np.savetxt('GW190814_posterior_samples.csv', ans, delimiter=',', comments='',
