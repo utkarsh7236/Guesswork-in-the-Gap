@@ -26,11 +26,7 @@ ALL_EVENTS=(
 
 POP_PARAM="gamma_low"
 
-# Define finer grid for POP_VALUES
-POP_VALUES=()
-for v in $(seq 2.70 0.02 3.75); do
-  POP_VALUES+=($v)
-done
+POP_VALUES=(2.55 2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 3.0 3.05 3.1 3.15 3.2 3.25 3.3 3.35 3.4 3.5 3.5 3.55 3.6 3.65 3.7 3.75)
 
 # Running conversion script, you need to change the value of pop_param in the conversion script
 for POP_VALUE in "${POP_VALUES[@]}"; do
@@ -44,7 +40,7 @@ done
 # Wait for all backgrounded conversions to finish
 wait
 
-printf "\n\n[STATUS] Completed conversion scripts, running multiPDB mmms now...\n"
+printf "\n\n[STATUS] Completed conversion scripts, running PDB mmms now...\n"
 
 for ENTRY in "${ALL_EVENTS[@]}"; do
   # Split into key and value parts
@@ -74,6 +70,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
     LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
 
     # echo "${FOLDER_NAME}/population${POP_VALUE}.csv.gz"
+    echo "[STATUS] Running mmms for ${LABEL}..."
 
     # Assertions
     [[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
@@ -96,7 +93,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   done
 done
 
-printf "\n\n[STATUS] Completed conversion multiPDB mmms, running PDB mmms now...\n"
+printf "\n\n[STATUS] Completed conversion PDB mmms, running multiPDB mmms now...\n"
 
 for ENTRY in "${ALL_EVENTS[@]}"; do
   # Split into key and value parts
@@ -125,6 +122,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
     LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
 
     # echo "${FOLDER_NAME}/population${POP_VALUE}.csv.gz"
+    echo "[STATUS] Running mmms for ${LABEL}..."
 
     # Assertions
     [[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
@@ -146,6 +144,69 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
 
   done
 done
+
+
+# Define events to use along with waveform type
+ALL_EVENTS=(
+  "GW190814_C01:IMRPhenomXPHMconst_jac|2"
+)
+
+printf "\n\n[STATUS] Completed conversion PDB mmms, running multiPDB mmms now...\n"
+
+for ENTRY in "${ALL_EVENTS[@]}"; do
+  # Split into key and value parts
+  EVENT_SAMPLES=${ENTRY%%|*}
+  VALUE=${ENTRY#*|}
+  for COMPONENT in $VALUE; do
+
+  # Run individual mmms
+
+  # Define population labels
+  POP_LABEL="constJAC_betaSplit_brokenG"
+  POP_LABEL_INI="multiPDB_betaSplit_brokenG"
+  SEED="--seed 7236"
+
+  # EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
+  EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
+  POP_ARGS="$POP_MAX_ARG --mtov-column notch_lowmass_scale"
+
+  LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
+
+  FOLDER_NAME="${PWD##*/}"
+
+  cd .. || { echo "Failed to cd .."; exit 1; }
+
+  # Run mmms for each POP_VALUE in parallel
+  for POP_VALUE in "${POP_VALUES[@]}"; do
+    LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
+
+    # echo "${FOLDER_NAME}/population${POP_VALUE}.csv.gz"
+
+    echo "[STATUS] Running mmms for ${LABEL}..."
+
+    # Assertions
+    [[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
+    [[ -f ${FOLDER_NAME}/population${POP_VALUE}.csv.gz ]] || { echo "Missing pop samples file for POP_VALUE=${POP_VALUE}"; exit 1; }
+    [[ -f ${POP_LABEL_INI}.ini ]] || { echo "Missing gw-distribution initialization file"; exit 1; }
+
+    mmms samples/${EVENT_SAMPLES}.csv.gz \
+         ${POP_LABEL_INI}.ini \
+         ${FOLDER_NAME}/population${POP_VALUE}.csv.gz \
+         ${EVENT_ARGS} \
+         ${EXTRA_EVENT_ARGS} \
+         ${POP_ARGS} \
+         ${SEED} \
+         1> ${FOLDER_NAME}/${LABEL}.out \
+         2> ${FOLDER_NAME}/${LABEL}.err &
+  done
+
+  cd "${FOLDER_NAME}" || { echo "Failed to cd back to original dir"; exit 1; }
+
+  done
+done
+
+
+
 
 
 wait  # wait for all background jobs to finish
