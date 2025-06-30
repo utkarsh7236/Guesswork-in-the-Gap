@@ -119,9 +119,10 @@ factor = cosmo.z2Dc(renamed['z']) + (1+renamed['z']) * cosmo.dDcdz(renamed['z'])
 redshift_logprob = 2*np.log(renamed['luminosity_distance']) + np.log(factor)
 
 # now compute the prior
-renamed['logprior'] = np.log(1+renamed['z']) \
-    + spin1_logprob + spin2_logprob \
-    + redshift_logprob \
+# renamed['logprior'] = np.log(1+renamed['z']) \
+#     + spin1_logprob + spin2_logprob \
+#     + redshift_logprob \
+renamed['logprior'] = np.ones(len(renamed['luminosity_distance']))*1e-3
 # =========================================================
 
 # write to disk
