@@ -21,16 +21,16 @@ ALL_EVENTS=(
   "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
 )
 
-POP_PARAM="mu_cos"
-POP_VALUES=(-5.0 -4.5 -4.0 -3.5 -3.0 -2.5 -2.0 -1.5 -1.0 -0.5 0.0 0.5 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0)   # Must be a float
+POP_PARAM="mu_costilt"
+POP_VALUES=(-1.0 -0.9 -0.8 -0.7 -0.6 -0.5 -0.4 -0.3 -0.2 -0.1 0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)
 
 # Running conversion script, you need to change the value of pop_param in the conversion script
 for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
   python3 convert_multiPDB_betaSplit_brokenG.py \
-    --pop_param "$POP_PARAM" \
-    --pop_value "$POP_VALUE" &
+    --pop_param "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0" "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1"\
+    --pop_value "$POP_VALUE" "$POP_VALUE" "$POP_VALUE" "$POP_VALUE"&
 done
 
 # Wait for all backgrounded conversions to finish
