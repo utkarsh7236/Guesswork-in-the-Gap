@@ -125,12 +125,6 @@ if __name__ == "__main__":
 
     merged_posterior_samples = merge_posterior_samples(posterior_samples, posterior_samples_fixed)
 
-    replace = lambda name, val: val*np.ones(merged_posterior_samples[name].shape)
-
-    for key, val in pop_dict.items():
-        print(f"[UPDATE] Replacing {key} with {val} in merged posterior samples")
-        merged_posterior_samples[key] = replace(key, val)
-
     converted_posterior_samples = {}
 
     mu_tilt_list = ["mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0",
@@ -196,6 +190,13 @@ if __name__ == "__main__":
     num_hyperparams = len(conversion_dict)
     num_samples = len(posterior_samples["alpha_1"])
 
+
+    replace = lambda name, val: val*np.ones(converted_posterior_samples[name].shape)
+
+    for key, val in pop_dict.items():
+        print(f"[UPDATE] Replacing {key} with {val} in merged posterior samples")
+        merged_posterior_samples[key] = replace(key, val)
+
     for i in range(num_samples):
         sample_dict = {}
         for key, value in converted_posterior_samples.items():
@@ -204,6 +205,7 @@ if __name__ == "__main__":
     assert len(samples) == num_samples, f"Expected 5000 samples, but got {len(samples)}"
     assert len(samples[
                    0]) == num_hyperparams, f"Expected each dictionary to have {num_hyperparams} keys, but got {len(samples[0])}"
+
 
     # If no bugs, begin saving files
     # save paths as txt file
