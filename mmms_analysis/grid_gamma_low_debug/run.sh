@@ -9,7 +9,7 @@ echo "[STATUS] Old output files cleaned."
 source ../mmms_shared_config.sh
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=200
+POP_MAX_NUM_SAMPLES=20
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
@@ -26,7 +26,7 @@ ALL_EVENTS=(
 
 POP_PARAM="gamma_low"
 
-POP_VALUES=(2.55 2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 3.0 3.05 3.1 3.15 3.2 3.25 3.3 3.35 3.4 3.5 3.5 3.55 3.6 3.65 3.7 3.75)
+POP_VALUES=(2.5 2.52 2.54 2.56 2.58 2.6 2.62 2.64 2.66 2.68 2.7 2.72 2.74 2.76 2.78 2.8 2.82 2.84 2.86 2.88 2.9 2.92 2.94 2.96 2.98 3.0 3.02 3.04 3.06 3.08 3.1 3.12 3.14 3.16 3.18 3.2 3.22 3.24 3.26 3.28 3.3 3.32 3.34 3.36 3.38 3.4 3.42 3.44 3.46 3.48 3.5 3.52 3.54 3.56 3.58 3.6 3.62 3.64 3.66 3.68 3.7 3.72 3.74 3.76 3.78 3.8)
 
 # Running conversion script, you need to change the value of pop_param in the conversion script
 for POP_VALUE in "${POP_VALUES[@]}"; do
