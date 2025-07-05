@@ -18,7 +18,7 @@ ALL_EVENTS=(
 )
 
 POP_PARAM="gamma_low"
-POP_VALUES=(2.2 2.4 2.6 2.8 3.0 3.2 3.6 4.0)   # Must be a float
+POP_VALUES=(2.2 2.25 2.3 2.35 2.4 2.45 2.5 2.55 2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 3.0 3.05 3.1 3.15 3.2 3.25 3.3 3.35 3.4 3.5 3.5 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
 
 # Running conversion script, you need to change the value of pop_param in the conversion script
 for POP_VALUE in "${POP_VALUES[@]}"; do
