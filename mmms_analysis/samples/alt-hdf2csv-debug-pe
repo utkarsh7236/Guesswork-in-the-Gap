@@ -1,0 +1,140 @@
+#!/usr/bin/env python3
+
+"""a quick script to extract posterior samples and write them into a CSV
+"""
+__author__ = "Reed Essick (reed.essick@gmail.com)"
+
+#-------------------------------------------------
+
+import h5py
+import numpy as np
+
+from argparse import ArgumentParser
+
+### non-standard libraries
+from gwdistributions import distributions as dist
+from conversion_cosmology import Cosmology, PLANCK_2018_Ho, PLANCK_2018_OmegaMatter, PLANCK_2018_OmegaRadiation, PLANCK_2018_OmegaLambda
+
+#-------------------------------------------------
+
+parser = ArgumentParser()
+
+parser.add_argument('hdf', type=str, help='input file')
+parser.add_argument('csv', type=str, help='output file')
+
+parser.add_argument('--root', type=str, default=None)
+
+parser.add_argument('-v', '--verbose', default=False, action='store_true')
+parser.add_argument('-V', '--Verbose', default=False, action='store_true')
+
+args = parser.parse_args()
+
+args.verbose |= args.Verbose
+
+#-------------------------------------------------
+
+# load samples from HDF
+
+if args.verbose:
+    print('loading: '+args.hdf)
+
+with h5py.File(args.hdf, 'r') as obj:
+    print(obj.keys())
+    if args.root is not None:
+        grp = obj[args.root]
+    else:
+        grp = obj
+    data = dict((key, grp['posterior_samples'][key][:]) for key in grp['posterior_samples'].dtype.names)
+
+if args.Verbose:
+    for key, val in data.items():
+        print('    %s\t(%d samples)' % (key, len(val)))
+
+#-----------------------
+
+# convert keys to gw-distributions naming conventions
+
+if args.verbose:
+    print('converting naming convention')
+
+renamed = dict()
+
+renamed['mass1_source'] = data['mass_1_source']
+renamed['mass2_source'] = data['mass_2_source']
+
+renamed['luminosity_distance'] = data['luminosity_distance']
+renamed['z'] = data['redshift']
+
+renamed['spin1_azimuthal_angle'] = data['phi_1']
+renamed['spin1_polar_angle'] = data['tilt_1']
+renamed['spin1_magnitude'] = data['a_1']
+
+renamed['spin2_azimuthal_angle'] = data['phi_2']
+renamed['spin2_polar_angle'] = data['tilt_2']
+renamed['spin2_magnitude'] = data['a_2']
+
+#------------------------
+cosmo = Cosmology(PLANCK_2018_Ho, PLANCK_2018_OmegaMatter, PLANCK_2018_OmegaRadiation, PLANCK_2018_OmegaLambda)
+cosmo.extend(max_DL=np.max(data['luminosity_distance']))
+#------------------------
+
+# compute priors for population reweighing
+
+if args.verbose:
+    print('computing priors')
+
+# default PE priors are:
+#   uniform in detector-frame component masses
+#   uniform in spin magnitude, isotropic in spin direction
+#   uniform in luminosity distance squared
+
+# instantiate the relevant objects
+
+spin1_polar = dist.IsotropicSpin1PolarAngle()
+spin1_mag = dist.PowerLawSpin1Magnitude(
+    min_spin1_magnitude=0.0,
+    max_spin1_magnitude=1.0,
+    pow_spin1_magnitude=0.0,
+)
+
+spin2_polar = dist.IsotropicSpin2PolarAngle()
+spin2_mag = dist.PowerLawSpin2Magnitude(
+    min_spin2_magnitude=0.0,
+    max_spin2_magnitude=1.0,
+    pow_spin2_magnitude=0.0,
+)
+
+spin1_logprob = spin1_polar.logprob(renamed) + spin1_mag.logprob(renamed)
+spin2_logprob = spin2_polar.logprob(renamed) + spin2_mag.logprob(renamed)
+
+# redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
+#     min_redshift=0.0,
+#     max_redshift=4.0,
+#     pow_redshift=0.0,
+# )
+
+
+# ======================== Reviewed by Reed Essick ========================
+factor = cosmo.z2Dc(renamed['z']) + (1+renamed['z']) * cosmo.dDcdz(renamed['z'])
+redshift_logprob = 2*np.log(renamed['luminosity_distance']) + np.log(factor)
+
+# now compute the prior
+renamed['logprior'] = 2 * np.log(1+renamed['z']) \
+    + spin1_logprob + spin2_logprob \
+    + redshift_logprob \
+# =========================================================
+
+# write to disk
+
+if args.verbose:
+    print('writing: '+args.csv)
+
+keys = sorted(renamed.keys())
+
+np.savetxt(
+    args.csv,
+    np.transpose([renamed[key] for key in keys]),
+    header=','.join(keys),
+    comments='',
+    delimiter=',',
+)
