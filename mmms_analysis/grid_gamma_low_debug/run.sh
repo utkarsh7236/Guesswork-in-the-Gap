@@ -9,7 +9,7 @@ echo "[STATUS] Old output files cleaned."
 source ../mmms_shared_config.sh
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=20
+POP_MAX_NUM_SAMPLES=10000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
