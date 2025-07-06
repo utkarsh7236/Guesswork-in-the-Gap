@@ -106,8 +106,8 @@ spin2_mag = dist.PowerLawSpin2Magnitude(
 
 # spin1_logprob = spin1_polar.logprob(renamed) + spin1_mag.logprob(renamed)
 # spin2_logprob = spin2_polar.logprob(renamed) + spin2_mag.logprob(renamed)
-spin1_logprob = 0
-spin2_logprob = 0
+spin1_logprob = 1e6
+spin2_logprob = 1e6
 
 # redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
 #     min_redshift=0.0,
