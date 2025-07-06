@@ -14,7 +14,7 @@ POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
 ALL_EVENTS=(
-  "GW190814_C01:IMRPhenomXPHM|2"
+  "GW190814_C01:SEOBNRv4HM_ROMtestPE|2"
 )
 
 POP_PARAM="gamma_low"

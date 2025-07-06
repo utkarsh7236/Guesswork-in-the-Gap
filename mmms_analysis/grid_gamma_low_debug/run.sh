@@ -9,7 +9,7 @@ echo "[STATUS] Old output files cleaned."
 source ../mmms_shared_config.sh
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=10000
+POP_MAX_NUM_SAMPLES=100
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
@@ -206,7 +206,70 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
 done
 
 
+printf "\n\n[STATUS] Running with different PE now...\n"
+ALL_EVENTS=(
+  # "GW230529_Combined_PHM_highSpin|1"
+  # "GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin|1 2"
+  "GW190814_C01:IMRPhenomDtestPE|2"
+  # "GW190814_C01:MixedTEST|2"
+  # "GW190814_posterior_samplesTEST|2"
+  # "GW190917_C01:IMRPhenomXPHM|1 2"
+  # "GW200105_C01:IMRPhenomXPHM|1 2"
+  # "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
+)
 
+
+for ENTRY in "${ALL_EVENTS[@]}"; do
+  # Split into key and value parts
+  EVENT_SAMPLES=${ENTRY%%|*}
+  VALUE=${ENTRY#*|}
+  for COMPONENT in $VALUE; do
+
+  # Run individual mmms
+
+  # Define population labels
+  POP_LABEL="diffPE_betaSplit_brokenG"
+  POP_LABEL_INI="multiPDB_betaSplit_brokenG"
+  SEED="--seed 7236"
+
+  # EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
+  EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
+  POP_ARGS="$POP_MAX_ARG --mtov-column notch_lowmass_scale"
+
+  LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
+
+  FOLDER_NAME="${PWD##*/}"
+
+  cd .. || { echo "Failed to cd .."; exit 1; }
+
+  # Run mmms for each POP_VALUE in parallel
+  for POP_VALUE in "${POP_VALUES[@]}"; do
+    LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
+
+    # echo "${FOLDER_NAME}/population${POP_VALUE}.csv.gz"
+
+    echo "[STATUS] Running mmms for ${LABEL}..."
+
+    # Assertions
+    [[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
+    [[ -f ${FOLDER_NAME}/population${POP_VALUE}.csv.gz ]] || { echo "Missing pop samples file for POP_VALUE=${POP_VALUE}"; exit 1; }
+    [[ -f ${POP_LABEL_INI}.ini ]] || { echo "Missing gw-distribution initialization file"; exit 1; }
+
+    mmms samples/${EVENT_SAMPLES}.csv.gz \
+         ${POP_LABEL_INI}.ini \
+         ${FOLDER_NAME}/population${POP_VALUE}.csv.gz \
+         ${EVENT_ARGS} \
+         ${EXTRA_EVENT_ARGS} \
+         ${POP_ARGS} \
+         ${SEED} \
+         1> ${FOLDER_NAME}/${LABEL}.out \
+         2> ${FOLDER_NAME}/${LABEL}.err &
+  done
+
+  cd "${FOLDER_NAME}" || { echo "Failed to cd back to original dir"; exit 1; }
+
+  done
+done
 
 
 wait  # wait for all background jobs to finish
