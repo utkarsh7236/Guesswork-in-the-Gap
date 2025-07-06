@@ -39,7 +39,7 @@ if args.verbose:
     print('loading: '+args.hdf)
 
 with h5py.File(args.hdf, 'r') as obj:
-    # print(obj.keys())
+    print(obj.keys())
     if args.root is not None:
         grp = obj[args.root]
     else:
