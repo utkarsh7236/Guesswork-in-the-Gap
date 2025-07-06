@@ -66,11 +66,11 @@ renamed['luminosity_distance'] = data['luminosity_distance']
 renamed['z'] = data['redshift']
 
 renamed['spin1_azimuthal_angle'] = data['phi_1']
-renamed['spin1_polar_angle'] = data['tilt_1']
+renamed['spin1_polar_angle'] = np.ones(data['tilt_1'].shape)
 renamed['spin1_magnitude'] = data['a_1']
 
 renamed['spin2_azimuthal_angle'] = data['phi_2']
-renamed['spin2_polar_angle'] = data['tilt_2']
+renamed['spin2_polar_angle'] = np.ones(data['tilt_2'].shape)
 renamed['spin2_magnitude'] = data['a_2']
 
 #------------------------
@@ -90,14 +90,14 @@ if args.verbose:
 
 # instantiate the relevant objects
 
-spin1_polar = dist.AlignedSpin1PolarAngle()
+spin1_polar = dist.IsotropicSpin1PolarAngle()
 spin1_mag = dist.PowerLawSpin1Magnitude(
     min_spin1_magnitude=0.0,
     max_spin1_magnitude=1.0,
     pow_spin1_magnitude=0.0,
 )
 
-spin2_polar = dist.AlignedSpin2PolarAngle()
+spin2_polar = dist.IsotropicSpin2PolarAngle()
 spin2_mag = dist.PowerLawSpin2Magnitude(
     min_spin2_magnitude=0.0,
     max_spin2_magnitude=1.0,
