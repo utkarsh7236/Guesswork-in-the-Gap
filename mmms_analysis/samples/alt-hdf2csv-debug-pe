@@ -66,11 +66,11 @@ renamed['luminosity_distance'] = data['luminosity_distance']
 renamed['z'] = data['redshift']
 
 renamed['spin1_azimuthal_angle'] = data['phi_1']
-renamed['spin1_polar_angle'] = np.ones(data['tilt_1'].shape)
+renamed['spin1_polar_angle'] = np.ones(data['tilt_1'].shape)*1e-2
 renamed['spin1_magnitude'] = data['a_1']
 
 renamed['spin2_azimuthal_angle'] = data['phi_2']
-renamed['spin2_polar_angle'] = np.ones(data['tilt_2'].shape)
+renamed['spin2_polar_angle'] = np.ones(data['tilt_2'].shape)*1e-2
 renamed['spin2_magnitude'] = data['a_2']
 
 #------------------------
@@ -106,6 +106,8 @@ spin2_mag = dist.PowerLawSpin2Magnitude(
 
 spin1_logprob = spin1_polar.logprob(renamed) + spin1_mag.logprob(renamed)
 spin2_logprob = spin2_polar.logprob(renamed) + spin2_mag.logprob(renamed)
+
+print('spin1 logprob:', spin1_logprob)
 
 # redshift = dist.LocalMergerRatePowerLaw1plusRedshift( # NOTE: assumes gw-dist's default cosmology
 #     min_redshift=0.0,
