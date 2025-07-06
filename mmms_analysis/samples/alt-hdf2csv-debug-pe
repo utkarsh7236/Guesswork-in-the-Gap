@@ -66,11 +66,11 @@ renamed['luminosity_distance'] = data['luminosity_distance']
 renamed['z'] = data['redshift']
 
 renamed['spin1_azimuthal_angle'] = data['phi_1']
-renamed['spin1_polar_angle'] = data['tilt_1']
+renamed['spin1_polar_angle'] = np.ones(data['tilt_1'].shape)
 renamed['spin1_magnitude'] = data['a_1']
 
 renamed['spin2_azimuthal_angle'] = data['phi_2']
-renamed['spin2_polar_angle'] = data['tilt_2']
+renamed['spin2_polar_angle'] = np.ones(data['tilt_2'].shape)
 renamed['spin2_magnitude'] = data['a_2']
 
 #------------------------
