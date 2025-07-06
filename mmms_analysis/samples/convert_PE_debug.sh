@@ -3,7 +3,7 @@
 FOLDER="../../data/events_of_interest/"
 
 GW190814="GW190814_posterior_samples.h5"
-GW190814_waveform="C01:IMRPhenomPv3HM"
+GW190814_waveform="C01:SEOBNRv4HM_ROM"
 
 ./alt-hdf2csv-debug-pe \
     "${FOLDER}${GW190814}" \
