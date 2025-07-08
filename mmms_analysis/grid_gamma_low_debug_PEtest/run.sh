@@ -25,8 +25,8 @@ for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
   python3 convert_multiPDB_betaSplit_brokenG.py \
-    --pop_param "$POP_PARAM" eta_low \
-    --pop_value "$POP_VALUE" 50 &
+    --pop_param "$POP_PARAM" eta_low A eta_high\
+    --pop_value "$POP_VALUE" 2000 -10 2000 &
 done
 
 # Wait for all backgrounded conversions to finish
