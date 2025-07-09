@@ -1,2 +1,2 @@
-    Probability: P(mass <= max_mass(spin, eos)) = 0.976327 +/- 0.001277735
-    Odds Ratio : O^{mass <= max_mass(spin, eos))_{else} = 41.241809 +/- 2.279952417
+    Probability: P(mass <= max_mass(spin, eos)) = 0.976100 +/- 0.001284765
+    Odds Ratio : O^{mass <= max_mass(spin, eos))_{else} = 40.840427 +/- 2.249137263
