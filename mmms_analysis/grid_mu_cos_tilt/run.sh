@@ -9,7 +9,7 @@ rm -f *.out *.err *.csv.gz
 echo "[STATUS] Old output files cleaned."
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=10000
+POP_MAX_NUM_SAMPLES=100
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 ALL_EVENTS=(
@@ -29,8 +29,8 @@ for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
   python3 convert_multiPDB_betaSplit_brokenG.py \
-    --pop_param "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0" "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1"\
-    --pop_value "$POP_VALUE" "$POP_VALUE" "$POP_VALUE" "$POP_VALUE"&
+    --pop_param "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0" "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1" "stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0" "stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0" "stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1" "stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1"\
+    --pop_value "$POP_VALUE" "$POP_VALUE" "$POP_VALUE" "$POP_VALUE" 0.5 0.5 0.5 0.5& 
 done
 
 # Wait for all backgrounded conversions to finish

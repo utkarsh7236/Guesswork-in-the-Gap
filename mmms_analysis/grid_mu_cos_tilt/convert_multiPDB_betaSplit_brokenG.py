@@ -174,9 +174,10 @@ if __name__ == "__main__":
             converted_posterior_samples[new_key] = merged_posterior_samples[old_key] * normalization_offset
         elif new_key in spin_mixture_duplicates:  # for items in the gaussian spin list.
             print("   Mixture dictionary contains duplicates for this conversion, setting the right values")
-            converted_posterior_samples[new_key] = merged_posterior_samples[old_key]
-            converted_posterior_samples[gaussian_spin_to_mu_sig_dict[new_key]] = 1 - converted_posterior_samples[
-                new_key]
+            # converted_posterior_samples[new_key] = merged_posterior_samples[old_key]
+            # converted_posterior_samples[gaussian_spin_to_mu_sig_dict[new_key]] = 1 - converted_posterior_samples[new_key] 
+            converted_posterior_samples[new_key] = np.ones((merged_posterior_samples["alpha_1"].shape[0], 1)) * 1.0 # 1.0 Implies completely gaussian and no isotropic
+            converted_posterior_samples[gaussian_spin_to_mu_sig_dict[new_key]] = 1 - converted_posterior_samples[new_key]
         elif old_key in merged_posterior_samples:
             converted_posterior_samples[new_key] = merged_posterior_samples[old_key]
         elif new_key in mu_tilt_list:
@@ -195,7 +196,7 @@ if __name__ == "__main__":
 
     for key, val in pop_dict.items():
         print(f"[UPDATE] Replacing {key} with {val} in merged posterior samples")
-        merged_posterior_samples[key] = replace(key, val)
+        converted_posterior_samples[key] = replace(key, val)
 
     for i in range(num_samples):
         sample_dict = {}
