@@ -1,0 +1,95 @@
+nohup: ignoring input
+[STATUS] Cleaning up old output files...
+[STATUS] Old output files cleaned.
+[STATUS] Running conversion for POP_VALUE=1.6...
+[STATUS] Running conversion for POP_VALUE=1.8...
+[STATUS] Running conversion for POP_VALUE=2.0...
+[STATUS] Running conversion for POP_VALUE=2.2...
+[STATUS] Running conversion for POP_VALUE=2.4...
+[STATUS] Running conversion for POP_VALUE=2.6...
+[STATUS] Running conversion for POP_VALUE=2.8...
+[STATUS] Running conversion for POP_VALUE=3.0...
+[STATUS] Running conversion for POP_VALUE=3.2...
+[STATUS] Running conversion for POP_VALUE=3.4...
+[STATUS] Running conversion for POP_VALUE=3.6...
+[STATUS] Running conversion for POP_VALUE=3.8...
+[STATUS] Running conversion for POP_VALUE=4.0...
+[STATUS] Running conversion for POP_VALUE=4.2...
+[STATUS] Running conversion for POP_VALUE=4.4...
+[STATUS] Running conversion for POP_VALUE=4.6...
+[STATUS] Running conversion for POP_VALUE=4.8...
+[STATUS] Running conversion for POP_VALUE=5.0...
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+Traceback (most recent call last):
+  File "convert_multiPDB_betaSplit_brokenG.py", line 6, in <module>
+    from scipy.special import erf
+ModuleNotFoundError: No module named 'scipy'
+[STATUS] Merging EOS and Population for POP_VALUE=1.6...
+Missing population file: population1.6.csv
