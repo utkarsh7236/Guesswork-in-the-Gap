@@ -1,5 +1,5 @@
 # shared_config.sh
- source mmms_shared_config.sh
+#  source mmms_shared_config.sh
 
 POP_ARGS="$POP_MAX_ARG"
 POP_ARGS="$POP_ARGS --mtov-column Mmax"
