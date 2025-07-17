@@ -1,3 +1,5 @@
 **/__pycache__/
 **/.DS_Store
 mmms_analysis/*_EOS/eos_population_mixtures/*
+**/.idea
+/data/**
