@@ -1,6 +1,4 @@
-# !/bin/bash
-
-source ../../../.venv/bin/activate # To activate the virtual environment
+#! /bin/bash
 
 # Remove all files that end with .out, .err, or .csv.gz in the current directory
 echo "[STATUS] Cleaning up old output files..."
@@ -38,14 +36,14 @@ ALL_EVENTS=(
 )
 
 POP_PARAM="gamma_low"
-POP_VALUES=(1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0 4.2 4.4)   # Must be a float 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
+POP_VALUES=(1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0)   # Must be a float 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
 
 # Running conversion script, you need to change the value of pop_param in the conversion script
 for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
   python3 convert_multiPDB_betaSplit_brokenG.py \
-    --pop_param "$POP_PARAM" eta_high \
+    --pop_param "$POP_PARAM" eta_low \
     --pop_value "$POP_VALUE" 50 &
 done
 

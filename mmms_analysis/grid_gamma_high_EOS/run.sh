@@ -1,6 +1,4 @@
-#!/bin/bash
-
-source ../../../.venv/bin/activate # To activate the virtual environment
+#! /bin/bash
 
 # Remove all files that end with .out, .err, or .csv.gz in the current directory
 echo "[STATUS] Cleaning up old output files..."
