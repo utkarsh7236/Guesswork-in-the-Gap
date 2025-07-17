@@ -33,5 +33,7 @@
 "min_spin1_magnitude":"a_min",
 "max_spin1_magnitude":"a_max",
 "min_spin2_magnitude":"a_min",
-"max_spin2_magnitude":"a_max"
+"max_spin2_magnitude":"a_max",
+"pow_spin1_magnitude":"pow_spin1_magnitude",
+"pow_spin2_magnitude":"pow_spin2_magnitude"
 }
