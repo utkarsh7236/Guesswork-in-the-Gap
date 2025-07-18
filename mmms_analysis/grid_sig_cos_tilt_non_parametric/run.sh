@@ -1,0 +1,91 @@
+#!/bin/bash
+
+# Import shared config
+source ../mmms_shared_config.sh
+
+# Remove all files that end with .out, .err, or .csv.gz in the current directory
+echo "[STATUS] Cleaning up old output files..."
+rm -f *.out *.err *.csv.gz
+echo "[STATUS] Old output files cleaned."
+
+# Fixing pop samples count for now
+POP_MAX_NUM_SAMPLES=500
+POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
+
+ALL_EVENTS=(
+  "GW230529_Combined_PHM_highSpin|1"
+  "GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin|1 2"
+  "GW190814_C01:IMRPhenomXPHM|2"
+  "GW190917_C01:IMRPhenomXPHM|1 2"
+  "GW200105_C01:IMRPhenomXPHM|1 2"
+  "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
+)
+
+POP_PARAM="sig_costilt"
+POP_VALUES=(0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95 1.0 1.05 1.1 1.15 1.2 1.25 1.3 1.35 1.4 1.45 1.5 1.55 1.6 1.65 1.7 1.75 1.8 1.85 1.9 1.95 2.0 2.05 2.1 2.15 2.2 2.25 2.3 2.35 2.4 2.45 2.5 2.55 2.6 2.65 2.7 2.75 2.8 2.85 2.9 2.95 3.0)
+
+# Running conversion script, you need to change the value of pop_param in the conversion script
+for POP_VALUE in "${POP_VALUES[@]}"; do
+  # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
+  echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
+  python3 convert_multiPDB_betaSplit_brokenG.py \
+  --pop_param "stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0" "stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0" "stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1" "stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1" "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0" "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0" "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1" \
+  --pop_value "$POP_VALUE" "$POP_VALUE" "$POP_VALUE" "$POP_VALUE" 1.0 1.0 1.0 1.0 &
+done
+
+# Wait for all backgrounded conversions to finish
+wait
+
+printf "\n\n[STATUS] Completed conversion scripts, running mmax-model-selection now...\n"
+
+for ENTRY in "${ALL_EVENTS[@]}"; do
+  # Split into key and value parts
+  EVENT_SAMPLES=${ENTRY%%|*}
+  VALUE=${ENTRY#*|}
+  for COMPONENT in $VALUE; do
+  # Define population labels
+  POP_LABEL="multiPDB_betaSplit_brokenG"
+  SEED="--seed 7236"
+
+  EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
+  POP_ARGS="$POP_MAX_ARG --mtov-column non_parametric_m_tov"
+
+  LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
+
+  echo "[STATUS] Running mmms for ${LABEL}..."
+
+  # Assertions
+  [[ -f ../samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
+  [[ -f population${POP_VALUE}.csv.gz ]] || { echo "Missing pop samples file"; exit 1; }
+  [[ -f ../${POP_LABEL}.ini ]] || { echo "Missing gw-distribution initialization file"; exit 1; }
+
+  FOLDER_NAME="${PWD##*/}"
+
+  cd .. || { echo "Failed to cd .."; exit 1; }
+
+  # Run mmms for each POP_VALUE in parallel
+  for POP_VALUE in "${POP_VALUES[@]}"; do
+    LABEL="${EVENT_SAMPLES}+${POP_LABEL}+${POP_PARAM}+${POP_VALUE}+component${COMPONENT}"
+
+    # Assertions
+    [[ -f samples/${EVENT_SAMPLES}.csv.gz ]] || { echo "Missing event samples file"; exit 1; }
+    [[ -f ${FOLDER_NAME}/population${POP_VALUE}.csv.gz ]] || { echo "Missing pop samples file for POP_VALUE=${POP_VALUE}"; exit 1; }
+    [[ -f ${POP_LABEL}.ini ]] || { echo "Missing gw-distribution initialization file"; exit 1; }
+
+    mmms samples/${EVENT_SAMPLES}.csv.gz \
+         ${POP_LABEL}.ini \
+         ${FOLDER_NAME}/population${POP_VALUE}.csv.gz \
+         ${EVENT_ARGS} \
+         ${EXTRA_EVENT_ARGS} \
+         ${POP_ARGS} \
+         ${SEED} \
+         1> ${FOLDER_NAME}/${LABEL}.out \
+         2> ${FOLDER_NAME}/${LABEL}.err &
+  done
+  cd "${FOLDER_NAME}" || { echo "Failed to cd back to original dir"; exit 1; }
+  done
+done
+
+wait  # wait for all background jobs to finish
+
+printf " \n[COMPLETED]\n "
