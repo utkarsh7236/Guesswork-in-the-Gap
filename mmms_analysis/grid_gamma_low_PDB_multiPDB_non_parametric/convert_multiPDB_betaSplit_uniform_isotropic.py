@@ -11,6 +11,9 @@ import pickle
 import csv
 import gzip
 import shutil
+from scipy.signal import convolve
+import importlib.util
+import sys
 
 # Set up argument parser
 import argparse
@@ -101,7 +104,7 @@ def merge_posterior_samples(posterior_samples, posterior_samples_fixed):
     return merged_dict
 
 if __name__ == "__main__":
-    folder_path = "../../sampler/runs/multiPDB_betaSplit_brokenG_1_full/"
+    folder_path = "../../sampler/runs/multiPDB_betaSplit_uniform_isotropic_1_full/"
     priors_path = folder_path + "priors.py"
     posterior_samples_fixed = extract_equalities(priors_path)
     posterior_samples_fixed["Ncomp"] = str(2.0)
@@ -112,10 +115,12 @@ if __name__ == "__main__":
     posterior_samples_fixed["Om0"] = str(0.3089) # 0.3158 Doesnt work with any other cosmology
     posterior_samples_fixed["max_redshift"] = str(4.0) # Using gw230529 defaults
     posterior_samples_fixed["min_redshift"] = str(0.0)
+    posterior_samples_fixed["a_max"] = str(1.0)
+    posterior_samples_fixed["a_min"] = str(0.0)
     config_path = folder_path + "config/"
     mass_model_path = config_path + "mass1d_func.py"
     spin_model_path = config_path + "spin_func.py"
-    conversion_dict = json.load(open("../conversion_dictionaries/multiPDB_betaSplit_brokenG.txt"))
+    conversion_dict = json.load(open("../conversion_dictionaries/multiPDB_betaSplit_uniform_isotropic.txt"))
     inv = {v: k for k, v in conversion_dict.items()}
 
     # Loading in population results
@@ -124,6 +129,64 @@ if __name__ == "__main__":
         posterior_samples = {key: np.array(f[key]) for key in f.keys()}
 
     merged_posterior_samples = merge_posterior_samples(posterior_samples, posterior_samples_fixed)
+    
+    kernel1 = np.array([-1, -2,  0,  2,  1])
+    kernel2 = np.array([1,  -2,  1])
+
+    spec = importlib.util.spec_from_file_location("mass1d_func", mass_model_path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules["mass1d_func"] = module
+    spec.loader.exec_module(module)
+    p_m_model = getattr(module, "multi_pdb")
+    print(f"[STATUS] Using mass model: {p_m_model.__name__}")
+
+    req_lst = ["m_break", "alpha_1", "alpha_2", "gamma_low", "eta_low", "gamma_high", "eta_high", "A", "m_min", "eta_min", "m_max", "eta_max", "mu_peak1", "sig_peak1", "peak_constant1", "mu_peak2", "sig_peak2", "peak_constant2", "model_min", "model_max"]
+    mass_grid = np.linspace(1, 100, 1000)  
+
+    # Store all assigned variables in a dict
+    param_values = {}
+
+    for key in req_lst:
+        if key not in merged_posterior_samples:
+            raise ValueError(f"Missing required key: {key} in merged_posterior_samples")
+        param_values[key] = merged_posterior_samples[key]  
+
+    p_m_arr = np.zeros((len(param_values["m_break"]), len(mass_grid)))
+
+    for i in range(len(param_values["m_break"])):
+        param_list = [param_values[key][i] for key in req_lst]
+        p_m_arr[i] = p_m_model(mass_grid, *param_list)
+
+    # Make sure nothing in p_m_arr is NaN or Inf
+    if np.any(np.isnan(p_m_arr)) or np.any(np.isinf(p_m_arr)):
+        raise ValueError("p_m_arr contains NaN or Inf values. Check the mass model function.")
+
+    m_tov_lst = []
+
+    for p_m in p_m_arr:
+        mask_full = (mass_grid >= 1) & (mass_grid <= 10)
+        mass_roi = mass_grid[mask_full]
+        p_m_roi = p_m[mask_full]
+        filtered = convolve(np.log10(p_m_roi), kernel1, mode='same')
+        search_mask = (mass_roi >= 1.8) & (mass_roi <= 5)
+        filtered_search = filtered[search_mask]
+        mass_search = mass_roi[search_mask]
+        edge_idx_local = np.argmax(np.abs(filtered_search))
+        mtov = mass_search[edge_idx_local]
+
+        if mtov > 2 and mtov < 4.9:
+            m_tov_lst.append(mtov)
+            continue 
+        else:
+            filtered = convolve(np.log10(p_m_roi), kernel2, mode='same')
+            search_mask = (mass_roi >= 1.8) & (mass_roi <= 5)
+            filtered_search = filtered[search_mask]
+            mass_search = mass_roi[search_mask]
+            edge_idx_local = np.argmax(np.abs(filtered_search))
+            mtov = mass_search[edge_idx_local]
+            m_tov_lst.append(mtov)
+
+    m_tov_arr = np.array(m_tov_lst)
 
     replace = lambda name, val: val*np.ones(merged_posterior_samples[name].shape)
 
@@ -133,35 +196,12 @@ if __name__ == "__main__":
 
     converted_posterior_samples = {}
 
-    mu_tilt_list = ["mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0",
-                    "mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1",
-                    "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1",
-                    "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0"]
-
     gaussian_mixture_list = ["sumgaussianpeak_prefactor_mass1_source_0", "sumgaussianpeak_prefactor_mass1_source_1"]
     gaussian_mix_to_mu_sig_dict = {"sumgaussianpeak_prefactor_mass1_source_0": ["mu_peak1", "sig_peak1"],
                                    "sumgaussianpeak_prefactor_mass1_source_1": ["mu_peak2", "sig_peak2"]}
 
-    gaussian_spin_list = ["mixture_frac_spin1_polar_angle_0_mass1_source_0",
-                          "mixture_frac_spin1_polar_angle_1_mass1_source_0",
-                          "mixture_frac_spin1_polar_angle_0_mass1_source_1",
-                          "mixture_frac_spin1_polar_angle_1_mass1_source_1",
-                          "mixture_frac_spin2_polar_angle_0_mass2_source_0",
-                          "mixture_frac_spin2_polar_angle_1_mass2_source_0",
-                          "mixture_frac_spin2_polar_angle_0_mass2_source_1",
-                          "mixture_frac_spin2_polar_angle_1_mass2_source_1"]
+    pow_spin_list = ["pow_spin1_magnitude", "pow_spin2_magnitude"]
 
-    assert len(gaussian_spin_list) == len(set(gaussian_spin_list)), "Duplicate elements found in gaussian_spin_list"
-
-    spin_mixture_duplicates = ["mixture_frac_spin1_polar_angle_1_mass1_source_0",
-                               "mixture_frac_spin1_polar_angle_1_mass1_source_1",
-                               "mixture_frac_spin2_polar_angle_1_mass2_source_0",
-                               "mixture_frac_spin2_polar_angle_1_mass2_source_1"]
-    gaussian_spin_to_mu_sig_dict = {
-        "mixture_frac_spin1_polar_angle_1_mass1_source_0": "mixture_frac_spin1_polar_angle_0_mass1_source_0",
-        "mixture_frac_spin1_polar_angle_1_mass1_source_1": "mixture_frac_spin1_polar_angle_0_mass1_source_1",
-        "mixture_frac_spin2_polar_angle_1_mass2_source_0": "mixture_frac_spin2_polar_angle_0_mass2_source_0",
-        "mixture_frac_spin2_polar_angle_1_mass2_source_1": "mixture_frac_spin2_polar_angle_0_mass2_source_1"}
 
     for new_key, old_key in conversion_dict.items():
         print(f"[STATUS] Converting {old_key} to {new_key}")
@@ -178,19 +218,24 @@ if __name__ == "__main__":
             Z = 0.5 * sigma * xp.sqrt(2 * xp.pi) * (erf(beta) - erf(alpha))
             normalization_offset = 1 / Z
             converted_posterior_samples[new_key] = merged_posterior_samples[old_key] * normalization_offset
-        elif new_key in spin_mixture_duplicates:  # for items in the gaussian spin list.
-            print("   Mixture dictionary contains duplicates for this conversion, setting the right values")
-            converted_posterior_samples[new_key] = merged_posterior_samples[old_key]
-            converted_posterior_samples[gaussian_spin_to_mu_sig_dict[new_key]] = 1 - converted_posterior_samples[
-                new_key]
         elif old_key in merged_posterior_samples:
             converted_posterior_samples[new_key] = merged_posterior_samples[old_key]
-        elif new_key in mu_tilt_list:
+        elif new_key in pow_spin_list:
             converted_posterior_samples[new_key] = np.ones((merged_posterior_samples["alpha_1"].shape[0], 1))
         else:
             converted_posterior_samples[new_key] = None  # or some placeholder if missing
 
-    assert not any(value is None for value in converted_posterior_samples.values())
+    # print the values of converted_posterior_samples that are None
+    for key, value in converted_posterior_samples.items():
+        if value is None:
+            print(f"[WARNING] {key} is None in converted_posterior_samples")
+            exit(0)
+
+    conversion_dict["non_parametric_m_tov"] = "non_parametric_m_tov"
+    inv["non_parametric_m_tov"] = "non_parametric_m_tov"
+    converted_posterior_samples["non_parametric_m_tov"] = m_tov_arr.reshape(-1, 1)
+
+    assert converted_posterior_samples["non_parametric_m_tov"].shape == converted_posterior_samples["notch_amplitude"].shape
 
     samples = []
     num_hyperparams = len(conversion_dict)
