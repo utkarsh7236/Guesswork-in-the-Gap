@@ -3,3 +3,4 @@
 mmms_analysis/*_EOS/eos_population_mixtures/*
 **/.idea
 /data/**
+mmms_analysis/*EOS_*/eos_population_mixtures/*.csv.gz

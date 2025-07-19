@@ -36,71 +36,71 @@ nohup: ignoring input
 /fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   from pkg_resources import resource_filename
 loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation3.8.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population3.8.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation4.0.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population4.0.csv.gz
 loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation2.1.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population2.1.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation3.0.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population3.0.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation3.4.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population3.4.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation2.6.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population2.6.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation3.6.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population3.6.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation3.2.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population3.2.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation2.4.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population2.4.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation2.8.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population2.8.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
+downsampling from 69881 -> 5000 samples
 loading samples from : PDBpopulation2.2.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
 saving combined data to: eos_population_mixtures/LEC-2020_population2.2.csv.gz
 loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5 samples
-loading samples from : PDBpopulation4.0.csv.gz
-downsampling from 9091 -> 1 samples
-generating all (5 * 1 = 5) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population4.0.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation2.8.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population2.8.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation2.6.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population2.6.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation3.8.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population3.8.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation3.2.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population3.2.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation3.6.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population3.6.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation3.4.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population3.4.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation2.4.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population2.4.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation2.1.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population2.1.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : PDBpopulation3.0.csv.gz
+downsampling from 9091 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population3.0.csv.gz
 
 
 [STATUS] Completed conversion scripts, running mmms now...
@@ -149,60 +149,3 @@ saving combined data to: eos_population_mixtures/LEC-2020_population4.0.csv.gz
 [STATUS] Running mmms for event GW190814_C01:IMRPhenomXPHM, value 3.8, component 2...
 [STATUS] Running mmms for event GW190814_C01:IMRPhenomXPHM, value 4.0, component 2...
 [STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.1, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.2, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.4, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.6, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.8, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.0, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.2, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.4, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.6, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.8, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 4.0, component 1...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.1, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.2, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.4, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.6, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 2.8, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.0, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.2, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.4, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.6, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 3.8, component 2...
-[STATUS] Running mmms for event GW190917_C01:IMRPhenomXPHM, value 4.0, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.1, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.2, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.4, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.6, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.8, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.0, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.2, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.4, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.6, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.8, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 4.0, component 1...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.1, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.2, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.4, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.6, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 2.8, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.0, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.2, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.4, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.6, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 3.8, component 2...
-[STATUS] Running mmms for event GW200105_C01:IMRPhenomXPHM, value 4.0, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 2.1, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 2.2, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 2.4, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 2.6, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 2.8, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 3.0, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 3.2, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 3.4, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 3.6, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 3.8, component 2...
-[STATUS] Running mmms for event GW200115_C01:IMRPhenomNSBH:HighSpin, value 4.0, component 2...
- 
-[COMPLETED]
- 
