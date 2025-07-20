@@ -1,0 +1,26 @@
+setting numpy.random.seed=7236
+reading config from: Farah2022-g-PDB.ini
+instantiating SamplingDistribution [BinnedPowerLawAsymmetricMassRatioPairing]
+loading [Mass1Distribution] from : butterworth.ini
+reading config from: butterworth.ini
+instantiating SamplingDistribution [ButterworthNotchNPiecePowerLawMass1]
+instantiating SamplingDistribution [LocalMergerRatePowerLaw1plusRedshift]
+instantiating SamplingDistribution [BetaSpin1Magnitude]
+instantiating SamplingDistribution [IsotropicSpin1AzimuthalAngle]
+instantiating SamplingDistribution [IsotropicSpin1PolarAngle]
+instantiating SamplingDistribution [BetaSpin2Magnitude]
+instantiating SamplingDistribution [IsotropicSpin2AzimuthalAngle]
+instantiating SamplingDistribution [IsotropicSpin2PolarAngle]
+loading samples from : reproduce_gw230529_paper/reed_Farah2022-g-PDB.csv.gz
+current number of samples (7421) is less than or equal to the maximum requested (inf)
+pruning notch_lowmass_scale samples to fit within [0.100000, 5.000000]
+    retained 7421 / 7421 samples
+downsampling from 7421 -> 1000 samples
+Mtov Samples
+    num=1000
+    mean=2.621854e+00
+    median=2.686013e+00
+    std=2.817360e-01
+    min=1.542743e+00
+    max=2.999670e+00
+loading samples from : samples/Default-PE.csv.gz

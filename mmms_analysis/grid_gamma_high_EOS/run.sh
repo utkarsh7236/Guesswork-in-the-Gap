@@ -20,8 +20,8 @@ EOS_NAME="LEC-2020"
 EOS_SAMPLES="../samples/${EOS_NAME}"
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=1000
-EOS_MAX_NUM_SAMPLES=5000
+POP_MAX_NUM_SAMPLES=1
+EOS_MAX_NUM_SAMPLES=5
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 
@@ -36,7 +36,7 @@ ALL_EVENTS=(
 )
 
 POP_PARAM="gamma_high"
-POP_VALUES=(4.0 4.2 4.4 4.6 4.8 5.0 5.2 5.4 5.6 5.8 6.0 6.2 6.4 6.6 6.8 7.0 7.2 7.4 7.6 7.8 8.0)   # Must be a float 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
+POP_VALUES=(4.0 5.0 6.0 7.0 8.0)   # Must be a float 3.55 3.6 3.65 3.7 3.75 3.8 3.85 3.9 3.95 4.0)
 
 # Running conversion script, you need to change the value of pop_param in the conversion script
 for POP_VALUE in "${POP_VALUES[@]}"; do

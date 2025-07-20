@@ -1,0 +1,50 @@
+setting numpy.random.seed=7236
+reading config from: Farah2022-g-PDB.ini
+instantiating SamplingDistribution [BinnedPowerLawAsymmetricMassRatioPairing]
+loading [Mass1Distribution] from : butterworth.ini
+reading config from: butterworth.ini
+instantiating SamplingDistribution [ButterworthNotchNPiecePowerLawMass1]
+instantiating SamplingDistribution [LocalMergerRatePowerLaw1plusRedshift]
+instantiating SamplingDistribution [BetaSpin1Magnitude]
+instantiating SamplingDistribution [IsotropicSpin1AzimuthalAngle]
+instantiating SamplingDistribution [IsotropicSpin1PolarAngle]
+instantiating SamplingDistribution [BetaSpin2Magnitude]
+instantiating SamplingDistribution [IsotropicSpin2AzimuthalAngle]
+instantiating SamplingDistribution [IsotropicSpin2PolarAngle]
+loading samples from : reproduce_gw230529_paper/reed_Farah2022-g-PDB.csv.gz
+current number of samples (7421) is less than or equal to the maximum requested (inf)
+pruning notch_lowmass_scale samples to fit within [0.100000, 5.000000]
+    retained 7421 / 7421 samples
+downsampling from 7421 -> 1000 samples
+Mtov Samples
+    num=1000
+    mean=2.621854e+00
+    median=2.686013e+00
+    std=2.817360e-01
+    min=1.542743e+00
+    max=2.999670e+00
+loading samples from : samples/GW230529_Combined_PHM_highSpin.csv.gz
+current number of samples (23988) is less than or equal to the maximum requested (inf)
+pruning mass1_source samples to fit within [0.000000, 10.000000]
+pruning mass2_source samples to fit within [0.000000, 10.000000]
+pruning chirp mass samples to fit within [0.000000, 10.000000]
+pruning mass ratio samples to fit within [0.000000, 1.000000]
+pruning luminosity_distance samples to fit within [0.000000, 10000.000000]
+    retained 23988 / 23988 samples
+downsampling from 23988 -> 10000 samples
+extracting nontrival weights from column=logprior
+    exponentiating weights
+Mass Samples
+    num=10000
+    mean=3.590763e+00
+    median=3.651285e+00
+    std=5.938582e-01
+    min=2.140490e+00
+    max=6.049750e+00
+ignoring spin
+marginalizing to compute posterior and odds ratio
+computing moments over single-event uncertainty for each population sample separately
+computing sums over population uncertainty
+computing moments over population uncertainty
+    Probability: P(mass <= max_mass(spin, eos)) = 0.145872 +/- 0.006302093
+    Odds Ratio : O^{mass <= max_mass(spin, eos))_{else} = 0.170785 +/- 0.008638518

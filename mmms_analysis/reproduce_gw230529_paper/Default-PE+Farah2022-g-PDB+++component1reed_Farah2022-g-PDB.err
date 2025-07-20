@@ -1,0 +1,32 @@
+/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+Traceback (most recent call last):
+  File "/fs/lustre/scratch/mali/.venv/bin/mmms", line 175, in <module>
+    post_samples, post_priors, post_weights = io.load_event_samples(
+                                              ^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/mmms/io.py", line 143, in load_event_samples
+    samples = load_samples(path, verbose=verbose) # load everything
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/mmms/io.py", line 24, in load_samples
+    samples = np.genfromtxt(path, names=True, delimiter=',')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/numpy/lib/npyio.py", line 2009, in genfromtxt
+    first_line = _decode_line(next(fhd), encoding)
+                              ^^^^^^^^^
+  File "/usr/lib64/python3.11/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/gzip.py", line 499, in read
+    if not self._read_gzip_header():
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/gzip.py", line 468, in _read_gzip_header
+    last_mtime = _read_gzip_header(self._fp)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/gzip.py", line 428, in _read_gzip_header
+    raise BadGzipFile('Not a gzipped file (%r)' % magic)
+gzip.BadGzipFile: Not a gzipped file (b'mi')
