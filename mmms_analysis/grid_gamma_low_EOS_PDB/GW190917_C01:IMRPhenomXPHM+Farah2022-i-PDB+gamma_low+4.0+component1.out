@@ -1,2 +1,5 @@
+<<<<<<< HEAD
     Probability: P(mass <= max_mass(spin, eos)AND spin <= max_spin(eos)) = 0.000000 +/- 0.000000001
     Odds Ratio : O^{mass <= max_mass(spin, eos)AND spin <= max_spin(eos))_{else} = 0.000000 +/- 0.000000001
+=======
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45

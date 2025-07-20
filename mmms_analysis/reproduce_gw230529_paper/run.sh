@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Remove .out and .err files if they exist
+<<<<<<< HEAD
 # rm -f *.out *.err figures/*.png
 
 # Common population arguments
@@ -9,6 +10,12 @@
 
 # Event samples to use
 # EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
+=======
+# rm -f *.out *.err 
+
+# Common population arguments
+POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
 
 EVENT_ARGS=""
 EVENT_ARGS="$EVENT_ARGS --event-max-num-samples 10000"
@@ -27,27 +34,45 @@ POP_ARGS="$POP_ARGS --mtov-column Mmax"
 POP_ARGS="$POP_ARGS --rtov-column Rmax"
 POP_ARGS="$POP_ARGS --pop-weight-is-log"
 
+<<<<<<< HEAD
 # EOS_WEIGHT="logweight_PSR_GW_Xray"
 EOS_WEIGHT="logweight_PSR_GW"
 
 POP_MAX_NUM_SAMPLES=100
 EOS_MAX_NUM_SAMPLES=500
+=======
+EOS_WEIGHT="logweight_PSR_GW"
+
+POP_MAX_NUM_SAMPLES=1000
+EOS_MAX_NUM_SAMPLES=5000
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 EOS_NAME="LEC-2020"
 EOS_SAMPLES="../samples/${EOS_NAME}"
 
+<<<<<<< HEAD
 POP="Updated-LVK-O3-sans-230529-PDB-forced"
+=======
+POP="Updated-LVK-O3-sans-230529-PDB"
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
 OUT="eos_population_mixtures/${EOS_NAME}_${POP}"
 
 
 EVENT_SAMPLES="GW230529_Combined_PHM_highSpin"
+<<<<<<< HEAD
 # EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
+=======
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
 COMPONENT="1"
 
 # Ensure the input files exist
 [[ -f ${POP}.csv.gz ]] || { echo "Missing population file: ${POP}.csv"; exit 1; }
+<<<<<<< HEAD
 [[ -f ${EOS_SAMPLES}.csv.gz ]] || { echo "Missing EOS file: ${EOS_SAMPLES}.csv.gz"; exit 1; }
+=======
+[[ -f ${EOS_SAMPLES}.csv.gz ]] || { echo "Missing EOS file: ${EOS_SAMPLES}.csv"; exit 1; }
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
 
 mmms-combine \
     --samples ${EOS_SAMPLES}.csv.gz ${EOS_MAX_NUM_SAMPLES} \
@@ -95,6 +120,7 @@ ${POP_ARGS} \
 ${EXTRA_POP_ARGS} \
 ${SEED} \
 1> ${FOLDER_NAME}/${LABEL}.out \
+<<<<<<< HEAD
 2> ${FOLDER_NAME}/${LABEL}.err &
 
 mmms-plot \
@@ -112,3 +138,6 @@ mmms-plot \
 || exit 1
 
 wait 
+=======
+2> ${FOLDER_NAME}/${LABEL}.err &
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45

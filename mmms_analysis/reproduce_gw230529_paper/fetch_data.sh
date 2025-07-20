@@ -1,6 +1,10 @@
 #!/bin/bash
 
 POP="Updated-LVK-O3-sans-230529-PDB"
+<<<<<<< HEAD
+=======
+
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
 if [[ -f ${POP}.json ]]; then
     echo "[STATUS] ${POP}.json already exists, skipping scp step."
 else
@@ -9,6 +13,7 @@ else
     || exit 1
 fi
 
+<<<<<<< HEAD
 
 # convert from json to csv but force this to act as if there is a mass-independent spin distribution
 ./lvk-o3b-pdb-json2csv \
@@ -43,5 +48,23 @@ fi
     --verbose \
 || exit 1
 
+=======
+# convert from json to csv
+./lvk-o3b-pdb-json2csv \
+    ${POP}.json \
+    ${POP}.csv.gz \
+    --verbose \
+    || exit 1
+
+echo "[STATUS] Converted ${POP}.json to ${POP}.csv.gz"
+
+# convert from json to csv but force this to act as if there is a mass-independent spin distribution
+./lvk-o3b-pdb-json2csv \
+    ${POP}.json \
+    ${POP}-forced.csv.gz \
+    --force-single-spin-magnitude-distribution \
+    --verbose \
+    || exit 1
+>>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
 
 echo "[COMPLETED]"
