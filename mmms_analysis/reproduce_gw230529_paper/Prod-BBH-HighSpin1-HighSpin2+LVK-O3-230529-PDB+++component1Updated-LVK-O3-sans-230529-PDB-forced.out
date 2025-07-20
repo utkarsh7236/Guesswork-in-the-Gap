@@ -1,0 +1,50 @@
+setting numpy.random.seed=123
+reading config from: LVK-O3-230529-PDB.ini
+instantiating SamplingDistribution [PowerLawAsymmetricMassRatioTotalMassPairing]
+loading [Mass1Distribution] from : butterworth.ini
+reading config from: butterworth.ini
+instantiating SamplingDistribution [ButterworthNotchNPiecePowerLawMass1]
+instantiating SamplingDistribution [LocalMergerRatePowerLaw1plusRedshift]
+instantiating SamplingDistribution [BetaSpin1MagnitudeGivenMass1]
+instantiating SamplingDistribution [IsotropicSpin1AzimuthalAngle]
+instantiating SamplingDistribution [IsotropicSpin1PolarAngle]
+instantiating SamplingDistribution [BetaSpin2MagnitudeGivenMass2]
+instantiating SamplingDistribution [IsotropicSpin2AzimuthalAngle]
+instantiating SamplingDistribution [IsotropicSpin2PolarAngle]
+loading samples from : reproduce_gw230529_paper/Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+current number of samples (7414) is less than or equal to the maximum requested (inf)
+pruning notch_lowmass_scale samples to fit within [0.100000, 5.000000]
+    retained 7414 / 7414 samples
+current number of samples (7414) is less than or equal to the maximum requested (10000)
+Mtov Samples
+    num=7414
+    mean=2.234130e+00
+    median=2.216863e+00
+    std=4.563649e-01
+    min=1.400113e+00
+    max=2.999881e+00
+loading samples from : samples/Prod-BBH-HighSpin1-HighSpin2.csv.gz
+current number of samples (23988) is less than or equal to the maximum requested (inf)
+pruning mass1_source samples to fit within [0.000000, 10.000000]
+pruning mass2_source samples to fit within [0.000000, 10.000000]
+pruning chirp mass samples to fit within [0.000000, 10.000000]
+pruning mass ratio samples to fit within [0.000000, 1.000000]
+pruning luminosity_distance samples to fit within [0.000000, 10000.000000]
+    retained 23988 / 23988 samples
+downsampling from 23988 -> 10000 samples
+extracting nontrival weights from column=logprior
+    exponentiating weights
+Mass Samples
+    num=10000
+    mean=3.580760e+00
+    median=3.640296e+00
+    std=5.901838e-01
+    min=2.162239e+00
+    max=6.176688e+00
+ignoring spin
+marginalizing to compute posterior and odds ratio
+computing moments over single-event uncertainty for each population sample separately
+computing sums over population uncertainty
+computing moments over population uncertainty
+    Probability: P(mass <= max_mass(spin, eos)) = 0.253770 +/- 0.005508526
+    Odds Ratio : O^{mass <= max_mass(spin, eos))_{else} = 0.340070 +/- 0.009892145

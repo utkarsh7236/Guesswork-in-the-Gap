@@ -1,7 +1,7 @@
 # shared_config.sh
 
 # Common population arguments
-POP_MAX_NUM_SAMPLES=1000
+POP_MAX_NUM_SAMPLES=10000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # EVENT_ARGS=""
@@ -40,10 +40,12 @@ COMPONENT="1"
 
 FOLDER_NAME="${PWD##*/}"
 
-POP_FILE="reed_Farah2022-g-PDB"
+# POP_FILE="reed_Farah2022-g-PDB"
+POP_FILE="Updated-LVK-O3-sans-230529-PDB-forced"
 
 # Define population labels
-POP_LABEL="Farah2022-g-PDB"
+# POP_LABEL="Farah2022-g-PDB"
+POP_LABEL="LVK-O3-230529-PDB"
 SEED="--seed 123"
 
 EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
