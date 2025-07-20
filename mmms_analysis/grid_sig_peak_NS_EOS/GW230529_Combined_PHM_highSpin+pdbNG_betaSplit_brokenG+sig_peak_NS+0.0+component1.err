@@ -2,14 +2,10 @@
   from pkg_resources import resource_filename
 /fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
   return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
-/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/spin/polar.py:140: RuntimeWarning: divide by zero encountered in log
-  return Uniform._logprob(be.cos(pole), -1, +1) + be.log(be.clip(be.sin(pole), 0, 1))
-/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/spin/polar.py:218: RuntimeWarning: divide by zero encountered in log
-  + be.log(be.abs(be.sin(pole))) ### include jacobian from cos(pole) to pole
-/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/base/mixture.py:167: RuntimeWarning: divide by zero encountered in log
-  return be.log(prob)
-/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/mmms/engine.py:48: RuntimeWarning: invalid value encountered in divide
-  weights = weights * population.prob(samples) / priors
+/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/base/filter.py:245: RuntimeWarning: divide by zero encountered in divide
+  return prefactor*be.exp(-0.5*(val-mean)**2/stdv**2)
+/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/base/filter.py:245: RuntimeWarning: invalid value encountered in multiply
+  return prefactor*be.exp(-0.5*(val-mean)**2/stdv**2)
 Traceback (most recent call last):
   File "/fs/lustre/scratch/mali/.venv/bin/mmms", line 265, in <module>
     ans = engine.samples2prob_odds(
