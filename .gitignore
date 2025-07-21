@@ -29,9 +29,23 @@ mmms_analysis/grid_gamma_low_EOS_PDB_multiPDB/eos_population_mixtures/LEC-2020_p
 mmms_analysis/grid_gamma_low_EOS_PDB_multiPDB/eos_population_mixtures/LEC-2020_population3.8.csv.gz
 mmms_analysis/grid_gamma_low_EOS_PDB_multiPDB/eos_population_mixtures/LEC-2020_population4.0.csv.gz
 mmms_analysis/reproduce_gw230529_paper/eos_population_mixtures/LEC-2020_Updated-LVK-O3-sans-230529-PDB.csv.gz
-<<<<<<< HEAD
 mmms_analysis/reproduce_gw230529_paper/eos_population_mixtures/LEC-2020_Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
 mmms_analysis/reproduce_gw230529_paper/reed_LVK-O3b-PDB-forced.csv.gz
 mmms_analysis/reproduce_gw230529_paper/reed_LVK-O3b-PDB-forced.csv.gz
-=======
->>>>>>> 69632e7049a6a7dae9fe949846945086c5f56c45
+mmms_analysis/reproduce_gw230529_paper_full/Farah2022-g-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/eos_population_mixtures/LEC-2020_Updated-LVK-O3-sans-230529-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/reed_Farah2022-g-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/reed_LVK-O3b-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/**/.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/Updated-LVK-O3-sans-230529-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/Farah2022-g-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/eos_population_mixtures/LEC-2020_Updated-LVK-O3-sans-230529-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/reed_Farah2022-g-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/reed_LVK-O3b-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/**/.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/Updated-LVK-O3-sans-230529-PDB.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/eos_population_mixtures/LEC-2020_Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_paper_full/Farah2022-g-PDB.json
+mmms_analysis/reproduce_gw230529_paper_full/Updated-LVK-O3-sans-230529-PDB.json

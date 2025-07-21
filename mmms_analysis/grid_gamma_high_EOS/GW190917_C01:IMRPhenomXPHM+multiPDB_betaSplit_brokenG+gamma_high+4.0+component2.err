@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/fs/lustre/scratch/mali/.venv/bin/mmms", line 129, in <module>
+    population, pop_params, pop_variates = io.load_population(args.population_config, verbose=args.verbose)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/mmms-gw230529/src/mmax-model-selection/mmms/io.py", line 73, in load_population
+    raise ImportError('could not import gwdistributions.parse')
+ImportError: could not import gwdistributions.parse

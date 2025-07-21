@@ -1,4 +1,2 @@
-/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  from pkg_resources import resource_filename
-/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+/fs/lustre/scratch/mali/mmms-gw230529/src/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
   return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))

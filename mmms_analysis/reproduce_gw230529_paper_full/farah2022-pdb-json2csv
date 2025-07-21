@@ -1,0 +1,159 @@
+#!/usr/bin/env python3
+
+"""a quick script to convert the file format for population (hyper)posterior samples from JSON to CSV
+Assumes the model used in Farah 2022
+    https://iopscience.iop.org/article/10.3847/1538-4357/ac5f03
+which is based on this source code:
+    https://github.com/afarah18/gwpopulation/tree/chips-dip/gwpopulation/models
+"""
+__author__ = "Reed Essick (reed.essick@gmail.com)"
+
+#-------------------------------------------------
+
+import json
+import numpy as np
+
+from argparse import ArgumentParser
+
+### non-standard libraries
+from gwdistributions.utils import cosmology
+
+#-------------------------------------------------
+
+# cosmology quoted in the astropy docs
+# Planck 2015 (Table 4: TT, TE, EE + lowP + lensing + ext)
+# https://ui.adsabs.harvard.edu/abs/2016A%26A...594A..13P/abstract
+
+PLANCK_2015_Ho = 67.74 # km/s/Mpc
+PLANCK_2015_Ho /= cosmology.MPC_SI*1e-3 # convert this to s**-1
+PLANCK_2015_OmegaMatter = 0.3089
+PLANCK_2015_OmegaLambda = 0.6911
+PLANCK_2015_OmegaRadiation = 0.0
+
+#-------------------------------------------------
+
+parser = ArgumentParser()
+
+parser.add_argument('json', type=str, help='input file')
+parser.add_argument('csv', type=str, help='output file')
+
+parser.add_argument('-v', '--verbose', default=False, action='store_true')
+parser.add_argument('-V', '--Verbose', default=False, action='store_true')
+
+args = parser.parse_args()
+
+#-------------------------------------------------
+
+# load data from JSON
+
+if args.verbose:
+    print('loading: '+args.json)
+
+data = json.load(open(args.json, 'r'))
+data = data['posterior']['content']
+
+if args.Verbose:
+    for key, val in data.items():
+        print('    %s\t(%d samples)' % (key, len(val)))
+
+num_samples = len(list(data.values())[0])
+
+#------------------------
+
+# change naming convention for parameters
+
+if args.verbose:
+    print('converting naming convention')
+
+# these are based on the names within Amanda Farah's mass distribution model
+#  - https://git.ligo.org/publications/o4/cbc/s230529ay/-/work_items/60
+#  - https://github.com/afarah18/gwpopulation/blob/O4/gwpopulation/models/mass.py
+#
+# and their mapping to distributions defined within gw-distributions
+#  - ButterworthNotchNPiecePowerLawMass1
+#  - BinnedPowerLawAsymmetricMassRatioPairing
+#  - BetaSpin?Magnitude
+#  - IsotropicSpin?PolarAngle
+#  - IsotropicSpin?AzimuthalAngle
+#  - LocalMergerRatePowerLaw1plusRedshift
+
+renamed = dict()
+
+# highpass to cut off the lowest masses
+renamed['highpass_mass_scale'] = data['NSmin']
+renamed['highpass_exponent'] = data['n0']
+
+# notch filter
+renamed['notch_amplitude'] = data['A']
+renamed['notch_lowmass_scale'] = data['NSmax']
+renamed['notch_lowmass_exponent'] = data['n1']
+renamed['notch_highmass_scale'] = data['BHmin']
+renamed['notch_highmass_exponent'] = data['n2']
+
+# lowpass to cut off the highest masses
+renamed['lowpass_mass_scale'] = data['BHmax']
+renamed['lowpass_exponent'] = data['n3']
+
+# underlying broken power-law model
+renamed['Ncomp'] = 2 * np.ones(num_samples, dtype=int)
+renamed['min_mass1_source'] = 1.0 * np.ones(num_samples, dtype=float)  # fixed parameter
+renamed['alpha0'] = data['alpha_1']
+
+renamed['break1_mass1_source'] = data['NSmax'] # set this way within the gw-population model
+                                               # https://github.com/afarah18/gwpopulation/blob/chips-dip/gwpopulation/models/mass.py#L60
+
+renamed['alpha1'] = data['alpha_2']
+renamed['max_mass1_source'] = 100.0 * np.ones(num_samples, dtype=float) # fixed parameter
+
+# pairing function
+renamed['pairing_mbreak'] = data['mbreak'] # when it is relevant, we should use the value in the file
+
+if 'beta_q' in data: # a single pairing function
+    if args.verbose:
+        print('    power-law q pairing function!')
+    renamed['pairing_pow_q_low'] = renamed['pairing_pow_q_high'] = data['beta_q']
+
+elif ('beta_q_1' in data) and ('beta_q_2' in data): # a pairing function that depends on mass2_source
+    if args.verbose:
+        print('    binned power-law q pairing function') 
+    renamed['pairing_pow_q_low'] = data['beta_q_1']
+    renamed['pairing_pow_q_high'] = data['beta_q_2']
+
+else: # independent pairing function
+    if args.verbose:
+        print('    independent/random pairing function')
+    renamed['pairing_pow_q_low'] = renamed['pairing_pow_q_high'] = np.zeros(num_samples, dtype=float)
+
+# redshift distribution
+renamed['min_redshift'] = np.zeros(num_samples, dtype=float)
+renamed['max_redshift'] = np.ones(num_samples, dtype=float) * 4.0
+renamed['pow_redshift'] = data['lamb']
+
+### add default cosmology from gw-distributions
+renamed['Ho'] = np.ones(num_samples, dtype=float) * PLANCK_2015_Ho
+renamed['OmegaMatter'] = np.ones(num_samples, dtype=float) * PLANCK_2015_OmegaMatter
+renamed['OmegaLambda'] = np.ones(num_samples, dtype=float) * PLANCK_2015_OmegaLambda
+renamed['OmegaRadiation'] = np.ones(num_samples, dtype=float) * PLANCK_2015_OmegaRadiation
+
+# spin distribution
+renamed['min_spin1_magnitude'] = renamed['min_spin2_magnitude'] = np.zeros(num_samples, dtype=float) # fixed
+renamed['max_spin1_magnitude'] = renamed['max_spin2_magnitude'] = data['amax']
+renamed['alpha_spin1_magnitude'] = renamed['alpha_spin2_magnitude'] = data['alpha_chi']
+renamed['beta_spin1_magnitude'] = renamed['beta_spin2_magnitude'] = data['beta_chi']
+
+#------------------------
+
+# write samples to CSV
+
+if args.verbose:
+    print('writing: '+args.csv)
+
+keys = sorted(renamed.keys())
+
+np.savetxt(
+    args.csv,
+    np.transpose([renamed[key] for key in keys]),
+    header=','.join(keys),
+    delimiter=',',
+    comments='',
+)
