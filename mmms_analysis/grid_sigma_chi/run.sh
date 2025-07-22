@@ -4,7 +4,7 @@
 source ../mmms_shared_config.sh
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=10000
+POP_MAX_NUM_SAMPLES=100
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
@@ -21,8 +21,8 @@ POP_VALUES=(0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.2 0.3 0.4 0.5 0.6
 for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   python3 convert_multiPDB_betaSplit_brokenG.py \
-    --pop_param "$POP_PARAM" \
-    --pop_value "$POP_VALUE" &
+    --pop_param "$POP_PARAM" "mu_chi1"\
+    --pop_value "$POP_VALUE" 0.01 &
 done
 
 # Wait for all backgrounded conversions to finish

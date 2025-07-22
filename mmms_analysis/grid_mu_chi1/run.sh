@@ -9,7 +9,7 @@ rm -f *.out *.err *.csv.gz
 echo "[STATUS] Old output files cleaned."
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=10000
+POP_MAX_NUM_SAMPLES=100
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 ALL_EVENTS=(
@@ -29,8 +29,8 @@ for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
   python3 convert_multiPDB_betaSplit_brokenG.py \
-    --pop_param "$POP_PARAM" \
-    --pop_value "$POP_VALUE" &
+    --pop_param "$POP_PARAM" "sig_chi1" \
+    --pop_value "$POP_VALUE" 0.05 &
 done
 
 # Wait for all backgrounded conversions to finish

@@ -1,4 +1,6 @@
 nohup: ignoring input
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
 loading samples from : ../samples/LEC-2020.csv.gz
 downsampling from 69881 -> 500 samples
 loading samples from : Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
@@ -6,9 +8,9 @@ downsampling from 7414 -> 100 samples
 generating all (500 * 100 = 50000) possible combinations of samples
 saving combined data to: eos_population_mixtures/LEC-2020_Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
 [STATUS] Running mmms for event GW230529_Combined_PHM_highSpin, value , component 1...
-/fs/lustre/scratch/mali/.test-mmms-package/lib/python3.10/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
   return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
-/fs/lustre/scratch/mali/.test-mmms-package/lib/python3.10/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
-  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
-/fs/lustre/scratch/mali/.test-mmms-package/lib/python3.10/site-packages/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
   return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))

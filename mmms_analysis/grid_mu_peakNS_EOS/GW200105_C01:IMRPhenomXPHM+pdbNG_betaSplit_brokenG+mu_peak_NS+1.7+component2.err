@@ -1,7 +1,4 @@
-Traceback (most recent call last):
-  File "/fs/lustre/scratch/mali/.venv/bin/mmms", line 129, in <module>
-    population, pop_params, pop_variates = io.load_population(args.population_config, verbose=args.verbose)
-                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/fs/lustre/scratch/mali/mmms-gw230529/src/mmax-model-selection/mmms/io.py", line 73, in load_population
-    raise ImportError('could not import gwdistributions.parse')
-ImportError: could not import gwdistributions.parse
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
