@@ -1955,3 +1955,133 @@ nohup: ignoring input
   from pkg_resources import resource_filename
 /fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   from pkg_resources import resource_filename
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.5.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.5.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.0.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.0.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population1.0.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population1.0.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.5.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.5.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.4.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.4.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.6.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.6.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.1.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.1.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.8.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.8.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.2.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.2.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.4.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.4.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.2.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.2.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.1.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.1.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.9.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.9.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.7.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.7.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.8.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.8.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.3.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.3.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-0.7.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-0.7.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.6.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.6.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.9.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.9.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population0.3.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population0.3.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population-1.0.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population-1.0.csv.gz
+
+
+[STATUS] Completed conversion scripts, running mmms now...
+[STATUS] Running mmms for event GW230529_Combined_PHM_highSpin, value -1.0, component 1...
