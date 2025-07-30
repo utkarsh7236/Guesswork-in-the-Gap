@@ -3274,6 +3274,7 @@
       "../grid_mu_chi1_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+mu_chi1+0.1+component1.out",
       "../grid_mu_chi1_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+mu_chi1+0.02+component1.out",
       "../grid_mu_chi1_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+mu_chi1+0.12+component1.out",
+      "../grid_mu_chi1_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+mu_chi1+0.2+component1.out",
       "../grid_mu_chi1_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+mu_chi1+0.14+component1.out"
     ],
     "probability": [
@@ -3286,6 +3287,7 @@
       0.00012,
       8.8e-05,
       0.000102,
+      0.000926,
       0.000128
     ],
     "prob_error": [
@@ -3298,6 +3300,7 @@
       2.9971e-05,
       2.8377e-05,
       2.6656e-05,
+      0.000320102,
       3.176e-05
     ],
     "odds_ratio": [
@@ -3310,6 +3313,7 @@
       0.00012,
       8.8e-05,
       0.000102,
+      0.000927,
       0.000128
     ],
     "odds_error": [
@@ -3322,6 +3326,7 @@
       2.9979e-05,
       2.8382e-05,
       2.6662e-05,
+      0.000320696,
       3.1769e-05
     ],
     "mu_chi1": [
@@ -3334,6 +3339,7 @@
       0.1,
       0.02,
       0.12,
+      0.2,
       0.14
     ],
     "event": [
@@ -3346,9 +3352,11 @@
       "GW230529",
       "GW230529",
       "GW230529",
+      "GW230529",
       "GW230529"
     ],
     "component": [
+      1,
       1,
       1,
       1,
@@ -35985,7 +35993,8 @@
       "../grid_sigma_chi_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+sig_chi1+0.07+component1.out",
       "../grid_sigma_chi_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+sig_chi1+0.1+component1.out",
       "../grid_sigma_chi_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+sig_chi1+0.05+component1.out",
-      "../grid_sigma_chi_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+sig_chi1+0.06+component1.out"
+      "../grid_sigma_chi_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+sig_chi1+0.06+component1.out",
+      "../grid_sigma_chi_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+sig_chi1+0.2+component1.out"
     ],
     "probability": [
       0.000225,
@@ -35997,7 +36006,8 @@
       0.000184,
       0.000116,
       0.000214,
-      9.4e-05
+      9.4e-05,
+      0.00275
     ],
     "prob_error": [
       0.000111382,
@@ -36009,7 +36019,8 @@
       5.1117e-05,
       2.9358e-05,
       6.6027e-05,
-      3.0987e-05
+      3.0987e-05,
+      0.000742538
     ],
     "odds_ratio": [
       0.000225,
@@ -36021,7 +36032,8 @@
       0.000184,
       0.000116,
       0.000214,
-      9.4e-05
+      9.4e-05,
+      0.002757
     ],
     "odds_error": [
       0.000111432,
@@ -36033,7 +36045,8 @@
       5.1136e-05,
       2.9365e-05,
       6.6055e-05,
-      3.0993e-05
+      3.0993e-05,
+      0.000746639
     ],
     "sig_chi1": [
       0.01,
@@ -36045,9 +36058,11 @@
       0.07,
       0.1,
       0.05,
-      0.06
+      0.06,
+      0.2
     ],
     "event": [
+      "GW230529",
       "GW230529",
       "GW230529",
       "GW230529",
@@ -36060,6 +36075,7 @@
       "GW230529"
     ],
     "component": [
+      1,
       1,
       1,
       1,
