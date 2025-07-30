@@ -12,6 +12,7 @@
   "beta_low_NS_EOS": "beta_1",
   "mu_peakNS_non_parametric": "mu_peak_NS",
   "sigma_chi": "sig_chi1",
+  "sigma_chi_EOS": "sig_chi1",
   "beta_low_NS_non_parametric": "beta_1",
   "gamma_low_non_parametric": "gamma_low",
   "gamma_low_debug_PEtest": "gamma_low",
@@ -36,5 +37,6 @@
   "sig_cos_tilt_non_parametric": "sig_costilt",
   "sig_peak_NS_non_parametric": "sig_peak_NS",
   "mu_chi1": "mu_chi1",
+  "mu_chi1_EOS": "mu_chi1",
   "gamma_high_non_parametric": "gamma_high"
 }

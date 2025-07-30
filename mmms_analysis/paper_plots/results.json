@@ -3263,6 +3263,32 @@
       2
     ]
   },
+  "mu_chi1_EOS": {
+    "filename": [
+      "../grid_mu_chi1_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+mu_chi1+0.0+component1.out"
+    ],
+    "probability": [
+      0.0001
+    ],
+    "prob_error": [
+      3.4002e-05
+    ],
+    "odds_ratio": [
+      0.0001
+    ],
+    "odds_error": [
+      3.4009e-05
+    ],
+    "mu_chi1": [
+      0.0
+    ],
+    "event": [
+      "GW230529"
+    ],
+    "component": [
+      1
+    ]
+  },
   "gamma_high": {
     "filename": [
       "../grid_gamma_high/GW190917_C01:IMRPhenomXPHM+multiPDB_betaSplit_brokenG+gamma_high+4.8+component2.out",
@@ -35874,6 +35900,32 @@
       2,
       1,
       2
+    ]
+  },
+  "sigma_chi_EOS": {
+    "filename": [
+      "../grid_sigma_chi_EOS/GW230529_Combined_PHM_highSpin+multiPDB_betaSplit_brokenG+sig_chi1+0.01+component1.out"
+    ],
+    "probability": [
+      0.000225
+    ],
+    "prob_error": [
+      0.000111382
+    ],
+    "odds_ratio": [
+      0.000225
+    ],
+    "odds_error": [
+      0.000111432
+    ],
+    "sig_chi1": [
+      0.01
+    ],
+    "event": [
+      "GW230529"
+    ],
+    "component": [
+      1
     ]
   },
   "sig_cos_tilt_non_parametric": {
