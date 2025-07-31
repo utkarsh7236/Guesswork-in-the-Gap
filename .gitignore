@@ -51,3 +51,5 @@ mmms_analysis/reproduce_gw230529_paper_full/Farah2022-g-PDB.json
 mmms_analysis/reproduce_gw230529_paper_full/Updated-LVK-O3-sans-230529-PDB.json
 mmms_analysis/paper_plots/reproduce_mmms-plot-mass-spin/LEC-2020_Updated-LVK-O3-sans-230529-PDB.csv.gz
 mmms_analysis/paper_plots/reproduce_mmms-plot-mass-spin/LEC-2020_Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+mmms_analysis/paper_plots/reproduce_mmms-plot-mass-spin/mmms_mass_spin_weights.npz
+*.npz
