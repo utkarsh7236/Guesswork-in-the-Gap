@@ -4,14 +4,17 @@
 source ../mmms_shared_config.sh
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=100
+POP_MAX_NUM_SAMPLES=1000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # Define events to use along with waveform type
 ALL_EVENTS=(
   "GW230529_Combined_PHM_highSpin|1"
+  "GW190425_C01:IMRPhenomPv2_NRTidal:HighSpin|1 2"
   "GW190814_C01:IMRPhenomXPHM|2"
-  "GW190917_C01:IMRPhenomXPHM|2"
+  "GW190917_C01:IMRPhenomXPHM|1 2"
+  "GW200105_C01:IMRPhenomXPHM|1 2"
+  "GW200115_C01:IMRPhenomNSBH:HighSpin|2"
 )
 
 POP_PARAM="sig_chi1"
