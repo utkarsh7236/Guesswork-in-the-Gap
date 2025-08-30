@@ -67,6 +67,8 @@ for POP_VALUE in "${POP_VALUES[@]}"; do
   || { echo "Failed to merge EOS and Population"; exit 1; } & 
 done
 
+wait
+
 printf "\n\n[STATUS] Completed conversion scripts, running mmms now...\n"
 
 for ENTRY in "${ALL_EVENTS[@]}"; do
@@ -78,7 +80,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   # Run individual mmms
 
   # Define population labels
-  POP_LABEL="multiPDB_betaSplit_brokenG"
+  POP_LABEL="multiPDB_betaSplit3_brokenG"
   SEED="--seed 7236"
 
   # EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
@@ -126,11 +128,9 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
     ${EXTRA_POP_ARGS} \
     ${SEED} \
     1> ${FOLDER_NAME}/${LABEL}.out \
-    2> ${FOLDER_NAME}/${LABEL}.err &
+    2> ${FOLDER_NAME}/${LABEL}.err & 
   done
-
   cd "${FOLDER_NAME}" || { echo "Failed to cd back to original dir"; exit 1; }
-  done
+  done 
 done
-
-printf " \n[COMPLETED]\n "
+wait

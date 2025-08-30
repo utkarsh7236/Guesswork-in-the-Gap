@@ -8430,6 +8430,7 @@
       2
     ]
   },
+  "maximal_test_EOS": {},
   "gamma_low": {
     "filename": [
       "../grid_gamma_low/GW190917_C01:IMRPhenomXPHM+multiPDB_betaSplit_brokenG+gamma_low+4.6+component1.out",
@@ -11219,6 +11220,7 @@
     ]
   },
   "plots": {},
+  "maximal_test": {},
   "beta_low_non_parametric": {
     "filename": [
       "../grid_beta_low_non_parametric/GW190917_C01:IMRPhenomXPHM+multiPDB_betaSplit_brokenG+beta_1+-1.5+component2.out",
