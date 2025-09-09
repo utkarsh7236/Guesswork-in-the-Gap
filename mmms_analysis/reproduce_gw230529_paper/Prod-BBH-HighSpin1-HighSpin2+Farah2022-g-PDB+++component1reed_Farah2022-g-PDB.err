@@ -1,4 +1,19 @@
-/fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  from pkg_resources import resource_filename
-/fs/lustre/scratch/mali/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
-  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+usage: mmms [-h] [--event-max-num-samples EVENT_MAX_NUM_SAMPLES]
+            [--event-weight-column EVENT_WEIGHT_COLUMN]
+            [--event-weight-is-log]
+            [--event-prior-samples EVENT_PRIOR_SAMPLES]
+            [--event-prior-max-num-samples EVENT_PRIOR_MAX_NUM_SAMPLES]
+            [--event-prior-weight-column EVENT_PRIOR_WEIGHT_COLUMN]
+            [--event-prior-weight-is-log] [--mass-column MASS_COLUMN]
+            [--spin-column SPIN_COLUMN] [--m1-column M1_COLUMN]
+            [--m2-column M2_COLUMN] [--d-column D_COLUMN]
+            [--prior-column PRIOR_COLUMN] [--prior-is-log]
+            [--pop-max-num-samples POP_MAX_NUM_SAMPLES]
+            [--mtov-column MTOV_COLUMN] [--mtov-range MTOV_RANGE MTOV_RANGE]
+            [--rtov-column RTOV_COLUMN]
+            [--pop-weight-column POP_WEIGHT_COLUMN] [--pop-weight-is-log]
+            [--q-range Q_RANGE Q_RANGE] [--m-range M_RANGE M_RANGE]
+            [--mc-range MC_RANGE MC_RANGE] [--d-range D_RANGE D_RANGE] [-v]
+            [-V] [--seed SEED]
+            event_samples population_config population_samples
+mmms: error: unrecognized arguments:  --event-max-num-samples 10000 --prior-column logprior --prior-is-log --m1-column mass1_source --m2-column mass2_source --d-column luminosity_distance --q-range 0.0 1.0 --m-range 0.0 10.0 --mc-range 0.0 10.0 --d-range 0.0 10000.0 --mass-column mass1_source --pop-max-num-samples 100 --mtov-column notch_lowmass_scale --seed 123

@@ -40,11 +40,11 @@ COMPONENT="1"
 
 FOLDER_NAME="${PWD##*/}"
 
-POP_FILE="reed_Farah2022-g-PDB"
+POP_FILE="population"
 # POP_FILE="Updated-LVK-O3-sans-230529-PDB-forced"
 
 # Define population labels
-POP_LABEL="Farah2022-g-PDB"
+POP_LABEL="pdb_uniform"
 # POP_LABEL="LVK-O3-230529-PDB"
 SEED="--seed 123"
 
@@ -70,16 +70,16 @@ mmms samples/${EVENT_SAMPLES}.csv.gz \
         1> ${FOLDER_NAME}/${LABEL}.out \
         2> ${FOLDER_NAME}/${LABEL}.err & 
 
-mmms-plot samples/${EVENT_SAMPLES}.csv.gz \
-            ${POP_LABEL}.ini \
-            ${FOLDER_NAME}/${POP_FILE}.csv.gz \
-            ${EVENT_ARGS} \
-            ${EXTRA_EVENT_ARGS} \
-            ${POP_ARGS} \
-            ${SEED} \
-    --output-dir ${FOLDER_NAME}/figures \
-    --tag ${LABEL} \
-    --figtype png --dpi 300
+#mmms-plot samples/${EVENT_SAMPLES}.csv.gz \
+#            ${POP_LABEL}.ini \
+#            ${FOLDER_NAME}/${POP_FILE}.csv.gz \
+#            ${EVENT_ARGS} \
+#            ${EXTRA_EVENT_ARGS} \
+#            ${POP_ARGS} \
+#            ${SEED} \
+#    --output-dir ${FOLDER_NAME}/figures \
+#    --tag ${LABEL} \
+#    --figtype png --dpi 300
 
 cd "${FOLDER_NAME}" || { echo "Failed to cd back to original dir"; exit 1; }
 
