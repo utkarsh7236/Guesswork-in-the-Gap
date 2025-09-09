@@ -1,0 +1,41 @@
+The pyseobnr package has failed to load, you will not be able to employ SEOBNRv5 approximants.
+setting numpy.random.seed=123
+reading config from: pdb_uniform.ini
+instantiating SamplingDistribution [ButterworthNotchNPiecePowerLawMass1]
+loading samples from : reproduce_gw230529_new_run/population.csv.gz
+current number of samples (5000) is less than or equal to the maximum requested (inf)
+pruning notch_lowmass_scale samples to fit within [0.100000, 5.000000]
+    retained 5000 / 5000 samples
+downsampling from 5000 -> 100 samples
+Mtov Samples
+    num=100
+    mean=2.695163e+00
+    median=2.521553e+00
+    std=5.345698e-01
+    min=2.002949e+00
+    max=3.987898e+00
+loading samples from : samples/Prod-BBH-HighSpin1-HighSpin2.csv.gz
+current number of samples (23988) is less than or equal to the maximum requested (inf)
+pruning mass1_source samples to fit within [0.000000, 10.000000]
+pruning mass2_source samples to fit within [0.000000, 10.000000]
+pruning chirp mass samples to fit within [0.000000, 10.000000]
+pruning mass ratio samples to fit within [0.000000, 1.000000]
+pruning luminosity_distance samples to fit within [0.000000, 10000.000000]
+    retained 23988 / 23988 samples
+downsampling from 23988 -> 10000 samples
+extracting nontrival weights from column=logprior
+    exponentiating weights
+Mass Samples
+    num=10000
+    mean=3.588385e+00
+    median=3.649661e+00
+    std=5.918345e-01
+    min=2.148083e+00
+    max=6.447377e+00
+ignoring spin
+marginalizing to compute posterior and odds ratio
+computing moments over single-event uncertainty for each population sample separately
+computing sums over population uncertainty
+computing moments over population uncertainty
+    Probability: P(mass <= max_mass(spin, eos)) = 0.472266 +/- 0.038738737
+    Odds Ratio : O^{mass <= max_mass(spin, eos))_{else} = 0.894895 +/- 0.139096294

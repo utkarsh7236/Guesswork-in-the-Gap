@@ -1,0 +1,2 @@
+/Users/utkarsh/GitHub/P_NS/venv/bin/mmms:4: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  __import__('pkg_resources').require('mmax-model-selection==0.0')

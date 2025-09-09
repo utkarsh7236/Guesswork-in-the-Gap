@@ -1,0 +1,57 @@
+setting numpy.random.seed=7236
+reading config from: multiPDB_betaSplit_brokenG.ini
+instantiating SamplingDistribution [BinnedPowerLawAsymmetricMassRatioPairing]
+loading [Mass1Distribution] from : mass1d_multiPDB.ini
+reading config from: mass1d_multiPDB.ini
+instantiating [SumGaussianPeak withPDB] -> SumGaussianPeak
+loading 1-Dimensional distribution from : pdb.ini
+reading config from: pdb.ini
+instantiating SamplingDistribution [ButterworthNotchNPiecePowerLawMass1]
+instantiating SamplingDistribution [LocalMergerRatePowerLaw1plusRedshift]
+instantiating [SwitchPoint Spin1Magnitude Given Mass1Source] -> SwitchPoint
+loading base distribution from : spin1_mag.ini
+reading config from: spin1_mag.ini
+instantiating SamplingDistribution [TruncatedGaussianSpin1Magnitude]
+instantiating [SwitchPoint Spin2Magnitude Given Mass2Source] -> SwitchPoint
+loading base distribution from : spin2_mag.ini
+reading config from: spin2_mag.ini
+instantiating SamplingDistribution [TruncatedGaussianSpin2Magnitude]
+instantiating [SwitchPoint Spin1Polar Given Mass1Source] -> SwitchPoint
+loading base distribution from : spin1_tilt.ini
+reading config from: spin1_tilt.ini
+instantiating [Mixture Spin1PolarAngle]
+reading [isotropic] config with mixing_fraction=7.000e-01 from: spin1_tilt_isotropic.ini
+reading config from: spin1_tilt_isotropic.ini
+instantiating SamplingDistribution [IsotropicSpin1PolarAngle]
+reading [aligned] config with mixing_fraction=3.000e-01 from: spin1_tilt_aligned.ini
+reading config from: spin1_tilt_aligned.ini
+instantiating SamplingDistribution [TruncatedGaussianSpin1CosPolarAngle]
+instantiating [SwitchPoint Spin2Polar Given Mass2Source] -> SwitchPoint
+loading base distribution from : spin2_tilt.ini
+reading config from: spin2_tilt.ini
+instantiating [Mixture Spin2PolarAngle]
+reading [isotropic] config with mixing_fraction=7.000e-01 from: spin2_tilt_isotropic.ini
+reading config from: spin2_tilt_isotropic.ini
+instantiating SamplingDistribution [IsotropicSpin2PolarAngle]
+reading [aligned] config with mixing_fraction=3.000e-01 from: spin2_tilt_aligned.ini
+reading config from: spin2_tilt_aligned.ini
+instantiating SamplingDistribution [TruncatedGaussianSpin2CosPolarAngle]
+loading samples from : conversion_scripts/multiPDB_betaSplit_brokenG_S/population.csv.gz
+current number of samples (5000) is less than or equal to the maximum requested (inf)
+pruning notch_lowmass_scale samples to fit within [0.100000, 5.000000]
+    retained 5000 / 5000 samples
+current number of samples (5000) is less than or equal to the maximum requested (10000)
+loading samples from : samples/GW230529_Combined_PHM_lowSecondarySpin.csv.gz
+current number of samples (22684) is less than or equal to the maximum requested (inf)
+pruning mass1_source samples to fit within [0.000000, 20.000000]
+pruning mass2_source samples to fit within [0.000000, 20.000000]
+pruning chirp mass samples to fit within [0.000000, 20.000000]
+pruning mass ratio samples to fit within [0.000000, 1.000000]
+pruning luminosity_distance samples to fit within [0.000000, 10000.000000]
+    retained 22684 / 22684 samples
+downsampling from 22684 -> 10000 samples
+extracting nontrival weights from column=logprior
+    exponentiating weights
+marginalizing to compute posterior and odds ratio
+    Probability: P(mass <= max_mass(spin, eos)) = 0.063874 +/- 0.005797259
+    Odds Ratio : O^{mass <= max_mass(spin, eos))_{else} = 0.068232 +/- 0.006615368

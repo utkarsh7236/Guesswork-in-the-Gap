@@ -1,0 +1,52 @@
+if __name__ == "__main__":
+    data_arg = pickle.load(open("data/wrangled1.pkl", "rb"))
+    rng_key = jax.random.PRNGKey(0)
+    kernel = NUTS(prior)
+    mcmc = MCMC(kernel, num_warmup=2000, num_samples=5000, num_chains=1, progress_bar=True)
+    mcmc.run(rng_key)
+    
+    prior_samples = infer_samples(mcmc)
+    write_samples(mcmc, path = "results1/prior")
+    
+    rng_key = jax.random.PRNGKey(0)
+    kernel = NUTS(posterior)
+    mcmc = MCMC(kernel, num_warmup=2000, num_samples=5000, num_chains=1, progress_bar=True)
+    mcmc.run(rng_key, data_arg, init_params=get_guess_args(1))
+    
+    posterior_samples = infer_samples(mcmc)
+    write_samples(mcmc, path = "results1/posterior")
+    
+    os.remove("data/wrangled1.pkl")
+    
+    # Simple postprocessing
+    try: 
+        save_summary(mcmc, outfile = "results1/print_summary.txt")
+        save_corner(mcmc, posterior_samples, outfile="results1/corner.png")
+    except:
+        print("Postprocessing failed")
+
+    data_arg = pickle.load(open("data/wrangled2.pkl", "rb"))
+    rng_key = jax.random.PRNGKey(0)
+    kernel = NUTS(prior)
+    mcmc = MCMC(kernel, num_warmup=2000, num_samples=5000, num_chains=1, progress_bar=True)
+    mcmc.run(rng_key)
+
+    prior_samples = infer_samples(mcmc)
+    write_samples(mcmc, path="results2/prior")
+
+    rng_key = jax.random.PRNGKey(0)
+    kernel = NUTS(posterior)
+    mcmc = MCMC(kernel, num_warmup=2000, num_samples=5000, num_chains=1, progress_bar=True)
+    mcmc.run(rng_key, data_arg, init_params=get_guess_args(1))
+
+    posterior_samples = infer_samples(mcmc)
+    write_samples(mcmc, path="results2/posterior")
+
+    os.remove("data/wrangled2.pkl")
+
+    # Simple postprocessing
+    try:
+        save_summary(mcmc, outfile="results2/print_summary.txt")
+        save_corner(mcmc, posterior_samples, outfile="results2/corner.png")
+    except:
+        print("Postprocessing failed")

@@ -53,3 +53,12 @@ mmms_analysis/paper_plots/reproduce_mmms-plot-mass-spin/LEC-2020_Updated-LVK-O3-
 mmms_analysis/paper_plots/reproduce_mmms-plot-mass-spin/LEC-2020_Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
 mmms_analysis/paper_plots/reproduce_mmms-plot-mass-spin/mmms_mass_spin_weights.npz
 *.npz
+mmms_analysis/etc/**
+mmms_analysis/debug_gwdist/**
+mmms_analysis/non_parametric/*.hdf5
+mmms_analysis/postprocessing/*.csv
+mmms_analysis/samples/*.csv
+mmms_analysis/samples/*.det
+mmms_analysis/samples/eos_population_mixtures/*.csv.gz
+mmms_analysis/samples/saved_testcase/*.csv.gz
+mmms_analysis/samples/*.dat

@@ -1,0 +1,19 @@
+mcmc1 = None
+path = f"results1/posterior"
+mcmc1 = pickle_read(path)
+posterior_samples1 = infer_samples(mcmc1)
+mcmc2 = None
+path = f"results2/posterior"
+mcmc2 = pickle_read(path)
+posterior_samples2 = infer_samples(mcmc2)
+
+import corner
+import numpy as np
+params1 = get_non_deterministic_params(mcmc1)
+params_samples1 = np.array([posterior_samples1.get(key) for key in params1]).T
+params2 = get_non_deterministic_params(mcmc2)
+params_samples2 = np.array([posterior_samples2.get(key) for key in params2]).T
+fig = corner.corner(params_samples1, labels=params1, color="dodgerblue")
+corner.corner(params_samples2, labels=params2, color="crimson", fig=fig)
+plt.savefig("combined_results/corner_compare_runs.png")
+plt.close()
