@@ -62,3 +62,4 @@ mmms_analysis/samples/*.det
 mmms_analysis/samples/eos_population_mixtures/*.csv.gz
 mmms_analysis/samples/saved_testcase/*.csv.gz
 mmms_analysis/samples/*.dat
+mmms_analysis/reproduce_gw230529_new_run/eos_population_mixtures/LEC-2020_population.csv.gz

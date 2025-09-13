@@ -1,0 +1,16 @@
+/Users/utkarsh/GitHub/P_NS/venv/bin/mmms:4: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  __import__('pkg_resources').require('mmax-model-selection==0.0')
+/Users/utkarsh/GitHub/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+Traceback (most recent call last):
+  File "/Users/utkarsh/GitHub/P_NS/venv/bin/mmms", line 7, in <module>
+    exec(compile(f.read(), __file__, 'exec'))
+  File "/Users/utkarsh/GitHub/mmax-model-selection/bin/mmms", line 135, in <module>
+    pop_samples, pop_weights = io.load_population_samples(
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utkarsh/GitHub/mmax-model-selection/mmms/io.py", line 123, in load_population_samples
+    pop_samples = _downselect(pop_samples, retain, verbose=verbose)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/utkarsh/GitHub/mmax-model-selection/mmms/io.py", line 194, in _downselect
+    assert col in samples.dtype.names, 'requested column (%s) not present in samples (%s)!' \
+AssertionError: requested column (pow_mass2_source) not present in samples (Ho, Ncomp, OmegaLambda, OmegaMatter, OmegaRadiation, alpha0, alpha1, alpha_spin1_magnitude, alpha_spin2_magnitude, beta_spin1_magnitude, beta_spin2_magnitude, break1_mass1_source, highpass_exponent, highpass_mass_scale, lowpass_exponent, lowpass_mass_scale, max_mass1_source, max_redshift, max_spin1_magnitude, max_spin2_magnitude, min_mass1_source, min_redshift, min_spin1_magnitude, min_spin2_magnitude, notch_amplitude, notch_highmass_exponent, notch_highmass_scale, notch_lowmass_exponent, notch_lowmass_scale, pairing_mbreak, pairing_pow_q_high, pairing_pow_q_low, pow_redshift)!

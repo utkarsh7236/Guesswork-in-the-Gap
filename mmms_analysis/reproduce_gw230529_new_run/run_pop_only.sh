@@ -1,7 +1,7 @@
 # shared_config.sh
 
 # Common population arguments
-POP_MAX_NUM_SAMPLES=100
+POP_MAX_NUM_SAMPLES=10000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 # EVENT_ARGS=""
@@ -70,16 +70,16 @@ mmms samples/${EVENT_SAMPLES}.csv.gz \
         1> ${FOLDER_NAME}/${LABEL}.out \
         2> ${FOLDER_NAME}/${LABEL}.err & 
 
-#mmms-plot samples/${EVENT_SAMPLES}.csv.gz \
-#            ${POP_LABEL}.ini \
-#            ${FOLDER_NAME}/${POP_FILE}.csv.gz \
-#            ${EVENT_ARGS} \
-#            ${EXTRA_EVENT_ARGS} \
-#            ${POP_ARGS} \
-#            ${SEED} \
-#    --output-dir ${FOLDER_NAME}/figures \
-#    --tag ${LABEL} \
-#    --figtype png --dpi 300
+mmms-plot samples/${EVENT_SAMPLES}.csv.gz \
+           ${POP_LABEL}.ini \
+           ${FOLDER_NAME}/${POP_FILE}.csv.gz \
+           ${EVENT_ARGS} \
+           ${EXTRA_EVENT_ARGS} \
+           ${POP_ARGS} \
+           ${SEED} \
+   --output-dir ${FOLDER_NAME}/figures \
+   --tag ${LABEL} \
+   --figtype png --dpi 300
 
 cd "${FOLDER_NAME}" || { echo "Failed to cd back to original dir"; exit 1; }
 

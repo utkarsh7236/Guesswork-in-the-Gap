@@ -1,0 +1,6 @@
+/Users/utkarsh/GitHub/P_NS/venv/bin/mmms:4: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+  __import__('pkg_resources').require('mmax-model-selection==0.0')
+/Users/utkarsh/GitHub/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+/Users/utkarsh/GitHub/gw-distributions/gwdistributions/distributions/base/standard.py:141: RuntimeWarning: divide by zero encountered in log
+  -be.log(variate) - be.log(be.log(max_variate) - be.log(min_variate)),

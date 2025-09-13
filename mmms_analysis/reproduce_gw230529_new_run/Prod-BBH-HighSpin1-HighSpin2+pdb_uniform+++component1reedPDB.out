@@ -1,0 +1,12 @@
+The pyseobnr package has failed to load, you will not be able to employ SEOBNRv5 approximants.
+setting numpy.random.seed=123
+reading config from: pdb_uniform.ini
+instantiating SamplingDistribution [ButterworthNotchNPiecePowerLawMass1]
+instantiating SamplingDistribution [PowerLawMass2]
+instantiating SamplingDistribution [LocalMergerRatePowerLaw1plusRedshift]
+instantiating SamplingDistribution [IsotropicPowerLawPolarSpin1Spin2]
+loading samples from : reproduce_gw230529_new_run/reedPDB.csv.gz
+current number of samples (7421) is less than or equal to the maximum requested (inf)
+pruning notch_lowmass_scale samples to fit within [0.100000, 5.000000]
+    retained 7421 / 7421 samples
+current number of samples (7421) is less than or equal to the maximum requested (10000)

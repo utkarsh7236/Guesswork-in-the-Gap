@@ -1,0 +1,3 @@
+The pyseobnr package has failed to load, you will not be able to employ SEOBNRv5 approximants.
+    Probability: P(mass <= max_mass(spin, eos)AND spin <= max_spin(eos)) = 0.307976 +/- 0.014599758
+    Odds Ratio : O^{mass <= max_mass(spin, eos)AND spin <= max_spin(eos))_{else} = 0.445036 +/- 0.030486194

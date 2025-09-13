@@ -130,8 +130,12 @@ if __name__ == "__main__":
 
     assert not any(value is None for value in converted_posterior_samples.values())
 
+    converted_posterior_samples["pow_mass2_source"] = np.ones((merged_posterior_samples["alpha_1"].shape[0], 1)) * 0 
+    converted_posterior_samples["min_mass2_source"] = np.ones((merged_posterior_samples["alpha_1"].shape[0], 1)) * 1 
+    num_extra_items = 2
+
     samples = []
-    num_hyperparams = len(conversion_dict)
+    num_hyperparams = len(conversion_dict) + num_extra_items
     num_samples = len(posterior_samples["alpha_1"])
 
     for i in range(num_samples):
@@ -143,6 +147,7 @@ if __name__ == "__main__":
     assert len(samples[
                    0]) == num_hyperparams, f"Expected each dictionary to have {num_hyperparams} keys, but got {len(samples[0])}"
 
+    
     # If no bugs, begin saving files
     # save paths as txt file
     with open("conversion_paths.txt", "w") as f:
@@ -172,6 +177,12 @@ if __name__ == "__main__":
 
     # Write to gzip CSV
     with gzip.open("population.csv.gz", "wt", newline="", encoding="utf-8") as gzfile:
+        fieldnames = samples[0].keys()
+        writer = csv.DictWriter(gzfile, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(samples)
+    
+    with gzip.open("../../reproduce_gw230529_new_run/population.csv.gz", "wt", newline="", encoding="utf-8") as gzfile:
         fieldnames = samples[0].keys()
         writer = csv.DictWriter(gzfile, fieldnames=fieldnames)
         writer.writeheader()
