@@ -63,3 +63,11 @@ mmms_analysis/samples/eos_population_mixtures/*.csv.gz
 mmms_analysis/samples/saved_testcase/*.csv.gz
 mmms_analysis/samples/*.dat
 mmms_analysis/reproduce_gw230529_new_run/eos_population_mixtures/LEC-2020_population.csv.gz
+mmms_analysis/reproduce_gw230529_new_run/Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_PROD/reedPDB.csv.gz
+mmms_analysis/reproduce_gw230529_PROD/population.csv.gz
+mmms_analysis/reproduce_gw230529_PROD/Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_PROD/Default-PE.csv.gz
+.gitignore
+mmms_analysis/reproduce_gw230529_PROD/eos_population_mixtures/LEC-2020_Updated-LVK-O3-sans-230529-PDB-forced.csv.gz
+mmms_analysis/reproduce_gw230529_PROD/eos_population_mixtures/LEC-2020_Default-PE.csv.gz
