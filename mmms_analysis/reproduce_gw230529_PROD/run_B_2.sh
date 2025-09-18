@@ -41,7 +41,7 @@ POP="Updated-LVK-O3-sans-230529-PDB-forced"
 OUT="eos_population_mixtures/${EOS_NAME}_${POP}"
 
 
-EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
+EVENT_SAMPLES="Prod-BBH-LowSpin1-LowSpin2"
 # EVENT_SAMPLES="GW230529_Combined_PHM_lowSecondarySpin"
 COMPONENT="2"
 
