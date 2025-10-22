@@ -9,7 +9,7 @@ rm -f *.out *.err *.csv.gz
 echo "[STATUS] Old output files cleaned."
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=10000
+POP_MAX_NUM_SAMPLES=100
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 ALL_EVENTS=(
@@ -28,7 +28,7 @@ POP_VALUES=(0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)   # Must be a float
 for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
-  python3 convert_pdbNG_betaSplit_brokenG.py \
+  python3 convert_pdbNG_betaSplit3_brokenG.py \
     --pop_param "$POP_PARAM" \
     --pop_value "$POP_VALUE" &
 done
@@ -44,7 +44,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   VALUE=${ENTRY#*|}
   for COMPONENT in $VALUE; do
   # Define population labels
-  POP_LABEL="pdbNG_betaSplit_brokenG"
+  POP_LABEL="pdbNG_betaSplit3_brokenG"
   SEED="--seed 7236"
 
   EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
