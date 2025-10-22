@@ -20,7 +20,7 @@ EOS_NAME="LEC-2020"
 EOS_SAMPLES="../samples/${EOS_NAME}"
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=100
+POP_MAX_NUM_SAMPLES=1000
 EOS_MAX_NUM_SAMPLES=5000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
