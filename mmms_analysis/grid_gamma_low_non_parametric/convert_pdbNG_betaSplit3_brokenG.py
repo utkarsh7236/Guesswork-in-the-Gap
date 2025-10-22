@@ -209,9 +209,11 @@ if __name__ == "__main__":
                     "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1",
                     "mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0"]
 
-    gaussian_mixture_list = ["sumgaussianpeak_prefactor_mass1_source_0", "sumgaussianpeak_prefactor_mass1_source_1"]
+    gaussian_mixture_list = ["sumgaussianpeak_prefactor_mass1_source_0", "sumgaussianpeak_prefactor_mass1_source_1",
+                             "sumgaussianpeak_prefactor_mass1_source_2"]
     gaussian_mix_to_mu_sig_dict = {"sumgaussianpeak_prefactor_mass1_source_0": ["mu_peak1", "sig_peak1"],
-                                   "sumgaussianpeak_prefactor_mass1_source_1": ["mu_peak2", "sig_peak2"]}
+                                   "sumgaussianpeak_prefactor_mass1_source_1": ["mu_peak2", "sig_peak2"],
+                                   "sumgaussianpeak_prefactor_mass1_source_2": ["mu_peak_NS", "sig_peak_NS"]}
 
     gaussian_spin_list = ["mixture_frac_spin1_polar_angle_0_mass1_source_0",
                           "mixture_frac_spin1_polar_angle_1_mass1_source_0",
