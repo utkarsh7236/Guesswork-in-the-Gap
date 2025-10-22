@@ -1,0 +1,35 @@
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+/fs/lustre/scratch/mali/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
+  return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
+/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py:187: RuntimeWarning: invalid value encountered in scalar divide
+  sum_weights = np.sum(pop_weights) / N
+/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py:188: RuntimeWarning: invalid value encountered in scalar divide
+  sum_weights2 = np.sum(pop_weights**2) / N
+/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py:190: RuntimeWarning: invalid value encountered in scalar divide
+  sum_weights_m1 = np.sum(pop_weights * mass_m1) / N
+/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py:191: RuntimeWarning: invalid value encountered in scalar divide
+  sum_weights2_m1 = np.sum(pop_weights**2 * mass_m1) / N
+/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py:193: RuntimeWarning: invalid value encountered in scalar divide
+  sum_weights2_m12 = np.sum(pop_weights**2 * mass_m1**2) / N
+/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py:194: RuntimeWarning: invalid value encountered in scalar divide
+  sum_weights2_var = np.sum(pop_weights**2 * mass_var) / N
+/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py:196: RuntimeWarning: invalid value encountered in scalar divide
+  sum_weights_stdv = np.sum(pop_weights * mass_stdv) / N
+Traceback (most recent call last):
+  File "/fs/lustre/scratch/mali/.venv/bin/mmms", line 265, in <module>
+    ans = engine.samples2prob_odds(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py", line 447, in samples2prob_odds
+    (F, F_var), (G, G_var), FG_cov = _compute_pop_moments(
+                                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py", line 254, in _compute_pop_moments
+    return _vec_mass_moments2pop_moments(pop_weights, mass_moments, verbose=verbose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py", line 204, in _vec_mass_moments2pop_moments
+    G_var = _check_variance(G_var)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/fs/lustre/scratch/mali/mmax-model-selection/mmms/engine.py", line 19, in _check_variance
+    assert (variance > 0) or np.isclose(variance, 0), \
+            ^^^^^^^^^^^^
+AssertionError: bad estimate for the variance (nan)

@@ -40,6 +40,10 @@ nohup: ignoring input
    Applying normalization offset to this conversion
 [STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
 [STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
+[STATUS] Converting peak_constant_NS to sumgaussianpeak_prefactor_mass1_source_2
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak_NS to sumgaussianpeak_mean_mass1_source_2
+[STATUS] Converting sig_peak_NS to sumgaussianpeak_stdv_mass1_source_2
 [STATUS] Converting beta_1 to pairing_pow_q_bns
 [STATUS] Converting beta_gap to pairing_pow_q_nsbh
 [STATUS] Converting beta_2 to pairing_pow_q_bbh
@@ -98,7 +102,6 @@ nohup: ignoring input
 [UPDATE] Replacing stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0 with 0.5 in merged posterior samples
 [UPDATE] Replacing stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1 with 0.5 in merged posterior samples
 [UPDATE] Replacing stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1 with 0.5 in merged posterior samples
-[STATUS] Merging EOS and Population for POP_VALUE=5.0...
 [STATUS] Changing population parameters and values for:
  {'beta_1': 5.0, 'mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0': -1.0, 'mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1': -1.0, 'mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0': -1.0, 'mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1': -1.0, 'stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0': 0.5, 'stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0': 0.5, 'stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1': 0.5, 'stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1': 0.5}
 [UPDATE] Replacing beta_1 with 5.0 in merged posterior samples
@@ -132,6 +135,10 @@ nohup: ignoring input
    Applying normalization offset to this conversion
 [STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
 [STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
+[STATUS] Converting peak_constant_NS to sumgaussianpeak_prefactor_mass1_source_2
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak_NS to sumgaussianpeak_mean_mass1_source_2
+[STATUS] Converting sig_peak_NS to sumgaussianpeak_stdv_mass1_source_2
 [STATUS] Converting beta_1 to pairing_pow_q_bns
 [STATUS] Converting beta_gap to pairing_pow_q_nsbh
 [STATUS] Converting beta_2 to pairing_pow_q_bbh
@@ -191,26 +198,27 @@ nohup: ignoring input
 [UPDATE] Replacing stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1 with 0.5 in merged posterior samples
 [UPDATE] Replacing stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1 with 0.5 in merged posterior samples
 [STATUS] Merging EOS and Population for POP_VALUE=5.0...
+[STATUS] Merging EOS and Population for POP_VALUE=5.0...
 /fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   from pkg_resources import resource_filename
 /fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   from pkg_resources import resource_filename
 loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5000 samples
+downsampling from 69881 -> 500 samples
 loading samples from : population5.0.csv.gz
-downsampling from 5000 -> 1000 samples
-generating all (5000 * 1000 = 5000000) possible combinations of samples
+downsampling from 5000 -> 10 samples
+generating all (500 * 10 = 5000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population5.0.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 500 samples
+loading samples from : population5.0.csv.gz
+downsampling from 5000 -> 10 samples
+generating all (500 * 10 = 5000) possible combinations of samples
 saving combined data to: eos_population_mixtures/LEC-2020_population5.0.csv.gz
 
 
 [STATUS] Completed conversion scripts, running mmms now...
 [STATUS] Running mmms for event GW190814_C01:Mixed, value 5.0, component 2...
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5000 samples
-loading samples from : population5.0.csv.gz
-downsampling from 5000 -> 1000 samples
-generating all (5000 * 1000 = 5000000) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population5.0.csv.gz
 
 
 [STATUS] Completed conversion scripts, running mmms now...

@@ -20,8 +20,8 @@ EOS_NAME="LEC-2020"
 EOS_SAMPLES="../samples/${EOS_NAME}"
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=1000
-EOS_MAX_NUM_SAMPLES=5000
+POP_MAX_NUM_SAMPLES=1
+EOS_MAX_NUM_SAMPLES=5
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 
@@ -42,7 +42,7 @@ POP_VALUES=(1.6 1.8 2.0 2.2 2.4 2.6 2.8 3.0 3.2 3.4 3.6 3.8 4.0)   # Must be a f
 for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
-  python3 convert_multiPDB_betaSplit_brokenG.py \
+  python3 convert_pdbNG_betaSplit3_brokenG.py \
     --pop_param "$POP_PARAM" eta_low \
     --pop_value "$POP_VALUE" 50 &
 done
@@ -81,7 +81,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   # Run individual mmms
 
   # Define population labels
-  POP_LABEL="multiPDB_betaSplit_brokenG"
+  POP_LABEL="pdbNG_betaSplit3_brokenG"
   SEED="--seed 7236"
 
   # EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"

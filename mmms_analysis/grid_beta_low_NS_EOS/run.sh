@@ -42,7 +42,7 @@ POP_VALUES=(-5.0 -4.0 -3.0 -2.0 -1.0 0.0 1.0 2.0 3.0 4.0 5.0)   # Must be a floa
 for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
   echo "[STATUS] Running conversion for POP_VALUE=${POP_VALUE}..."
-  python3 convert_multiPDB_betaSplit3_brokenG.py \
+  python3 convert_pdbNG_betaSplit3_brokenG.py \
     --pop_param "$POP_PARAM" \
     --pop_value "$POP_VALUE" &
 done
@@ -81,7 +81,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   # Run individual mmms
 
   # Define population labels
-  POP_LABEL="multiPDB_betaSplit3_brokenG"
+  POP_LABEL="pdbNG_betaSplit3_brokenG"
   SEED="--seed 7236"
 
   # EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
