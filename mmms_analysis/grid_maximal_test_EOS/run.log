@@ -204,21 +204,21 @@ nohup: ignoring input
 /fs/lustre/scratch/mali/gw-distributions/gwdistributions/distributions/location/angles/zodiac/iau.py:9: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
   from pkg_resources import resource_filename
 loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 500 samples
+downsampling from 69881 -> 5000 samples
 loading samples from : population5.0.csv.gz
-downsampling from 5000 -> 10 samples
-generating all (500 * 10 = 5000) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population5.0.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 500 samples
-loading samples from : population5.0.csv.gz
-downsampling from 5000 -> 10 samples
-generating all (500 * 10 = 5000) possible combinations of samples
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
 saving combined data to: eos_population_mixtures/LEC-2020_population5.0.csv.gz
 
 
 [STATUS] Completed conversion scripts, running mmms now...
 [STATUS] Running mmms for event GW190814_C01:Mixed, value 5.0, component 2...
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population5.0.csv.gz
+downsampling from 5000 -> 1000 samples
+generating all (5000 * 1000 = 5000000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population5.0.csv.gz
 
 
 [STATUS] Completed conversion scripts, running mmms now...

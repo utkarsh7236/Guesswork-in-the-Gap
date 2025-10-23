@@ -9,7 +9,7 @@ echo "[STATUS] Cleaning up old output files..."
 echo "[STATUS] Old output files cleaned."
 
 # Fixing pop samples count for now
-POP_MAX_NUM_SAMPLES=1000
+POP_MAX_NUM_SAMPLES=10000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 ALL_EVENTS=(
