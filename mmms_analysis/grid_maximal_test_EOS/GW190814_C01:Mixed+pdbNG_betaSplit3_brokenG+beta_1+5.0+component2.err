@@ -14,5 +14,13 @@ Traceback (most recent call last):
               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/numpy/lib/npyio.py", line 2247, in genfromtxt
     for (i, line) in enumerate(itertools.chain([first_line, ], fhd)):
-  File "<frozen codecs>", line 322, in decode
-UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8a in position 3271: invalid start byte
+  File "/usr/lib64/python3.11/gzip.py", line 314, in read1
+    return self._buffer.read1(size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/_compression.py", line 68, in readinto
+    data = self.read(len(byte_view))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/gzip.py", line 507, in read
+    uncompress = self._decompressor.decompress(buf, size)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+zlib.error: Error -3 while decompressing data: invalid distance code
