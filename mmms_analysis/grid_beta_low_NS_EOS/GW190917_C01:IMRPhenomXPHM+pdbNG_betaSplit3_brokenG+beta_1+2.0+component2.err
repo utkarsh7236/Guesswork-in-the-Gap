@@ -2,24 +2,3 @@
   from pkg_resources import resource_filename
 /fs/lustre/scratch/mali/gw-distributions/gwdistributions/utils/cosmology.py:178: RuntimeWarning: divide by zero encountered in log
   return be.log(4*be.pi) + 2*be.log(Dc) + be.log(self.dDcdz(z))
-Traceback (most recent call last):
-  File "/fs/lustre/scratch/mali/.venv/bin/mmms", line 135, in <module>
-    pop_samples, pop_weights = io.load_population_samples(
-                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/fs/lustre/scratch/mali/mmax-model-selection/mmms/io.py", line 97, in load_population_samples
-    pop_samples = load_samples(path, verbose=verbose) # read on all samples
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/fs/lustre/scratch/mali/mmax-model-selection/mmms/io.py", line 24, in load_samples
-    samples = np.genfromtxt(path, names=True, delimiter=',')
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/fs/lustre/scratch/mali/.venv/lib64/python3.11/site-packages/numpy/lib/npyio.py", line 2247, in genfromtxt
-    for (i, line) in enumerate(itertools.chain([first_line, ], fhd)):
-  File "/usr/lib64/python3.11/gzip.py", line 314, in read1
-    return self._buffer.read1(size)
-           ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib64/python3.11/_compression.py", line 68, in readinto
-    data = self.read(len(byte_view))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/lib64/python3.11/gzip.py", line 518, in read
-    raise EOFError("Compressed file ended before the "
-EOFError: Compressed file ended before the end-of-stream marker was reached

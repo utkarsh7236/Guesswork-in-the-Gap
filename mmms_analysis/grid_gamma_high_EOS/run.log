@@ -41,8 +41,13 @@ nohup: ignoring input
    Applying normalization offset to this conversion
 [STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
 [STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
-[STATUS] Converting beta_1 to pairing_pow_q_low
-[STATUS] Converting beta_2 to pairing_pow_q_high
+[STATUS] Converting peak_constant_NS to sumgaussianpeak_prefactor_mass1_source_2
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak_NS to sumgaussianpeak_mean_mass1_source_2
+[STATUS] Converting sig_peak_NS to sumgaussianpeak_stdv_mass1_source_2
+[STATUS] Converting beta_1 to pairing_pow_q_bns
+[STATUS] Converting beta_gap to pairing_pow_q_nsbh
+[STATUS] Converting beta_2 to pairing_pow_q_bbh
 [STATUS] Converting sep to pairing_mbreak
 [STATUS] Converting a_min to min_spin1_magnitude_mass1_source_0
 [STATUS] Converting a_max_NS to max_spin1_magnitude_mass1_source_0
@@ -124,8 +129,13 @@ nohup: ignoring input
    Applying normalization offset to this conversion
 [STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
 [STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
-[STATUS] Converting beta_1 to pairing_pow_q_low
-[STATUS] Converting beta_2 to pairing_pow_q_high
+[STATUS] Converting peak_constant_NS to sumgaussianpeak_prefactor_mass1_source_2
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak_NS to sumgaussianpeak_mean_mass1_source_2
+[STATUS] Converting sig_peak_NS to sumgaussianpeak_stdv_mass1_source_2
+[STATUS] Converting beta_1 to pairing_pow_q_bns
+[STATUS] Converting beta_gap to pairing_pow_q_nsbh
+[STATUS] Converting beta_2 to pairing_pow_q_bbh
 [STATUS] Converting sep to pairing_mbreak
 [STATUS] Converting a_min to min_spin1_magnitude_mass1_source_0
 [STATUS] Converting a_max_NS to max_spin1_magnitude_mass1_source_0
@@ -207,91 +217,13 @@ nohup: ignoring input
    Applying normalization offset to this conversion
 [STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
 [STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
-[STATUS] Converting beta_1 to pairing_pow_q_low
-[STATUS] Converting beta_2 to pairing_pow_q_high
-[STATUS] Converting sep to pairing_mbreak
-[STATUS] Converting a_min to min_spin1_magnitude_mass1_source_0
-[STATUS] Converting a_max_NS to max_spin1_magnitude_mass1_source_0
-[STATUS] Converting mu_chi1 to mean_spin1_magnitude_mass1_source_0
-[STATUS] Converting sig_chi1 to stdv_spin1_magnitude_mass1_source_0
-[STATUS] Converting m_spin_break to switch_mass1_source_0
-[STATUS] Converting a_min to min_spin1_magnitude_mass1_source_1
-[STATUS] Converting a_max to max_spin1_magnitude_mass1_source_1
-[STATUS] Converting mu_chi2 to mean_spin1_magnitude_mass1_source_1
-[STATUS] Converting sig_chi2 to stdv_spin1_magnitude_mass1_source_1
-[STATUS] Converting a_min to min_spin2_magnitude_mass2_source_0
-[STATUS] Converting a_max_NS to max_spin2_magnitude_mass2_source_0
-[STATUS] Converting mu_chi1 to mean_spin2_magnitude_mass2_source_0
-[STATUS] Converting sig_chi1 to stdv_spin2_magnitude_mass2_source_0
-[STATUS] Converting m_spin_break to switch_mass2_source_0
-[STATUS] Converting a_min to min_spin2_magnitude_mass2_source_1
-[STATUS] Converting a_max to max_spin2_magnitude_mass2_source_1
-[STATUS] Converting mu_chi2 to mean_spin2_magnitude_mass2_source_1
-[STATUS] Converting sig_chi2 to stdv_spin2_magnitude_mass2_source_1
-[STATUS] Converting mix_tilt1 to mixture_frac_spin1_polar_angle_0_mass1_source_0
-[STATUS] Converting costilt_min to min_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
-[STATUS] Converting costilt_max to max_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
-[STATUS] Converting mu_tilt to mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
-[STATUS] Converting sig_tilt1 to stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
-[STATUS] Converting mix_tilt1 to mixture_frac_spin1_polar_angle_1_mass1_source_0
-   Mixture dictionary contains duplicates for this conversion, setting the right values
-[STATUS] Converting mix_tilt2 to mixture_frac_spin1_polar_angle_0_mass1_source_1
-[STATUS] Converting costilt_min to min_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
-[STATUS] Converting costilt_max to max_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
-[STATUS] Converting mu_tilt to mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
-[STATUS] Converting sig_tilt2 to stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
-[STATUS] Converting mix_tilt2 to mixture_frac_spin1_polar_angle_1_mass1_source_1
-   Mixture dictionary contains duplicates for this conversion, setting the right values
-[STATUS] Converting mix_tilt1 to mixture_frac_spin2_polar_angle_0_mass2_source_0
-[STATUS] Converting costilt_min to min_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
-[STATUS] Converting costilt_max to max_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
-[STATUS] Converting mu_tilt to mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
-[STATUS] Converting sig_tilt1 to stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
-[STATUS] Converting mix_tilt1 to mixture_frac_spin2_polar_angle_1_mass2_source_0
-   Mixture dictionary contains duplicates for this conversion, setting the right values
-[STATUS] Converting mix_tilt2 to mixture_frac_spin2_polar_angle_0_mass2_source_1
-[STATUS] Converting costilt_min to min_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
-[STATUS] Converting costilt_max to max_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
-[STATUS] Converting mu_tilt to mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
-[STATUS] Converting sig_tilt2 to stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
-[STATUS] Converting mix_tilt2 to mixture_frac_spin2_polar_angle_1_mass2_source_1
-   Mixture dictionary contains duplicates for this conversion, setting the right values
-[STATUS] Changing population parameters and values for:
- {'gamma_high': 6.0, 'eta_high': 50.0}
-[UPDATE] Replacing gamma_high with 6.0 in merged posterior samples
-[UPDATE] Replacing eta_high with 50.0 in merged posterior samples
-[STATUS] Converting Ncomp to Ncomp
-[STATUS] Converting H0 to Ho
-[STATUS] Converting Om0 to OmegaMatter
-[STATUS] Converting Or0 to OmegaRadiation
-[STATUS] Converting OL0 to OmegaLambda
-[STATUS] Converting kappa to pow_redshift
-[STATUS] Converting max_redshift to max_redshift
-[STATUS] Converting min_redshift to min_redshift
-[STATUS] Converting model_min to min_mass1_source
-[STATUS] Converting alpha_1 to alpha0
-[STATUS] Converting m_break to break1_mass1_source
-[STATUS] Converting alpha_2 to alpha1
-[STATUS] Converting model_max to max_mass1_source
-[STATUS] Converting m_min to highpass_mass_scale
-[STATUS] Converting eta_min to highpass_exponent
-[STATUS] Converting m_max to lowpass_mass_scale
-[STATUS] Converting eta_max to lowpass_exponent
-[STATUS] Converting A to notch_amplitude
-[STATUS] Converting gamma_low to notch_lowmass_scale
-[STATUS] Converting eta_low to notch_lowmass_exponent
-[STATUS] Converting gamma_high to notch_highmass_scale
-[STATUS] Converting eta_high to notch_highmass_exponent
-[STATUS] Converting peak_constant1 to sumgaussianpeak_prefactor_mass1_source_0
+[STATUS] Converting peak_constant_NS to sumgaussianpeak_prefactor_mass1_source_2
    Applying normalization offset to this conversion
-[STATUS] Converting mu_peak1 to sumgaussianpeak_mean_mass1_source_0
-[STATUS] Converting sig_peak1 to sumgaussianpeak_stdv_mass1_source_0
-[STATUS] Converting peak_constant2 to sumgaussianpeak_prefactor_mass1_source_1
-   Applying normalization offset to this conversion
-[STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
-[STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
-[STATUS] Converting beta_1 to pairing_pow_q_low
-[STATUS] Converting beta_2 to pairing_pow_q_high
+[STATUS] Converting mu_peak_NS to sumgaussianpeak_mean_mass1_source_2
+[STATUS] Converting sig_peak_NS to sumgaussianpeak_stdv_mass1_source_2
+[STATUS] Converting beta_1 to pairing_pow_q_bns
+[STATUS] Converting beta_gap to pairing_pow_q_nsbh
+[STATUS] Converting beta_2 to pairing_pow_q_bbh
 [STATUS] Converting sep to pairing_mbreak
 [STATUS] Converting a_min to min_spin1_magnitude_mass1_source_0
 [STATUS] Converting a_max_NS to max_spin1_magnitude_mass1_source_0
@@ -373,8 +305,101 @@ nohup: ignoring input
    Applying normalization offset to this conversion
 [STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
 [STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
-[STATUS] Converting beta_1 to pairing_pow_q_low
-[STATUS] Converting beta_2 to pairing_pow_q_high
+[STATUS] Converting peak_constant_NS to sumgaussianpeak_prefactor_mass1_source_2
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak_NS to sumgaussianpeak_mean_mass1_source_2
+[STATUS] Converting sig_peak_NS to sumgaussianpeak_stdv_mass1_source_2
+[STATUS] Converting beta_1 to pairing_pow_q_bns
+[STATUS] Converting beta_gap to pairing_pow_q_nsbh
+[STATUS] Converting beta_2 to pairing_pow_q_bbh
+[STATUS] Converting sep to pairing_mbreak
+[STATUS] Converting a_min to min_spin1_magnitude_mass1_source_0
+[STATUS] Converting a_max_NS to max_spin1_magnitude_mass1_source_0
+[STATUS] Converting mu_chi1 to mean_spin1_magnitude_mass1_source_0
+[STATUS] Converting sig_chi1 to stdv_spin1_magnitude_mass1_source_0
+[STATUS] Converting m_spin_break to switch_mass1_source_0
+[STATUS] Converting a_min to min_spin1_magnitude_mass1_source_1
+[STATUS] Converting a_max to max_spin1_magnitude_mass1_source_1
+[STATUS] Converting mu_chi2 to mean_spin1_magnitude_mass1_source_1
+[STATUS] Converting sig_chi2 to stdv_spin1_magnitude_mass1_source_1
+[STATUS] Converting a_min to min_spin2_magnitude_mass2_source_0
+[STATUS] Converting a_max_NS to max_spin2_magnitude_mass2_source_0
+[STATUS] Converting mu_chi1 to mean_spin2_magnitude_mass2_source_0
+[STATUS] Converting sig_chi1 to stdv_spin2_magnitude_mass2_source_0
+[STATUS] Converting m_spin_break to switch_mass2_source_0
+[STATUS] Converting a_min to min_spin2_magnitude_mass2_source_1
+[STATUS] Converting a_max to max_spin2_magnitude_mass2_source_1
+[STATUS] Converting mu_chi2 to mean_spin2_magnitude_mass2_source_1
+[STATUS] Converting sig_chi2 to stdv_spin2_magnitude_mass2_source_1
+[STATUS] Converting mix_tilt1 to mixture_frac_spin1_polar_angle_0_mass1_source_0
+[STATUS] Converting costilt_min to min_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
+[STATUS] Converting costilt_max to max_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
+[STATUS] Converting mu_tilt to mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
+[STATUS] Converting sig_tilt1 to stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_0
+[STATUS] Converting mix_tilt1 to mixture_frac_spin1_polar_angle_1_mass1_source_0
+   Mixture dictionary contains duplicates for this conversion, setting the right values
+[STATUS] Converting mix_tilt2 to mixture_frac_spin1_polar_angle_0_mass1_source_1
+[STATUS] Converting costilt_min to min_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
+[STATUS] Converting costilt_max to max_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
+[STATUS] Converting mu_tilt to mean_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
+[STATUS] Converting sig_tilt2 to stdv_spin1_cos_polar_angle_spin1_polar_angle_1_mass1_source_1
+[STATUS] Converting mix_tilt2 to mixture_frac_spin1_polar_angle_1_mass1_source_1
+   Mixture dictionary contains duplicates for this conversion, setting the right values
+[STATUS] Converting mix_tilt1 to mixture_frac_spin2_polar_angle_0_mass2_source_0
+[STATUS] Converting costilt_min to min_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
+[STATUS] Converting costilt_max to max_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
+[STATUS] Converting mu_tilt to mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
+[STATUS] Converting sig_tilt1 to stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_0
+[STATUS] Converting mix_tilt1 to mixture_frac_spin2_polar_angle_1_mass2_source_0
+   Mixture dictionary contains duplicates for this conversion, setting the right values
+[STATUS] Converting mix_tilt2 to mixture_frac_spin2_polar_angle_0_mass2_source_1
+[STATUS] Converting costilt_min to min_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
+[STATUS] Converting costilt_max to max_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
+[STATUS] Converting mu_tilt to mean_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
+[STATUS] Converting sig_tilt2 to stdv_spin2_cos_polar_angle_spin2_polar_angle_1_mass2_source_1
+[STATUS] Converting mix_tilt2 to mixture_frac_spin2_polar_angle_1_mass2_source_1
+   Mixture dictionary contains duplicates for this conversion, setting the right values
+[STATUS] Changing population parameters and values for:
+ {'gamma_high': 6.0, 'eta_high': 50.0}
+[UPDATE] Replacing gamma_high with 6.0 in merged posterior samples
+[UPDATE] Replacing eta_high with 50.0 in merged posterior samples
+[STATUS] Converting Ncomp to Ncomp
+[STATUS] Converting H0 to Ho
+[STATUS] Converting Om0 to OmegaMatter
+[STATUS] Converting Or0 to OmegaRadiation
+[STATUS] Converting OL0 to OmegaLambda
+[STATUS] Converting kappa to pow_redshift
+[STATUS] Converting max_redshift to max_redshift
+[STATUS] Converting min_redshift to min_redshift
+[STATUS] Converting model_min to min_mass1_source
+[STATUS] Converting alpha_1 to alpha0
+[STATUS] Converting m_break to break1_mass1_source
+[STATUS] Converting alpha_2 to alpha1
+[STATUS] Converting model_max to max_mass1_source
+[STATUS] Converting m_min to highpass_mass_scale
+[STATUS] Converting eta_min to highpass_exponent
+[STATUS] Converting m_max to lowpass_mass_scale
+[STATUS] Converting eta_max to lowpass_exponent
+[STATUS] Converting A to notch_amplitude
+[STATUS] Converting gamma_low to notch_lowmass_scale
+[STATUS] Converting eta_low to notch_lowmass_exponent
+[STATUS] Converting gamma_high to notch_highmass_scale
+[STATUS] Converting eta_high to notch_highmass_exponent
+[STATUS] Converting peak_constant1 to sumgaussianpeak_prefactor_mass1_source_0
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak1 to sumgaussianpeak_mean_mass1_source_0
+[STATUS] Converting sig_peak1 to sumgaussianpeak_stdv_mass1_source_0
+[STATUS] Converting peak_constant2 to sumgaussianpeak_prefactor_mass1_source_1
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak2 to sumgaussianpeak_mean_mass1_source_1
+[STATUS] Converting sig_peak2 to sumgaussianpeak_stdv_mass1_source_1
+[STATUS] Converting peak_constant_NS to sumgaussianpeak_prefactor_mass1_source_2
+   Applying normalization offset to this conversion
+[STATUS] Converting mu_peak_NS to sumgaussianpeak_mean_mass1_source_2
+[STATUS] Converting sig_peak_NS to sumgaussianpeak_stdv_mass1_source_2
+[STATUS] Converting beta_1 to pairing_pow_q_bns
+[STATUS] Converting beta_gap to pairing_pow_q_nsbh
+[STATUS] Converting beta_2 to pairing_pow_q_bbh
 [STATUS] Converting sep to pairing_mbreak
 [STATUS] Converting a_min to min_spin1_magnitude_mass1_source_0
 [STATUS] Converting a_max_NS to max_spin1_magnitude_mass1_source_0
@@ -439,12 +464,6 @@ nohup: ignoring input
   from pkg_resources import resource_filename
 loading samples from : ../samples/LEC-2020.csv.gz
 downsampling from 69881 -> 5000 samples
-loading samples from : population7.0.csv.gz
-downsampling from 5000 -> 100 samples
-generating all (5000 * 100 = 500000) possible combinations of samples
-saving combined data to: eos_population_mixtures/LEC-2020_population7.0.csv.gz
-loading samples from : ../samples/LEC-2020.csv.gz
-downsampling from 69881 -> 5000 samples
 loading samples from : population4.0.csv.gz
 downsampling from 5000 -> 100 samples
 generating all (5000 * 100 = 500000) possible combinations of samples
@@ -461,6 +480,12 @@ loading samples from : population8.0.csv.gz
 downsampling from 5000 -> 100 samples
 generating all (5000 * 100 = 500000) possible combinations of samples
 saving combined data to: eos_population_mixtures/LEC-2020_population8.0.csv.gz
+loading samples from : ../samples/LEC-2020.csv.gz
+downsampling from 69881 -> 5000 samples
+loading samples from : population7.0.csv.gz
+downsampling from 5000 -> 100 samples
+generating all (5000 * 100 = 500000) possible combinations of samples
+saving combined data to: eos_population_mixtures/LEC-2020_population7.0.csv.gz
 loading samples from : ../samples/LEC-2020.csv.gz
 downsampling from 69881 -> 5000 samples
 loading samples from : population6.0.csv.gz
