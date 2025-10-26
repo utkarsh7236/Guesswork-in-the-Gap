@@ -21,7 +21,7 @@ EOS_SAMPLES="../samples/${EOS_NAME}"
 
 # Fixing pop samples count for now
 POP_MAX_NUM_SAMPLES=100
-EOS_MAX_NUM_SAMPLES=500
+EOS_MAX_NUM_SAMPLES=5000
 POP_MAX_ARG="--pop-max-num-samples $POP_MAX_NUM_SAMPLES"
 
 
