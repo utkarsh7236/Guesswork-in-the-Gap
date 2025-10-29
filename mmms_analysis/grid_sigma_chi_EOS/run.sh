@@ -41,7 +41,7 @@ POP_VALUES=(0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.2 0.3 0.4 0.5 0.6
 # Running conversion script, you need to change the value of pop_param in the conversion script
 for POP_VALUE in "${POP_VALUES[@]}"; do
   # THE MOST IMPORTANT CHANGING VARIABLE NEEDS TO BE THE FIRST ELEMENT IN LIST!
-  python3 convert_multiPDB_betaSplit_brokenG.py \
+  python3 convert_pdbNG_betaSplit3_brokenG.py \
     --pop_param "$POP_PARAM" "mu_chi1"\
     --pop_value "$POP_VALUE" 0.01 &
 done
@@ -79,7 +79,7 @@ for ENTRY in "${ALL_EVENTS[@]}"; do
   # Run individual mmms
 
   # Define population labels
-  POP_LABEL="multiPDB_betaSplit_brokenG"
+  POP_LABEL="pdbNG_betaSplit3_brokenG"
   SEED="--seed 7236"
 
   # EXTRA_EVENT_ARGS="--mass-column mass${COMPONENT}_source"
