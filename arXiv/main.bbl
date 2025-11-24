@@ -1,0 +1,686 @@
+\begin{thebibliography}{103}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abbott et~al.(2019)Abbott, Abbott, Abbott, and Abraham~et al.]{collaborationGWTC1GravitationalWaveTransient2019}
+B.~P. Abbott, R.~Abbott, T.~D. Abbott, and S.~Abraham~et al.
+\newblock {{GWTC-1}}: {{A Gravitational-Wave Transient Catalog}} of {{Compact Binary Mergers Observed}} by {{LIGO}} and {{Virgo}} during the {{First}} and {{Second Observing Runs}}.
+\newblock \emph{Physical Review X}, 9\penalty0 (3):\penalty0 031040, September 2019.
+\newblock ISSN 2160-3308.
+\newblock \doi{10.1103/PhysRevX.9.031040}.
+
+\bibitem[Abbott et~al.(2021{\natexlab{a}})Abbott, Abbott, Abraham, Acernese, Ackley, Adams, and Adams~et al.]{abbottGWTC2CompactBinary2021}
+R.~Abbott, T.~D. Abbott, S.~Abraham, F.~Acernese, K.~Ackley, A.~Adams, and C.~Adams~et al.
+\newblock {{GWTC-2}}: {{Compact Binary Coalescences Observed}} by {{LIGO}} and {{Virgo During}} the {{First Half}} of the {{Third Observing Run}}.
+\newblock \emph{Physical Review X}, 11\penalty0 (2):\penalty0 021053, June 2021{\natexlab{a}}.
+\newblock ISSN 2160-3308.
+\newblock \doi{10.1103/PhysRevX.11.021053}.
+
+\bibitem[Abbott et~al.(2024)Abbott, Abbott, Acernese, Ackley, and Adams~et al.]{collaborationGWTC21DeepExtended2022}
+R.~Abbott, T.~D. Abbott, F.~Acernese, K.~Ackley, and C.~Adams~et al.
+\newblock {GWTC}-2.1: Deep extended catalog of compact binary coalescences observed by ligo and virgo during the first half of the third observing run.
+\newblock \emph{Phys. Rev. D}, 109:\penalty0 022001, Jan 2024.
+\newblock \doi{10.1103/PhysRevD.109.022001}.
+
+\bibitem[Abbott et~al.(2023{\natexlab{a}})Abbott, Abbott, Acernese, Ackley, and Adams~et al.]{collaborationGWTC3CompactBinary2023}
+R.~Abbott, T.~D. Abbott, F.~Acernese, K.~Ackley, and C.~Adams~et al.
+\newblock {{GWTC-3}}: {{Compact Binary Coalescences Observed}} by {{LIGO}} and {{Virgo During}} the {{Second Part}} of the {{Third Observing Run}}.
+\newblock \emph{Physical Review X}, 13\penalty0 (4):\penalty0 041039, December 2023{\natexlab{a}}.
+\newblock ISSN 2160-3308.
+\newblock \doi{10.1103/PhysRevX.13.041039}.
+
+\bibitem[Abbott et~al.(2023{\natexlab{b}})Abbott, Abbott, Acernese, Ackley, and Adams~et al.]{collaborationPopulationMergingCompact2023}
+R.~Abbott, T.~D. Abbott, F.~Acernese, K.~Ackley, and C.~Adams~et al.
+\newblock The population of merging compact binaries inferred using gravitational waves through {{GWTC-3}}.
+\newblock \emph{Physical Review X}, 13\penalty0 (1):\penalty0 011048, March 2023{\natexlab{b}}.
+\newblock ISSN 2160-3308.
+\newblock \doi{10.1103/PhysRevX.13.011048}.
+
+\bibitem[Abac et~al.(2025{\natexlab{a}})Abac, Abouelfettouh, Acernese, Ackley, Adhicary, Adhikari, and et~al.]{collaborationGWTC40MethodsIdentifying2025}
+A.~G. Abac, I.~Abouelfettouh, F.~Acernese, K.~Ackley, S.~Adhicary, D.~Adhikari, and N.~Adhikari et~al.
+\newblock {GWTC-4.0}: Methods for identifying and characterizing gravitational-wave transients, 2025{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2508.18081}.
+
+\bibitem[Abac et~al.(2025{\natexlab{b}})Abac, Abouelfettouh, Acernese, Ackley, Adamcewicz, Adhicary, Adhikari, and et~al.]{collaborationGWTC40UpdatingGravitationalWave2025}
+A.~G. Abac, I.~Abouelfettouh, F.~Acernese, K.~Ackley, C.~Adamcewicz, S.~Adhicary, D.~Adhikari, and N.~Adhikari et~al.
+\newblock {GWTC-4.0}: Updating the gravitational-wave transient catalog with observations from the first part of the {Fourth} {LIGO-Virgo-KAGRA} observing run, 2025{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2508.18082}.
+
+\bibitem[Acernese et~al.(2015)Acernese, Agathos, Agatsuma, Aisa, Allemandou, Allocca, and Amarni~et al.]{acerneseAdvancedVirgo2nd2015}
+F.~Acernese, M.~Agathos, K.~Agatsuma, D.~Aisa, N.~Allemandou, A.~Allocca, and J.~Amarni~et al.
+\newblock Advanced {{Virgo}}: a 2nd generation interferometric gravitational wave detector.
+\newblock \emph{Classical and Quantum Gravity}, 32\penalty0 (2):\penalty0 024001, January 2015.
+\newblock ISSN 0264-9381, 1361-6382.
+\newblock \doi{10.1088/0264-9381/32/2/024001}.
+
+\bibitem[Akutsu et~al.(2021)Akutsu, Ando, Arai, Arai, and Araki~et al.]{akutsuOverviewKAGRADetector2021}
+T~Akutsu, M~Ando, K~Arai, Y~Arai, and S~Araki~et al.
+\newblock Overview of {{KAGRA}}: {{Detector}} design and construction history.
+\newblock \emph{Progress of Theoretical and Experimental Physics}, 2021\penalty0 (5):\penalty0 05A101, May 2021.
+\newblock ISSN 2050-3911.
+\newblock \doi{10.1093/ptep/ptaa125}.
+
+\bibitem[Aasi et~al.(2015)Aasi, Abbott, Abbott, Abbott, Abernathy, Ackley, and Adams~et al.]{collaborationAdvancedLIGO2015}
+J~Aasi, B~P Abbott, R~Abbott, T~Abbott, M~R Abernathy, K~Ackley, and C~Adams~et al.
+\newblock Advanced {{LIGO}}.
+\newblock \emph{Classical and Quantum Gravity}, 32\penalty0 (7):\penalty0 074001, April 2015.
+\newblock ISSN 0264-9381, 1361-6382.
+\newblock \doi{10.1088/0264-9381/32/7/074001}.
+
+\bibitem[Abbott et~al.(2017)Abbott, Abbott, Abbott, Acernese, Ackley, and Adams~et al.]{collaborationGW170817ObservationGravitational2017}
+B.P. Abbott, R.~Abbott, T.D. Abbott, F.~Acernese, K.~Ackley, and C.~Adams~et al.
+\newblock {{GW170817}}: {{Observation}} of {{Gravitational Waves}} from a {{Binary Neutron Star Inspiral}}.
+\newblock \emph{Physical Review Letters}, 119\penalty0 (16):\penalty0 161101, October 2017.
+\newblock ISSN 0031-9007, 1079-7114.
+\newblock \doi{10.1103/PhysRevLett.119.161101}.
+
+\bibitem[Abbott et~al.(2020{\natexlab{a}})Abbott, Abbott, Abbott, Abraham, Acernese, and Ackley~et al.]{collaborationGW190425ObservationCompact2020}
+B.~P. Abbott, R.~Abbott, T.~D. Abbott, S.~Abraham, F.~Acernese, and K.~Ackley~et al.
+\newblock {{GW190425}}: {{Observation}} of a {{Compact Binary Coalescence}} with {{Total Mass}} 3.4{\Msun}.
+\newblock \emph{The Astrophysical Journal Letters}, 892\penalty0 (1):\penalty0 L3, March 2020{\natexlab{a}}.
+\newblock ISSN 2041-8205, 2041-8213.
+\newblock \doi{10.3847/2041-8213/ab75f5}.
+
+\bibitem[Fattoyev et~al.(2020)Fattoyev, Horowitz, Piekarewicz, and Reed]{fattoyevGW190814Impact262020}
+F.~J. Fattoyev, C.~J. Horowitz, J.~Piekarewicz, and Brendan Reed.
+\newblock {{GW190814}}: {{Impact}} of a 2.6 solar mass neutron star on nucleonic equations of state.
+\newblock \emph{Physical Review C}, 102\penalty0 (6):\penalty0 065805, December 2020.
+\newblock ISSN 2469-9985, 2469-9993.
+\newblock \doi{10.1103/PhysRevC.102.065805}.
+
+\bibitem[Godzieba et~al.(2021)Godzieba, Radice, and Bernuzzi]{godziebaMaximumMassNeutron2021}
+Daniel~A. Godzieba, David Radice, and Sebastiano Bernuzzi.
+\newblock On the maximum mass of neutron stars and {{GW190814}}.
+\newblock \emph{The Astrophysical Journal}, 908\penalty0 (2):\penalty0 122, February 2021.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.3847/1538-4357/abd4dd}.
+
+\bibitem[Most et~al.(2020)Most, Papenfort, Weih, and Rezzolla]{mostLowerBoundMaximum2020}
+Elias~R. Most, L.~Jens Papenfort, Lukas~R. Weih, and Luciano Rezzolla.
+\newblock A lower bound on the maximum mass if the secondary in {{GW190814}} was once a rapidly spinning neutron star.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society: Letters}, 499\penalty0 (1):\penalty0 L82--L86, October 2020.
+\newblock ISSN 1745-3925, 1745-3933.
+\newblock \doi{10.1093/mnrasl/slaa168}.
+
+\bibitem[Abbott et~al.(2021{\natexlab{b}})Abbott, Abbott, Abraham, Acernese, Ackley, Adams, and Adams~et al.]{collaborationObservationGravitationalWaves2021}
+R.~Abbott, T.~D. Abbott, S.~Abraham, F.~Acernese, K.~Ackley, A.~Adams, and C.~Adams~et al.
+\newblock Observation of gravitational waves from two neutron star-black hole coalescences.
+\newblock \emph{The Astrophysical Journal Letters}, 915\penalty0 (1):\penalty0 L5, July 2021{\natexlab{b}}.
+\newblock ISSN 2041-8205, 2041-8213.
+\newblock \doi{10.3847/2041-8213/ac082e}.
+
+\bibitem[Abac et~al.(2024)Abac, Abbott, Abouelfettouh, Acernese, Ackley, Adhicary, and Adhikari~et al.]{collaborationObservationGravitationalWaves2024}
+A.~G. Abac, R.~Abbott, I.~Abouelfettouh, F.~Acernese, K.~Ackley, S.~Adhicary, and N.~Adhikari~et al.
+\newblock Observation of {{Gravitational Waves}} from the {{Coalescence}} of a $2.5-4.5${\Msun} {{Compact Object}} and a {{Neutron Star}}.
+\newblock \emph{The Astrophysical Journal Letters}, 970\penalty0 (2):\penalty0 L34, jul 2024.
+\newblock \doi{10.3847/2041-8213/ad5beb}.
+
+\bibitem[Annala et~al.(2020)Annala, Gorda, Kurkela, N{\"a}ttil{\"a}, and Vuorinen]{annalaEvidenceQuarkmatterCores2020}
+Eemeli Annala, Tyler Gorda, Aleksi Kurkela, Joonas N{\"a}ttil{\"a}, and Aleksi Vuorinen.
+\newblock Evidence for quark-matter cores in massive neutron stars.
+\newblock \emph{Nature Physics}, 16\penalty0 (9):\penalty0 907--910, September 2020.
+\newblock ISSN 1745-2481.
+\newblock \doi{10.1038/s41567-020-0914-9}.
+
+\bibitem[Antoniadis et~al.(2013{\natexlab{a}})Antoniadis, Freire, Wex, and al.]{antoniadisMassivePulsarCompact2013a}
+John Antoniadis, Paulo C.~C. Freire, Norbert Wex, and Tauriset al.
+\newblock A {{Massive Pulsar}} in a {{Compact Relativistic Binary}}.
+\newblock \emph{Science}, 340\penalty0 (6131):\penalty0 1233232, April 2013{\natexlab{a}}.
+\newblock \doi{10.1126/science.1233232}.
+
+\bibitem[Demorest et~al.(2010{\natexlab{a}})Demorest, Pennucci, Ransom, Roberts, and Hessels]{demorestShapiroDelayMeasurement2010}
+Paul Demorest, Tim Pennucci, Scott Ransom, Mallory Roberts, and Jason Hessels.
+\newblock Shapiro delay measurement of a two solar mass neutron star.
+\newblock \emph{Nature}, 467\penalty0 (7319):\penalty0 1081--1083, October 2010{\natexlab{a}}.
+\newblock ISSN 0028-0836, 1476-4687.
+\newblock \doi{10.1038/nature09466}.
+
+\bibitem[Fonseca et~al.(2021{\natexlab{a}})Fonseca, Cromartie, Pennucci, and Ray~et al.]{fonsecaRefinedMassGeometric2021a}
+E.~Fonseca, H.~T. Cromartie, T.~T. Pennucci, and P.~S. Ray~et al.
+\newblock Refined {{Mass}} and {{Geometric Measurements}} of the {{High-mass PSR J0740}}+6620.
+\newblock \emph{The Astrophysical Journal}, 915:\penalty0 L12, July 2021{\natexlab{a}}.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/2041-8213/ac03b8}.
+
+\bibitem[Gandolfi et~al.(2012)Gandolfi, Carlson, and Reddy]{gandolfiMaximumMassRadius2012}
+S.~Gandolfi, J.~Carlson, and Sanjay Reddy.
+\newblock Maximum mass and radius of neutron stars, and the nuclear symmetry energy.
+\newblock \emph{Physical Review C}, 85\penalty0 (3):\penalty0 032801, March 2012.
+\newblock \doi{10.1103/PhysRevC.85.032801}.
+
+\bibitem[Kalogera and Baym(1996)]{kalogeraMaximumMassNeutron1996}
+Vassiliki Kalogera and Gordon Baym.
+\newblock The {{Maximum Mass}} of a {{Neutron Star}}.
+\newblock \emph{The Astrophysical Journal}, 470\penalty0 (1):\penalty0 L61--L64, October 1996.
+\newblock ISSN 0004637X.
+\newblock \doi{10.1086/310296}.
+
+\bibitem[Legred et~al.(2021)Legred, Chatziioannou, Essick, Han, and Landry]{legredImpactPSR$mathrmJ0740+6620$2021}
+Isaac Legred, Katerina Chatziioannou, Reed Essick, Sophia Han, and Philippe Landry.
+\newblock Impact of the {{PSR}} {J}0740+6620 radius constraint on the properties of high-density matter.
+\newblock \emph{Physical Review D}, 104\penalty0 (6):\penalty0 063003, September 2021.
+\newblock \doi{10.1103/PhysRevD.104.063003}.
+
+\bibitem[Linares et~al.(2018)Linares, Shahbaz, and Casares]{linaresPeeringDarkSide2018}
+M.~Linares, T.~Shahbaz, and J.~Casares.
+\newblock Peering into the {{Dark Side}}: {{Magnesium Lines Establish}} a {{Massive Neutron Star}} in {{PSR J2215}}+5135.
+\newblock \emph{The Astrophysical Journal}, 859:\penalty0 54, May 2018.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/1538-4357/aabde6}.
+
+\bibitem[Margalit and Metzger(2017)]{margalitConstrainingMaximumMass2017}
+Ben Margalit and Brian Metzger.
+\newblock Constraining the {{Maximum Mass}} of {{Neutron Stars From Multi-Messenger Observations}} of {{GW170817}}.
+\newblock \emph{The Astrophysical Journal Letters}, 850\penalty0 (2):\penalty0 L19, December 2017.
+\newblock ISSN 2041-8205, 2041-8213.
+\newblock \doi{10.3847/2041-8213/aa991c}.
+
+\bibitem[Miller et~al.(2021)Miller, Lamb, Dittmann, Bogdanov, and Arzoumanian]{millerRadiusPSRJ0740+66202021}
+M.~C. Miller, F.~K. Lamb, A.~J. Dittmann, S.~Bogdanov, and Z.~et~al. Arzoumanian.
+\newblock The {{Radius}} of {{PSR J0740}}+6620 from {{NICER}} and {{XMM-Newton Data}}.
+\newblock \emph{The Astrophysical Journal Letters}, 918\penalty0 (2):\penalty0 L28, September 2021.
+\newblock ISSN 2041-8205, 2041-8213.
+\newblock \doi{10.3847/2041-8213/ac089b}.
+
+\bibitem[Oppenheimer and Volkoff(1939)]{oppenheimerMassiveNeutronCores1939}
+J.~R. Oppenheimer and G.~M. Volkoff.
+\newblock On {{Massive Neutron Cores}}.
+\newblock \emph{Physical Review}, 55\penalty0 (4):\penalty0 374--381, February 1939.
+\newblock \doi{10.1103/PhysRev.55.374}.
+
+\bibitem[{\"O}zel and Freire(2016)]{ozelMassesRadiiEquation2016}
+Feryal {\"O}zel and Paulo Freire.
+\newblock Masses, {{Radii}}, and the {{Equation}} of {{State}} of {{Neutron Stars}}.
+\newblock \emph{Annual Review of Astronomy and Astrophysics}, 54\penalty0 (Volume 54, 2016):\penalty0 401--440, September 2016.
+\newblock ISSN 0066-4146, 1545-4282.
+\newblock \doi{10.1146/annurev-astro-081915-023322}.
+
+\bibitem[Prakash et~al.(1988)Prakash, Ainsworth, and Lattimer]{prakashEquationStateMaximum1988}
+M.~Prakash, T.~L. Ainsworth, and J.~M. Lattimer.
+\newblock Equation of {{State}} and the {{Maximum Mass}} of {{Neutron Stars}}.
+\newblock \emph{Physical Review Letters}, 61\penalty0 (22):\penalty0 2518--2521, November 1988.
+\newblock \doi{10.1103/PhysRevLett.61.2518}.
+
+\bibitem[Rezzolla et~al.(2018)Rezzolla, Most, and Weih]{rezzollaUsingGravitationalwaveObservations2018}
+Luciano Rezzolla, Elias~R. Most, and Lukas~R. Weih.
+\newblock Using gravitational-wave observations and quasi-universal relations to constrain the maximum mass of neutron stars.
+\newblock \emph{The Astrophysical Journal Letters}, 852\penalty0 (2):\penalty0 L25, January 2018.
+\newblock ISSN 2041-8205, 2041-8213.
+\newblock \doi{10.3847/2041-8213/aaa401}.
+
+\bibitem[Rhoades and Ruffini(1974)]{rhoadesMaximumMassNeutron1974}
+Clifford~E. Rhoades and Remo Ruffini.
+\newblock Maximum {{Mass}} of a {{Neutron Star}}.
+\newblock \emph{Physical Review Letters}, 32\penalty0 (6):\penalty0 324--327, February 1974.
+\newblock \doi{10.1103/PhysRevLett.32.324}.
+
+\bibitem[Romani et~al.(2022)Romani, Kandel, Filippenko, Brink, and Zheng]{romaniPSRJ09520607Fastest2022}
+Roger~W. Romani, D.~Kandel, Alexei~V. Filippenko, Thomas~G. Brink, and WeiKang Zheng.
+\newblock {{PSR J0952-0607}}: {{The Fastest}} and {{Heaviest Known Galactic Neutron Star}}.
+\newblock \emph{The Astrophysical Journal Letters}, 934\penalty0 (2):\penalty0 L17, August 2022.
+\newblock ISSN 2041-8205, 2041-8213.
+\newblock \doi{10.3847/2041-8213/ac8007}.
+
+\bibitem[Shibata et~al.(2019)Shibata, Zhou, Kiuchi, and Fujibayashi]{shibataConstraintMaximumMass2019}
+Masaru Shibata, Enping Zhou, Kenta Kiuchi, and Sho Fujibayashi.
+\newblock Constraint on the maximum mass of neutron stars using {{GW170817}} event.
+\newblock \emph{Physical Review D}, 100\penalty0 (2):\penalty0 023015, July 2019.
+\newblock ISSN 2470-0010, 2470-0029.
+\newblock \doi{10.1103/PhysRevD.100.023015}.
+
+\bibitem[Tolman(1939)]{tolmanStaticSolutionsEinsteins1939}
+Richard~C. Tolman.
+\newblock Static {{Solutions}} of {{Einstein}}'s {{Field Equations}} for {{Spheres}} of {{Fluid}}.
+\newblock \emph{Physical Review}, 55\penalty0 (4):\penalty0 364--373, February 1939.
+\newblock \doi{10.1103/PhysRev.55.364}.
+
+\bibitem[Belczynski et~al.(2013)Belczynski, Bulik, Mandel, Sathyaprakash, Zdziarski, and Mikolajewska]{belczynskiCygX3Galactic2013}
+Krzysztof Belczynski, Tomasz Bulik, Ilya Mandel, B.~S. Sathyaprakash, Andrzej Zdziarski, and Joanna Mikolajewska.
+\newblock Cyg {{X-3}}: a {{Galactic}} double black hole or black hole-neutron star progenitor.
+\newblock \emph{The Astrophysical Journal}, 764\penalty0 (1):\penalty0 96, January 2013.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.1088/0004-637X/764/1/96}.
+
+\bibitem[Chawla et~al.(2022)Chawla, Chatterjee, Breivik, Moorthy, Andrews, and Sanderson]{chawlaGaiaMayDetect2022}
+Chirag Chawla, Sourav Chatterjee, Katelyn Breivik, Chaithanya~Krishna Moorthy, Jeff~J. Andrews, and Robyn~E. Sanderson.
+\newblock Gaia {{May Detect Hundreds}} of {{Well-characterized Stellar Black Holes}}.
+\newblock \emph{The Astrophysical Journal}, 931\penalty0 (2):\penalty0 107, May 2022.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/1538-4357/ac60a5}.
+
+\bibitem[Abbott et~al.(2023{\natexlab{c}})Abbott, Abbott, Acernese, Ackley, and Adams~et al.]{collaborationPopulationMergingCompact2023a}
+R.~Abbott, T.~D. Abbott, F.~Acernese, K.~Ackley, and C.~Adams~et al.
+\newblock The population of merging compact binaries inferred using gravitational waves through {{GWTC-3}}.
+\newblock \emph{Physical Review X}, 13\penalty0 (1):\penalty0 011048, March 2023{\natexlab{c}}.
+\newblock ISSN 2160-3308.
+\newblock \doi{10.1103/PhysRevX.13.011048}.
+
+\bibitem[Farr et~al.(2011{\natexlab{a}})Farr, Sravan, Cantrell, Kreidberg, Bailyn, Mandel, and Kalogera]{farrMassDistributionStellarmass2011a}
+Will~M. Farr, Niharika Sravan, Andrew Cantrell, Laura Kreidberg, Charles~D. Bailyn, Ilya Mandel, and Vicky Kalogera.
+\newblock The {{Mass Distribution}} of {{Stellar-mass Black Holes}}.
+\newblock \emph{The Astrophysical Journal}, 741:\penalty0 103, November 2011{\natexlab{a}}.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.1088/0004-637X/741/2/103}.
+
+\bibitem[Fishbach et~al.(2020)Fishbach, Essick, and Holz]{fishbachDoesMatterMatter2020}
+Maya Fishbach, Reed Essick, and Daniel~E. Holz.
+\newblock Does {{Matter Matter}}? {{Using}} the {{Mass Distribution}} to {{Distinguish Neutron Stars}} and {{Black Holes}}.
+\newblock \emph{The Astrophysical Journal Letters}, 899\penalty0 (1):\penalty0 L8, August 2020.
+\newblock ISSN 2041-8205.
+\newblock \doi{10.3847/2041-8213/aba7b6}.
+
+\bibitem[Jayasinghe et~al.(2021)Jayasinghe, Stanek, Thompson, Kochanek, and Rowan]{jayasingheUnicornMonoceros$3M_odot$2021}
+T.~Jayasinghe, K.~Z. Stanek, Todd~A. Thompson, C.~S. Kochanek, and D.~M. et~al. Rowan.
+\newblock A {{Unicorn}} in {{Monoceros}}: the ${3M}_\odot$ dark companion to the bright, nearby red giant {{V723 Mon}} is a non-interacting, mass-gap black hole candidate.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, 504\penalty0 (2):\penalty0 2577--2602, May 2021.
+\newblock ISSN 0035-8711, 1365-2966.
+\newblock \doi{10.1093/mnras/stab907}.
+
+\bibitem[Littenberg et~al.(2015)Littenberg, Farr, Coughlin, Kalogera, and Holz]{littenbergNeutronStarsBlack2015}
+Tyson~B. Littenberg, Benjamin Farr, Scott Coughlin, Vicky Kalogera, and Daniel~E. Holz.
+\newblock Neutron stars versus black holes: probing the mass gap with {{LIGO}}/{{Virgo}}.
+\newblock \emph{The Astrophysical Journal}, 807\penalty0 (2):\penalty0 L24, July 2015.
+\newblock ISSN 2041-8213.
+\newblock \doi{10.1088/2041-8205/807/2/L24}.
+
+\bibitem[Thompson et~al.(2019{\natexlab{a}})Thompson, Kochanek, Stanek, and Badenes]{thompsonDiscoveryCandidateBlack2019}
+Todd~A. Thompson, Christopher~S. Kochanek, Krzysztof~Z. Stanek, and Carles et~al. Badenes.
+\newblock Discovery of a {{Candidate Black Hole}} - {{Giant Star Binary System}} in the {{Galactic Field}}.
+\newblock \emph{Science}, 366\penalty0 (6465):\penalty0 637--640, November 2019{\natexlab{a}}.
+\newblock ISSN 0036-8075, 1095-9203.
+\newblock \doi{10.1126/science.aau4005}.
+
+\bibitem[Woosley(2019)]{woosleyEvolutionMassiveHelium2019}
+S.~E. Woosley.
+\newblock The {{Evolution}} of {{Massive Helium Stars Including Mass Loss}}.
+\newblock \emph{The Astrophysical Journal}, 878\penalty0 (1):\penalty0 49, June 2019.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.3847/1538-4357/ab1b41}.
+
+\bibitem[Ye and Fishbach(2022{\natexlab{a}})]{yeInferringNeutronStar2022a}
+Christine Ye and Maya Fishbach.
+\newblock Inferring the {{Neutron Star Maximum Mass}} and {{Lower Mass Gap}} in {{Neutron Star}}--{{Black Hole Systems}} with {{Spin}}.
+\newblock \emph{The Astrophysical Journal}, 937\penalty0 (2):\penalty0 73, September 2022{\natexlab{a}}.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/1538-4357/ac7f99}.
+
+\bibitem[Ye et~al.(2024)Ye, Kremer, Ransom, and Rasio]{yeLowermassgapBlackHoles2024}
+Claire~S. Ye, Kyle Kremer, Scott~M. Ransom, and Frederic~A. Rasio.
+\newblock Lower-mass-gap {{Black Holes}} in {{Dense Star Clusters}}.
+\newblock \emph{The Astrophysical Journal}, 975\penalty0 (1):\penalty0 77, November 2024.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.3847/1538-4357/ad76a0}.
+
+\bibitem[Xing et~al.(2025)Xing, Kalogera, Fragos, Andrews, Bavera, Briel, Gossage, Kovlakas, Kruckow, Rocha, Sun, Srivastava, and Zapartas]{xingMassgapBlackHoles2025}
+Zepei Xing, Vicky Kalogera, Tassos Fragos, Jeff~J. Andrews, Simone~S. Bavera, Max Briel, Seth Gossage, Konstantinos Kovlakas, Matthias~U. Kruckow, Kyle~Akira Rocha, Meng Sun, Philipp~M. Srivastava, and Emmanouil Zapartas.
+\newblock Mass-gap {{Black Holes}} in {{Coalescing Neutron Star}}--{{Black Hole Binaries}}.
+\newblock \emph{The Astrophysical Journal}, 989\penalty0 (2):\penalty0 188, August 2025.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/1538-4357/adec6d}.
+
+\bibitem[Fryer et~al.(2012{\natexlab{a}})Fryer, Belczynski, Wiktorowicz, Dominik, Kalogera, and Holz]{fryerCOMPACTREMNANTMASS2012a}
+Chris~L. Fryer, Krzysztof Belczynski, Grzegorz Wiktorowicz, Michal Dominik, Vicky Kalogera, and Daniel~E. Holz.
+\newblock {{Compact Remnant Mass Function}}: Dependence on the explosion mechanism and metallicity.
+\newblock \emph{The Astrophysical Journal}, 749\penalty0 (1):\penalty0 91, March 2012{\natexlab{a}}.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.1088/0004-637X/749/1/91}.
+
+\bibitem[Kreidberg et~al.(2012)Kreidberg, Bailyn, Farr, and Kalogera]{kreidbergMassMeasurementsBlack2012}
+Laura Kreidberg, Charles~D. Bailyn, Will~M. Farr, and Vassiliki Kalogera.
+\newblock Mass {{Measurements}} of {{Black Holes}} in {{X-Ray Transients}}: {{Is There}} a {{Mass Gap}}?
+\newblock \emph{The Astrophysical Journal}, 757\penalty0 (1):\penalty0 36, September 2012.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.1088/0004-637X/757/1/36}.
+
+\bibitem[Farr et~al.(2011{\natexlab{b}})Farr, Sravan, Cantrell, Kreidberg, Bailyn, Mandel, and Kalogera]{farrMassDistributionStellarMass2011}
+Will~M. Farr, Niharika Sravan, Andrew Cantrell, Laura Kreidberg, Charles~D. Bailyn, Ilya Mandel, and Vicky Kalogera.
+\newblock The {{Mass Distribution}} of {{Stellar-Mass Black Holes}}.
+\newblock \emph{The Astrophysical Journal}, 741\penalty0 (2):\penalty0 103, November 2011{\natexlab{b}}.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.1088/0004-637X/741/2/103}.
+
+\bibitem[Belczynski et~al.(2012{\natexlab{a}})Belczynski, Wiktorowicz, Fryer, Holz, and Kalogera]{belczynskiMISSINGBLACKHOLES2012a}
+Krzysztof Belczynski, Grzegorz Wiktorowicz, Chris~L. Fryer, Daniel~E. Holz, and Vassiliki Kalogera.
+\newblock Missing black holes unveil the supernova explosion mechanism.
+\newblock \emph{The Astrophysical Journal}, 757\penalty0 (1):\penalty0 91, September 2012{\natexlab{a}}.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.1088/0004-637X/757/1/91}.
+
+\bibitem[Fryer et~al.(2022)Fryer, Olejak, and Belczynski]{fryerEffectSupernovaConvection2022}
+Chris~L. Fryer, Aleksandra Olejak, and Krzysztof Belczynski.
+\newblock The {{Effect}} of {{Supernova Convection On Neutron Star}} and {{Black Hole Masses}}.
+\newblock \emph{The Astrophysical Journal}, 931\penalty0 (2):\penalty0 94, May 2022.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/1538-4357/ac6ac9}.
+
+\bibitem[Kochanek(2014)]{kochanekFAILEDSUPERNOVAEEXPLAIN2014}
+C.~S. Kochanek.
+\newblock Failed supernovae explain the compact remnant mass function.
+\newblock \emph{The Astrophysical Journal}, 785\penalty0 (1):\penalty0 28, March 2014.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.1088/0004-637X/785/1/28}.
+
+\bibitem[Liu et~al.(2021)Liu, Wei, Xue, and Sun]{liuFinalCompactRemnants2021}
+Tong Liu, Yun-Feng Wei, Li~Xue, and Mou-Yuan Sun.
+\newblock Final {{Compact Remnants}} in {{Core-collapse Supernovae}} from 20 to 40 {{M}}{$\odot$}: {{The Lower Mass Gap}}.
+\newblock \emph{The Astrophysical Journal}, 908\penalty0 (1):\penalty0 106, February 2021.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/1538-4357/abd24e}.
+
+\bibitem[Gao et~al.(2022)Gao, Li, and Shao]{gaoFormationMassgapBlack2022}
+Shi-Jie Gao, Xiang-Dong Li, and Yong Shao.
+\newblock Formation of mass-gap black holes from neutron star {{X-ray}} binaries with super-{{Eddington}} accretion.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, 514\penalty0 (1):\penalty0 1054--1070, July 2022.
+\newblock ISSN 0035-8711.
+\newblock \doi{10.1093/mnras/stac1426}.
+
+\bibitem[Siegel et~al.(2023)Siegel, Kiato, and Kalogera]{siegelInvestigatingLowerMass2023}
+Jared~C. Siegel, Ilia Kiato, and Vicky et~al. Kalogera.
+\newblock Investigating the {{Lower Mass Gap}} with {{Low-mass X-Ray Binary Population Synthesis}}.
+\newblock \emph{The Astrophysical Journal}, 954\penalty0 (2):\penalty0 212, September 2023.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/1538-4357/ace9d9}.
+
+\bibitem[Antoniadis et~al.(2013{\natexlab{b}})Antoniadis, Freire, Wex, Tauris, and Lynch]{antoniadisMassivePulsarCompact2013}
+John Antoniadis, Paulo C.~C. Freire, Norbert Wex, Thomas~M. Tauris, and Ryan S. et~al. Lynch.
+\newblock A {{Massive Pulsar}} in a {{Compact Relativistic Binary}}.
+\newblock \emph{Science}, 340:\penalty0 448, April 2013{\natexlab{b}}.
+\newblock ISSN 0036-8075.
+\newblock \doi{10.1126/science.1233232}.
+
+\bibitem[Belczynski et~al.(2012{\natexlab{b}})Belczynski, Wiktorowicz, Fryer, Holz, and Kalogera]{belczynskiMissingBlackHoles2012}
+K.~Belczynski, G.~Wiktorowicz, C.~Fryer, D.~Holz, and V.~Kalogera.
+\newblock Missing {{Black Holes Unveil The Supernova Explosion Mechanism}}.
+\newblock \emph{The Astrophysical Journal}, 757\penalty0 (1):\penalty0 91, September 2012{\natexlab{b}}.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.1088/0004-637X/757/1/91}.
+
+\bibitem[Abbott et~al.(2020{\natexlab{b}})Abbott, Abbott, Abraham, and Acernese~et al.]{collaborationGW190814GravitationalWaves2020}
+R.~Abbott, T.~D. Abbott, S.~Abraham, and F.~Acernese~et al.
+\newblock {{GW190814}}: {{Gravitational Waves}} from the {{Coalescence}} of a 23 ${M}_\odot$ {{Black Hole}} with a 2.6 ${M}_\odot$ {{Compact Object}}.
+\newblock \emph{The Astrophysical Journal Letters}, 896\penalty0 (2):\penalty0 L44, June 2020{\natexlab{b}}.
+\newblock ISSN 2041-8205, 2041-8213.
+\newblock \doi{10.3847/2041-8213/ab960f}.
+
+\bibitem[Demorest et~al.(2010{\natexlab{b}})Demorest, Pennucci, Ransom, Roberts, and Hessels]{demorestTwosolarmassNeutronStar2010}
+P.~B. Demorest, T.~Pennucci, S.~M. Ransom, M.~S.~E. Roberts, and J.~W.~T. Hessels.
+\newblock A two-solar-mass neutron star measured using {{Shapiro}} delay.
+\newblock \emph{Nature}, 467\penalty0 (7319):\penalty0 1081--1083, October 2010{\natexlab{b}}.
+\newblock ISSN 1476-4687.
+\newblock \doi{10.1038/nature09466}.
+
+\bibitem[Farah et~al.(2022)Farah, Fishbach, Essick, Holz, and Galaudage]{farahBridgingGapCategorizing2022}
+Amanda~M. Farah, Maya Fishbach, Reed Essick, Daniel~E. Holz, and Shanika Galaudage.
+\newblock Bridging the {{Gap}}: {{Categorizing Gravitational-Wave Events}} at the {{Transition Between Neutron Stars}} and {{Black Holes}}.
+\newblock \emph{The Astrophysical Journal}, 931\penalty0 (2):\penalty0 108, June 2022.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.3847/1538-4357/ac5f03}.
+
+\bibitem[Fonseca et~al.(2021{\natexlab{b}})Fonseca, Cromartie, Pennucci, and Ray~et al.]{fonsecaRefinedMassGeometric2021}
+E.~Fonseca, H.~T. Cromartie, T.~T. Pennucci, and P.~S. Ray~et al.
+\newblock Refined {{Mass}} and {{Geometric Measurements}} of the {{High-mass PSR J0740}}+6620.
+\newblock \emph{The Astrophysical Journal}, 915:\penalty0 L12, July 2021{\natexlab{b}}.
+\newblock ISSN 0004-637X.
+\newblock \doi{10.3847/2041-8213/ac03b8}.
+
+\bibitem[Fryer et~al.(2012{\natexlab{b}})Fryer, Belczynski, Wiktorowicz, Dominik, Kalogera, and Holz]{fryerCompactRemnantMass2012}
+C.~L. Fryer, K.~Belczynski, G.~Wiktorowicz, M.~Dominik, V.~Kalogera, and D.~Holz.
+\newblock Compact {{Remnant Mass Function}}: {{Dependence}} on the {{Explosion Mechanism}} and {{Metallicity}}.
+\newblock \emph{The Astrophysical Journal}, 749\penalty0 (1):\penalty0 91, April 2012{\natexlab{b}}.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.1088/0004-637X/749/1/91}.
+
+\bibitem[Thompson et~al.(2019{\natexlab{b}})Thompson, Kochanek, Stanek, Badenes, and Post]{thompsonNoninteractingLowmassBlack2019}
+Todd~A. Thompson, Christopher~S. Kochanek, Krzysztof~Z. Stanek, Carles Badenes, and et~al. Post.
+\newblock A noninteracting low-mass black hole--giant star binary system.
+\newblock \emph{Science}, 366\penalty0 (6465):\penalty0 637--640, November 2019{\natexlab{b}}.
+\newblock \doi{10.1126/science.aau4005}.
+
+\bibitem[Ye and Fishbach(2022{\natexlab{b}})]{yeInferringNeutronStar2022}
+Christine Ye and Maya Fishbach.
+\newblock Inferring the neutron star maximum mass and lower mass gap in neutron star-black hole systems with spin.
+\newblock \emph{The Astrophysical Journal}, 937\penalty0 (2):\penalty0 73, October 2022{\natexlab{b}}.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.3847/1538-4357/ac7f99}.
+
+\bibitem[Markin et~al.(2025)Markin, Puecher, Bulla, and Dietrich]{markinChallengingBinaryNeutron2025}
+Ivan Markin, Anna Puecher, Mattia Bulla, and Tim Dietrich.
+\newblock Challenging a binary neutron star merger interpretation of {GW230529}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2508.08750}.
+
+\bibitem[Cotturone et~al.(2025)Cotturone, Zevin, and Biscoveanu]{cotturoneCharacterizingCompactObject2025}
+Jessica Cotturone, Michael Zevin, and Sylvia Biscoveanu.
+\newblock Characterizing compact object binaries in the lower mass gap with gravitational waves, 2025.
+\newblock URL \url{https://arxiv.org/abs/2507.01189}.
+
+\bibitem[Akmal et~al.(1998)Akmal, Pandharipande, and Ravenhall]{akmalEquationStateNucleon1998}
+A.~Akmal, V.~R. Pandharipande, and D.~G. Ravenhall.
+\newblock Equation of state of nucleon matter and neutron star structure.
+\newblock \emph{Physical Review C}, 58\penalty0 (3):\penalty0 1804--1828, September 1998.
+\newblock \doi{10.1103/PhysRevC.58.1804}.
+
+\bibitem[Douchin and Haensel(2001)]{douchinUnifiedEquationState2001}
+F.~Douchin and P.~Haensel.
+\newblock A unified equation of state of dense matter and neutron star structure.
+\newblock \emph{Astronomy \& Astrophysics}, 380\penalty0 (1):\penalty0 151--167, December 2001.
+\newblock ISSN 0004-6361, 1432-0746.
+\newblock \doi{10.1051/0004-6361:20011402}.
+
+\bibitem[Finch et~al.(2025)Finch, Legred, Chatziioannou, Essick, Han, and Landry]{finchUnifiedNonparametricEquationofstate2025}
+Eliot Finch, Isaac Legred, Katerina Chatziioannou, Reed Essick, Sophia Han, and Philippe Landry.
+\newblock Unified nonparametric equation-of-state inference from the neutron-star crust to perturbative-qcd densities.
+\newblock \emph{Physical Review D}, 112\penalty0 (10), November 2025.
+\newblock ISSN 2470-0029.
+\newblock \doi{10.1103/krc7-kz2l}.
+
+\bibitem[Friedman and Pandharipande(1981)]{friedmanHotColdNuclear1981}
+B.~Friedman and V.~R. Pandharipande.
+\newblock Hot and cold, nuclear and neutron matter.
+\newblock \emph{Nuclear Physics A}, 361\penalty0 (2):\penalty0 502--520, May 1981.
+\newblock ISSN 0375-9474.
+\newblock \doi{10.1016/0375-9474(81)90649-7}.
+
+\bibitem[Golomb et~al.(2025)Golomb, Legred, Chatziioannou, and Landry]{golombInterplayAstrophysicsNuclear2025a}
+Jacob Golomb, Isaac Legred, Katerina Chatziioannou, and Philippe Landry.
+\newblock Interplay of astrophysics and nuclear physics in determining the properties of neutron stars.
+\newblock \emph{Physical Review D}, 111\penalty0 (2), January 2025.
+\newblock ISSN 2470-0029.
+\newblock \doi{10.1103/physrevd.111.023029}.
+
+\bibitem[Lalazissis et~al.(1997)Lalazissis, K{\"o}nig, and Ring]{lalazissisNewParametrizationLagrangian1997}
+G.~A. Lalazissis, J.~K{\"o}nig, and P.~Ring.
+\newblock New parametrization for the {{Lagrangian}} density of relativistic mean field theory.
+\newblock \emph{Physical Review C}, 55\penalty0 (1):\penalty0 540--543, January 1997.
+\newblock \doi{10.1103/PhysRevC.55.540}.
+
+\bibitem[Landry et~al.(2020)Landry, Essick, and Chatziioannou]{landryNonparametricConstraintsNeutron2020}
+Philippe Landry, Reed Essick, and Katerina Chatziioannou.
+\newblock Nonparametric constraints on neutron star matter with existing and upcoming gravitational wave and pulsar observations.
+\newblock \emph{Physical Review D}, 101\penalty0 (12):\penalty0 123007, June 2020.
+\newblock ISSN 2470-0010, 2470-0029.
+\newblock \doi{10.1103/PhysRevD.101.123007}.
+
+\bibitem[Mohanty et~al.(2024)Mohanty, Mali, Das, Kumar, and Landry]{mohantyAstrophysicalConstraintsNeutron2024}
+Sailesh~Ranjan Mohanty, Utkarsh Mali, H.~C. Das, Bharat Kumar, and Philippe Landry.
+\newblock Astrophysical constraints on neutron star $f$-modes with a nonparametric equation of state representation, 2024.
+\newblock URL \url{https://arxiv.org/abs/2410.16689}.
+
+\bibitem[Ng et~al.(2025)Ng, Legred, Suleiman, Landry, Traylor, and Read]{ngInferringNeutronStar2025}
+Sunny Ng, Isaac Legred, Lami Suleiman, Philippe Landry, Lyla Traylor, and Jocelyn Read.
+\newblock Inferring the neutron star equation of state with nuclear-physics informed semiparametric models.
+\newblock \emph{Classical and Quantum Gravity}, 42\penalty0 (20):\penalty0 205008, October 2025.
+\newblock ISSN 1361-6382.
+\newblock \doi{10.1088/1361-6382/ae1094}.
+
+\bibitem[Wiringa et~al.(1988)Wiringa, Fiks, and Fabrocini]{wiringaEquationStateDense1988}
+R.~B. Wiringa, V.~Fiks, and A.~Fabrocini.
+\newblock Equation of state for dense nucleon matter.
+\newblock \emph{Physical Review C}, 38\penalty0 (2):\penalty0 1010--1037, August 1988.
+\newblock \doi{10.1103/PhysRevC.38.1010}.
+
+\bibitem[Bauswein et~al.(2013)Bauswein, Baumgarte, and Janka]{13075191PromptMerger}
+A.~Bauswein, T.~W. Baumgarte, and H.-T. Janka.
+\newblock Prompt merger collapse and the maximum mass of neutron stars.
+\newblock \emph{Physical Review Letters}, 111\penalty0 (13), September 2013.
+\newblock ISSN 1079-7114.
+\newblock \doi{10.1103/physrevlett.111.131101}.
+
+\bibitem[Breu and Rezzolla(2016)]{breuMaximumMassMoment2016}
+Cosima Breu and Luciano Rezzolla.
+\newblock Maximum mass, moment of inertia and compactness of relativistic stars.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, 459\penalty0 (1):\penalty0 646--656, June 2016.
+\newblock ISSN 0035-8711, 1365-2966.
+\newblock \doi{10.1093/mnras/stw575}.
+
+\bibitem[Mali and Essick(2025)]{maliStrikingChordSpectral2024}
+Utkarsh Mali and Reed Essick.
+\newblock {Striking a Chord with Spectral Sirens}: Multiple features in the compact binary population correlate with h0.
+\newblock \emph{The Astrophysical Journal}, 980\penalty0 (1):\penalty0 85, feb 2025.
+\newblock \doi{10.3847/1538-4357/ad9de7}.
+\newblock URL \url{https://doi.org/10.3847/1538-4357/ad9de7}.
+
+\bibitem[Abac et~al.(2025{\natexlab{c}})Abac, Abouelfettouh, Acernese, Ackley, Adamcewicz, Adhicary, Adhikari, and et~al.]{collaborationGWTC40PopulationProperties2025}
+A.~G. Abac, I.~Abouelfettouh, F.~Acernese, K.~Ackley, C.~Adamcewicz, S.~Adhicary, D.~Adhikari, and N.~Adhikari et~al.
+\newblock {GWTC-4.0}: Population properties of merging compact binaries, 2025{\natexlab{c}}.
+\newblock URL \url{https://arxiv.org/abs/2508.18083}.
+
+\bibitem[Essick and Landry(2020)]{essickDiscriminatingNeutronStars2020}
+Reed Essick and Philippe Landry.
+\newblock Discriminating between {{Neutron Stars}} and {{Black Holes}} with {{Imperfect Knowledge}} of the {{Maximum Neutron Star Mass}}.
+\newblock \emph{The Astrophysical Journal}, 904\penalty0 (1):\penalty0 80, November 2020.
+\newblock \doi{10.3847/1538-4357/abbd3b}.
+
+\bibitem[Essick and Fishbach(2024)]{essickDAGnabbitEnsuringConsistency2023}
+Reed Essick and Maya Fishbach.
+\newblock {Ensuring Consistency between Noise and Detection in Hierarchical Bayesian Inference}.
+\newblock \emph{The Astrophysical Journal}, 962\penalty0 (2):\penalty0 169, feb 2024.
+\newblock \doi{10.3847/1538-4357/ad1604}.
+\newblock URL \url{https://doi.org/10.3847/1538-4357/ad1604}.
+
+\bibitem[Essick(2023{\natexlab{a}})]{essickSemianalyticSensitivityEstimates2023}
+Reed Essick.
+\newblock {Semianalytic sensitivity estimates for catalogs of gravitational-wave transients}.
+\newblock \emph{Phys. Rev. D}, 108:\penalty0 043011, Aug 2023{\natexlab{a}}.
+\newblock \doi{10.1103/PhysRevD.108.043011}.
+
+\bibitem[Essick et~al.(2025)Essick, Coughlin, Zevin, Chatterjee, Clarke, Colloms, Mali, and Miller~et al.]{essickCompactBinaryCoalescence2025}
+Reed Essick, Michael~W. Coughlin, Michael Zevin, Deep Chatterjee, Teagan~A. Clarke, Storm Colloms, Utkarsh Mali, and Simona Miller~et al.
+\newblock {Compact binary coalescence sensitivity estimates with injection campaigns during the LIGO-Virgo-KAGRA Collaborations' fourth observing run}.
+\newblock \emph{Phys. Rev. D}, 112:\penalty0 102001, Nov 2025.
+\newblock \doi{10.1103/44x3-hv3y}.
+\newblock URL \url{https://link.aps.org/doi/10.1103/44x3-hv3y}.
+
+\bibitem[Callister(2024)]{callisterObservedGravitationalWavePopulations2024}
+T.~A. Callister.
+\newblock Observed gravitational-wave populations, 2024.
+\newblock URL \url{https://arxiv.org/abs/2410.19145}.
+
+\bibitem[Mandel et~al.(2019)Mandel, Farr, and Gair]{mandelExtractingDistributionParameters2019}
+Ilya Mandel, Will~M. Farr, and Jonathan~R. Gair.
+\newblock Extracting distribution parameters from multiple uncertain observations with selection biases.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, 486\penalty0 (1):\penalty0 1086--1093, June 2019.
+\newblock ISSN 0035-8711, 1365-2966.
+\newblock \doi{10.1093/mnras/stz896}.
+
+\bibitem[Mandel(2010)]{mandelParameterEstimationGravitational2010}
+Ilya Mandel.
+\newblock Parameter estimation on gravitational waves from multiple coalescing binaries.
+\newblock \emph{Physical Review D}, 81\penalty0 (8):\penalty0 084029, April 2010.
+\newblock ISSN 1550-7998, 1550-2368.
+\newblock \doi{10.1103/PhysRevD.81.084029}.
+
+\bibitem[Skilling(2004)]{skillingNestedSampling2004}
+John Skilling.
+\newblock Nested {{Sampling}}.
+\newblock In \emph{Bayesian {{Inference}} and {{Maximum Entropy Methods}} in {{Science}} and {{Engineering}}: 24th {{International Workshop}} on {{Bayesian Inference}} and {{Maximum Entropy Methods}} in {{Science}} and {{Engineering}}}, volume 735, pages 395--405, November 2004.
+\newblock \doi{10.1063/1.1835238}.
+
+\bibitem[Thrane and Talbot(2019)]{thraneIntroductionBayesianInference2019}
+Eric Thrane and Colm Talbot.
+\newblock An introduction to {{Bayesian}} inference in gravitational-wave astronomy: parameter estimation, model selection, and hierarchical models.
+\newblock \emph{Publications of the Astronomical Society of Australia}, 36:\penalty0 e010, 2019.
+\newblock ISSN 1323-3580, 1448-6083.
+\newblock \doi{10.1017/pasa.2019.2}.
+
+\bibitem[Drago et~al.(2021)Drago, Gayathri, Klimenko, and Lazzaro]{dragoCoherentWaveBurstPipeline2021}
+M.~Drago, V.~Gayathri, S.~Klimenko, and C.~et~al. Lazzaro.
+\newblock Coherent {{WaveBurst}}, a pipeline for unmodeled gravitational-wave data analysis.
+\newblock \emph{SoftwareX}, 14:\penalty0 100678, June 2021.
+\newblock ISSN 23527110.
+\newblock \doi{10.1016/j.softx.2021.100678}.
+
+\bibitem[Cannon et~al.(2020)Cannon, Caudill, Chan, Cousins, Creighton, Ewing, Fong, Godwin, Hanna, Hooper, Huxford, Magee, Meacher, Messick, Morisaki, Mukherjee, Ohta, Pace, Privitera, de~Ruiter, Sachdev, Singer, Singh, Tapia, Tsukada, Tsuna, Tsutsui, Ueno, Viets, Wade, and Wade]{cannonGstLALSoftwareFramework2020}
+Kipp Cannon, Sarah Caudill, Chiwai Chan, Bryce Cousins, Jolien D.~E. Creighton, Becca Ewing, Heather Fong, Patrick Godwin, Chad Hanna, Shaun Hooper, Rachael Huxford, Ryan Magee, Duncan Meacher, Cody Messick, Soichiro Morisaki, Debnandini Mukherjee, Hiroaki Ohta, Alexander Pace, Stephen Privitera, Iris de~Ruiter, Surabhi Sachdev, Leo Singer, Divya Singh, Ron Tapia, Leo Tsukada, Daichi Tsuna, Takuya Tsutsui, Koh Ueno, Aaron Viets, Leslie Wade, and Madeline Wade.
+\newblock Gstlal: A software framework for gravitational wave discovery, 2020.
+\newblock URL \url{https://arxiv.org/abs/2010.05082}.
+
+\bibitem[Aubin et~al.(2021)Aubin, Brighenti, Chierici, Estevez, Greco, Guidi, Juste, Marion, Mours, Nitoglia, Sauter, and Sordini]{aubinMBTAPipelineDetecting2021}
+Florian Aubin, Francesco Brighenti, Roberto Chierici, Dimitri Estevez, Giuseppe Greco, Gianluca~Maria Guidi, Vincent Juste, Fr{\'e}d{\'e}rique Marion, Benoit Mours, Elisa Nitoglia, Orion Sauter, and Viola Sordini.
+\newblock The {{MBTA Pipeline}} for {{Detecting Compact Binary Coalescences}} in the {{Third LIGO-Virgo Observing Run}}.
+\newblock \emph{Classical and Quantum Gravity}, 38\penalty0 (9):\penalty0 095004, May 2021.
+\newblock ISSN 0264-9381, 1361-6382.
+\newblock \doi{10.1088/1361-6382/abe913}.
+
+\bibitem[Usman et~al.(2016)Usman, Nitz, Harry, Biwer, Brown, Cabero, Capano, Canton, Dent, Fairhurst, Kehl, Keppel, Krishnan, Lenon, Lundgren, Nielsen, Pekowsky, Pfeiffer, Saulson, West, and Willis]{usmanPyCBCSearchGravitational2016}
+Samantha~A. Usman, Alexander~H. Nitz, Ian~W. Harry, Christopher~M. Biwer, Duncan~A. Brown, Miriam Cabero, Collin~D. Capano, Tito~Dal Canton, Thomas Dent, Stephen Fairhurst, Marcel~S. Kehl, Drew Keppel, Badri Krishnan, Amber Lenon, Andrew Lundgren, Alex~B. Nielsen, Larne~P. Pekowsky, Harald~P. Pfeiffer, Peter~R. Saulson, Matthew West, and Joshua~L. Willis.
+\newblock The {{PyCBC}} search for gravitational waves from compact binary coalescence.
+\newblock \emph{Classical and Quantum Gravity}, 33\penalty0 (21):\penalty0 215004, November 2016.
+\newblock ISSN 0264-9381, 1361-6382.
+\newblock \doi{10.1088/0264-9381/33/21/215004}.
+
+\bibitem[Collaboration et~al.(2021)Collaboration, Collaboration, and Collaboration]{ligo_scientific_collaboration_and_virgo_2021_5636816}
+LIGO~Scientific Collaboration, Virgo Collaboration, and KAGRA Collaboration.
+\newblock {{GWTC-3}}: {{Compact}} binary coalescences observed by {{LIGO}} and virgo during the second part of the third observing run --- {{O1}}+{{O2}}+{{O3}} search sensitivity estimates, November 2021.
+
+\bibitem[Abbott et~al.(2023{\natexlab{d}})Abbott, Abbott, Acernese, Ackley, and Adams~et al.]{collaborationPopulationMergingCompact2023b}
+R.~Abbott, T.~D. Abbott, F.~Acernese, K.~Ackley, and C.~Adams~et al.
+\newblock The population of merging compact binaries inferred using gravitational waves through {{GWTC-3}}.
+\newblock \emph{Physical Review X}, 13\penalty0 (1):\penalty0 011048, March 2023{\natexlab{d}}.
+\newblock ISSN 2160-3308.
+\newblock \doi{10.1103/PhysRevX.13.011048}.
+
+\bibitem[van Son et~al.(2025)van Son, Roy, Mandel, Farr, Lam, Merritt, Broekgaarden, Sander, and Andrews]{sonNotJustWinds2024}
+L.~A.~C. van Son, S.~K. Roy, I.~Mandel, W.~M. Farr, A.~Lam, J.~Merritt, F.~S. Broekgaarden, A.~A.~C. Sander, and J.~J. Andrews.
+\newblock Not just winds: Why models find that binary black hole formation is metallicity-dependent, while binary neutron star formation is not.
+\newblock \emph{The Astrophysical Journal}, 979\penalty0 (2):\penalty0 209, jan 2025.
+\newblock \doi{10.3847/1538-4357/ada14a}.
+
+\bibitem[Essick(2023{\natexlab{b}})]{mmax-model-selection}
+Reed Essick.
+\newblock \texttt{mmax-model-selection}.
+\newblock \url{https://git.ligo.org/reed.essick/mmax-model-selection}, 2023{\natexlab{b}}.
+
+\bibitem[Essick et~al.(2023)]{gw-distributions}
+Reed Essick et~al.
+\newblock \texttt{gw-distributions}.
+\newblock \url{https://git.ligo.org/reed.essick/gw-distributions}, 2023.
+
+\bibitem[Note1()]{Note1}
+Note1.
+\newblock In theory, $H$ can be any background information.
+
+\bibitem[Foley et~al.(2020)Foley, Coulter, Kilpatrick, Piro, {Ramirez-Ruiz}, and Schwab]{foleyUpdatedParameterEstimates2020}
+Ryan~J. Foley, David~A. Coulter, Charles~D. Kilpatrick, Anthony~L. Piro, Enrico {Ramirez-Ruiz}, and Josiah Schwab.
+\newblock Updated {{Parameter Estimates}} for {{GW190425 Using Astrophysical Arguments}} and {{Implications}} for the {{Electromagnetic Counterpart}}.
+\newblock \emph{Monthly Notices of the Royal Astronomical Society}, 494\penalty0 (1):\penalty0 190--198, May 2020.
+\newblock ISSN 0035-8711, 1365-2966.
+\newblock \doi{10.1093/mnras/staa725}.
+
+\bibitem[Kiziltan et~al.(2013)Kiziltan, Kottas, Yoreo, and Thorsett]{kiziltanNeutronStarMass2013}
+Bulent Kiziltan, Athanasios Kottas, Maria~De Yoreo, and Stephen~E. Thorsett.
+\newblock The {{Neutron Star Mass Distribution}}.
+\newblock \emph{The Astrophysical Journal}, 778\penalty0 (1):\penalty0 66, November 2013.
+\newblock ISSN 0004-637X, 1538-4357.
+\newblock \doi{10.1088/0004-637X/778/1/66}.
+
+\bibitem[Collaboration et~al.(2016)Collaboration, Ade, Aghanim, Arnaud, Ashdown, Aumont, Baccigalupi, Banday, Barreiro, Bartlett, Bartolo, and Battaner]{collaborationPlanck2015Results2016}
+Planck Collaboration, P.~A.~R. Ade, N.~Aghanim, M.~Arnaud, M.~Ashdown, J.~Aumont, C.~Baccigalupi, A.~J. Banday, R.~B. Barreiro, J.~G. Bartlett, N.~Bartolo, and et~al. Battaner.
+\newblock Planck 2015 results. {{XIII}}. {{Cosmological}} parameters.
+\newblock \emph{Astronomy \& Astrophysics}, 594:\penalty0 A13, October 2016.
+\newblock ISSN 0004-6361, 1432-0746.
+\newblock \doi{10.1051/0004-6361/201525830}.
+
+\end{thebibliography}

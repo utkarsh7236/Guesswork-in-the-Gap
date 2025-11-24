@@ -1,0 +1,99 @@
+\input{macro_defs}
+\input{macro230529}
+\newcommand{\PDBsc}{\textsc{Power law + dip + break}}
+\newcommand{\q}{\ensuremath{q}}
+\newcommand{\gridscale}{0.99}
+\newcommand{\PNSpop}{\ensuremath{P(m\!<\!\mmaxpop)}}
+\newcommand{\PNSeos}{\ensuremath{P(m\!<\!\mmaxeos)}}
+\newcommand{\shortpara}{\textbf}
+\newcommand{\shededregionmessage}{The shaded region represents 90\% credible interval around the mean. Primaries are solid lines and secondaries are dotted lines.}
+\newcommand{\topbottompopeosmessage}{(\textbf{Top}) Population-only, $P(m<\mmaxpop)$. (\textbf{Bottom}) EOS-informed, $P(m<\mmaxeos)$.}
+\newcommand{\Xeff}{\ensuremath{\chi_{\text{eff}}}}
+\newcommand{\mone}{\ensuremath{m_1}}
+\newcommand{\mtwo}{\ensuremath{m_2}}
+\newcommand{\toinclude}[1]{\textbf{\textcolor{red}{#1}}} 
+\newcommand{\Msun}{\ensuremath{M_\odot}}
+\newcommand{\utty}[1]{\textbf{\textcolor{blue}{#1}}}  
+\newcommand{\EOS}{\mathrm{EOS}}
+\newcommand{\PNS}{$P(\text{NS})$}
+\newcommand{\mbrk}{\ensuremath{m_{\text{break}}}}
+\newcommand{\gammalow}{\ensuremath{\gamma_{\text{low}}}}
+\newcommand{\gammahigh}{\ensuremath{\gamma_{\text{high}}}}
+\newcommand{\etalow}{\ensuremath{\eta_{\text{low}}}}
+\newcommand{\etahigh}{\ensuremath{\eta_{\text{high}}}}
+\newcommand{\mtov}{\ensuremath{m_{\text{TOV}}}}
+\newcommand{\mtovdet}{\ensuremath{m^{\mathrm{ det}}_{\text{max}}}}
+\newcommand{\mupeakNS}{\ensuremath{\mu_{\rm peak}^{\rm NS}}}
+\newcommand{\sigpeakNS}{\ensuremath{\sigma_{\rm peak}^{\rm NS}}}
+\newcommand{\pairingBNS}
+{\ensuremath{\beta_{\rm LL}}}
+\newcommand{\pairingBBH}{\ensuremath{\beta_{\rm HH}}}
+\newcommand{\pairingNSBH}{\ensuremath{\beta_{\rm LH}}}
+\newcommand{\pairingNS}
+{\ensuremath{\beta_{\rm low}^{\rm NS}}}
+\newcommand{\pairingBH}
+{\ensuremath{\beta_{\rm low}^{\rm BH}}}
+\newcommand{\mutilt}{\ensuremath{\mu^{\mathrm{low}}_{\mathrm{cos}\theta}}}
+\newcommand{\sigtilt}{\ensuremath{\sigma^{\mathrm{low}}_{\mathrm{cos}\theta}}}
+\newcommand{\muchi}{\ensuremath{\mu^{\mathrm{low}}_{\chi}}}
+\newcommand{\sigchi}{\ensuremath{\sigma^{\mathrm{low}}_{\chi}}}
+\newcommand{\mmaxpop}{\ensuremath{\gamma_{\text{low}}}}
+\newcommand{\mmaxeos}{\ensuremath{m^{\text{EOS}}_{\text{max}}}}
+\newcommand{\mmaxnonparam}{\ensuremath{m_{\max}^{\rm det}}}
+\newcommand{\popmodel}{\textsc{FullPop-4.0}}
+\newcommand{\TableSize}[1]{\normalsize{#1}}
+\newcommand{\tickone}{\textcolor[rgb]{0.9216,0.8235,0.2039}{\LARGE{\ding{52}}}}   % Light yellow tick
+\newcommand{\ticktwo}{\textcolor[rgb]{0.5412,0.7608,0.5020}{\LARGE{\ding{52}\ding{52}}}}   % Medium green tick
+\newcommand{\tickthree}{\textcolor[rgb]{0.0,0.6,0.0}{\LARGE{\ding{52}\ding{52}\ding{52}}}} % Strong green tick
+\newcommand{\cross}{\textcolor[rgb]{0.8,0.0,0.0}{\huge{\ding{55}}}}     % Red cross, one size larger than test
+\newcommand{\tickonetxt}{\textcolor[rgb]{0.9216,0.8235,0.2039}{\normalsize{\ding{52}}}}
+\newcommand{\ticktwotxt}{\textcolor[rgb]{0.5412,0.7608,0.5020}{\normalsize{\ding{52}\ding{52}}}}
+\newcommand{\tickthreetxt}{\textcolor[rgb]{0.0,0.6,0.0}{\normalsize{\ding{52}\ding{52}\ding{52}}}}
+\newcommand{\crosstxt}{\textcolor[rgb]{0.8,0.0,0.0}{\large{\ding{55}}}}
+\newcommand{\poplabel}{Population}
+\newcommand{\eoslabel}{EOS}
+% \newcommand{\qXeff}{\ensuremath{\q~\leftrightarrow \Xeff}}
+\newcommand{\qXeff}{\ensuremath{\q-\Xeff}}
+\newcommand{\qmone}{\ensuremath{\q-\mone}}
+\newcommand{\qmtwo}{\ensuremath{\q-\mtwo}}
+\newcommand{\msb}{\ensuremath{m_{\mathrm{break,spin}}}}                 % mass break (m_spin_break)
+\newcommand{\amin}{\ensuremath{\chi_{\min}}}                        % lower bound on spin magnitude
+\newcommand{\amax}{\ensuremath{\chi_{\max}^{\mathrm{high}}}}                         % upper bound on spin magnitude
+\newcommand{\amaxNS}{\ensuremath{\chi_{\max}^{\mathrm{low}}}}        % NS-specific upper bound on spin magnitude
+\newcommand{\ctmin}{\ensuremath{c_{\min}}}                       % lower bound on cos tilt
+\newcommand{\ctmax}{\ensuremath{c_{\max}}}                       % upper bound on cos tilt
+\newcommand{\aone}{\ensuremath{\chi_1}}
+\newcommand{\atwo}{\ensuremath{\chi_2}}
+\newcommand{\costiltone}{\ensuremath{\cos\theta_1}}
+\newcommand{\costilttwo}{\ensuremath{\cos\theta_2}}
+\newcommand{\muchiOne}{\ensuremath{\mu_{\chi}^{\rm low}}}
+\newcommand{\sigchiOne}{\ensuremath{\sigma_{\chi}^{\rm low}}}
+\newcommand{\muchiTwo}{\ensuremath{\mu_{\chi}^{\rm high}}}
+\newcommand{\sigchiTwo}{\ensuremath{\sigma_{\chi}^{\rm high}}}
+\newcommand{\mixtiltOne}{\ensuremath{\lambda^{\rm low}_{\mathrm{cos}\theta}}}
+\newcommand{\sigtiltOne}{\ensuremath{\sigma^{\rm low}_{\mathrm{cos}\theta}}}
+\newcommand{\mixtiltTwo}{\ensuremath{\lambda^{\rm high}_{\mathrm{cos}\theta}}}
+\newcommand{\sigtiltTwo}{\ensuremath{\sigma^{\rm high}_{\mathrm{cos}\theta}}}
+\newcommand{\TN}[1]{\mathcal{N}_{#1}}                             % Truncated normal macro \TN{[a,b]}(x|\mu,\sigma)
+\newcommand{\Unif}[1]{\mathcal{U}_{#1}}                           % Uniform macro \Unif{[a,b]}(x)
+\newcommand{\erfop}{\operatorname{erf}}                           % erf operator
+\newcommand{\svec}{\ensuremath{\mathbf{s}}}                       % spin-vector symbol
+% Truncated normal on [L,U]
+\newcommand{\TruncNormal}[5]{%
+\begin{cases}
+\dfrac{\exp\!\left[-\tfrac{1}{2}\left(\tfrac{#1-#3}{#4}\right)^{2}\right]}{%
+\tfrac{1}{2}\,#4 \sqrt{2\pi}\,\Big[\erfop\!\big(\tfrac{#2-#3}{\sqrt{2}\,#4}\big)-\erfop\!\big(\tfrac{#5-#3}{\sqrt{2}\,#4}\big)\Big]}, &
+#5 \le #1 \le #2,\\[1.5ex]
+0, & \text{otherwise.}
+\end{cases}
+}
+\newcommand{\z}{\ensuremath{z}}                % redshift
+\newcommand{\kappaZ}{\ensuremath{\kappa}}      % redshift evolution slope
+\newcommand{\dVcdz}{\ensuremath{\tfrac{dV_c}{dz}}} % comoving volume element
+\newcommand{\resultpopgwtwothreezerofiveonine}{$\GWtwothreezerofivetwonineonebetamutiltcombinedmin$\% -- $\GWtwothreezerofivetwonineonebetamutiltcombinedmax$\%} %230529 pop
+\newcommand{\resulteosgwtwothreezerofiveonine}{$\GWtwothreezerofivetwonineonebetamutiltcombinedEOSmin$\% -- $\GWtwothreezerofivetwonineonebetamutiltcombinedEOSmax$\%} %230529 eos
+\newcommand{\resultpopgwonenineofourtwofive}{$\GWoneninezerofourtwofiveonebetamutiltcombinedmin$\% -- $\GWoneninezerofourtwofiveonebetamutiltcombinedmax$\%} %190425 pop
+\newcommand{\resulteosgwonenineofourtwofive}{$\GWoneninezerofourtwofiveonebetamutiltcombinedEOSmin$\% -- $\GWoneninezerofourtwofiveonebetamutiltcombinedEOSmax$\%} %190425 eos
+\newcommand{\resultpopgwonenineoeightonefour}{$\GWoneninezeroeightonefourtwobetamutiltcombinedmin$\% -- $\GWoneninezeroeightonefourtwobetamutiltcombinedmax$\%} %190814 pop
+\newcommand{\resulteosgwonenineoeightonefour}{$\GWoneninezeroeightonefourtwobetamutiltcombinedEOSmin$\% -- $\GWoneninezeroeightonefourtwobetamutiltcombinedEOSmax$\%} %190814 eos
+\newcommand{\numevents}{66}
